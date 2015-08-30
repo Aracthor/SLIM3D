@@ -1,0 +1,28 @@
+@startuml
+
+package slim {
+
+package core {
+
+class Singleton {
+  {static} Singleton instance
+
+  {abstract} void init()
+  {abstract} void destroy()
+}
+
+}
+
+package any_other_namespace {
+
+class SingletonClass <<Singleton>> {
+  void init()
+  void destroy()
+}
+SingletonClass --|> Singleton
+
+}
+
+}
+
+@enduml
