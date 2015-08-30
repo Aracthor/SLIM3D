@@ -1,0 +1,64 @@
+@startuml
+
+package slim {
+
+package debug {
+
+class Log {
+  char* name
+  char  consoleOutputLevel
+  char  fileOutputLevel
+
+  void setOutputLevel(char level)
+  void setFileLevel(char level)
+
+  void writeLog(template)
+  void writeInfo(template)
+  void writeWarning(template)
+  void writeError(template)
+}
+
+class LogManager <<Singleton>> {
+  Log[] logs
+
+  void init()
+  void destroy()
+}
+
+Log --* LogManager
+
+
+class Exception {
+  char* message
+  char* file
+  char* function
+  int   line
+
+  char* what()
+}
+
+hide AssertionMaccro members
+class AssertionMaccro << (M,#FF7700) >> {
+}
+
+}
+
+package any_other_namespace {
+
+class LambdaClass {
+}
+
+class XException {
+}
+
+LambdaClass -> XException : throw >
+LambdaClass --> Log : use
+LambdaClass --> AssertionMaccro : use on debug mode
+
+XException --|> Exception
+
+}
+
+}
+
+@enduml
