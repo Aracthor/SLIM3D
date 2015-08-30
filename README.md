@@ -1,2 +1,2 @@
 # SLIM3D
-Simple and Light but Inexperient Motor 3D 
+One day, a real readme file shall be done.
