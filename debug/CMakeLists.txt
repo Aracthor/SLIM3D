@@ -1,6 +1,10 @@
 project("SLIM3D")
 
 set(DEBUG_SRCS_FILES
+  AssertionException.cpp
+  Exception.cpp
+  Log.cpp
+  LogManager.cpp
   )
 
 set(DEBUG_SRCS)
