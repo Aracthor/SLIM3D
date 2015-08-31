@@ -10,3 +10,6 @@ foreach (SRC_FILE ${CORE_SRCS_FILES})
 endforeach()
 
 add_library(slim3d-core SHARED ${CORE_SRCS})
+
+install (DIRECTORY inc/ DESTINATION include)
+install (TARGETS slim3d-core DESTINATION lib)
