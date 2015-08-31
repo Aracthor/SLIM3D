@@ -1,6 +1,7 @@
 project("SLIM3D")
 
 set(CORE_SRCS_FILES
+  SingletonsManager.cpp
   )
 
 set(CORE_SRCS)

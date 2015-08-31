@@ -1,0 +1,19 @@
+//
+// Singleton.hpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/core
+// 
+// Made by Aracthor
+// 
+// Started on  Mon Aug 31 17:24:38 2015 Aracthor
+// Last Update Mon Aug 31 17:28:22 2015 Aracthor
+//
+
+template <class T>
+T
+Singleton::instance;
+
+
+template <class T>
+Singleton::Singleton()
+{
+    
+}

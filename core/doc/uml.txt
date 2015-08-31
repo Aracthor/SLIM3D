@@ -4,18 +4,28 @@ package slim {
 
 package core {
 
-class Singleton {
-  {static} Singleton instance
-
+interface Singleton {
   {abstract} void init()
   {abstract} void destroy()
 }
+
+class SingletonManager {
+  Singleton* singletons[]
+
+  void listSingletons()
+  void initSingletons()
+  void destroySingletons()
+}
+
+class SingletonManager *-- Singleton
 
 }
 
 package any_other_namespace {
 
 class SingletonClass <<Singleton>> {
+  {static} SingletonClass instance
+
   void init()
   void destroy()
 }
