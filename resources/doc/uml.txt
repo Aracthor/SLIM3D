@@ -1,0 +1,82 @@
+@startuml
+
+package slim {
+
+package resources {
+
+abstract File {
+  const char* name
+--
+  void onError(const char* description) const
+--
+  const char* getName() const
+}
+
+abstract BufferedFile {
+  FILE* file
+}
+
+abstract UnbufferedFile {
+  int fd
+}
+
+interface IWritingFile {
+  {abstract} size_t write(const void* data, size_t size)
+}
+
+interface IReadingFile {
+  {abstract} size_t read(void* buffer, size_t size)
+}
+
+class BufferedReadingFile {
+  size_t read(void* buffer, size_t size)
+}
+
+class BufferedWritingFile {
+  size_t read(const void* data, size_t size)
+}
+
+class UnbufferedReadingFile {
+  size_t read(void* buffer, size_t size)
+}
+
+class UnbufferedWritingFile {
+  size_t read(const void* data, size_t size)
+}
+
+
+class FileException {
+  const char* fileName
+}
+
+BufferedFile --|> File
+UnbufferedFile --|> File
+BufferedReadingFile --|> BufferedFile
+BufferedReadingFile --|> IReadingFile
+BufferedWritingFile --|> BufferedFile
+BufferedWritingFile --|> IWritingFile
+UnbufferedReadingFile --|> IReadingFile
+UnbufferedReadingFile --|> UnbufferedFile
+UnbufferedWritingFile --|> IWritingFile
+UnbufferedWritingFile --|> UnbufferedFile
+
+}
+
+
+package debug {
+
+class Exception {
+}
+class SyscallException {
+}
+
+}
+
+SyscallException -|> Exception
+FileException -|> SyscallException
+
+File --> FileException : throws
+
+}
+
+@enduml
