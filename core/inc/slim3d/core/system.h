@@ -4,7 +4,7 @@
 ** Made by Aracthor
 ** 
 ** Started on  Tue Sep  1 17:36:54 2015 Aracthor
-** Last Update Wed Sep  2 09:55:48 2015 Aracthor
+** Last Update Wed Sep  2 10:27:28 2015 Aracthor
 */
 
 #ifndef SLIM3D_CORE_SYSTEM_H_
@@ -15,8 +15,8 @@
 # define SLIM3D_CORE_OSX	0x03
 # define SLIM3D_CORE_WINDOWS	0x08
 
-# define IS_COMPUTER(SYSTEM)	(SYSTEM & 0xF0 == 0)
-# define IS_UNIX(SYSTEM)	(SYSTEM & 0x07 != 0)
+# define IS_COMPUTER(SYSTEM)	((SYSTEM & 0xF0) == 0)
+# define IS_UNIX(SYSTEM)	((SYSTEM & 0x07) != 0)
 
 # if defined(__linux__)
 #  define SLIM3D_CORE_SYSTEM	SLIM3D_CORE_LINUX
