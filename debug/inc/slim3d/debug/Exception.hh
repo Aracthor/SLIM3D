@@ -4,11 +4,11 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 18:03:15 2015 Aracthor
-// Last Update Mon Aug 31 23:37:15 2015 Aracthor
+// Last Update Wed Sep  2 17:19:41 2015 Aracthor
 //
 
-#ifndef SLIM3D_DEBUG_EXCEPTION
-# define SLIM3D_DEBUG_EXCEPTION
+#ifndef SLIM3D_DEBUG_EXCEPTION_HH_
+# define SLIM3D_DEBUG_EXCEPTION_HH_
 
 # include <exception>
 
@@ -45,4 +45,4 @@ protected:
 }
 }
 
-#endif // !SLIM3D_DEBUG_EXCEPTION
+#endif // !SLIM3D_DEBUG_EXCEPTION_HH_

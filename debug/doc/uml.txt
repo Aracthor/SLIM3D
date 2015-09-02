@@ -40,11 +40,16 @@ class Exception {
   char* what()
 }
 
+class SyscallException {
+  int errno
+}
+
 class AssertException {
 }
 
 AssertionMaccro --> AssertException : throws
-AssertException -|> Exception
+AssertException --|> Exception
+SyscallException --|> Exception
 
 hide AssertionMaccro members
 class AssertionMaccro << (M,#FF7700) >> {
@@ -60,9 +65,10 @@ class LambdaClass {
 class XException {
 }
 
-LambdaClass -> XException : throw
+LambdaClass -> XException : throws
 LambdaClass --> Log : uses
 LambdaClass --> AssertionMaccro : uses on debug mode
+LambdaClass --> SyscallException : throws
 
 XException --|> Exception
 

@@ -5,6 +5,7 @@ set(DEBUG_SRCS_FILES
   Exception.cpp
   Log.cpp
   LogManager.cpp
+  SyscallException.cpp
   )
 
 set(DEBUG_SRCS)

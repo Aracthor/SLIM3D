@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:04:38 2015 Aracthor
-// Last Update Tue Sep  1 23:05:44 2015 Aracthor
+// Last Update Wed Sep  2 17:42:20 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_MANAGER_HH_
@@ -26,11 +26,18 @@ public:
     static LogManager	instance;
 
 public:
+    LogManager();
+    ~LogManager();
+
+public:
     void	init();
     void	destroy();
 
 private:
     Log		m_logs[SLIM3D_DEBUG_LOGS_NUMBER];
+
+public:
+    Log&	resources;
 };
 
 }

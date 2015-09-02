@@ -4,31 +4,31 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:36:18 2015 Aracthor
-// Last Update Wed Sep  2 00:18:37 2015 Aracthor
+// Last Update Thu Sep  3 00:27:55 2015 Aracthor
 //
 
-#include <cstdio>
+#include "slim3d/resources/IWritingFile.hh"
 
 namespace slim
 {
 namespace debug
 {
 
-class	Log : public LogBase
+class		Log : public LogBase
 {
 public:
     Log(const char* name);
     ~Log();
 
 public:
-    void	init();
+    void	init(resources::Directory& directory);
     void	destroy();
 
 protected:
     void	write(const char* message, int level);
 
 private:
-    FILE*	m_file;
+    IWritingFile*	m_file;
 };
 
 }

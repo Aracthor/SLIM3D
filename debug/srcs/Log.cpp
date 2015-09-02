@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:05 2015 Aracthor
-// Last Update Wed Sep  2 10:22:01 2015 Aracthor
+// Last Update Wed Sep  2 18:21:55 2015 Aracthor
 //
 
 #include "slim3d/core/system.h"
@@ -15,9 +15,17 @@ namespace slim
 namespace debug
 {
 
-LogBase::LogBase(const char* name) :
-    m_name(name)
+LogBase::LogBase(const char* name, const time::Date& date) :
+    m_name(name),
+    m_date(date)
 {
+#if _DEBUG
+    m_fileOutputLevel = 0;
+    m_consoleOutputLevel = 1;
+#else
+    m_fileOutputLevel = 1;
+    m_consoleOutputLevel = 2;
+#endif
 }
 
 LogBase::~LogBase()

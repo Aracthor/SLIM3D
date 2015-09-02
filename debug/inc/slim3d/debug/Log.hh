@@ -4,13 +4,16 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Wed Sep  2 09:13:03 2015 Aracthor
+// Last Update Thu Sep  3 00:28:05 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_HH_
 # define SLIM3D_DEBUG_LOG_HH_
 
 # include "slim3d/core/system.h"
+# include "slim3d/resources/Directory.hh"
+
+# define SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE     0x1000
 
 namespace slim
 {
@@ -24,7 +27,7 @@ public:
     virtual ~LogBase();
 
 public:
-    virtual void	init() = 0;
+    virtual void	init(resources::Directory& directory) = 0;
     virtual void	destroy() = 0;
 
 public:
@@ -43,9 +46,9 @@ protected:
     virtual void	write(const char* message, int level) = 0;
 
 protected:
-    const char*	m_name;
-    char	m_consoleOutputLevel;
-    char	m_fileOutputLevel;
+    const char*		m_name;
+    char		m_consoleOutputLevel;
+    char		m_fileOutputLevel;
 };
 
 # include "Log.hpp"
