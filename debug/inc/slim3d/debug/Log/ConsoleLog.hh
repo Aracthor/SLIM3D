@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:36:18 2015 Aracthor
-// Last Update Thu Sep  3 00:27:55 2015 Aracthor
+// Last Update Thu Sep  3 22:54:21 2015 Aracthor
 //
 
 #include "slim3d/resources/IWritingFile.hh"
@@ -28,7 +28,7 @@ protected:
     void	write(const char* message, int level);
 
 private:
-    IWritingFile*	m_file;
+    resources::IWritingFile*	m_file;
 };
 
 }

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Thu Sep  3 00:28:05 2015 Aracthor
+// Last Update Thu Sep  3 22:55:22 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_HH_
@@ -12,6 +12,7 @@
 
 # include "slim3d/core/system.h"
 # include "slim3d/resources/Directory.hh"
+# include "slim3d/time/Date.hh"
 
 # define SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE     0x1000
 

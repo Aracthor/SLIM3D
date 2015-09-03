@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:32:18 2015 Aracthor
-// Last Update Thu Sep  3 21:59:14 2015 Aracthor
+// Last Update Thu Sep  3 22:54:31 2015 Aracthor
 //
 
 #include "slim3d/resources/BufferedWritingFile.hh"
@@ -23,7 +23,7 @@ Log::init(resources::Directory& directory)
 
     strncpy(fileName, m_name, SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE);
     strncat(fileName, ".slim3d.log", SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE - strlen(m_name));
-    m_file = directory.newFile<BufferedWritingFile>(fileName);
+    m_file = directory.newFile<resources::BufferedWritingFile>(fileName);
 }
 
 void

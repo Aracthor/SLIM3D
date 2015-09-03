@@ -4,9 +4,10 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep  3 22:22:56 2015 Aracthor
-// Last Update Thu Sep  3 22:40:31 2015 Aracthor
+// Last Update Thu Sep  3 22:57:41 2015 Aracthor
 //
 
+#include "slim3d/debug/SyscallException.hh"
 #include "slim3d/time/Date.hh"
 
 namespace slim
@@ -19,7 +20,7 @@ Date::Date(time_t seconds, bool local) :
 {
     if (seconds == static_cast<time_t>(-1))
     {
-	throw SyscallException("Cannot get current time", __FILE__, __func__, __LINE__);
+	throw debug::SyscallException("Cannot get current time", __FILE__, __func__, __LINE__);
     }
     this->setSeconds(seconds);
 }

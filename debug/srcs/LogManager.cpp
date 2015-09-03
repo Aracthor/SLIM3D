@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:04:35 2015 Aracthor
-// Last Update Thu Sep  3 22:49:43 2015 Aracthor
+// Last Update Thu Sep  3 22:55:13 2015 Aracthor
 //
 
 #include "slim3d/debug/LogManager.hh"

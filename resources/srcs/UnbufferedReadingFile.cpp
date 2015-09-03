@@ -4,12 +4,12 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Thu Sep  3 20:38:49 2015 Aracthor
+// Last Update Thu Sep  3 22:56:31 2015 Aracthor
 //
 
 #include "slim3d/resources/UnbufferedReadingFile.hh"
 
-#include <cfcntl>
+#include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -36,7 +36,7 @@ UnbufferedReadingFile::~UnbufferedReadingFile()
 size_t
 UnbufferedReadingFile::read(void* buffer, size_t size)
 {
-    size_t extracted = read(m_fd, buffer, size);
+    ssize_t extracted = ::read(m_fd, buffer, size);
 
     if (extracted == -1)
     {

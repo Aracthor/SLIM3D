@@ -38,6 +38,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
 
 set(DIRECTORIES
   core
+  debug
+  resources
+  time
   )
 
 set(INCLUDES)

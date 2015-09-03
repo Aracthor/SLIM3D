@@ -4,12 +4,12 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Thu Sep  3 20:38:39 2015 Aracthor
+// Last Update Thu Sep  3 22:56:53 2015 Aracthor
 //
 
 #include "slim3d/resources/UnbufferedWritingFile.hh"
 
-#include <cfcntl>
+#include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -36,7 +36,7 @@ UnbufferedWritingFile::~UnbufferedWritingFile()
 size_t
 UnbufferedWritingFile::write(const void* data, size_t size)
 {
-    size_t	wrote = write(m_fd, data, size, 1, m_stream);
+    ssize_t	wrote = ::write(m_fd, data, size);
 
     if (wrote == -1)
     {
