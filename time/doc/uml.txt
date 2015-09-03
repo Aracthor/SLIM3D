@@ -1,0 +1,34 @@
+@startuml
+
+package slim {
+
+package time {
+
+class Date {
+  bool local
+  time_t seconds
+  struct tm* completeTime
+
+  void setSeconds(time_t seconds)
+
+  bool isLocal() const
+  time_t getUnixSeconds() const
+  void toFormat(char* buffer, const char* format) const
+}
+
+class Clock {
+  bool running
+  time_t microSeconds;
+
+  bool isRunning() const
+  time_t getElapsedTime() const
+
+  void setRunning(bool running)
+  time_t reset()
+}
+
+}
+
+}
+
+@enduml
