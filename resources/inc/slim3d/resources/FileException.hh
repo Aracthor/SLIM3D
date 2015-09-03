@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 13:38:28 2015 Aracthor
-// Last Update Wed Sep  2 14:02:54 2015 Aracthor
+// Last Update Thu Sep  3 23:04:02 2015 Aracthor
 //
 
 #ifndef SLIM3D_RESOURCES_FILE_EXCEPTION_HH_
@@ -22,7 +22,7 @@ class	FileException : public debug::SyscallException
 public:
     FileException(const char* fileName, const char* message,
 		  const char* file, const char* function, int line);
-    virtual ~FileException();
+    virtual ~FileException() throw();
 
 public:
     inline const char*	getFileName() const;

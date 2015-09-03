@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep  3 20:51:50 2015 Aracthor
-// Last Update Thu Sep  3 21:56:36 2015 Aracthor
+// Last Update Thu Sep  3 23:13:17 2015 Aracthor
 //
 
 #include "slim3d/resources/Directory.hh"
@@ -61,6 +61,11 @@ Directory::openDirectory()
     int	accessCheck = access(m_path, F_OK);
 
     if (accessCheck == -1 && errno != ENOENT)
+    {
+	throw FileException(m_path, "Cannot check directory excistence",
+			    __FILE__, __func__, __LINE__);
+    }
+    else if (errno == ENOENT)
     {
 	SLIM3D_DEBUG_SYSCALL_CALL(mkdir(m_path, SLIM3D_RESOURCES_DIRECTORY_PERMISSIONS));
     }

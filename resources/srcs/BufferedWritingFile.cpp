@@ -4,10 +4,11 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Thu Sep  3 20:37:57 2015 Aracthor
+// Last Update Thu Sep  3 23:31:40 2015 Aracthor
 //
 
 #include "slim3d/resources/BufferedWritingFile.hh"
+#include <iostream>
 
 namespace slim
 {
@@ -32,7 +33,7 @@ BufferedWritingFile::~BufferedWritingFile()
 size_t
 BufferedWritingFile::write(const void* data, size_t size)
 {
-    if (fwrite(data, size, 1, m_stream) != size)
+    if (fwrite(data, size, 1, m_stream) != 1)
     {
 	this->onError("Buffered mode, error writing in");
     }

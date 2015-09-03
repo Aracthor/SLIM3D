@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Thu Sep  3 22:55:22 2015 Aracthor
+// Last Update Thu Sep  3 23:23:43 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_HH_
@@ -14,7 +14,8 @@
 # include "slim3d/resources/Directory.hh"
 # include "slim3d/time/Date.hh"
 
-# define SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE     0x1000
+# define SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE	0x1000
+# define SLIM3D_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim
 {
@@ -23,6 +24,9 @@ namespace debug
 
 class	LogBase
 {
+protected:
+    static const char*	s_levels[4];
+
 public:
     LogBase(const char* name);
     virtual ~LogBase();

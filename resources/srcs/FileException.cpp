@@ -4,10 +4,12 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:03:53 2015 Aracthor
-// Last Update Wed Sep  2 14:07:06 2015 Aracthor
+// Last Update Thu Sep  3 23:27:02 2015 Aracthor
 //
 
 #include "slim3d/resources/FileException.hh"
+
+#include <cstring>
 
 namespace slim
 {
@@ -21,7 +23,7 @@ FileException::FileException(const char* fileName, const char* message,
 {
 }
 
-FileException::~FileException()
+FileException::~FileException() throw()
 {
 }
 

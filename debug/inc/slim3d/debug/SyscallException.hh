@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 17:19:10 2015 Aracthor
-// Last Update Thu Sep  3 21:58:10 2015 Aracthor
+// Last Update Thu Sep  3 23:00:27 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_SYSCALL_EXCEPTION_HH_
@@ -24,7 +24,7 @@ class	SyscallException : public Exception
 {
 public:
     SyscallException(const char* message, const char* file, const char* function, int line);
-    virtual ~SyscallException();
+    virtual ~SyscallException() throw();
 
 public:
     inline int	getErrnoCode() const;

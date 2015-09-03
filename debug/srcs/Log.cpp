@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:05 2015 Aracthor
-// Last Update Thu Sep  3 22:55:43 2015 Aracthor
+// Last Update Thu Sep  3 23:23:14 2015 Aracthor
 //
 
 #include "slim3d/core/system.h"
@@ -14,6 +14,10 @@ namespace slim
 {
 namespace debug
 {
+
+const char*
+LogBase::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
+
 
 LogBase::LogBase(const char* name) :
     m_name(name)

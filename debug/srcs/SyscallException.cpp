@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 17:27:31 2015 Aracthor
-// Last Update Wed Sep  2 17:37:34 2015 Aracthor
+// Last Update Thu Sep  3 23:03:41 2015 Aracthor
 //
 
 #include "slim3d/debug/SyscallException.hh"
@@ -28,7 +28,7 @@ SyscallException::SyscallException(const char* message, const char* file, const 
     strncat(m_whatMessage, strerror(m_errno), SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE - currentSize - 2);
 }
 
-SyscallException::~SyscallException()
+SyscallException::~SyscallException() throw()
 {
 }
 
