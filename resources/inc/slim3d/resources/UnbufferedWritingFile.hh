@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:44:14 2015 Aracthor
-// Last Update Wed Sep  2 15:42:48 2015 Aracthor
+// Last Update Thu Sep  3 20:35:45 2015 Aracthor
 //
 
 #ifndef SLIM3D_RESOURCES_UNBUFFERED_WRITING_FILE_HH_
@@ -26,7 +26,7 @@ public:
     virtual ~UnbufferedWritingFile();
 
 public:
-    void	write(const void* data, size_t size);
+    size_t	write(const void* data, size_t size);
 };
 
 }

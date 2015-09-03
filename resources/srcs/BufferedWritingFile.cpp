@@ -4,10 +4,15 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Wed Sep  2 17:07:49 2015 Aracthor
+// Last Update Thu Sep  3 20:37:57 2015 Aracthor
 //
 
 #include "slim3d/resources/BufferedWritingFile.hh"
+
+namespace slim
+{
+namespace resources
+{
 
 BufferedWritingFile::BufferedWritingFile(const char* name) :
     BufferedFile(name)
@@ -33,4 +38,7 @@ BufferedWritingFile::write(const void* data, size_t size)
     }
 
     return (size);
+}
+
+}
 }

@@ -4,10 +4,19 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Wed Sep  2 17:12:05 2015 Aracthor
+// Last Update Thu Sep  3 20:38:39 2015 Aracthor
 //
 
 #include "slim3d/resources/UnbufferedWritingFile.hh"
+
+#include <cfcntl>
+#include <sys/stat.h>
+#include <sys/types.h>
+
+namespace slim
+{
+namespace resources
+{
 
 UnbufferedWritingFile::UnbufferedWritingFile(const char* name) :
     UnbufferedFile(name)
@@ -35,4 +44,7 @@ UnbufferedWritingFile::write(const void* data, size_t size)
     }
 
     return (wrote);
+}
+
+}
 }

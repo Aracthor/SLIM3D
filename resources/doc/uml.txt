@@ -45,6 +45,13 @@ class UnbufferedWritingFile {
 }
 
 
+class Directory {
+  char path[]
+  const char* getPath() const
+  File* createNewFile()
+}
+
+
 class FileException {
   const char* fileName
 }
@@ -59,6 +66,10 @@ UnbufferedReadingFile --|> IReadingFile
 UnbufferedReadingFile --|> UnbufferedFile
 UnbufferedWritingFile --|> IWritingFile
 UnbufferedWritingFile --|> UnbufferedFile
+
+IReadingFile <-- Directory : creates
+IWritingFile <-- Directory : creates
+Directory --> FileException : throws
 
 }
 

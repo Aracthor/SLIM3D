@@ -4,14 +4,19 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Wed Sep  2 17:12:28 2015 Aracthor
+// Last Update Thu Sep  3 20:38:49 2015 Aracthor
 //
 
-#include <fcntl.h>
+#include "slim3d/resources/UnbufferedReadingFile.hh"
+
+#include <cfcntl>
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "slim3d/resources/UnbufferedReadingFile.hh"
+namespace slim
+{
+namespace resources
+{
 
 UnbufferedReadingFile::UnbufferedReadingFile(const char* name) :
     UnbufferedFile(name)
@@ -39,4 +44,7 @@ UnbufferedReadingFile::read(void* buffer, size_t size)
     }
 
     return (extracted);
+}
+
+}
 }

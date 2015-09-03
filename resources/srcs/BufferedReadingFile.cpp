@@ -4,10 +4,15 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Wed Sep  2 15:48:06 2015 Aracthor
+// Last Update Thu Sep  3 20:37:52 2015 Aracthor
 //
 
 #include "slim3d/resources/BufferedReadingFile.hh"
+
+namespace slim
+{
+namespace resources
+{
 
 BufferedReadingFile::BufferedReadingFile(const char* name) :
     BufferedFile(name)
@@ -38,4 +43,7 @@ BufferedReadingFile::read(void* buffer, size_t size)
     }
 
     return (extracted);
+}
+
+}
 }

@@ -4,6 +4,7 @@ set(RESOURCES_SRCS_FILES
   BufferedFile.cpp
   BufferedReadingFile.cpp
   BufferedWritingFile.cpp
+  Directory.cpp
   File.cpp
   FileException.cpp
   UnbufferedFile.cpp
