@@ -4,13 +4,14 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Fri Sep  4 16:48:49 2015 Aracthor
+// Last Update Fri Sep  4 23:58:47 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_HELPER_HH_
 # define SLIM3D_MATHS_HELPER_HH_
 
 # include "slim3d/core/Singleton.hh"
+# include "slim3d/debug/assert.hh"
 
 # define SLIM3D_MATHS_HELPER_PRECALC_NUMBER	36000
 
@@ -20,7 +21,7 @@ namespace maths
 {
 
 template <typename T>
-class	Helper : public core::Singleton
+class		Helper : public core::Singleton
 {
 public:
     static Helper<T>	instance;
@@ -34,15 +35,20 @@ public:
     void	destroy() override;
 
 public:
-    T	getCosinus(T angle) const;
-    T	getSinus(T angle) const;
-    T	getTangeante(T angle) const;
+    inline T	getCosinus(T angle) const;
+    inline T	getSinus(T angle) const;
+    inline T	getTangeante(T angle) const;
+
+private:
+    inline T	getAroundAngle(T angle) const;
 
 private:
     T	m_coses[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
     T	m_sines[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
     T	m_tanes[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
 };
+
+# include "Helper.hpp"
 
 }
 
