@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 13:04:25 2015 Aracthor
+// Last Update Sat Sep  5 16:24:57 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR2_HH_
@@ -65,6 +65,10 @@ public:
     inline Vector2<T>	operator/(T n) const;
     inline bool		operator==(const Vector2<T>& vector) const;
     inline bool		operator!=(const Vector2<T>& vector) const;
+
+public:
+    inline T		operator[](unsigned int index) const;
+    inline T&		operator[](unsigned int index);
 
 public:
     template <typename U>

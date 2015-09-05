@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 13:09:53 2015 Aracthor
+// Last Update Sat Sep  5 18:49:39 2015 Aracthor
 //
 
 template <typename T>
@@ -211,6 +211,21 @@ bool
 Vector2<T>::operator!=(const Vector2<T>& vector) const
 {
     return !this->equals(vector);
+}
+
+
+template <typename T>
+T
+Vector2<T>::operator[](unsigned int index) const
+{
+    return ((reinterpret_cast<const T*>(this))[index]);
+}
+
+template <typename T>
+T&
+Vector2<T>::operator[](unsigned int index)
+{
+    return ((reinterpret_cast<T*>(this))[index]);
 }
 
 
