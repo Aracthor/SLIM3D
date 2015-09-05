@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 18:49:39 2015 Aracthor
+// Last Update Sat Sep  5 20:24:43 2015 Aracthor
 //
 
 template <typename T>
@@ -53,6 +53,14 @@ Vector2<T>::getSquaredNorm() const
     return (x * x + y * y);
 }
 
+
+template <typename T>
+void
+Vector2<T>::setAllElements(T n)
+{
+    x = n;
+    y = n;
+}
 
 template <typename T>
 void

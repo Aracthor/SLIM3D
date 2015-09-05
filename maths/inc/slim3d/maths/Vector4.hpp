@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 16:23:17 2015 Aracthor
+// Last Update Sun Sep  6 00:32:15 2015 Aracthor
 //
 
 template <typename T>
@@ -75,6 +75,16 @@ Vector4<T>::getSquaredNorm() const
     return (x * x + y * y + z * z + w * w);
 }
 
+
+template <typename T>
+void
+Vector4<T>::setAllElements(T n)
+{
+    x = n;
+    y = n;
+    z = n;
+    w = n;
+}
 
 template <typename T>
 void
@@ -250,14 +260,14 @@ template <typename T>
 T
 Vector4<T>::operator[](unsigned int index) const
 {
-    return ((reinterpret_cast<const T*>(this))[index]);
+    return reinterpret_cast<const T* const>(this)[index];
 }
 
 template <typename T>
 T&
 Vector4<T>::operator[](unsigned int index)
 {
-    return ((reinterpret_cast<T*>(this))[index]);
+    return reinterpret_cast<T* const>(this)[index];
 }
 
 

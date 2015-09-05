@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 16:25:22 2015 Aracthor
+// Last Update Sun Sep  6 00:35:10 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR4_HH_
@@ -12,6 +12,11 @@
 
 # include "slim3d/maths/lib.hh"
 # include "slim3d/maths/Vector2.hh"
+# include "slim3d/maths/Vector3.hh"
+
+# if __SSE__ == 1
+#  include <xmmintrin.h>
+# endif
 
 namespace slim
 {
@@ -36,11 +41,12 @@ public:
     T	w;
 
 public:
-    inline bool	equals(const Vector4<T>& vector) const;
-    inline T	getNorm() const;
-    inline T	getSquaredNorm() const;
+    inline bool		equals(const Vector4<T>& vector) const;
+    inline T		getNorm() const;
+    inline T		getSquaredNorm() const;
 
 public:
+    void	setAllElements(T n);
     void	normalize();
 
 public:
@@ -78,6 +84,16 @@ public:
 public:
     template <typename U>
     operator	Vector4<U>() const;
+
+#if __SSE__ == 1
+    Vector4(__m128 data);
+
+    Vector4<T>&	set(__m128 data);
+
+    inline __m128	asSSE() const;
+
+    inline Vector4<T>&	operator=(__m128 data);
+#endif
 };
 
 # include "Vector4.hpp"
@@ -93,5 +109,9 @@ typedef Vector4<long>		Vector4l;
 typedef maths::Vector4f	        Vector4;
 
 }
+
+# if __SSE__ == 1
+#  include "Vector4/SSE.hpp"
+# endif
 
 #endif // !SLIM3D_MATHS_VECTOR4_HH_

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 16:24:57 2015 Aracthor
+// Last Update Sat Sep  5 20:24:07 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR2_HH_
@@ -36,6 +36,7 @@ public:
     inline T	getSquaredNorm() const;
 
 public:
+    void	setAllElements(T n);
     void	normalize();
 
 public:

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 16:25:10 2015 Aracthor
+// Last Update Sat Sep  5 21:21:48 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
@@ -39,6 +39,7 @@ public:
     inline T	getSquaredNorm() const;
 
 public:
+    void	setAllElements(T n);
     void	normalize();
 
 public:
@@ -62,10 +63,12 @@ public:
     // Operators similar to methods
     inline Vector3<T>&	operator+=(const Vector3<T>& vector);
     inline Vector3<T>&	operator-=(const Vector3<T>& vector);
+    inline Vector3<T>&	operator*=(const Vector3<T>& vector);
     inline Vector3<T>&	operator*=(T n);
     inline Vector3<T>&	operator/=(T n);
     inline Vector3<T>	operator+(const Vector3<T>& vector) const;
     inline Vector3<T>	operator-(const Vector3<T>& vector) const;
+    inline Vector3<T>	operator*(const Vector3<T>& vector) const;
     inline Vector3<T>	operator*(T n) const;
     inline Vector3<T>	operator/(T n) const;
     inline bool		operator==(const Vector3<T>& vector) const;
