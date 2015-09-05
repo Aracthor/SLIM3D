@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 13:13:49 2015 Aracthor
+// Last Update Sat Sep  5 13:36:05 2015 Aracthor
 //
 
 template <typename T>
@@ -100,6 +100,22 @@ Vector3<T>::subTo(const Vector3<T>& vector)
 
 template <typename T>
 Vector3<T>&
+Vector3<T>::vectorProductTo(const Vector3<T>& vector)
+{
+    T	x, y, z;
+
+    x = this->y * vector.z - this->z * vector.y;
+    y = this->z * vector.x - this->x * vector.z;
+    z = this->x * vector.y - this->y * vector.x;
+    this->x = x;
+    this->y = y;
+    this->z = z;
+
+    return *this;
+}
+
+template <typename T>
+Vector3<T>&
 Vector3<T>::scaleTo(T n)
 {
     this->x *= n;
@@ -133,6 +149,15 @@ Vector3<T>
 Vector3<T>::sub(const Vector3<T>& vector) const
 {
     return Vector3<T>(this->x - vector.x, this->y - vector.y, this->z - vector.z);
+}
+
+template <typename T>
+Vector3<T>
+Vector3<T>::vectorProduct(const Vector3<T>& vector) const
+{
+    return Vector3<T>(this->y * vector.z - this->z * vector.y,
+		      this->z * vector.x - this->x * vector.z,
+		      this->x * vector.y - this->y * vector.x);
 }
 
 template <typename T>
@@ -174,6 +199,13 @@ Vector3<T>::operator-=(const Vector3<T>& vector)
 
 template <typename T>
 Vector3<T>&
+Vector3<T>::operator*=(const Vector3<T>& vector)
+{
+    return this->vectorProductTo(vector);
+}
+
+template <typename T>
+Vector3<T>&
 Vector3<T>::operator*=(T n)
 {
     return this->scaleTo(n);
@@ -198,6 +230,13 @@ Vector3<T>
 Vector3<T>::operator-(const Vector3<T>& vector) const
 {
     return this->sub(vector);
+}
+
+template <typename T>
+Vector3<T>
+Vector3<T>::operator*(const Vector3<T>& vector) const
+{
+    return this->vectorProduct(vector);
 }
 
 template <typename T>

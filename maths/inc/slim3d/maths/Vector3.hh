@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 13:06:21 2015 Aracthor
+// Last Update Sat Sep  5 13:31:29 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
@@ -44,12 +44,14 @@ public:
 public:
     Vector3<T>&	addTo(const Vector3<T>& vector);
     Vector3<T>&	subTo(const Vector3<T>& vector);
+    Vector3<T>&	vectorProductTo(const Vector3<T>& vector);
     Vector3<T>&	scaleTo(T n);
     Vector3<T>&	unscaleTo(T n);
 
 public:
     inline Vector3<T>	add(const Vector3<T>& vector) const;
     inline Vector3<T>	sub(const Vector3<T>& vector) const;
+    inline Vector3<T>	vectorProduct(const Vector3<T>& vector) const;
     inline Vector3<T>	scale(T n) const;
     inline Vector3<T>	unscale(T n) const;
 
