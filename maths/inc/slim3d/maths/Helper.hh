@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Fri Sep  4 23:58:47 2015 Aracthor
+// Last Update Sat Sep  5 12:41:52 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_HELPER_HH_
@@ -12,6 +12,7 @@
 
 # include "slim3d/core/Singleton.hh"
 # include "slim3d/debug/assert.hh"
+# include "slim3d/maths/lib.hh"
 
 # define SLIM3D_MATHS_HELPER_PRECALC_NUMBER	36000
 
@@ -43,9 +44,9 @@ private:
     inline T	getAroundAngle(T angle) const;
 
 private:
-    T	m_coses[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
-    T	m_sines[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
-    T	m_tanes[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
+    T		m_coses[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
+    T		m_sines[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
+    T		m_tanes[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
 };
 
 # include "Helper.hpp"

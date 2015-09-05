@@ -4,6 +4,13 @@ package slim {
 
 package maths {
 
+class	lib {
+  {static} <<template T>> T sqrt(T n)
+  {static} <<template T>> T cos(T angle)
+  {static} <<template T>> T sin(T angle)
+  {static} <<template T>> T tan(T angle)
+}
+
 class	Vector2 <<typename T>> {
   T x
   T y
@@ -83,6 +90,8 @@ class	Helper <<singleton>> <<typename T>> {
   T getSinus(T angle) const
   T getTangeante(T angle) const
 }
+
+Helper --> lib : uses
 
 }
 

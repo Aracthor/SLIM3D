@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 19:46:34 2015 Aracthor
-// Last Update Fri Sep  4 23:58:55 2015 Aracthor
+// Last Update Sat Sep  5 12:49:41 2015 Aracthor
 //
 
 template <typename T>
@@ -22,6 +22,15 @@ template <typename T>
 void
 Helper<T>::init()
 {
+    T	angle;
+
+    for (unsigned int i = 0; i < SLIM3D_MATHS_HELPER_PRECALC_NUMBER; i++)
+    {
+	angle = SLIM3D_MATHS_PI * 2 * static_cast<float>(i) / static_cast<float>(SLIM3D_MATHS_HELPER_PRECALC_NUMBER);
+	m_coses[i] = lib::cos(angle);
+	m_sines[i] = lib::sin(angle);
+	m_tanes[i] = lib::tan(angle);
+    }
 }
 
 template <typename T>
