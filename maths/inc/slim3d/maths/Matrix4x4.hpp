@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 20:12:06 2015 Aracthor
-// Last Update Sun Sep  6 12:32:07 2015 Aracthor
+// Last Update Sun Sep  6 12:38:06 2015 Aracthor
 //
 
 #include "slim3d/debug/assert.hh"
@@ -127,14 +127,14 @@ Matrix4x4<T>::rotateZ(T angle)
 {
     T	cosinus = SLIM3D_MATHS_COS(angle);
     T	sinus = SLIM3D_MATHS_SIN(angle);
-    T	copy10 = m_rows[0][0];
-    T	copy11 = m_rows[0][1];
-    T	copy12 = m_rows[0][2];
-    T	copy13 = m_rows[0][3];
-    T	copy20 = m_rows[1][0];
-    T	copy21 = m_rows[1][1];
-    T	copy22 = m_rows[1][2];
-    T	copy23 = m_rows[1][3];
+    T	copy00 = m_rows[0][0];
+    T	copy01 = m_rows[0][1];
+    T	copy02 = m_rows[0][2];
+    T	copy03 = m_rows[0][3];
+    T	copy10 = m_rows[1][0];
+    T	copy11 = m_rows[1][1];
+    T	copy12 = m_rows[1][2];
+    T	copy13 = m_rows[1][3];
 
     m_rows[0][0] = copy00 * cosinus + copy10 * sinus;
     m_rows[0][1] = copy01 * cosinus + copy11 * sinus;
@@ -161,30 +161,30 @@ void
 Matrix4x4<T>::perspective(T angle, T aspectRatio, T minView, T maxView)
 {
     T	f = 1.0 / SLIM3D_MATHS_TAN(aspectRatio / 2.0);
-    T	nf = 1.0 / (min - max);
+    T	nf = 1.0 / (minView - maxView);
     T	mm = minView + maxView;
 
-    m_data[0][0] = f / aspectRatio;
-    m_data[0][1] = 0.0;
-    m_data[0][2] = 0.0;
-    m_data[0][3] = 0.0;
-    m_data[1][0] = 0.0;
-    m_data[1][1] = f;
-    m_data[1][2] = 0.0;
-    m_data[1][3] = 0.0;
-    m_data[2][0] = 0.0;
-    m_data[2][1] = 0.0;
-    m_data[2][2] = mm * nf;
-    m_data[2][3] = -1.0;
-    m_data[3][0] = 0.0;
-    m_data[3][1] = 0.0;
-    m_data[3][2] = (2.0 * mm) * nf;
-    m_data[3][3] = 0.0;
+    m_rows[0][0] = f / aspectRatio;
+    m_rows[0][1] = 0.0;
+    m_rows[0][2] = 0.0;
+    m_rows[0][3] = 0.0;
+    m_rows[1][0] = 0.0;
+    m_rows[1][1] = f;
+    m_rows[1][2] = 0.0;
+    m_rows[1][3] = 0.0;
+    m_rows[2][0] = 0.0;
+    m_rows[2][1] = 0.0;
+    m_rows[2][2] = mm * nf;
+    m_rows[2][3] = -1.0;
+    m_rows[3][0] = 0.0;
+    m_rows[3][1] = 0.0;
+    m_rows[3][2] = (2.0 * mm) * nf;
+    m_rows[3][3] = 0.0;
 }
 
 template <typename T>
 void
-Matrix4x4::lookAt(const Vector3<T>& position, const Vector3<T>& target, const Vector3<T>& up)
+Matrix4x4<T>::lookAt(const Vector3<T>& position, const Vector3<T>& target, const Vector3<T>& up)
 {
     Vector3<T>	x;
     Vector3<T>	y;
@@ -193,7 +193,7 @@ Matrix4x4::lookAt(const Vector3<T>& position, const Vector3<T>& target, const Ve
 
     SLIM3D_DEBUG_ASSERT(position != target);
 
-    z = positon - target;
+    z = position - target;
     length = z.getNorm();
     z.scale(1.0 / length);
 
