@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:05 2015 Aracthor
-// Last Update Thu Sep  3 23:23:14 2015 Aracthor
+// Last Update Sun Sep  6 23:28:25 2015 Aracthor
 //
 
 #include "slim3d/core/system.h"
@@ -22,7 +22,7 @@ LogBase::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
 LogBase::LogBase(const char* name) :
     m_name(name)
 {
-#if _DEBUG
+#ifdef _DEBUG
     m_fileOutputLevel = 0;
     m_consoleOutputLevel = 1;
 #else
