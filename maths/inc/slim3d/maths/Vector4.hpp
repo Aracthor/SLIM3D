@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sun Sep  6 00:32:15 2015 Aracthor
+// Last Update Sun Sep  6 12:24:45 2015 Aracthor
 //
 
 template <typename T>
@@ -24,19 +24,13 @@ Vector4<T>::Vector4(T x, T y, T z, T w)
 template <typename T>
 Vector4<T>::Vector4(const Vector2<T>& vector2, T z, T w)
 {
-    this->x = vector2.x;
-    this->y = vector2.y;
-    this->z = z;
-    this->w = w;
+    this->set(vector2, z, w);
 }
 
 template <typename T>
 Vector4<T>::Vector4(const Vector3<T>& vector3, T w)
 {
-    this->x = vector3.x;
-    this->y = vector3.y;
-    this->z = vector3.z;
-    this->w = w;
+    this->set(vector3, w);
 }
 
 template <typename T>
@@ -96,6 +90,26 @@ Vector4<T>::normalize()
     y /= norm;
     z /= norm;
     w /= norm;
+}
+
+template <typename T>
+void
+Vector4<T>::set(const Vector2<T>& vector2, T z, T w)
+{
+    this->x = vector2.x;
+    this->y = vector2.y;
+    this->z = z;
+    this->w = w;
+}
+
+template <typename T>
+void
+Vector4<T>::set(const Vector3<T>& vector3, T w)
+{
+    this->x = vector3.x;
+    this->y = vector3.y;
+    this->z = vector3.z;
+    this->w = w;
 }
 
 

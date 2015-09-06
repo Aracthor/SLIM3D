@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Sat Sep  5 12:41:52 2015 Aracthor
+// Last Update Sun Sep  6 11:40:54 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_HELPER_HH_
@@ -15,6 +15,16 @@
 # include "slim3d/maths/lib.hh"
 
 # define SLIM3D_MATHS_HELPER_PRECALC_NUMBER	36000
+
+# if _USE_MATHS_HELPER
+#  define SLIM3D_MATHS_COS(angle)	slim::MathsHelper::instance.getCosinus(angle)
+#  define SLIM3D_MATHS_SIN(angle)	slim::MathsHelper::instance.getSinus(angle)
+#  define SLIM3D_MATHS_TAN(angle)	slim::MathsHelper::instance.getTangeante(angle)
+# else
+#  define SLIM3D_MATHS_COS(angle)	slim::maths::lib::cos(angle)
+#  define SLIM3D_MATHS_SIN(angle)	slim::maths::lib::sin(angle)
+#  define SLIM3D_MATHS_TAN(angle)	slim::maths::lib::tan(angle)
+# endif
 
 namespace slim
 {

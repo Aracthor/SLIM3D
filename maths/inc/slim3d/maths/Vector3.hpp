@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 20:25:00 2015 Aracthor
+// Last Update Sun Sep  6 12:28:14 2015 Aracthor
 //
 
 template <typename T>
@@ -23,9 +23,7 @@ Vector3<T>::Vector3(T x, T y, T z)
 template <typename T>
 Vector3<T>::Vector3(const Vector2<T>& vector2, T z)
 {
-    this->x = vector2.x;
-    this->y = vector2.y;
-    this->z = z;
+    this->set(vector2, z);
 }
 
 template <typename T>
@@ -82,6 +80,15 @@ Vector3<T>::normalize()
     x /= norm;
     y /= norm;
     z /= norm;
+}
+
+template <typename T>
+void
+Vector3<T>::set(const Vector2<T>& vector2, T z)
+{
+    this->x = vector2.x;
+    this->y = vector2.y;
+    this->z = z;
 }
 
 

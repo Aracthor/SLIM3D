@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sun Sep  6 00:35:10 2015 Aracthor
+// Last Update Sun Sep  6 12:30:38 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR4_HH_
@@ -30,7 +30,7 @@ public:
     Vector4();
     Vector4(T x, T y, T z, T w);
     Vector4(const Vector2<T>& vector2, T z, T w);
-    Vector4(const Vector3<T>& vector3, T w);
+    Vector4(const Vector3<T>& vector3, T w = 0);
     Vector4(const Vector4<T>& vector);
     ~Vector4();
 
@@ -48,6 +48,8 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(const Vector2<T>& vector2, T z, T w);
+    void	set(const Vector3<T>& vector3, T w);
 
 public:
     Vector4<T>&	addTo(const Vector4<T>& vector);

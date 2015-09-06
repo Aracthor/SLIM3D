@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 21:21:48 2015 Aracthor
+// Last Update Sun Sep  6 12:27:32 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
@@ -41,6 +41,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void        set(const Vector2<T>& vector2, T z);
 
 public:
     Vector3<T>&	addTo(const Vector3<T>& vector);
