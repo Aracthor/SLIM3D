@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep  3 22:22:11 2015 Aracthor
-// Last Update Thu Sep  3 22:43:04 2015 Aracthor
+// Last Update Wed Sep  9 10:40:57 2015 Aracthor
 //
 
 #ifndef SLIM3D_TIME_DATE_HH_
@@ -37,9 +37,9 @@ private:
     struct tm*	m_completeTime;
 };
 
-# include "Date.hpp"
+}
+}
 
-}
-}
+# include "Date.hpp"
 
 #endif // !SLIM3D_TIME_DATE_HH_

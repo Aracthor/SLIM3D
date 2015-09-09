@@ -4,8 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep  3 22:26:31 2015 Aracthor
-// Last Update Thu Sep  3 22:42:14 2015 Aracthor
+// Last Update Wed Sep  9 10:41:12 2015 Aracthor
 //
+
+namespace slim
+{
+namespace time
+{
 
 bool
 Date::isLocal() const
@@ -23,4 +28,7 @@ void
 Date::toFormat(char* buffer, size_t size, const char* format) const
 {
     strftime(buffer, size, format, m_completeTime);
+}
+
+}
 }

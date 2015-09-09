@@ -1,6 +1,7 @@
 project("SLIM3D")
 
 set(TIME_SRCS_FILES
+  Clock.cpp
   Date.cpp
   )
 
