@@ -4,8 +4,18 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 19:46:34 2015 Aracthor
-// Last Update Sat Sep  5 12:49:41 2015 Aracthor
+// Last Update Wed Sep  9 14:24:49 2015 Aracthor
 //
+
+namespace slim
+{
+namespace maths
+{
+
+template <typename T>
+Helper<T>
+Helper<T>::instance;
+
 
 template <typename T>
 Helper<T>::Helper()
@@ -62,9 +72,13 @@ Helper<T>::getTangeante(T angle) const
 }
 
 
+template <typename T>
 T
 Helper<T>::getAroundAngle(T angle) const
 {
-    ASSERT();
+    ASSERT(angle >= 0.0 && angle < SLIM3D_MATHS_PI * 2);
     return (static_cast<T>((static_cast<unsigned int>(SLIM3D_MATHS_HELPER_PRECALC_NUMBER) * angle) / SLIM3D_MATHS_HELPER_PRECALC_NUMBER));
+}
+
+}
 }

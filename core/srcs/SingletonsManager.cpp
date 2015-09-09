@@ -4,10 +4,12 @@
 // Made by aracthor
 // 
 // Started on  Mon Aug 31 17:31:31 2015 aracthor
-// Last Update Mon Aug 31 17:55:14 2015 Aracthor
+// Last Update Wed Sep  9 14:19:22 2015 Aracthor
 //
 
 #include "slim3d/core/SingletonsManager.hh"
+#include "slim3d/debug/LogManager.hh"
+#include "slim3d/maths/Helper.hh"
 
 namespace slim
 {
@@ -29,6 +31,8 @@ SingletonsManager::~SingletonsManager()
 void
 SingletonsManager::listSingletons()
 {
+    m_singletons[0] = &debug::LogManager::instance;
+    m_singletons[1] = &MathsHelper::instance;
 }
 
 void

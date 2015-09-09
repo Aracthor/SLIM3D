@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 20:12:06 2015 Aracthor
-// Last Update Sun Sep  6 12:38:06 2015 Aracthor
+// Last Update Wed Sep  9 14:08:52 2015 Aracthor
 //
 
 #include "slim3d/debug/assert.hh"
@@ -33,10 +33,20 @@ Matrix4x4<T>::Matrix4x4(const Matrix4x4& copy)
 
 
 template <typename T>
-const T* const
+const T*
 Matrix4x4<T>::asArray() const
 {
-    return reinterpret_cast<const T* const>(this);
+    return reinterpret_cast<const T*>(this);
+}
+
+template <typename T>
+bool
+Matrix4x4<T>::isIdentity() const
+{
+    return (m_rows[0][0] == 1.0 && m_rows[0][1] == 0.0 && m_rows[0][2] == 0.0 && m_rows[0][3] == 0.0 &&
+	    m_rows[1][0] == 0.0 && m_rows[1][1] == 1.0 && m_rows[1][2] == 0.0 && m_rows[1][3] == 0.0 &&
+	    m_rows[2][0] == 0.0 && m_rows[2][1] == 0.0 && m_rows[2][2] == 1.0 && m_rows[2][3] == 0.0 &&
+	    m_rows[3][0] == 0.0 && m_rows[3][1] == 0.0 && m_rows[3][2] == 0.0 && m_rows[3][3] == 1.0);
 }
 
 
@@ -44,10 +54,10 @@ template <typename T>
 void
 Matrix4x4<T>::setIdentity()
 {
-    m_rows[0][0] = 1; m_rows[0][1] = 0; m_rows[0][2] = 0; m_rows[0][3] = 0;
-    m_rows[1][0] = 0; m_rows[1][1] = 1; m_rows[1][2] = 0; m_rows[1][3] = 0;
-    m_rows[2][0] = 0; m_rows[2][1] = 0; m_rows[2][2] = 1; m_rows[2][3] = 0;
-    m_rows[3][0] = 0; m_rows[3][1] = 0; m_rows[3][2] = 0; m_rows[3][3] = 1;
+    m_rows[0][0] = 1.0; m_rows[0][1] = 0.0; m_rows[0][2] = 0.0; m_rows[0][3] = 0.0;
+    m_rows[1][0] = 0.0; m_rows[1][1] = 1.0; m_rows[1][2] = 0.0; m_rows[1][3] = 0.0;
+    m_rows[2][0] = 0.0; m_rows[2][1] = 0.0; m_rows[2][2] = 1.0; m_rows[2][3] = 0.0;
+    m_rows[3][0] = 0.0; m_rows[3][1] = 0.0; m_rows[3][2] = 0.0; m_rows[3][3] = 1.0;
 }
 
 template <typename T>
