@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 20:12:09 2015 Aracthor
-// Last Update Sun Sep  6 12:31:13 2015 Aracthor
+// Last Update Wed Sep  9 14:00:28 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_MATRIX4X4_HH_
@@ -26,7 +26,8 @@ public:
     Matrix4x4(const Matrix4x4& copy);
 
 public:
-    const T* const	asArray() const;
+    const T*	asArray() const;
+    inline bool	isIdentity() const;
 
 public:
     void	setIdentity();

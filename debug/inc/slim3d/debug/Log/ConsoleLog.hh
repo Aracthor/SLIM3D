@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:36:18 2015 Aracthor
-// Last Update Thu Sep  3 23:14:55 2015 Aracthor
+// Last Update Wed Sep  9 13:47:40 2015 Aracthor
 //
 
 #include "slim3d/resources/IWritingFile.hh"
@@ -23,11 +23,11 @@ public:
     ~Log();
 
 public:
-    void	init(resources::Directory& directory);
-    void	destroy();
+    void	init(resources::Directory& directory) override;
+    void	destroy() override;
 
 protected:
-    void	write(const char* message, int level);
+    void	write(const char* message, unsigned int level) override;
 
 private:
     resources::IWritingFile*	m_file;

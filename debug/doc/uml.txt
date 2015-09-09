@@ -8,6 +8,7 @@ class Log {
   char* name
   char  consoleOutputLevel
   char  fileOutputLevel
+  Dumper dumper
 --
   void init()
   void destroy()
@@ -20,6 +21,12 @@ class Log {
   void writeWarning(template)
   void writeError(template)
 }
+
+class Dumper {
+  void dump(const T& object, char* buffer)
+}
+
+Dumper -* Log
 
 class LogManager <<Singleton>> {
   Log[] logs
@@ -68,7 +75,6 @@ class XException {
 LambdaClass -> XException : throws
 LambdaClass --> Log : uses
 LambdaClass --> AssertionMaccro : uses on debug mode
-LambdaClass --> SyscallException : throws
 
 XException --|> Exception
 

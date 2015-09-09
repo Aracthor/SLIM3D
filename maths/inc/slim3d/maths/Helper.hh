@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Sun Sep  6 11:40:54 2015 Aracthor
+// Last Update Wed Sep  9 14:20:50 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_HELPER_HH_
@@ -14,7 +14,7 @@
 # include "slim3d/debug/assert.hh"
 # include "slim3d/maths/lib.hh"
 
-# define SLIM3D_MATHS_HELPER_PRECALC_NUMBER	36000
+# define SLIM3D_MATHS_HELPER_PRECALC_NUMBER	(360 * 100)
 
 # if _USE_MATHS_HELPER
 #  define SLIM3D_MATHS_COS(angle)	slim::MathsHelper::instance.getCosinus(angle)
@@ -59,12 +59,12 @@ private:
     T		m_tanes[SLIM3D_MATHS_HELPER_PRECALC_NUMBER];
 };
 
-# include "Helper.hpp"
-
 }
 
 typedef maths::Helper<float>	MathsHelper;
 
 }
+
+# include "Helper.hpp"
 
 #endif // !SLIM3D_MATHS_HELPER_HH_
