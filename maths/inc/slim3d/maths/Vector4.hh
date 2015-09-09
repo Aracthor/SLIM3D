@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sun Sep  6 12:30:38 2015 Aracthor
+// Last Update Wed Sep  9 23:59:38 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR4_HH_
@@ -98,8 +98,6 @@ public:
 #endif
 };
 
-# include "Vector4.hpp"
-
 typedef Vector4<float>		Vector4f;
 typedef Vector4<double>		Vector4d;
 typedef Vector4<long double>	Vector4ld;
@@ -111,6 +109,8 @@ typedef Vector4<long>		Vector4l;
 typedef maths::Vector4f	        Vector4;
 
 }
+
+# include "Vector4.hpp"
 
 # if __SSE__ == 1
 #  include "Vector4/SSE.hpp"

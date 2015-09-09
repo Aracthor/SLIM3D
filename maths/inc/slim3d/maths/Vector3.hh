@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sun Sep  6 12:27:32 2015 Aracthor
+// Last Update Wed Sep  9 23:58:55 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
@@ -84,8 +84,6 @@ public:
     operator	Vector3<U>() const;
 };
 
-# include "Vector3.hpp"
-
 typedef Vector3<float>		Vector3f;
 typedef Vector3<double>		Vector3d;
 typedef Vector3<long double>	Vector3ld;
@@ -97,5 +95,7 @@ typedef Vector3<long>		Vector3l;
 typedef maths::Vector3f	        Vector3;
 
 }
+
+# include "Vector3.hpp"
 
 #endif // !SLIM3D_MATHS_VECTOR3_HH_

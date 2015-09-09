@@ -4,8 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Sat Sep  5 20:24:43 2015 Aracthor
+// Last Update Thu Sep 10 00:00:15 2015 Aracthor
 //
+
+namespace slim
+{
+namespace maths
+{
 
 template <typename T>
 Vector2<T>::Vector2()
@@ -242,4 +247,7 @@ template <typename U>
 Vector2<T>::operator	Vector2<U>() const
 {
     return Vector2<U>(static_cast<U>(x), static_cast<U>(y));
+}
+
+}
 }

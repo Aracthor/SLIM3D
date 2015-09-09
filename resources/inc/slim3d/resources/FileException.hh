@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  2 13:38:28 2015 Aracthor
-// Last Update Thu Sep  3 23:04:02 2015 Aracthor
+// Last Update Wed Sep  9 23:58:26 2015 Aracthor
 //
 
 #ifndef SLIM3D_RESOURCES_FILE_EXCEPTION_HH_
@@ -31,9 +31,9 @@ protected:
     const char*	m_fileName;
 };
 
-# include "FileException.hpp"
+}
+}
 
-}
-}
+# include "FileException.hpp"
 
 #endif // !SLIM3D_RESOURCES_FILE_EXCEPTION_HH_

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Wed Sep  9 13:53:20 2015 Aracthor
+// Last Update Thu Sep 10 00:01:55 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_HH_
@@ -66,10 +66,10 @@ protected:
     Dumper		m_dumper;
 };
 
-# include "Log.hpp"
+}
+}
 
-}
-}
+# include "Log.hpp"
 
 # if IS_COMPUTER(SLIM3D_CORE_SYSTEM)
 #  include "Log/ConsoleLog.hh"

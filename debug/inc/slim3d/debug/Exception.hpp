@@ -4,8 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 18:22:37 2015 Aracthor
-// Last Update Mon Aug 31 18:25:55 2015 Aracthor
+// Last Update Thu Sep 10 00:03:01 2015 Aracthor
 //
+
+namespace slim
+{
+namespace debug
+{
 
 const char*
 Exception::getProblem() const throw()
@@ -29,4 +34,7 @@ int
 Exception::getLine() const throw()
 {
     return (m_line);
+}
+
+}
 }

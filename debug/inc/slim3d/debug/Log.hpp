@@ -4,8 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:20:48 2015 Aracthor
-// Last Update Wed Sep  9 13:53:34 2015 Aracthor
+// Last Update Thu Sep 10 00:02:07 2015 Aracthor
 //
+
+namespace slim
+{
+namespace debug
+{
 
 void
 LogBase::setConsoleOutputLevel(char level)
@@ -80,4 +85,7 @@ LogBase::writeObject(const T& object, unsigned int level)
 
     m_dumper.dump(object, buffer, SLIM3D_DEBUG_ELEMENT_BUFFER_SIZE);
     this->write(buffer, level);
+}
+
+}
 }

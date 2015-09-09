@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Sat Sep  5 20:24:07 2015 Aracthor
+// Last Update Thu Sep 10 00:00:02 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR2_HH_
@@ -76,8 +76,6 @@ public:
     operator	Vector2<U>() const;
 };
 
-# include "Vector2.hpp"
-
 typedef Vector2<float>		Vector2f;
 typedef Vector2<double>		Vector2d;
 typedef Vector2<long double>	Vector2ld;
@@ -89,5 +87,7 @@ typedef Vector2<long>		Vector2l;
 typedef maths::Vector2f	        Vector2;
 
 }
+
+# include "Vector2.hpp"
 
 #endif // !SLIM3D_MATHS_VECTOR2_HH_
