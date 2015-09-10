@@ -20,6 +20,7 @@ if (NOT CONFIGURED_ONCE)
     CACHE STRING "Flags used by the compiler during all build types." FORCE)
 endif()
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -39,6 +40,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
 set(DIRECTORIES
   core
   debug
+  maths
   resources
   time
   )

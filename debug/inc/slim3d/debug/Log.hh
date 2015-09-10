@@ -4,17 +4,19 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Thu Sep  3 23:23:43 2015 Aracthor
+// Last Update Thu Sep 10 00:01:55 2015 Aracthor
 //
 
 #ifndef SLIM3D_DEBUG_LOG_HH_
 # define SLIM3D_DEBUG_LOG_HH_
 
 # include "slim3d/core/system.h"
+# include "slim3d/debug/Dumper.hh"
 # include "slim3d/resources/Directory.hh"
 # include "slim3d/time/Date.hh"
 
 # define SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE	0x1000
+# define SLIM3D_DEBUG_ELEMENT_BUFFER_SIZE	0x200
 # define SLIM3D_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim
@@ -47,19 +49,27 @@ public:
     template <typename T>
     void	writeError(const T& elem);
 
+    inline void	writeLog(const char* message);
+    inline void	writeInfo(const char* message);
+    inline void	writeWarning(const char* message);
+    inline void	writeError(const char* message);
+
 protected:
-    virtual void	write(const char* message, int level) = 0;
+    virtual void	write(const char* message, unsigned int level) = 0;
+    template <typename T>
+    void		writeObject(const T& object, unsigned int level);
 
 protected:
     const char*		m_name;
-    char		m_consoleOutputLevel;
-    char		m_fileOutputLevel;
+    unsigned int	m_consoleOutputLevel;
+    unsigned int	m_fileOutputLevel;
+    Dumper		m_dumper;
 };
 
-# include "Log.hpp"
+}
+}
 
-}
-}
+# include "Log.hpp"
 
 # if IS_COMPUTER(SLIM3D_CORE_SYSTEM)
 #  include "Log/ConsoleLog.hh"

@@ -18,13 +18,14 @@ class Date {
 
 class Clock {
   bool running
-  time_t microSeconds;
+  unsigned long microSeconds;
+
+  void update()
+  unsigned long reset()
 
   bool isRunning() const
-  time_t getElapsedTime() const
-
+  unsigned long getElapsedTime() const
   void setRunning(bool running)
-  time_t reset()
 }
 
 }

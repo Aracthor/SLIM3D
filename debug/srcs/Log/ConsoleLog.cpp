@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Tue Sep  1 23:32:18 2015 Aracthor
-// Last Update Thu Sep  3 23:23:35 2015 Aracthor
+// Last Update Wed Sep  9 13:47:53 2015 Aracthor
 //
 
 #include "slim3d/resources/BufferedWritingFile.hh"
@@ -34,7 +34,7 @@ Log::destroy()
 
 
 void
-Log::write(const char* message, int level)
+Log::write(const char* message, unsigned int level)
 {
     if (m_fileOutputLevel >= level)
     {
