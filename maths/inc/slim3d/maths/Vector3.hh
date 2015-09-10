@@ -4,13 +4,12 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Wed Sep  9 23:58:55 2015 Aracthor
+// Last Update Thu Sep 10 21:22:26 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
 # define SLIM3D_MATHS_VECTOR3_HH_
 
-# include "slim3d/maths/lib.hh"
 # include "slim3d/maths/Vector2.hh"
 
 namespace slim
@@ -37,6 +36,7 @@ public:
     inline bool	equals(const Vector3<T>& vector) const;
     inline T	getNorm() const;
     inline T	getSquaredNorm() const;
+    inline T	getDotProduct(const Vector3<T>& vector) const;
 
 public:
     void	setAllElements(T n);
@@ -46,9 +46,10 @@ public:
 public:
     Vector3<T>&	addTo(const Vector3<T>& vector);
     Vector3<T>&	subTo(const Vector3<T>& vector);
-    Vector3<T>&	vectorProductTo(const Vector3<T>& vector);
+    Vector3<T>&	crossProductTo(const Vector3<T>& vector);
     Vector3<T>&	scaleTo(T n);
     Vector3<T>&	unscaleTo(T n);
+    Vector3<T>&	lerpInterpolation(const Vector3<T>& vector, T ratio);
 
 public:
     inline Vector3<T>	add(const Vector3<T>& vector) const;
@@ -81,7 +82,7 @@ public:
 
 public:
     template <typename U>
-    operator	Vector3<U>() const;
+    inline operator	Vector3<U>() const;
 };
 
 typedef Vector3<float>		Vector3f;

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:35:21 2015 Aracthor
-// Last Update Sat Sep  5 12:37:38 2015 Aracthor
+// Last Update Thu Sep 10 20:50:24 2015 Aracthor
 //
 
 float
@@ -80,4 +80,15 @@ long double
 tan(long double angle)
 {
     return (::tanl(angle));
+}
+
+
+template <typename T>
+T
+lerp(T a, T b, T ratio)
+{
+    // Unperfect but quick method
+    return (a + ratio * (b - a));
+    // Perfect but slow method
+    // return ((1.0 - ratio) * a + ratio * b);
 }

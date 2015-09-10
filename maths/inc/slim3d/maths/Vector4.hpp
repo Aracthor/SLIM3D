@@ -4,8 +4,10 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Wed Sep  9 23:59:55 2015 Aracthor
+// Last Update Thu Sep 10 21:18:55 2015 Aracthor
 //
+
+#include "slim3d/maths/lib.hh"
 
 namespace slim
 {
@@ -72,6 +74,13 @@ T
 Vector4<T>::getSquaredNorm() const
 {
     return (x * x + y * y + z * z + w * w);
+}
+
+template <typename T>
+T
+Vector4<T>::getDotProduct(const Vector4<T>& vector) const
+{
+    return (this->x * vector.x + this->y * vector.y + this->z * vector.z + this->w * vector.w);
 }
 
 
@@ -164,6 +173,33 @@ Vector4<T>::unscaleTo(T n)
     this->w /= n;
 
     return *this;
+}
+
+template <typename T>
+Vector4<T>&
+Vector4<T>::lerpInterpolation(const Vector4<T>& vector, T ratio)
+{
+    this->x = lib::lerp(this->x, vector.x, ratio);
+    this->y = lib::lerp(this->y, vector.y, ratio);
+    this->z = lib::lerp(this->z, vector.z, ratio);
+    this->w = lib::lerp(this->w, vector.w, ratio);
+
+    return *this;
+}
+
+
+template <typename T>
+const Quaternion<T>&
+Vector4<T>::asQuaternion() const
+{
+    return *reinterpret_cast<const Quaternion<T>*>(this);
+}
+
+template <typename T>
+Quaternion<T>&
+Vector4<T>::asQuaternion()
+{
+    return *reinterpret_cast<Quaternion<T>*>(this);
 }
 
 
@@ -289,6 +325,12 @@ Vector4<T>::operator[](unsigned int index)
     return reinterpret_cast<T* const>(this)[index];
 }
 
+
+template <typename T>
+Vector4<T>::operator	Quaternion<T>() const
+{
+    return Quaternion<T>(*this);
+}
 
 template <typename T>
 template <typename U>

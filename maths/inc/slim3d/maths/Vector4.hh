@@ -4,13 +4,12 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Wed Sep  9 23:59:38 2015 Aracthor
+// Last Update Thu Sep 10 21:19:31 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR4_HH_
 # define SLIM3D_MATHS_VECTOR4_HH_
 
-# include "slim3d/maths/lib.hh"
 # include "slim3d/maths/Vector2.hh"
 # include "slim3d/maths/Vector3.hh"
 
@@ -22,6 +21,9 @@ namespace slim
 {
 namespace maths
 {
+
+template <typename T>
+class	Quaternion;
 
 template <typename T>
 class	Vector4
@@ -41,9 +43,10 @@ public:
     T	w;
 
 public:
-    inline bool		equals(const Vector4<T>& vector) const;
-    inline T		getNorm() const;
-    inline T		getSquaredNorm() const;
+    inline bool	equals(const Vector4<T>& vector) const;
+    inline T	getNorm() const;
+    inline T	getSquaredNorm() const;
+    inline T	getDotProduct(const Vector4<T>& vector) const;
 
 public:
     void	setAllElements(T n);
@@ -56,6 +59,11 @@ public:
     Vector4<T>&	subTo(const Vector4<T>& vector);
     Vector4<T>&	scaleTo(T n);
     Vector4<T>&	unscaleTo(T n);
+    Vector4<T>&	lerpInterpolation(const Vector4<T>& vector, T ratio);
+
+public:
+    inline const Quaternion<T>&	asQuaternion() const;
+    inline Quaternion<T>&	asQuaternion();
 
 public:
     inline Vector4<T>	add(const Vector4<T>& vector) const;
@@ -84,8 +92,9 @@ public:
     inline T&		operator[](unsigned int index);
 
 public:
+    inline operator	Quaternion<T>() const;
     template <typename U>
-    operator	Vector4<U>() const;
+    inline operator	Vector4<U>() const;
 
 #if __SSE__ == 1
     Vector4(__m128 data);

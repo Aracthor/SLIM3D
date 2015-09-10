@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:28:48 2015 Aracthor
-// Last Update Sat Sep  5 12:45:44 2015 Aracthor
+// Last Update Thu Sep 10 20:49:01 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_LIB_HH_
@@ -36,6 +36,9 @@ inline long double	sin(long double angle);
 inline float		tan(float angle);
 inline double		tan(double angle);
 inline long double	tan(long double angle);
+
+template <typename T>
+inline T		lerp(T a, T b, T ratio);
 
 # include "lib.hpp"
 }
