@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:28:48 2015 Aracthor
-// Last Update Thu Sep 10 20:49:01 2015 Aracthor
+// Last Update Fri Sep 11 12:56:54 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_LIB_HH_
@@ -36,6 +36,18 @@ inline long double	sin(long double angle);
 inline float		tan(float angle);
 inline double		tan(double angle);
 inline long double	tan(long double angle);
+
+inline float		acos(float angle);
+inline double		acos(double angle);
+inline long double	acos(long double angle);
+
+inline float		asin(float angle);
+inline double		asin(double angle);
+inline long double	asin(long double angle);
+
+inline float		atan(float angle);
+inline double		atan(double angle);
+inline long double	atan(long double angle);
 
 template <typename T>
 inline T		lerp(T a, T b, T ratio);

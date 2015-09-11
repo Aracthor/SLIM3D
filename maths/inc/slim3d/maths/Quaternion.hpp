@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep 10 18:30:26 2015 Aracthor
-// Last Update Fri Sep 11 10:53:44 2015 Aracthor
+// Last Update Fri Sep 11 13:01:46 2015 Aracthor
 //
 
 #include "slim3d/debug/SyscallException.hh"
@@ -79,7 +79,17 @@ template <typename T>
 void
 Quaternion<T>::slerpInterpolation(const Quaternion<T>& quaternion, T ratio)
 {
-    // TODO
+    T	angle;
+    T	sinus;
+    T	wp, wq;
+
+    angle = SLIM3D_MATHS_ACOS(this->asVector().dotProduct(quaternion.asVector()));
+    sinus = SLIM3D_MATHS_SIN(angle);
+    wp = (SLIM3D_MATHS_SIN(1 - ratio) * angle) / sinus;
+    wq = (SLIM3D_MATHS_SIN(ratio) * angle) / sinus;
+
+    this->asVector() *= wp;
+    this->asVector() += quaternion.asVector() * wq;
 }
 
 template <typename T>

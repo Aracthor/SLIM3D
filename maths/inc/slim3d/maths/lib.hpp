@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:35:21 2015 Aracthor
-// Last Update Thu Sep 10 20:50:24 2015 Aracthor
+// Last Update Fri Sep 11 12:57:34 2015 Aracthor
 //
 
 float
@@ -80,6 +80,63 @@ long double
 tan(long double angle)
 {
     return (::tanl(angle));
+}
+
+
+float
+acos(float angle)
+{
+    return (::acosf(angle));
+}
+
+double
+acos(double angle)
+{
+    return (::acos(angle));
+}
+
+long double
+acos(long double angle)
+{
+    return (::acosl(angle));
+}
+
+
+float
+asin(float angle)
+{
+    return (::asinf(angle));
+}
+
+double
+asin(double angle)
+{
+    return (::asin(angle));
+}
+
+long double
+asin(long double angle)
+{
+    return (::asinl(angle));
+}
+
+
+float
+atan(float angle)
+{
+    return (::atanf(angle));
+}
+
+double
+atan(double angle)
+{
+    return (::atan(angle));
+}
+
+long double
+atan(long double angle)
+{
+    return (::atanl(angle));
 }
 
 
