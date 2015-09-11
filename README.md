@@ -1,8 +1,21 @@
-# SLIM3D - DEVELOPEMENT
+# SLIM3D
 
-This branch is a developement branch.
+## Compilation
 
-It means the code that you shall find here is probably incomplete and/or buggy.
+A script `build.sh` is provided. On Linux plateform, just run it and it shall create you three folders:
 
-Unless you have a specific reason, I don't recommand to look at the code.  
-But you can still look at the doc.
+    build/bin
+    build/debug
+    build/release
+
+The first one is empty. For now. Move to one of two others and run the following:
+
+    make
+
+You'll have your library waiting in the `build/bin` folder.
+
+## Installation
+
+Once you compiled everything, you can install it from `build/debug` or `build/release` directory with the following command:
+
+    sudo make install

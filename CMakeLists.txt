@@ -1,10 +1,19 @@
+##
+## CMakeLists.txt for SLIM3D in /home/aracthor/programs/projects/SLIM3D
+## 
+## Made by Aracthor
+## 
+## Started on  Fri Sep 11 21:09:49 2015 Aracthor
+## Last Update Fri Sep 11 21:35:19 2015 Aracthor
+##
+
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
 project("SLIM3D")
 set (SLIM3D_VERSION_MAJOR 0)
 set (SLIM3D_VERSION_MINOR 0)
-set (SLIM3D_VERSION_REVISION 1)
+set (SLIM3D_VERSION_PATCH 1)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
@@ -30,28 +39,26 @@ if(COMPILER_SUPPORTS_CXX11)
 elseif(COMPILER_SUPPORTS_CXX0X)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 else()
-  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a better C++ compiler.")
 endif()
-
 
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
 
-set(DIRECTORIES
-  core
-  debug
-  maths
-  resources
-  time
-  )
+include_directories(inc/)
 
-set(INCLUDES)
-foreach (DIRECTORY ${DIRECTORIES})
-  set(INCLUDES ${INCLUDES} ${DIRECTORY}/inc)
+set(SRCS_DIR src)
+set(SRCS_FILES)
+add_subdirectory(${SRCS_DIR})
+
+set(SRCS)
+foreach(SRC_FILE ${SRCS_FILES})
+  set(SRCS ${SRCS} ${SRCS_DIR}/${SRC_FILE})
 endforeach()
 
-include_directories(${INCLUDES})
+message(${SRCS})
+add_library(slim3d SHARED ${SRCS})
 
-foreach (DIRECTORY ${DIRECTORIES})
-  add_subdirectory(${DIRECTORY})
-endforeach()
+install (DIRECTORY inc/ DESTINATION include)
+install (TARGETS slim3d DESTINATION lib
+  PERMISSIONS WORLD_EXECUTE WORLD_READ GROUP_EXECUTE GROUP_READ OWNER_EXECUTE OWNER_READ OWNER_WRITE)
