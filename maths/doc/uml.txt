@@ -76,7 +76,42 @@ class	Vector4 <<typename T>> {
 }
 
 class	Matrix4x4 <<typename T>> {
+  Vector4 rows[4]
+
+  void setIdentity();
+  void setAllElements(T n);
+  void transpose();
+
+  void translate(const Vector3& vector);
+  void rotateX(T angle);
+  void rotateY(T angle);
+  void rotateZ(T angle);
+  void scale(const Vector3& vector);
+
+  void perspective(T angle, T aspectRatio, T minView, T maxView);
+  void lookAt(const Vector3& position, const Vector3& target, const Vector3& up);
 }
+
+class Quaternion <<typename T>> {
+  Vector3 vector
+  T angle
+--
+  void conjugate()
+  void invert()
+  Quaternion& productTo(const Quaternion& quaternion)
+  Quaternion product(const Quaternion& quaternion) const
+  bool isNormalized() const
+  T getNorm() const
+  const Vector& asVector() const
+  Vector& asVector()
+--
+  void rotate(Vector3& vector) const
+--
+  {abstract} many operators refering to methods
+}
+
+Vector4 --* Matrix4x4
+Vector3 --* Quaternion
 
 class	Helper <<singleton>> <<typename T>> {
   T coses[X]

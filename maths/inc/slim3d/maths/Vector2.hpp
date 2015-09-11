@@ -4,8 +4,10 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Thu Sep 10 00:00:15 2015 Aracthor
+// Last Update Thu Sep 10 21:18:19 2015 Aracthor
 //
+
+# include "slim3d/maths/lib.hh"
 
 namespace slim
 {
@@ -56,6 +58,13 @@ T
 Vector2<T>::getSquaredNorm() const
 {
     return (x * x + y * y);
+}
+
+template <typename T>
+T
+Vector2<T>::getDotProduct(const Vector2<T>& vector) const
+{
+    return (this->x * vector.x + this->y * vector.y);
 }
 
 
@@ -114,6 +123,16 @@ Vector2<T>::unscaleTo(T n)
 {
     this->x /= n;
     this->y /= n;
+
+    return *this;
+}
+
+template <typename T>
+Vector2<T>&
+Vector2<T>::lerpInterpolation(const Vector2<T>& vector, T ratio)
+{
+    this->x = lib::lerp(this->x, vector.x, ratio);
+    this->y = lib::lerp(this->y, vector.y, ratio);
 
     return *this;
 }
