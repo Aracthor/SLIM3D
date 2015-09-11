@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep 10 18:30:26 2015 Aracthor
-// Last Update Thu Sep 10 22:10:18 2015 Aracthor
+// Last Update Fri Sep 11 10:53:44 2015 Aracthor
 //
 
 #include "slim3d/debug/SyscallException.hh"
@@ -224,6 +224,21 @@ Quaternion<T>
 Quaternion<T>::operator*(const Quaternion<T>& quaternion) const
 {
     return this->product(quaternion);
+}
+
+
+template <typename T>
+T
+Quaternion<T>::operator[](unsigned int index) const
+{
+    return this->asVector()[index];
+}
+
+template <typename T>
+T&
+Quaternion<T>::operator[](unsigned int index)
+{
+    return this->asVector()[index];
 }
 
 }

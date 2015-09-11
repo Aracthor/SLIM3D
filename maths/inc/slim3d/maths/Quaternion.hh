@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Thu Sep 10 18:30:30 2015 Aracthor
-// Last Update Thu Sep 10 22:10:25 2015 Aracthor
+// Last Update Fri Sep 11 11:24:09 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_QUATERNION_HH_
@@ -22,11 +22,11 @@ template <typename T>
 class	Quaternion
 {
 public:
-    Quaternion();
-    Quaternion(const Vector3<T>& vector, T scalar = 0.0);
-    Quaternion(const Vector4<T>& vector);
-    Quaternion(const Quaternion<T>& reference);
-    ~Quaternion();
+    inline Quaternion();
+    inline Quaternion(const Vector3<T>& vector, T scalar = 0.0);
+    inline Quaternion(const Vector4<T>& vector);
+    inline Quaternion(const Quaternion<T>& reference);
+    inline ~Quaternion();
 
 public:
     inline void		normalize();
@@ -57,9 +57,13 @@ public:
     inline Quaternion<T>&	operator*=(const Quaternion<T>& quaternion);
     inline Quaternion<T>	operator*(const Quaternion<T>& quaternion) const;
 
+public:
+    inline T	operator[](unsigned int index) const;
+    inline T&	operator[](unsigned int index);
+
 private:
     Vector3<T>	m_vector;
-    float	m_scalar;
+    T		m_scalar;
 };
 
 }

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Thu Sep 10 21:19:31 2015 Aracthor
+// Last Update Fri Sep 11 11:25:00 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR4_HH_
@@ -29,12 +29,12 @@ template <typename T>
 class	Vector4
 {
 public:
-    Vector4();
-    Vector4(T x, T y, T z, T w);
-    Vector4(const Vector2<T>& vector2, T z, T w);
-    Vector4(const Vector3<T>& vector3, T w = 0);
-    Vector4(const Vector4<T>& vector);
-    ~Vector4();
+    inline Vector4();
+    inline Vector4(T x, T y, T z, T w);
+    inline Vector4(const Vector2<T>& vector2, T z, T w);
+    inline Vector4(const Vector3<T>& vector3, T w = 0);
+    inline Vector4(const Vector4<T>& vector);
+    inline ~Vector4();
 
 public:
     T	x;

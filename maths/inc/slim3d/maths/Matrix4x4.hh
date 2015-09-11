@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep  5 20:12:09 2015 Aracthor
-// Last Update Wed Sep  9 14:00:28 2015 Aracthor
+// Last Update Fri Sep 11 11:25:28 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_MATRIX4X4_HH_
@@ -21,9 +21,10 @@ template <typename T>
 class	Matrix4x4
 {
 public:
-    Matrix4x4();
+    inline Matrix4x4();
     explicit Matrix4x4(T n);
-    Matrix4x4(const Matrix4x4& copy);
+    inline Matrix4x4(const Matrix4x4& copy);
+    inline ~Matrix4x4();
 
 public:
     const T*	asArray() const;

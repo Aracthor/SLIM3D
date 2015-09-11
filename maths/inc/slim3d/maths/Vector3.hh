@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Thu Sep 10 21:22:26 2015 Aracthor
+// Last Update Fri Sep 11 11:24:26 2015 Aracthor
 //
 
 #ifndef SLIM3D_MATHS_VECTOR3_HH_
@@ -21,11 +21,11 @@ template <typename T>
 class	Vector3
 {
 public:
-    Vector3();
-    Vector3(T x, T y, T z);
-    Vector3(const Vector2<T>& vector2, T z);
-    Vector3(const Vector3<T>& vector);
-    ~Vector3();
+    inline Vector3();
+    inline Vector3(T x, T y, T z);
+    inline Vector3(const Vector2<T>& vector2, T z);
+    inline Vector3(const Vector3<T>& vector);
+    inline ~Vector3();
 
 public:
     T	x;
