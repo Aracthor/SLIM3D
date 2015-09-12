@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:46:24 2015 Aracthor
-// Last Update Sat Sep 12 17:53:12 2015 Aracthor
+// Last Update Sun Sep 13 00:07:19 2015 Aracthor
 //
 
 #include <typeinfo>
@@ -129,7 +129,7 @@ U
 PresizedArray<T, N>::minimum(U (*function)(const T& elem)) const
 {
     U	minimum = function(m_data[0]);
-    U	result;
+    U	result = minimum;
 
     for (const T& elem : m_data)
     {
@@ -149,7 +149,7 @@ U
 PresizedArray<T, N>::maximum(U (*function)(const T& elem)) const
 {
     U	maximum = function(m_data[0]);
-    U	result;
+    U	result = minimum;
 
     for (const T& elem : m_data)
     {
