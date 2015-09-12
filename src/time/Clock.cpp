@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Wed Sep  9 10:54:55 2015 Aracthor
-// Last Update Wed Sep  9 11:04:02 2015 Aracthor
+// Last Update Sat Sep 12 22:25:31 2015 Aracthor
 //
 
 #include "slim/debug/SyscallException.hh"
@@ -42,9 +42,10 @@ Clock::update()
 Clock::time
 Clock::reset()
 {
-    Clock::time	elapsed = m_elapsedTime;
+    Clock::time	now = this->getCurrentTime();
+    Clock::time	elapsed = now - m_start;
 
-    m_start = this->getCurrentTime();
+    m_start = now;
     m_elapsedTime = 0;
 
     return (elapsed);

@@ -4,7 +4,7 @@
 // Made by aracthor
 // 
 // Started on  Mon Aug 31 17:31:31 2015 aracthor
-// Last Update Sat Sep 12 15:19:51 2015 Aracthor
+// Last Update Sat Sep 12 21:51:03 2015 Aracthor
 //
 
 #ifndef SINGLETONS_MANAGER_HH_
@@ -12,7 +12,7 @@
 
 # include "slim/core/Singleton.hh"
 
-# define SINGLETONS_NUMBER	3
+# define SINGLETONS_NUMBER	4
 
 namespace slim
 {

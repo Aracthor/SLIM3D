@@ -4,13 +4,14 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 18:30:16 2015 Aracthor
+// Last Update Sat Sep 12 22:26:02 2015 Aracthor
 //
 
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Synchronizer.hh"
 
 #include <unistd.h>
+#include <iostream> // DEBUG
 
 namespace slim
 {
@@ -38,19 +39,15 @@ Synchronizer::nextFrame()
     Clock::time	elapsed;
     Clock::time	remaining;
 
-    m_clock.update();
+    elapsed = m_clock.reset();
 
-    elapsed = m_clock.getElapsedTime();
     remaining = this->getMinimumRemainingTime();
     if (remaining > elapsed)
     {
 	SLIM_DEBUG_SYSCALL_CALL(usleep(remaining - elapsed));
-	elapsed = remaining;
     }
 
     m_loops.forEach(&addTime, elapsed);
-
-    m_clock.reset();
 }
 
 }

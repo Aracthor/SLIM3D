@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 18:24:34 2015 Aracthor
+// Last Update Sat Sep 12 22:16:29 2015 Aracthor
 //
 
 #ifndef SLIM_ENGINE_ENGINE_HH_
@@ -13,6 +13,7 @@
 # include "slim/core/SingletonsManager.hh"
 # include "slim/engine/GameplayLoop.hh"
 # include "slim/engine/RenderLoop.hh"
+# include "slim/events/EventsLoop.hh"
 # include "slim/time/Synchronizer.hh"
 # include "slim/window/Window.hh"
 
@@ -29,11 +30,12 @@ public:
 
 public:
     void	start();
-    void        stop();
+    inline void	stop();
 
 public:
-    inline unsigned int	getGameplayFramerate() const;
-    inline unsigned int	getRenderFramerate() const;
+    inline unsigned int		getGameplayFramerate() const;
+    inline unsigned int		getRenderFramerate() const;
+    inline window::Window*	getCurrentWindow();
 
 public:
     inline void		setGameplayFramerate(unsigned int framerate);

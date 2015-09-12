@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 18:06:37 2015 Aracthor
+// Last Update Sat Sep 12 21:19:23 2015 Aracthor
 //
 
 #ifndef SLIM_TIME_SYNCHRONIZER_HH_
@@ -14,7 +14,7 @@
 # include "slim/time/Clock.hh"
 # include "slim/time/Loop.hh"
 
-# define SLIM_TIME_LOOPS_NUMBER	2
+# define SLIM_TIME_LOOPS_NUMBER	3
 
 namespace slim
 {
