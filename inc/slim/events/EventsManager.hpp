@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:38 2015 Aracthor
-// Last Update Sat Sep 12 22:40:45 2015 Aracthor
+// Last Update Sun Sep 13 00:52:50 2015 Aracthor
 //
 
 namespace slim
@@ -13,21 +13,45 @@ namespace events
 {
 
 void
-EventsManager::addKeyListener(IEventListener* listener, keyboard::EKeyCode keyCode)
+EventsManager::addKeyListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
 {
-    m_keyListeners[keyCode].add(listener);
+    m_keyListeners[keyCode].push_back(listener);
 }
 
 void
-EventsManager::addKeyPressListener(IEventListener* listener, keyboard::EKeyCode keyCode)
+EventsManager::addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
 {
-    m_keyPressListeners[keyCode].add(listener);
+    m_keyPressListeners[keyCode].push_back(listener);
 }
 
 void
-EventsManager::addKeyReleaseListener(IEventListener* listener, keyboard::EKeyCode keyCode)
+EventsManager::addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
 {
-    m_keyReleaseListeners[keyCode].add(listener);
+    m_keyReleaseListeners[keyCode].push_back(listener);
+}
+
+void
+EventsManager::addMouseButtonListener(IMouseListener* listener, mouse::EButton button)
+{
+    m_mouseButtonListeners[button].push_back(listener);
+}
+
+void
+EventsManager::addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button)
+{
+    m_mouseButtonPressListeners[button].push_back(listener);
+}
+
+void
+EventsManager::addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button)
+{
+    m_mouseButtonReleaseListeners[button].push_back(listener);
+}
+
+void
+EventsManager::addMouseMovementListener(IMouseListener* listener)
+{
+    m_mouseMovementListeners.push_back(listener);
 }
 
 }

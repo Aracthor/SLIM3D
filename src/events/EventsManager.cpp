@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:28 2015 Aracthor
-// Last Update Sat Sep 12 22:47:41 2015 Aracthor
+// Last Update Sun Sep 13 01:00:02 2015 Aracthor
 //
 
 #include "slim/core/attributes.h"
@@ -20,12 +20,7 @@ namespace events
 EventsManager::EventsManager()
 {
     memset(m_keysCurrentlyPressed, false, sizeof(m_keysCurrentlyPressed));
-    for (unsigned int key = 0; key < keyboard::keysNumber; key++)
-    {
-    	m_keyListeners[key] = EventListenersPack();
-    	m_keyPressListeners[key] = EventListenersPack();
-	m_keyReleaseListeners[key] = EventListenersPack();
-    }
+    memset(m_mouseButtonsCurrentlyPressed, false, sizeof(m_mouseButtonsCurrentlyPressed));
 }
 
 EventsManager::~EventsManager()
@@ -40,14 +35,50 @@ EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED int scan
     if (action == keyboard::pressed)
     {
 	m_keysCurrentlyPressed[keyCode] = true;
-	EventListenersPack& listeners = m_keyPressListeners[keyCode];
-	listeners.onEvent();
+	for (IKeyListener* listener : m_keyPressListeners[keyCode])
+	{
+	    listener->onEvent();
+	}
     }
     else if (action == keyboard::released)
     {
 	m_keysCurrentlyPressed[keyCode] = false;
-	EventListenersPack& listeners = m_keyReleaseListeners[keyCode];
-	listeners.onEvent();
+	for (IKeyListener* listener : m_keyReleaseListeners[keyCode])
+	{
+	    listener->onEvent();
+	}
+    }
+}
+
+void
+EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action, SLIM_CORE_UNUSED int modifiers)
+{
+    if (action == mouse::pressed)
+    {
+	m_mouseButtonsCurrentlyPressed[button] = true;
+	for (IMouseListener* listener : m_mouseButtonPressListeners[button])
+	{
+	    listener->onEvent(m_currentMousePosition);
+	}
+    }
+    else if (action == mouse::released)
+    {
+	m_mouseButtonsCurrentlyPressed[button] = false;
+	for (IMouseListener* listener : m_mouseButtonReleaseListeners[button])
+	{
+	    listener->onEvent(m_currentMousePosition);
+	}
+    }
+}
+
+void
+EventsManager::onMouseMovement(double x, double y)
+{
+    m_currentMousePosition.x = x;
+    m_currentMousePosition.y = y;
+    for (IMouseListener* listener : m_mouseMovementListeners)
+    {
+	listener->onEvent(m_currentMousePosition);
     }
 }
 
@@ -59,7 +90,21 @@ EventsManager::manage()
     {
 	if (m_keysCurrentlyPressed[key])
 	{
-	    m_keyListeners[key].onEvent();
+	    for (IKeyListener* listener : m_keyListeners[key])
+	    {
+		listener->onEvent();
+	    }
+	}
+    }
+
+    for (unsigned int button = 0; button < mouse::buttonsNumber; button++)
+    {
+	if (m_mouseButtonsCurrentlyPressed[button])
+	{
+	    for (IMouseListener* listener : m_mouseButtonListeners[button])
+	    {
+		listener->onEvent(m_currentMousePosition);
+	    }
 	}
     }
 }

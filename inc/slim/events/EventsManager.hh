@@ -4,14 +4,17 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:08 2015 Aracthor
-// Last Update Sat Sep 12 22:40:17 2015 Aracthor
+// Last Update Sun Sep 13 00:58:41 2015 Aracthor
 //
 
 #ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
 # define SLIM_EVENTS_EVENTS_MANAGER_HH_
 
+# include <vector> // TODO implement our own.
+
 # include "slim/containers/PresizedArray.hh"
-# include "slim/events/EventListenersPack.hh"
+# include "slim/events/IKeyListener.hh"
+# include "slim/events/IMouseListener.hh"
 # include "slim/events/keyboard.hh"
 # include "slim/events/mouse.hh"
 
@@ -32,18 +35,31 @@ public:
     void	onMouseMovement(double x, double y);
 
 public:
-    inline void	addKeyListener(IEventListener* listener, keyboard::EKeyCode keyCode);
-    inline void	addKeyPressListener(IEventListener* listener, keyboard::EKeyCode keyCode);
-    inline void	addKeyReleaseListener(IEventListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
+
+    inline void	addMouseButtonListener(IMouseListener* listener, mouse::EButton button);
+    inline void	addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button);
+    inline void	addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button);
+    inline void	addMouseMovementListener(IMouseListener* listener);
 
 public:
     void	manage();
 
 private:
-    bool		m_keysCurrentlyPressed[keyboard::keysNumber];
-    EventListenersPack	m_keyListeners[keyboard::keysNumber];
-    EventListenersPack	m_keyPressListeners[keyboard::keysNumber];
-    EventListenersPack	m_keyReleaseListeners[keyboard::keysNumber];
+    maths::Vector2d			m_currentMousePosition;
+
+    bool				m_keysCurrentlyPressed[keyboard::keysNumber];
+    std::vector<IKeyListener*>		m_keyListeners[keyboard::keysNumber];
+    std::vector<IKeyListener*>		m_keyPressListeners[keyboard::keysNumber];
+    std::vector<IKeyListener*>		m_keyReleaseListeners[keyboard::keysNumber];
+
+    bool				m_mouseButtonsCurrentlyPressed[mouse::buttonsNumber];
+    std::vector<IMouseListener*>	m_mouseButtonListeners[mouse::buttonsNumber];
+    std::vector<IMouseListener*>	m_mouseButtonPressListeners[mouse::buttonsNumber];
+    std::vector<IMouseListener*>	m_mouseButtonReleaseListeners[mouse::buttonsNumber];
+    std::vector<IMouseListener*>	m_mouseMovementListeners;
 };
 
 }

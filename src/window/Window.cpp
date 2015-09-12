@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 22:01:26 2015 Aracthor
+// Last Update Sun Sep 13 01:05:02 2015 Aracthor
 //
 
 #include "slim/events/Coordinator.hh"
@@ -51,11 +51,32 @@ onKey(GLFWwindow* glfwWindow, int keycode, int scancode, int action, int bitfiel
 	 bitfield);
 }
 
+static void
+onMouseButton(GLFWwindow* glfwWindow, int button, int action, int bitfield)
+{
+    Window*	window = events::Coordinator::instance.getWindow(glfwWindow);
+
+    window->getEventsManager().onMouseButtonAction
+	(static_cast<events::mouse::EButton>(button),
+	 static_cast<events::mouse::EAction>(action),
+	 bitfield);
+}
+
+static void
+onMouseMovement(GLFWwindow* glfwWindow, double x, double y)
+{
+    Window*	window = events::Coordinator::instance.getWindow(glfwWindow);
+
+    window->getEventsManager().onMouseMovement(x, y);
+}
+
 void
 Window::initEventsManager()
 {
     events::Coordinator::instance.addWindow(this, m_window);
     glfwSetKeyCallback(m_window, &onKey);
+    glfwSetMouseButtonCallback(m_window, &onMouseButton);
+    glfwSetCursorPosCallback(m_window, &onMouseMovement);
 }
 
 }
