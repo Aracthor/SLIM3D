@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 18:04:03 2015 Aracthor
+// Last Update Sat Sep 12 18:35:34 2015 Aracthor
 //
 
 #ifndef SLIM_WINDOW_WINDOW_HH_
@@ -39,6 +39,9 @@ public:
 
 public:
     bool	shouldClose() const;
+
+public:
+    inline void	display() const;
 
 public:
     inline unsigned int	getWidth() const;

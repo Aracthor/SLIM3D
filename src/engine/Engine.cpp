@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 18:25:05 2015 Aracthor
+// Last Update Sat Sep 12 18:35:48 2015 Aracthor
 //
 
 #include <exception>
@@ -95,7 +95,7 @@ Engine::update(time::Clock::time elapsedTime)
 void
 Engine::render() const
 {
-    // TODO
+    m_window->display();
 }
 
 void

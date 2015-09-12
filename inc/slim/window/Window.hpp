@@ -4,13 +4,20 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 15:46:44 2015 Aracthor
+// Last Update Sat Sep 12 18:36:10 2015 Aracthor
 //
 
 namespace slim
 {
 namespace window
 {
+
+void
+Window::display() const
+{
+    glfwSwapBuffers(m_window);
+}
+
 
 unsigned int
 Window::getWidth() const
