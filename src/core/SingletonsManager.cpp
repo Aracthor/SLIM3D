@@ -4,12 +4,13 @@
 // Made by aracthor
 // 
 // Started on  Mon Aug 31 17:31:31 2015 aracthor
-// Last Update Wed Sep  9 14:19:22 2015 Aracthor
+// Last Update Sat Sep 12 15:20:17 2015 Aracthor
 //
 
 #include "slim/core/SingletonsManager.hh"
 #include "slim/debug/LogManager.hh"
 #include "slim/maths/Helper.hh"
+#include "slim/window/MonitorsManager.hh"
 
 namespace slim
 {
@@ -33,6 +34,7 @@ SingletonsManager::listSingletons()
 {
     m_singletons[0] = &debug::LogManager::instance;
     m_singletons[1] = &MathsHelper::instance;
+    m_singletons[2] = &window::MonitorsManager::instance;
 }
 
 void

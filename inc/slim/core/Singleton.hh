@@ -4,7 +4,7 @@
 // Made by aracthor
 // 
 // Started on  Mon Aug 31 17:22:22 2015 aracthor
-// Last Update Mon Aug 31 17:52:56 2015 Aracthor
+// Last Update Sat Sep 12 15:57:00 2015 Aracthor
 //
 
 #ifndef SLIM_CORE_SINGLETON_HH_
@@ -18,11 +18,19 @@ namespace core
 class	Singleton
 {
 protected:
-    virtual ~Singleton() {}
+    Singleton();
+    virtual ~Singleton();
 
 public:
-    virtual void	init() = 0;
-    virtual void	destroy() = 0;
+    void		init();
+    void		destroy();
+
+protected:
+    virtual void	onInit() = 0;
+    virtual void	onDestroy() = 0;
+
+private:
+    bool		m_inited;
 };
 
 }
