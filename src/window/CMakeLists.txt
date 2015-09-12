@@ -4,13 +4,14 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:10:37 2015 Aracthor
-## Last Update Sat Sep 12 15:59:57 2015 Aracthor
+## Last Update Sat Sep 12 15:12:06 2015 Aracthor
 ##
 
 project("SLIM3D")
 
 set(SRCS_FILES
-  Singleton.cpp
-  SingletonsManager.cpp
+  GLFWException.cpp
+  MonitorsManager.cpp
+  Window.cpp
   PARENT_SCOPE
   )

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:04:35 2015 Aracthor
-// Last Update Thu Sep  3 23:11:57 2015 Aracthor
+// Last Update Sat Sep 12 15:57:45 2015 Aracthor
 //
 
 #include "slim/debug/LogManager.hh"
@@ -19,8 +19,10 @@ LogManager::instance;
 
 
 LogManager::LogManager() :
-    m_logs({Log("resources")}),
-    resources(m_logs[0])
+    m_logs({Log("graphics"),
+		Log("resources")}),
+    graphics(m_logs[0]),
+    resources(m_logs[1])
 {
 }
 
@@ -30,7 +32,7 @@ LogManager::~LogManager()
 
 
 void
-LogManager::init()
+LogManager::onInit()
 {
     time::Date			now;
     char			dirName[SLIM_DEBUG_LOG_NAME_BUFFER_SIZE];
@@ -46,7 +48,7 @@ LogManager::init()
 }
 
 void
-LogManager::destroy()
+LogManager::onDestroy()
 {
     for (Log& log : m_logs)
     {

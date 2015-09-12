@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Fri Sep 11 12:56:37 2015 Aracthor
+// Last Update Sat Sep 12 15:58:05 2015 Aracthor
 //
 
 #ifndef SLIM_MATHS_HELPER_HH_
@@ -48,8 +48,8 @@ public:
     ~Helper();
 
 public:
-    void	init() override;
-    void	destroy() override;
+    void	onInit() override;
+    void	onDestroy() override;
 
 public:
     inline T	getCosinus(T angle) const;

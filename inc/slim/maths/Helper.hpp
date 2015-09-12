@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Fri Sep  4 19:46:34 2015 Aracthor
-// Last Update Wed Sep  9 14:24:49 2015 Aracthor
+// Last Update Sat Sep 12 15:58:17 2015 Aracthor
 //
 
 namespace slim
@@ -30,7 +30,7 @@ Helper<T>::~Helper()
 
 template <typename T>
 void
-Helper<T>::init()
+Helper<T>::onInit()
 {
     T	angle;
 
@@ -45,7 +45,7 @@ Helper<T>::init()
 
 template <typename T>
 void
-Helper<T>::destroy()
+Helper<T>::onDestroy()
 {
 }
 
