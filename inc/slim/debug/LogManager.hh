@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Mon Aug 31 23:04:38 2015 Aracthor
-// Last Update Wed Sep  2 17:42:20 2015 Aracthor
+// Last Update Sat Sep 12 15:57:25 2015 Aracthor
 //
 
 #ifndef SLIM_DEBUG_LOG_MANAGER_HH_
@@ -13,7 +13,7 @@
 # include "slim/core/Singleton.hh"
 # include "slim/debug/Log.hh"
 
-# define SLIM_DEBUG_LOGS_NUMBER	1
+# define SLIM_DEBUG_LOGS_NUMBER	2
 
 namespace slim
 {
@@ -29,14 +29,15 @@ public:
     LogManager();
     ~LogManager();
 
-public:
-    void	init();
-    void	destroy();
+protected:
+    void	onInit() override;
+    void	onDestroy() override;
 
 private:
     Log		m_logs[SLIM_DEBUG_LOGS_NUMBER];
 
 public:
+    Log&	graphics;
     Log&	resources;
 };
 

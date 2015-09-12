@@ -4,11 +4,12 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:14:40 2015 Aracthor
-## Last Update Sat Sep 12 12:36:21 2015 Aracthor
+## Last Update Sat Sep 12 14:58:04 2015 Aracthor
 ##
 
 project("SLIM3D")
 
+set(CORE_SRCS)
 set(CORE_DIRECTORIES
   core
   debug
@@ -16,7 +17,11 @@ set(CORE_DIRECTORIES
   time
   )
 
-set(CORE_SRCS)
+set(GRAPHICS_SRCS)
+set(GRAPHICS_DIRECTORIES
+  engine
+  window
+  )
 
 function(collectSrcs directories SRCS)
   set(srcs)
@@ -30,5 +35,7 @@ function(collectSrcs directories SRCS)
 endfunction(collectSrcs)
 
 collectSrcs(CORE_DIRECTORIES CORE_SRCS)
+collectSrcs(GRAPHICS_DIRECTORIES GRAPHICS_SRCS)
 
 set(CORE_SRCS ${CORE_SRCS} PARENT_SCOPE)
+set(GRAPHICS_SRCS ${GRAPHICS_SRCS} PARENT_SCOPE)

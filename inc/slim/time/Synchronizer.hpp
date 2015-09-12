@@ -4,13 +4,19 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 17:41:29 2015 Aracthor
+// Last Update Sat Sep 12 17:59:46 2015 Aracthor
 //
 
 namespace slim
 {
 namespace time
 {
+
+void
+Synchronizer::restart()
+{
+    m_clock.reset();
+}
 
 void
 Synchronizer::addLoop(Loop* loop)

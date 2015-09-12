@@ -4,7 +4,7 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:09:49 2015 Aracthor
-## Last Update Sat Sep 12 13:55:27 2015 Aracthor
+## Last Update Sat Sep 12 16:07:43 2015 Aracthor
 ##
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
@@ -49,6 +49,7 @@ include_directories(inc/)
 
 set(SRCS_DIR src)
 set(CORE_SRCS)
+set(GRAPHICS_SRCS)
 add_subdirectory(${SRCS_DIR})
 
 function(addSrcPath SRCS)
@@ -60,9 +61,23 @@ function(addSrcPath SRCS)
 endfunction(addSrcPath)
 
 addSrcPath(CORE_SRCS)
+addSrcPath(GRAPHICS_SRCS)
 
 add_library(slim3d-core SHARED ${CORE_SRCS})
+add_library(slim3d-graphics SHARED ${GRAPHICS_SRCS})
+target_link_libraries(slim3d-graphics slim3d-core)
+target_link_libraries(slim3d-graphics glfw3)
+
+# TODO make link depending of plateform (currently for Linux only)
+target_link_libraries(slim3d-graphics X11)
+target_link_libraries(slim3d-graphics Xxf86vm)
+target_link_libraries(slim3d-graphics pthread)
+target_link_libraries(slim3d-graphics dl)
+target_link_libraries(slim3d-graphics Xcursor)
+target_link_libraries(slim3d-graphics Xrandr)
+target_link_libraries(slim3d-graphics Xi)
+target_link_libraries(slim3d-graphics Xinerama)
 
 install (DIRECTORY inc/ DESTINATION include)
-install (TARGETS slim3d-core DESTINATION lib
-  PERMISSIONS WORLD_EXECUTE WORLD_READ GROUP_EXECUTE GROUP_READ OWNER_EXECUTE OWNER_READ OWNER_WRITE)
+install (TARGETS slim3d-core DESTINATION lib)
+install (TARGETS slim3d-graphics DESTINATION lib)
