@@ -4,13 +4,16 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 18:35:34 2015 Aracthor
+// Last Update Sat Sep 12 21:46:17 2015 Aracthor
 //
 
 #ifndef SLIM_WINDOW_WINDOW_HH_
 # define SLIM_WINDOW_WINDOW_HH_
 
 # include <GLFW/glfw3.h>
+
+# include "slim/events/EventsLoop.hh"
+# include "slim/events/EventsManager.hh"
 
 # define SLIM_WINDOW_DEFAULT_WIDTH	1600
 # define SLIM_WINDOW_DEFAULT_HEIGHT	900
@@ -35,23 +38,29 @@ public:
 
 public:
     Window(Parameters parameters);
-    virtual ~Window();
+    ~Window();
 
 public:
-    bool	shouldClose() const;
-
-public:
+    inline bool	shouldClose() const;
     inline void	display() const;
 
 public:
-    inline unsigned int	getWidth() const;
-    inline unsigned int	getHeight() const;
-    inline bool		isFullscreen() const;
-    inline const char*	getTitle() const;
+    inline unsigned int			getWidth() const;
+    inline unsigned int			getHeight() const;
+    inline bool				isFullscreen() const;
+    inline const char*			getTitle() const;
+    inline events::EventsManager&	getEventsManager();
+    inline const events::EventsLoop&	getEventsLoop() const;
+    inline events::EventsLoop&		getEventsLoop();
 
 private:
-    Parameters		m_parameters;
-    GLFWwindow*		m_window;
+    void	initEventsManager();
+
+private:
+    GLFWwindow*			m_window;
+    Parameters			m_parameters;
+    events::EventsManager	m_eventsManager;
+    events::EventsLoop		m_eventsLoop;
 };
 
 }

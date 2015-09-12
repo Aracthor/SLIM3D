@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:46:24 2015 Aracthor
-// Last Update Sat Sep 12 17:53:12 2015 Aracthor
+// Last Update Sat Sep 12 22:47:14 2015 Aracthor
 //
 
 #include <typeinfo>
@@ -23,14 +23,6 @@ namespace containers
 template <typename T, unsigned int N>
 PresizedArray<T, N>::PresizedArray()
 {
-    if (core::data_details<T>::isPointer)
-    {
-	this->fill(nullptr);
-    }
-    else
-    {
-	this->fill(0);
-    }
     m_currentSize = 0;
 }
 

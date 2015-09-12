@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 18:35:48 2015 Aracthor
+// Last Update Sat Sep 12 21:23:55 2015 Aracthor
 //
 
 #include <exception>
@@ -61,11 +61,12 @@ Engine::start()
 void
 Engine::init()
 {
-    m_synchronizer.addLoop(new GameplayLoop(this));
-    m_synchronizer.addLoop(new RenderLoop(this));
-    m_synchronizer.restart();
     m_singletonsManager = new core::SingletonsManager();
     m_window = new window::Window(m_windowParameters);
+    m_synchronizer.addLoop(&m_gameplayLoop);
+    m_synchronizer.addLoop(&m_renderLoop);
+    m_synchronizer.addLoop(&m_window->getEventsLoop());
+    m_synchronizer.restart();
     m_running = true;
 
     this->onInit(); // Implemented by user

@@ -4,7 +4,7 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:14:40 2015 Aracthor
-## Last Update Sat Sep 12 14:58:04 2015 Aracthor
+## Last Update Sat Sep 12 19:32:16 2015 Aracthor
 ##
 
 project("SLIM3D")
@@ -20,6 +20,7 @@ set(CORE_DIRECTORIES
 set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
   engine
+  events
   window
   )
 

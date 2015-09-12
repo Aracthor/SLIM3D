@@ -4,7 +4,7 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:09:49 2015 Aracthor
-## Last Update Sat Sep 12 16:07:43 2015 Aracthor
+## Last Update Sat Sep 12 21:20:08 2015 Aracthor
 ##
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
@@ -29,7 +29,7 @@ if (NOT CONFIGURED_ONCE)
     CACHE STRING "Flags used by the compiler during all build types." FORCE)
 endif()
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG -g3")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
