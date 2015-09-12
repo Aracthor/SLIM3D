@@ -4,12 +4,14 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 22:01:26 2015 Aracthor
+// Last Update Sat Sep 12 23:24:36 2015 Aracthor
 //
 
 #include "slim/events/Coordinator.hh"
 #include "slim/window/GLFWException.hh"
 #include "slim/window/Window.hh"
+
+#include <iostream> // DEBUG
 
 namespace slim
 {
@@ -21,10 +23,26 @@ Window::Window(Parameters parameters) :
     m_eventsManager(),
     m_eventsLoop(m_eventsManager)
 {
-    m_window = glfwCreateWindow(parameters.width, parameters.height, parameters.title, nullptr, nullptr);
+    GLFWmonitor*	monitor = nullptr;
+
+    if (parameters.fullscreen)
+    {
+	monitor = glfwGetPrimaryMonitor();
+	if (monitor == nullptr)
+	{
+	    throw GLFWException("Cannot get primary monitor.", __FILE__, __func__, __LINE__);
+	}
+    }
+
+    m_window = glfwCreateWindow(parameters.width, parameters.height, parameters.title, monitor, nullptr);
     if (m_window == nullptr)
     {
 	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
+    }
+
+    if (parameters.fullscreen)
+    {
+	this->activeFullscreen();
     }
 
     glfwMakeContextCurrent(m_window);
@@ -36,6 +54,13 @@ Window::Window(Parameters parameters) :
 Window::~Window()
 {
     glfwDestroyWindow(m_window);
+}
+
+
+void
+Window::activeFullscreen()
+{
+    // TODO
 }
 
 

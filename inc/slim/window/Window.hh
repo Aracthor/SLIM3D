@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 21:46:17 2015 Aracthor
+// Last Update Sat Sep 12 23:20:13 2015 Aracthor
 //
 
 #ifndef SLIM_WINDOW_WINDOW_HH_
@@ -41,6 +41,9 @@ public:
     ~Window();
 
 public:
+    void	activeFullscreen();
+
+public:
     inline bool	shouldClose() const;
     inline void	display() const;
 
@@ -54,7 +57,7 @@ public:
     inline events::EventsLoop&		getEventsLoop();
 
 private:
-    void	initEventsManager();
+    void			initEventsManager();
 
 private:
     GLFWwindow*			m_window;
