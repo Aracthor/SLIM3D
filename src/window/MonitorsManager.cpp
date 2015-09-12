@@ -4,14 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:43:28 2015 Aracthor
-// Last Update Sat Sep 12 15:58:46 2015 Aracthor
+// Last Update Sat Sep 12 22:47:22 2015 Aracthor
 //
 
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/GLFWException.hh"
-#include <iostream> // DEBUG
 
 namespace slim
 {

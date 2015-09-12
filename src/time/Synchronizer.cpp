@@ -4,14 +4,13 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 22:26:02 2015 Aracthor
+// Last Update Sat Sep 12 22:47:31 2015 Aracthor
 //
 
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Synchronizer.hh"
 
 #include <unistd.h>
-#include <iostream> // DEBUG
 
 namespace slim
 {

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:28 2015 Aracthor
-// Last Update Sat Sep 12 22:17:25 2015 Aracthor
+// Last Update Sat Sep 12 22:47:41 2015 Aracthor
 //
 
 #include "slim/core/attributes.h"
@@ -22,9 +22,9 @@ EventsManager::EventsManager()
     memset(m_keysCurrentlyPressed, false, sizeof(m_keysCurrentlyPressed));
     for (unsigned int key = 0; key < keyboard::keysNumber; key++)
     {
-    	m_keyListeners[key] = std::vector<IEventListener*>();
-    	m_keyPressListeners[key] = std::vector<IEventListener*>();
-    	m_keyReleaseListeners[key] = std::vector<IEventListener*>();
+    	m_keyListeners[key] = EventListenersPack();
+    	m_keyPressListeners[key] = EventListenersPack();
+	m_keyReleaseListeners[key] = EventListenersPack();
     }
 }
 
@@ -40,18 +40,14 @@ EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED int scan
     if (action == keyboard::pressed)
     {
 	m_keysCurrentlyPressed[keyCode] = true;
-	for (IEventListener* listener : m_keyPressListeners[keyCode])
-	{
-	    listener->onEvent();
-	}
+	EventListenersPack& listeners = m_keyPressListeners[keyCode];
+	listeners.onEvent();
     }
     else if (action == keyboard::released)
     {
 	m_keysCurrentlyPressed[keyCode] = false;
-	for (IEventListener* listener : m_keyReleaseListeners[keyCode])
-	{
-	    listener->onEvent();
-	}
+	EventListenersPack& listeners = m_keyReleaseListeners[keyCode];
+	listeners.onEvent();
     }
 }
 
@@ -63,10 +59,7 @@ EventsManager::manage()
     {
 	if (m_keysCurrentlyPressed[key])
 	{
-	    for (IEventListener* listener : m_keyListeners[key])
-	    {
-		listener->onEvent();
-	    }
+	    m_keyListeners[key].onEvent();
 	}
     }
 }

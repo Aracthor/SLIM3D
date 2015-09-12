@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:46:24 2015 Aracthor
-// Last Update Sat Sep 12 21:31:00 2015 Aracthor
+// Last Update Sat Sep 12 22:47:14 2015 Aracthor
 //
 
 #include <typeinfo>
@@ -14,7 +14,6 @@
 #include "slim/debug/Exception.hh"
 
 #include <cstring>
-#include <iostream> // DEBUG
 
 namespace slim
 {
