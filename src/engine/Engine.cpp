@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 21:23:55 2015 Aracthor
+// Last Update Sun Sep 13 01:11:26 2015 Aracthor
 //
 
 #include <exception>
@@ -53,8 +53,8 @@ Engine::start()
     catch (const std::exception& exception)
     {
 	std::cerr << exception.what() << std::endl;
-	this->shutdown();
     }
+    this->shutdown();
 }
 
 
