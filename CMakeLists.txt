@@ -4,7 +4,7 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:09:49 2015 Aracthor
-## Last Update Fri Sep 11 21:35:19 2015 Aracthor
+## Last Update Sat Sep 12 12:38:27 2015 Aracthor
 ##
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
@@ -48,17 +48,21 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
 include_directories(inc/)
 
 set(SRCS_DIR src)
-set(SRCS_FILES)
+set(CORE_SRCS)
 add_subdirectory(${SRCS_DIR})
 
-set(SRCS)
-foreach(SRC_FILE ${SRCS_FILES})
-  set(SRCS ${SRCS} ${SRCS_DIR}/${SRC_FILE})
-endforeach()
+function(addSrcPath SRCS)
+  set(srcs)
+  foreach(file ${${SRCS}})
+    set(srcs ${srcs} ${SRCS_DIR}/${file})
+  endforeach()
+  set(${SRCS} ${srcs} PARENT_SCOPE)
+endfunction(addSrcPath)
 
-message(${SRCS})
-add_library(slim3d SHARED ${SRCS})
+addSrcPath(CORE_SRCS)
+
+add_library(slim3d-core SHARED ${CORE_SRCS})
 
 install (DIRECTORY inc/ DESTINATION include)
-install (TARGETS slim3d DESTINATION lib
+install (TARGETS slim3d-core DESTINATION lib
   PERMISSIONS WORLD_EXECUTE WORLD_READ GROUP_EXECUTE GROUP_READ OWNER_EXECUTE OWNER_READ OWNER_WRITE)

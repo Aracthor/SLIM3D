@@ -4,22 +4,31 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:14:40 2015 Aracthor
-## Last Update Fri Sep 11 21:36:42 2015 Aracthor
+## Last Update Sat Sep 12 12:36:21 2015 Aracthor
 ##
 
-set(DIRECTORIES
+project("SLIM3D")
+
+set(CORE_DIRECTORIES
   core
   debug
   resources
   time
   )
 
-set(SRCS_FILES)
-foreach(DIRECTORY ${DIRECTORIES})
-  add_subdirectory(${DIRECTORY})
-  foreach(SRC_DIR_FILE ${SRCS_DIR_FILES})
-    set(SRCS_FILES ${SRCS_FILES} ${DIRECTORY}/${SRC_DIR_FILE})
-  endforeach()
-endforeach()
+set(CORE_SRCS)
 
-set(SRCS_FILES ${SRCS_FILES} PARENT_SCOPE)
+function(collectSrcs directories SRCS)
+  set(srcs)
+  foreach(directory ${${directories}})
+    add_subdirectory(${directory})
+    foreach(src ${SRCS_FILES})
+      set(srcs ${srcs} ${directory}/${src})
+    endforeach()
+  endforeach()
+  set(${SRCS} ${srcs} PARENT_SCOPE)
+endfunction(collectSrcs)
+
+collectSrcs(CORE_DIRECTORIES CORE_SRCS)
+
+set(CORE_SRCS ${CORE_SRCS} PARENT_SCOPE)

@@ -4,12 +4,12 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:10:37 2015 Aracthor
-## Last Update Fri Sep 11 21:36:04 2015 Aracthor
+## Last Update Sat Sep 12 12:24:59 2015 Aracthor
 ##
 
 project("SLIM3D")
 
-set(SRCS_DIR_FILES
+set(SRCS_FILES
   BufferedFile.cpp
   BufferedReadingFile.cpp
   BufferedWritingFile.cpp
