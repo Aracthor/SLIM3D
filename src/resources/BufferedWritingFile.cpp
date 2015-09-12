@@ -1,5 +1,5 @@
 //
-// BufferedWritingFile.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// BufferedWritingFile.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 23:31:40 2015 Aracthor
 //
 
-#include "slim3d/resources/BufferedWritingFile.hh"
+#include "slim/resources/BufferedWritingFile.hh"
 #include <iostream>
 
 namespace slim

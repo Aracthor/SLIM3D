@@ -1,5 +1,5 @@
 //
-// Date.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/time
+// Date.cpp for SLIM in /home/aracthor/programs/projects/SLIM/time
 // 
 // Made by Aracthor
 // 
@@ -7,8 +7,8 @@
 // Last Update Thu Sep  3 22:57:41 2015 Aracthor
 //
 
-#include "slim3d/debug/SyscallException.hh"
-#include "slim3d/time/Date.hh"
+#include "slim/debug/SyscallException.hh"
+#include "slim/time/Date.hh"
 
 namespace slim
 {

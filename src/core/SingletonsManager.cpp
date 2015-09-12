@@ -1,5 +1,5 @@
 //
-// SingletonsManager.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/core/srcs//
+// SingletonsManager.cpp for SLIM in /home/aracthor/programs/projects/SLIM/core/srcs//
 // 
 // Made by aracthor
 // 
@@ -7,9 +7,9 @@
 // Last Update Wed Sep  9 14:19:22 2015 Aracthor
 //
 
-#include "slim3d/core/SingletonsManager.hh"
-#include "slim3d/debug/LogManager.hh"
-#include "slim3d/maths/Helper.hh"
+#include "slim/core/SingletonsManager.hh"
+#include "slim/debug/LogManager.hh"
+#include "slim/maths/Helper.hh"
 
 namespace slim
 {

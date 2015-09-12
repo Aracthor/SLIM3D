@@ -1,5 +1,5 @@
 //
-// UnbufferedReadingFile.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// UnbufferedReadingFile.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 22:56:31 2015 Aracthor
 //
 
-#include "slim3d/resources/UnbufferedReadingFile.hh"
+#include "slim/resources/UnbufferedReadingFile.hh"
 
 #include <fcntl.h>
 #include <sys/stat.h>

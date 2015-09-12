@@ -1,5 +1,5 @@
 //
-// FileException.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// FileException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 23:27:02 2015 Aracthor
 //
 
-#include "slim3d/resources/FileException.hh"
+#include "slim/resources/FileException.hh"
 
 #include <cstring>
 

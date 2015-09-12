@@ -4,7 +4,7 @@
 ## Made by Aracthor
 ## 
 ## Started on  Fri Sep 11 21:09:49 2015 Aracthor
-## Last Update Sat Sep 12 12:38:27 2015 Aracthor
+## Last Update Sat Sep 12 13:55:27 2015 Aracthor
 ##
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
@@ -13,7 +13,7 @@ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 project("SLIM3D")
 set (SLIM3D_VERSION_MAJOR 0)
 set (SLIM3D_VERSION_MINOR 0)
-set (SLIM3D_VERSION_PATCH 1)
+set (SLIM3D_VERSION_PATCH 0)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")

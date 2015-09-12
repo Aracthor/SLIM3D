@@ -1,5 +1,5 @@
 //
-// Clock.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/time
+// Clock.cpp for SLIM in /home/aracthor/programs/projects/SLIM/time
 // 
 // Made by Aracthor
 // 
@@ -7,8 +7,8 @@
 // Last Update Wed Sep  9 11:04:02 2015 Aracthor
 //
 
-#include "slim3d/debug/SyscallException.hh"
-#include "slim3d/time/Clock.hh"
+#include "slim/debug/SyscallException.hh"
+#include "slim/time/Clock.hh"
 
 #include <sys/time.h>
 
@@ -56,7 +56,7 @@ Clock::getCurrentTime() const
 {
     struct timeval	tv;
 
-    SLIM3D_DEBUG_SYSCALL_CALL(gettimeofday(&tv, nullptr));
+    SLIM_DEBUG_SYSCALL_CALL(gettimeofday(&tv, nullptr));
 
     return (tv.tv_usec + tv.tv_sec * 1000000);
 }

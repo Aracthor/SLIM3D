@@ -1,5 +1,5 @@
 //
-// UnbufferedFile.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// UnbufferedFile.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Wed Sep  2 17:10:10 2015 Aracthor
 //
 
-#include "slim3d/resources/UnbufferedFile.hh"
+#include "slim/resources/UnbufferedFile.hh"
 
 namespace slim
 {
@@ -21,7 +21,7 @@ UnbufferedFile::UnbufferedFile(const char* name) :
 
 UnbufferedFile::~UnbufferedFile()
 {
-    SLIM3D_DEBUG_SYSCALL_CALL(close(m_fd));
+    SLIM_DEBUG_SYSCALL_CALL(close(m_fd));
 }
 
 }

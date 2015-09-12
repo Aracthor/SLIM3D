@@ -1,5 +1,5 @@
 //
-// ComputerLog.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// ComputerLog.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Wed Sep  9 13:47:53 2015 Aracthor
 //
 
-#include "slim3d/resources/BufferedWritingFile.hh"
+#include "slim/resources/BufferedWritingFile.hh"
 
 #include <cstdio>
 
@@ -19,10 +19,10 @@ namespace debug
 void
 Log::init(resources::Directory& directory)
 {
-    char	fileName[SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE];
+    char	fileName[SLIM_DEBUG_LOG_NAME_BUFFER_SIZE];
 
-    strncpy(fileName, m_name, SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE);
-    strncat(fileName, ".slim3d.log", SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE - strlen(m_name));
+    strncpy(fileName, m_name, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE);
+    strncat(fileName, ".slim.log", SLIM_DEBUG_LOG_NAME_BUFFER_SIZE - strlen(m_name));
     m_file = directory.newFile<resources::BufferedWritingFile>(fileName);
 }
 
@@ -38,7 +38,7 @@ Log::write(const char* message, unsigned int level)
 {
     if (m_fileOutputLevel >= level)
     {
-	size_t size = snprintf(m_buffer, SLIM3D_DEBUG_CONSOLE_LOG_BUFFER_SIZE,
+	size_t size = snprintf(m_buffer, SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE,
 			       "[%s] [%s] %s\n", m_name, s_levels[level], message);
 	m_file->write(m_buffer, size);
     }

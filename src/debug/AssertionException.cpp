@@ -1,5 +1,5 @@
 //
-// AssertionException.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// AssertionException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Mon Aug 31 23:39:44 2015 Aracthor
 //
 
-#include "slim3d/debug/AssertionException.hh"
+#include "slim/debug/AssertionException.hh"
 
 namespace slim
 {

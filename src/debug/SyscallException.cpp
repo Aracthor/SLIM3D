@@ -1,5 +1,5 @@
 //
-// SyscallException.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// SyscallException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 23:03:41 2015 Aracthor
 //
 
-#include "slim3d/debug/SyscallException.hh"
+#include "slim/debug/SyscallException.hh"
 
 #include <cerrno>
 #include <cstring>
@@ -24,8 +24,8 @@ SyscallException::SyscallException(const char* message, const char* file, const 
 
     m_errno = errno;
 
-    strncat(m_whatMessage, ": ", SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE - currentSize);
-    strncat(m_whatMessage, strerror(m_errno), SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE - currentSize - 2);
+    strncat(m_whatMessage, ": ", SLIM_DEBUG_MESSAGE_BUFFER_SIZE - currentSize);
+    strncat(m_whatMessage, strerror(m_errno), SLIM_DEBUG_MESSAGE_BUFFER_SIZE - currentSize - 2);
 }
 
 SyscallException::~SyscallException() throw()

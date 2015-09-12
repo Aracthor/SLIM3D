@@ -1,5 +1,5 @@
 //
-// Dumper.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// Dumper.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Wed Sep  9 13:39:39 2015 Aracthor
 //
 
-#include "slim3d/debug/Dumper.hh"
+#include "slim/debug/Dumper.hh"
 
 namespace slim
 {

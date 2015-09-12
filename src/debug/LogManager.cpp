@@ -1,5 +1,5 @@
 //
-// LogManager.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// LogManager.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 23:11:57 2015 Aracthor
 //
 
-#include "slim3d/debug/LogManager.hh"
+#include "slim/debug/LogManager.hh"
 
 namespace slim
 {
@@ -33,9 +33,9 @@ void
 LogManager::init()
 {
     time::Date			now;
-    char			dirName[SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE];
+    char			dirName[SLIM_DEBUG_LOG_NAME_BUFFER_SIZE];
 
-    now.toFormat(dirName, SLIM3D_DEBUG_LOG_NAME_BUFFER_SIZE, "%d-%m-%Y_%H:%M:%S");
+    now.toFormat(dirName, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE, "%d-%m-%Y_%H:%M:%S");
 
     resources::Directory	directory(dirName);
 

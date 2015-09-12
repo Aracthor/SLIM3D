@@ -1,5 +1,5 @@
 //
-// Exception.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/debug
+// Exception.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Mon Aug 31 18:33:10 2015 Aracthor
 //
 
-#include "slim3d/debug/Exception.hh"
+#include "slim/debug/Exception.hh"
 
 #include <cstdio>
 #include <cstring>
@@ -24,7 +24,7 @@ Exception::Exception(const char* problem, const char* file, const char* function
     m_line(line)
 {
 #ifdef _DEBUG
-    snprintf(m_whatMessage, SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE,
+    snprintf(m_whatMessage, SLIM_DEBUG_MESSAGE_BUFFER_SIZE,
 	     "file %s:\nfunction %s:\nline %d:\n%s",
 	     file, function, line, problem);
 #else

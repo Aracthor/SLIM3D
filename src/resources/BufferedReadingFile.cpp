@@ -1,5 +1,5 @@
 //
-// BufferedReadingFile.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// BufferedReadingFile.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 23:31:52 2015 Aracthor
 //
 
-#include "slim3d/resources/BufferedReadingFile.hh"
+#include "slim/resources/BufferedReadingFile.hh"
 
 namespace slim
 {

@@ -1,5 +1,5 @@
 //
-// File.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D/resources
+// File.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
 // 
 // Made by Aracthor
 // 
@@ -7,7 +7,7 @@
 // Last Update Thu Sep  3 20:39:25 2015 Aracthor
 //
 
-#include "slim3d/resources/File.hh"
+#include "slim/resources/File.hh"
 
 #include <cstdio>
 
@@ -29,9 +29,9 @@ File::~File()
 void
 File::onError(const char* message) const
 {
-    char	buffer[SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE];
+    char	buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
-    snprintf(buffer, SLIM3D_DEBUG_MESSAGE_BUFFER_SIZE, "%s %s.", message, m_name);
+    snprintf(buffer, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, "%s %s.", message, m_name);
     throw FileException(m_name, buffer, __FILE__, __func__, __LINE__);
 }
 
