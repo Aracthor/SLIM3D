@@ -8,6 +8,7 @@ set(SRCS_FILES
   File.cpp
   FileException.cpp
   Image.cpp
+  ImageLoader.cpp
   UnbufferedFile.cpp
   UnbufferedReadingFile.cpp
   UnbufferedWritingFile.cpp

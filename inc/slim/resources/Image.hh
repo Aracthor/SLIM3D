@@ -1,7 +1,7 @@
 #ifndef SLIM_RESOURCES_IMAGE_HH_
 # define SLIM_RESOURCES_IMAGE_HH_
 
-# include "slim/resources/data.hh"
+# include "slim/resources/ImageLoader.hh"
 
 namespace slim
 {
@@ -10,6 +10,12 @@ namespace resources
 
 class	Image
 {
+private:
+    static ImageLoader	s_imageLoader;
+
+private:
+    Image();
+
 public:
     explicit Image(const char* fileName);
     Image(const Image& reference);
