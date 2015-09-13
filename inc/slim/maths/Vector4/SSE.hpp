@@ -1,12 +1,3 @@
-//
-// SSE.hpp<2> for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sun Sep  6 00:31:17 2015 Aracthor
-// Last Update Sun Sep  6 00:34:26 2015 Aracthor
-//
-
 namespace slim
 {
 namespace maths

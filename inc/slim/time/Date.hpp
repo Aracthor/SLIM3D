@@ -1,12 +1,3 @@
-//
-// Date.hpp for SLIM in /home/aracthor/programs/projects/SLIM/time
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep  3 22:26:31 2015 Aracthor
-// Last Update Wed Sep  9 10:41:12 2015 Aracthor
-//
-
 namespace slim
 {
 namespace time

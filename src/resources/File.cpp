@@ -1,12 +1,3 @@
-//
-// File.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 14:17:30 2015 Aracthor
-// Last Update Thu Sep  3 20:39:25 2015 Aracthor
-//
-
 #include "slim/resources/File.hh"
 
 #include <cstdio>

@@ -1,12 +1,3 @@
-//
-// mouse.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 20:11:54 2015 Aracthor
-// Last Update Sun Sep 13 00:30:23 2015 Aracthor
-//
-
 #ifndef SLIM_EVENTS_MOUSE_HH_
 # define SLIM_EVENTS_MOUSE_HH_
 

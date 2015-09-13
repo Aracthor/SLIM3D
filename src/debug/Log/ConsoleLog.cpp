@@ -1,12 +1,3 @@
-//
-// ComputerLog.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Tue Sep  1 23:32:18 2015 Aracthor
-// Last Update Wed Sep  9 13:47:53 2015 Aracthor
-//
-
 #include "slim/resources/BufferedWritingFile.hh"
 
 #include <cstdio>

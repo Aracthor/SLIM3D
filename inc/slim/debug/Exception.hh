@@ -1,12 +1,3 @@
-//
-// Exception.hh for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 18:03:15 2015 Aracthor
-// Last Update Sat Sep 12 14:47:11 2015 Aracthor
-//
-
 #ifndef SLIM_DEBUG_EXCEPTION_HH_
 # define SLIM_DEBUG_EXCEPTION_HH_
 

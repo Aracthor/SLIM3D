@@ -1,12 +1,3 @@
-/*
-** system.h for SLIM in /home/aracthor/programs/projects/SLIM/core
-** 
-** Made by Aracthor
-** 
-** Started on  Tue Sep  1 17:36:54 2015 Aracthor
-** Last Update Sat Sep 12 13:54:30 2015 Aracthor
-*/
-
 #ifndef SLIM_CORE_SYSTEM_H_
 # define SLIM_CORE_SYSTEM_H_
 

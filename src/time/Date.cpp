@@ -1,12 +1,3 @@
-//
-// Date.cpp for SLIM in /home/aracthor/programs/projects/SLIM/time
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep  3 22:22:56 2015 Aracthor
-// Last Update Thu Sep  3 22:57:41 2015 Aracthor
-//
-
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Date.hh"
 

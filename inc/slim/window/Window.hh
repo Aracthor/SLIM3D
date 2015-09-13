@@ -1,12 +1,3 @@
-//
-// Window.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sun Sep 13 09:56:33 2015 Aracthor
-//
-
 #ifndef SLIM_WINDOW_WINDOW_HH_
 # define SLIM_WINDOW_WINDOW_HH_
 

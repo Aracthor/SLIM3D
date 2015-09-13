@@ -1,12 +1,3 @@
-//
-// Loop.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 17:12:26 2015 Aracthor
-// Last Update Sat Sep 12 17:27:15 2015 Aracthor
-//
-
 #include "slim/time/Loop.hh"
 
 namespace slim

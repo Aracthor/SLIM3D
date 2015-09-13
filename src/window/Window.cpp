@@ -1,12 +1,3 @@
-//
-// Window.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sun Sep 13 13:24:06 2015 Aracthor
-//
-
 #include "slim/window/GLFWException.hh"
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/Window.hh"

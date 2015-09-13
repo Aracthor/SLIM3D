@@ -1,12 +1,3 @@
-//
-// FileException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 14:03:53 2015 Aracthor
-// Last Update Thu Sep  3 23:27:02 2015 Aracthor
-//
-
 #include "slim/resources/FileException.hh"
 
 #include <cstring>

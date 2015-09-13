@@ -1,12 +1,3 @@
-//
-// GameplayLoop.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 18:09:52 2015 Aracthor
-// Last Update Sat Sep 12 18:26:04 2015 Aracthor
-//
-
 #ifndef SLIM_ENGINE_GAMEPLAY_LOOP_HH_
 # define SLIM_ENGINE_GAMEPLAY_LOOP_HH_
 

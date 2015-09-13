@@ -1,12 +1,3 @@
-//
-// SyscallException.hh for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 17:19:10 2015 Aracthor
-// Last Update Thu Sep 10 00:01:04 2015 Aracthor
-//
-
 #ifndef SLIM_DEBUG_SYSCALL_EXCEPTION_HH_
 # define SLIM_DEBUG_SYSCALL_EXCEPTION_HH_
 

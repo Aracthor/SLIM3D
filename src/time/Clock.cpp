@@ -1,12 +1,3 @@
-//
-// Clock.cpp for SLIM in /home/aracthor/programs/projects/SLIM/time
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  9 10:54:55 2015 Aracthor
-// Last Update Sat Sep 12 22:25:31 2015 Aracthor
-//
-
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Clock.hh"
 

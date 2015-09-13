@@ -1,12 +1,3 @@
-//
-// default.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sun Sep  6 00:04:44 2015 Aracthor
-// Last Update Sun Sep  6 00:29:24 2015 Aracthor
-//
-
 namespace slim
 {
 namespace maths

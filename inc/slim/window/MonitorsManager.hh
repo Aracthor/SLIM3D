@@ -1,12 +1,3 @@
-//
-// MonitorsManager.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 14:43:38 2015 Aracthor
-// Last Update Sun Sep 13 09:29:18 2015 Aracthor
-//
-
 #ifndef SLIM_WINDOW_MONITORS_MANAGER_HH_
 # define SLIM_WINDOW_MONITORS_MANAGER_HH_
 

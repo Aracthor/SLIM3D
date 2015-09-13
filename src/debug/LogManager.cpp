@@ -1,12 +1,3 @@
-//
-// LogManager.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 23:04:35 2015 Aracthor
-// Last Update Sat Sep 12 15:57:45 2015 Aracthor
-//
-
 #include "slim/debug/LogManager.hh"
 
 namespace slim

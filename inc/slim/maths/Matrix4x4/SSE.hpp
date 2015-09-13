@@ -1,12 +1,3 @@
-//
-// SSE.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sun Sep  6 00:02:44 2015 Aracthor
-// Last Update Sun Sep  6 00:04:48 2015 Aracthor
-//
-
 # include <xmmintrin.h>
 
 namespace slim

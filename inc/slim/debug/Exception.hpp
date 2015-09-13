@@ -1,12 +1,3 @@
-//
-// Exception.hpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 18:22:37 2015 Aracthor
-// Last Update Thu Sep 10 00:03:01 2015 Aracthor
-//
-
 namespace slim
 {
 namespace debug

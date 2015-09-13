@@ -1,12 +1,3 @@
-//
-// Log.hpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Tue Sep  1 23:20:48 2015 Aracthor
-// Last Update Thu Sep 10 00:02:07 2015 Aracthor
-//
-
 namespace slim
 {
 namespace debug

@@ -1,12 +1,3 @@
-//
-// FileException.hh for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 13:38:28 2015 Aracthor
-// Last Update Wed Sep  9 23:58:26 2015 Aracthor
-//
-
 #ifndef SLIM_RESOURCES_FILE_EXCEPTION_HH_
 # define SLIM_RESOURCES_FILE_EXCEPTION_HH_
 

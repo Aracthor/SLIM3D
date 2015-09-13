@@ -1,12 +1,3 @@
-//
-// Log.hh for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 23:13:49 2015 Aracthor
-// Last Update Thu Sep 10 00:01:55 2015 Aracthor
-//
-
 #ifndef SLIM_DEBUG_LOG_HH_
 # define SLIM_DEBUG_LOG_HH_
 

@@ -1,12 +1,3 @@
-//
-// SingletonsManager.hh for SLIM in /home/aracthor/programs/projects/SLIM/core/inc/slim/core//
-// 
-// Made by aracthor
-// 
-// Started on  Mon Aug 31 17:31:31 2015 aracthor
-// Last Update Sun Sep 13 09:26:15 2015 Aracthor
-//
-
 #ifndef SINGLETONS_MANAGER_HH_
 # define SINGLETONS_MANAGER_HH_
 

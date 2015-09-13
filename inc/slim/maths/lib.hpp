@@ -1,12 +1,3 @@
-//
-// lib.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep  5 12:35:21 2015 Aracthor
-// Last Update Fri Sep 11 12:57:34 2015 Aracthor
-//
-
 float
 sqrt(float n)
 {

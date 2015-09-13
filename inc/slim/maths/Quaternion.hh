@@ -1,12 +1,3 @@
-//
-// Quaternion.hh for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep 10 18:30:30 2015 Aracthor
-// Last Update Fri Sep 11 11:24:09 2015 Aracthor
-//
-
 #ifndef SLIM_MATHS_QUATERNION_HH_
 # define SLIM_MATHS_QUATERNION_HH_
 

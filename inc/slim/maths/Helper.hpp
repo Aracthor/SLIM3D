@@ -1,12 +1,3 @@
-//
-// Helper.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Fri Sep  4 19:46:34 2015 Aracthor
-// Last Update Sat Sep 12 15:58:17 2015 Aracthor
-//
-
 namespace slim
 {
 namespace maths

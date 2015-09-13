@@ -1,12 +1,3 @@
-//
-// Directory.hh for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep  3 20:40:22 2015 Aracthor
-// Last Update Thu Sep  3 21:56:42 2015 Aracthor
-//
-
 #ifndef SLIM_RESOURCES_DIRECTORY_HH_
 # define SLIM_RESOURCES_DIRECTORY_HH_
 

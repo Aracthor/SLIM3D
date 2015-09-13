@@ -1,12 +1,3 @@
-//
-// PresizedArray.hpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 16:46:24 2015 Aracthor
-// Last Update Sun Sep 13 13:24:54 2015 Aracthor
-//
-
 #include <typeinfo>
 
 #include "slim/core/templates.hh"

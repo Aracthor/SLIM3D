@@ -1,12 +1,3 @@
-//
-// Engine.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sun Sep 13 01:11:26 2015 Aracthor
-//
-
 #include <exception>
 #include <iostream> // Only to print exception error message
 

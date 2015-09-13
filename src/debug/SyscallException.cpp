@@ -1,12 +1,3 @@
-//
-// SyscallException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 17:27:31 2015 Aracthor
-// Last Update Thu Sep  3 23:03:41 2015 Aracthor
-//
-
 #include "slim/debug/SyscallException.hh"
 
 #include <cerrno>

@@ -1,12 +1,3 @@
-//
-// Vector2.hh for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Fri Sep  4 23:59:15 2015 Aracthor
-// Last Update Fri Sep 11 11:24:40 2015 Aracthor
-//
-
 #ifndef SLIM_MATHS_VECTOR2_HH_
 # define SLIM_MATHS_VECTOR2_HH_
 

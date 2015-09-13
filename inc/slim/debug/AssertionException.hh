@@ -1,12 +1,3 @@
-//
-// AssertionException.hh for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 23:34:35 2015 Aracthor
-// Last Update Mon Aug 31 23:39:40 2015 Aracthor
-//
-
 #ifndef SLIM_DEBUG_ASSERTION_EXCEPTION_HH_
 # define SLIM_DEBUG_ASSERTION_EXCEPTION_HH_
 

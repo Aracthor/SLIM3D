@@ -1,12 +1,3 @@
-//
-// EventsManager.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 20:19:08 2015 Aracthor
-// Last Update Sun Sep 13 09:50:28 2015 Aracthor
-//
-
 #ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
 # define SLIM_EVENTS_EVENTS_MANAGER_HH_
 

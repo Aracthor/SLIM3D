@@ -1,12 +1,3 @@
-//
-// Vector3.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep  5 12:02:37 2015 Aracthor
-// Last Update Thu Sep 10 21:22:35 2015 Aracthor
-//
-
 #include "slim/maths/lib.hh"
 
 namespace slim

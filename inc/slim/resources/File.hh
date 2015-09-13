@@ -1,12 +1,3 @@
-//
-// File.hh for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 14:14:36 2015 Aracthor
-// Last Update Thu Sep  3 21:46:36 2015 Aracthor
-//
-
 #ifndef SLIMD_RESOURCES_FILE_HH_
 # define SLIMD_RESOURCES_FILE_HH_
 

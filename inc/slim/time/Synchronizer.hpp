@@ -1,12 +1,3 @@
-//
-// Synchronizer.hpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 17:59:46 2015 Aracthor
-//
-
 namespace slim
 {
 namespace time

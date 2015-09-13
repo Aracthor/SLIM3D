@@ -1,12 +1,3 @@
-//
-// Engine.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 22:16:29 2015 Aracthor
-//
-
 #ifndef SLIM_ENGINE_ENGINE_HH_
 # define SLIM_ENGINE_ENGINE_HH_
 

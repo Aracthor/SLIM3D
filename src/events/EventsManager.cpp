@@ -1,12 +1,3 @@
-//
-// EventsManager.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 20:19:28 2015 Aracthor
-// Last Update Sun Sep 13 09:44:53 2015 Aracthor
-//
-
 #include "slim/core/attributes.h"
 #include "slim/core/templates.hh"
 #include "slim/events/EventsManager.hh"

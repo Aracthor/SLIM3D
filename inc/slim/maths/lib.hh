@@ -1,12 +1,3 @@
-//
-// lib.hh for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep  5 12:28:48 2015 Aracthor
-// Last Update Fri Sep 11 12:56:54 2015 Aracthor
-//
-
 #ifndef SLIM_MATHS_LIB_HH_
 # define SLIM_MATHS_LIB_HH_
 

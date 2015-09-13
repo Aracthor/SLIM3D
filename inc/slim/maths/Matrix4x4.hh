@@ -1,12 +1,3 @@
-//
-// Matrix4x4.hh for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep  5 20:12:09 2015 Aracthor
-// Last Update Fri Sep 11 11:25:28 2015 Aracthor
-//
-
 #ifndef SLIM_MATHS_MATRIX4X4_HH_
 # define SLIM_MATHS_MATRIX4X4_HH_
 

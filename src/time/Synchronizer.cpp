@@ -1,12 +1,3 @@
-//
-// Synchronizer.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 16:09:53 2015 Aracthor
-// Last Update Sat Sep 12 22:47:31 2015 Aracthor
-//
-
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Synchronizer.hh"
 

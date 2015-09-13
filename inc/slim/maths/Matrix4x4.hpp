@@ -1,12 +1,3 @@
-//
-// Matrix4x4.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep  5 20:12:06 2015 Aracthor
-// Last Update Fri Sep 11 11:25:41 2015 Aracthor
-//
-
 #include "slim/debug/assert.hh"
 
 namespace slim

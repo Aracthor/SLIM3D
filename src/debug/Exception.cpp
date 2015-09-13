@@ -1,12 +1,3 @@
-//
-// Exception.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 18:23:43 2015 Aracthor
-// Last Update Mon Aug 31 18:33:10 2015 Aracthor
-//
-
 #include "slim/debug/Exception.hh"
 
 #include <cstdio>

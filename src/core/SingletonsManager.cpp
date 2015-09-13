@@ -1,12 +1,3 @@
-//
-// SingletonsManager.cpp for SLIM in /home/aracthor/programs/projects/SLIM/core/srcs//
-// 
-// Made by aracthor
-// 
-// Started on  Mon Aug 31 17:31:31 2015 aracthor
-// Last Update Sun Sep 13 09:26:07 2015 Aracthor
-//
-
 #include "slim/core/SingletonsManager.hh"
 #include "slim/debug/LogManager.hh"
 #include "slim/maths/Helper.hh"

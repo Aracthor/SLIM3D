@@ -1,12 +1,3 @@
-//
-// Directory.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep  3 20:51:50 2015 Aracthor
-// Last Update Thu Sep  3 23:13:17 2015 Aracthor
-//
-
 #include "slim/resources/Directory.hh"
 #include "slim/resources/FileException.hh"
 #include "slim/resources/maccros.h"

@@ -1,12 +1,3 @@
-//
-// Quaternion.hpp for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Thu Sep 10 18:30:26 2015 Aracthor
-// Last Update Fri Sep 11 13:01:46 2015 Aracthor
-//
-
 #include "slim/debug/SyscallException.hh"
 
 namespace slim

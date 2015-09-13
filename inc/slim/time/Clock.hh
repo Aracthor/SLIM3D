@@ -1,12 +1,3 @@
-//
-// Clock.hh for SLIM in /home/aracthor/programs/projects/SLIM/time
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  9 10:41:59 2015 Aracthor
-// Last Update Wed Sep  9 10:56:55 2015 Aracthor
-//
-
 #ifndef SLIM_CLOCK_TIME_HH_
 # define SLIM_CLOCK_TIME_HH_
 

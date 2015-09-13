@@ -1,12 +1,3 @@
-//
-// EventsManager.hpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 20:19:38 2015 Aracthor
-// Last Update Sun Sep 13 09:48:38 2015 Aracthor
-//
-
 namespace slim
 {
 namespace events

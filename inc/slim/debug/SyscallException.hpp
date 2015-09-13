@@ -1,12 +1,3 @@
-//
-// SyscallException.hpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 17:26:27 2015 Aracthor
-// Last Update Thu Sep 10 00:01:16 2015 Aracthor
-//
-
 namespace slim
 {
 namespace debug

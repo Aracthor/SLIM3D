@@ -1,12 +1,3 @@
-//
-// PresizedArray.hh for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 16:41:18 2015 Aracthor
-// Last Update Sat Sep 12 17:52:50 2015 Aracthor
-//
-
 #ifndef SLIM_CONTAINERS_PRESIZED_ARRAY_HH_
 # define SLIM_CONTAINERS_PRESIZED_ARRAY_HH_
 

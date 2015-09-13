@@ -1,12 +1,3 @@
-//
-// Singleton.hh for SLIM in /home/aracthor/programs/projects/SLIM/core/inc/slim/core//
-// 
-// Made by aracthor
-// 
-// Started on  Mon Aug 31 17:22:22 2015 aracthor
-// Last Update Sat Sep 12 15:57:00 2015 Aracthor
-//
-
 #ifndef SLIM_CORE_SINGLETON_HH_
 # define SLIM_CORE_SINGLETON_HH_
 

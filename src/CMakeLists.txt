@@ -1,12 +1,3 @@
-##
-## CMakeLists.txt for SLIM3D in /home/aracthor/programs/projects/SLIM3D/src
-## 
-## Made by Aracthor
-## 
-## Started on  Fri Sep 11 21:14:40 2015 Aracthor
-## Last Update Sat Sep 12 19:32:16 2015 Aracthor
-##
-
 project("SLIM3D")
 
 set(CORE_SRCS)

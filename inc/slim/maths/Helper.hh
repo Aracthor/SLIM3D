@@ -1,12 +1,3 @@
-//
-// Helper.hh for SLIM in /home/aracthor/programs/projects/SLIM/maths
-// 
-// Made by Aracthor
-// 
-// Started on  Fri Sep  4 16:06:31 2015 Aracthor
-// Last Update Sat Sep 12 15:58:05 2015 Aracthor
-//
-
 #ifndef SLIM_MATHS_HELPER_HH_
 # define SLIM_MATHS_HELPER_HH_
 
@@ -17,16 +8,16 @@
 # define SLIM_MATHS_HELPER_PRECALC_NUMBER	(360 * 100)
 
 # if _USE_MATHS_HELPER
-#  define SLIM_MATHS_COS(angle)	slim::MathsHelper::instance.getCosinus(angle)
-#  define SLIM_MATHS_SIN(angle)	slim::MathsHelper::instance.getSinus(angle)
-#  define SLIM_MATHS_TAN(angle)	slim::MathsHelper::instance.getTangeante(angle)
+#  define SLIM_MATHS_COS(angle)		slim::MathsHelper::instance.getCosinus(angle)
+#  define SLIM_MATHS_SIN(angle)		slim::MathsHelper::instance.getSinus(angle)
+#  define SLIM_MATHS_TAN(angle)		slim::MathsHelper::instance.getTangeante(angle)
 #  define SLIM_MATHS_ACOS(angle)	slim::MathsHelper::instance.getACosinus(angle)
 #  define SLIM_MATHS_ASIN(angle)	slim::MathsHelper::instance.getASinus(angle)
 #  define SLIM_MATHS_ATAN(angle)	slim::MathsHelper::instance.getATangeante(angle)
 # else
-#  define SLIM_MATHS_COS(angle)	slim::maths::lib::cos(angle)
-#  define SLIM_MATHS_SIN(angle)	slim::maths::lib::sin(angle)
-#  define SLIM_MATHS_TAN(angle)	slim::maths::lib::tan(angle)
+#  define SLIM_MATHS_COS(angle)		slim::maths::lib::cos(angle)
+#  define SLIM_MATHS_SIN(angle)		slim::maths::lib::sin(angle)
+#  define SLIM_MATHS_TAN(angle)		slim::maths::lib::tan(angle)
 #  define SLIM_MATHS_ACOS(angle)	slim::maths::lib::acos(angle)
 #  define SLIM_MATHS_ASIN(angle)	slim::maths::lib::asin(angle)
 #  define SLIM_MATHS_ATAN(angle)	slim::maths::lib::atan(angle)

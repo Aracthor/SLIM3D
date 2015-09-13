@@ -1,12 +1,3 @@
-//
-// AssertionException.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 23:34:31 2015 Aracthor
-// Last Update Mon Aug 31 23:39:44 2015 Aracthor
-//
-
 #include "slim/debug/AssertionException.hh"
 
 namespace slim

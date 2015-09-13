@@ -1,12 +1,3 @@
-//
-// Log.cpp for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Mon Aug 31 23:13:05 2015 Aracthor
-// Last Update Sun Sep  6 23:28:25 2015 Aracthor
-//
-
 #include "slim/core/system.h"
 #include "slim/debug/Log.hh"
 

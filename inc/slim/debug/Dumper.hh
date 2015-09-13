@@ -1,12 +1,3 @@
-//
-// Dumper.hh for SLIM in /home/aracthor/programs/projects/SLIM/debug
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  9 13:28:08 2015 Aracthor
-// Last Update Wed Sep  9 13:35:26 2015 Aracthor
-//
-
 #ifndef SLIM_DEBUG_DUMPER_HH_
 # define SLIM_DEBUG_DUMPER_HH_
 

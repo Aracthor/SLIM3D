@@ -1,12 +1,3 @@
-//
-// UnbufferedWritingFile.cpp for SLIM in /home/aracthor/programs/projects/SLIM/resources
-// 
-// Made by Aracthor
-// 
-// Started on  Wed Sep  2 14:50:16 2015 Aracthor
-// Last Update Thu Sep  3 22:56:53 2015 Aracthor
-//
-
 #include "slim/resources/UnbufferedWritingFile.hh"
 
 #include <fcntl.h>

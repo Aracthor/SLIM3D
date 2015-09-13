@@ -1,12 +1,3 @@
-//
-// MonitorsManager.cpp for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-// 
-// Made by Aracthor
-// 
-// Started on  Sat Sep 12 14:43:28 2015 Aracthor
-// Last Update Sat Sep 12 22:47:22 2015 Aracthor
-//
-
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/window/MonitorsManager.hh"
