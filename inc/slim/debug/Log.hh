@@ -1,13 +1,13 @@
 #ifndef SLIM_DEBUG_LOG_HH_
 # define SLIM_DEBUG_LOG_HH_
 
+# include "slim/containers/Buffer.hh"
 # include "slim/core/system.h"
-# include "slim/debug/Dumper.hh"
 # include "slim/resources/Directory.hh"
 # include "slim/time/Date.hh"
 
-# define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x1000
-# define SLIM_DEBUG_ELEMENT_BUFFER_SIZE	0x200
+# define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x100
+# define SLIM_DEBUG_ELEMENT_BUFFER_SIZE		0x200
 # define SLIM_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim
@@ -46,15 +46,15 @@ public:
     inline void	writeError(const char* message);
 
 protected:
-    virtual void	write(const char* message, unsigned int level) = 0;
+    virtual void	flush(unsigned int level) = 0;
     template <typename T>
-    void		writeObject(const T& object, unsigned int level);
+    void		write(const T& object, unsigned int level);
 
 protected:
     const char*		m_name;
     unsigned int	m_consoleOutputLevel;
     unsigned int	m_fileOutputLevel;
-    Dumper		m_dumper;
+    containers::Buffer<char, SLIM_DEBUG_ELEMENT_BUFFER_SIZE>	m_buffer;
 };
 
 }

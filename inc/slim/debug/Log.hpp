@@ -19,28 +19,28 @@ template <typename T>
 void
 LogBase::writeLog(const T& elem)
 {
-    this->writeObject(elem, 0);
+    this->write(elem, 0);
 }
 
 template <typename T>
 void
 LogBase::writeInfo(const T& elem)
 {
-    this->writeObject(elem, 1);
+    this->write(elem, 1);
 }
 
 template <typename T>
 void
 LogBase::writeWarning(const T& elem)
 {
-    this->writeObject(elem, 2);
+    this->write(elem, 2);
 }
 
 template <typename T>
 void
 LogBase::writeError(const T& elem)
 {
-    this->writeObject(elem, 3);
+    this->write(elem, 3);
 }
 
 void
@@ -70,12 +70,14 @@ LogBase::writeError(const char* message)
 
 template <typename T>
 void
-LogBase::writeObject(const T& object, unsigned int level)
+LogBase::write(const T& object, unsigned int level)
 {
-    char	buffer[SLIM_DEBUG_ELEMENT_BUFFER_SIZE];
-
-    m_dumper.dump(object, buffer, SLIM_DEBUG_ELEMENT_BUFFER_SIZE);
-    this->write(buffer, level);
+    if (level >= m_consoleOutputLevel || level >= m_fileOutputLevel)
+    {
+	m_buffer << object;
+	this->flush(level);
+	m_buffer.clear();
+    }
 }
 
 }

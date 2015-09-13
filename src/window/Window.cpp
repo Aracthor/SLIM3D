@@ -1,8 +1,7 @@
+#include "slim/debug/LogManager.hh"
 #include "slim/window/GLFWException.hh"
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/Window.hh"
-
-#include <iostream> // DEBUG
 
 namespace slim
 {
@@ -30,6 +29,7 @@ Window::Window(Parameters parameters) :
     {
 	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
     }
+    debug::LogManager::instance.graphics.writeInfo("Window created.");
 
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1);

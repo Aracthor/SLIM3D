@@ -25,13 +25,14 @@ Log::destroy()
 
 
 void
-Log::write(const char* message, unsigned int level)
+Log::flush(unsigned int level)
 {
-    if (m_fileOutputLevel >= level)
+    if (level >= m_fileOutputLevel)
     {
-	size_t size = snprintf(m_buffer, SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE,
-			       "[%s] [%s] %s\n", m_name, s_levels[level], message);
-	m_file->write(m_buffer, size);
+	m_buffer[m_buffer.getSize()] = '\0';
+	size_t size = snprintf(m_fileBuffer, SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE,
+			       "[%s] [%s] %s\n", m_name, s_levels[level], m_buffer.getData());
+	m_file->write(m_fileBuffer, size);
     }
 }
 
