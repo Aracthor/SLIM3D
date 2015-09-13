@@ -4,13 +4,16 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:43:38 2015 Aracthor
-// Last Update Sat Sep 12 15:58:32 2015 Aracthor
+// Last Update Sun Sep 13 09:29:18 2015 Aracthor
 //
 
 #ifndef SLIM_WINDOW_MONITORS_MANAGER_HH_
 # define SLIM_WINDOW_MONITORS_MANAGER_HH_
 
+# include <map> // TODO implement our own.
+
 # include "slim/core/Singleton.hh"
+# include "slim/window/Window.hh"
 
 # include <GLFW/glfw3.h>
 
@@ -29,8 +32,16 @@ private:
     ~MonitorsManager();
 
 public:
+    inline void		addWindow(GLFWwindow* signature, Window* window);
+    inline void		removeWindow(GLFWwindow* signature);
+    inline Window*	getWindow(GLFWwindow* signature);
+
+protected:
     void	onInit() override;
     void	onDestroy() override;
+
+private:
+    std::map<GLFWwindow*, Window*>	m_windows;
 };
 
 }

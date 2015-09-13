@@ -4,10 +4,11 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:28 2015 Aracthor
-// Last Update Sat Sep 12 22:47:41 2015 Aracthor
+// Last Update Sun Sep 13 09:44:53 2015 Aracthor
 //
 
 #include "slim/core/attributes.h"
+#include "slim/core/templates.hh"
 #include "slim/events/EventsManager.hh"
 
 #include <cstring>
@@ -19,17 +20,20 @@ namespace events
 
 EventsManager::EventsManager()
 {
-    memset(m_keysCurrentlyPressed, false, sizeof(m_keysCurrentlyPressed));
-    for (unsigned int key = 0; key < keyboard::keysNumber; key++)
-    {
-    	m_keyListeners[key] = EventListenersPack();
-    	m_keyPressListeners[key] = EventListenersPack();
-	m_keyReleaseListeners[key] = EventListenersPack();
-    }
+    memset(this, 0, sizeof(*this));
 }
 
 EventsManager::~EventsManager()
 {
+    this->deleteListeners(m_keyPressListeners, keyboard::keysNumber);
+    this->deleteListeners(m_keyReleaseListeners, keyboard::keysNumber);
+
+    this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsNumber);
+    this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsNumber);
+    if (m_mouseMovementListeners)
+    {
+	delete m_mouseMovementListeners;
+    }
 }
 
 
@@ -40,28 +44,48 @@ EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED int scan
     if (action == keyboard::pressed)
     {
 	m_keysCurrentlyPressed[keyCode] = true;
-	EventListenersPack& listeners = m_keyPressListeners[keyCode];
-	listeners.onEvent();
+	if (m_keyPressListeners[keyCode])
+	{
+	    m_keyPressListeners[keyCode]->onEvent();
+	}
     }
     else if (action == keyboard::released)
     {
 	m_keysCurrentlyPressed[keyCode] = false;
-	EventListenersPack& listeners = m_keyReleaseListeners[keyCode];
-	listeners.onEvent();
+	if (m_keyReleaseListeners[keyCode])
+	{
+	    m_keyReleaseListeners[keyCode]->onEvent();
+	}
     }
 }
 
-
 void
-EventsManager::manage()
+EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action, SLIM_CORE_UNUSED int modifiers)
 {
-    for (unsigned int key = 0; key < keyboard::keysNumber; key++)
+    if (action == mouse::pressed)
     {
-	if (m_keysCurrentlyPressed[key])
+	m_mouseButtonsCurrentlyPressed[button] = true;
+	if (m_mouseButtonPressListeners[button])
 	{
-	    m_keyListeners[key].onEvent();
+	    m_mouseButtonPressListeners[button]->onEvent(m_currentMousePosition);
 	}
     }
+    else if (action == mouse::released)
+    {
+	m_mouseButtonsCurrentlyPressed[button] = false;
+	if (m_mouseButtonReleaseListeners[button])
+	{
+	    m_mouseButtonReleaseListeners[button]->onEvent(m_currentMousePosition);
+	}
+    }
+}
+
+void
+EventsManager::onMouseMovement(double x, double y)
+{
+    m_currentMousePosition.x = x;
+    m_currentMousePosition.y = y;
+    m_mouseMovementListeners->onEvent(m_currentMousePosition);
 }
 
 }
