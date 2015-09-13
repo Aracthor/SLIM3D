@@ -12,6 +12,11 @@ namespace maths
 
 namespace lib
 {
+template <typename T>
+inline T		min(T a, T b);
+template <typename T>
+inline T		max(T a, T b);
+
 inline float		sqrt(float n);
 inline double		sqrt(double n);
 inline long double	sqrt(long double n);

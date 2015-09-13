@@ -1,13 +1,12 @@
 #ifndef SLIM_DEBUG_LOG_HH_
 # define SLIM_DEBUG_LOG_HH_
 
-# include "slim/containers/Buffer.hh"
 # include "slim/core/system.h"
+# include "slim/debug/LogStream.hh"
 # include "slim/resources/Directory.hh"
 # include "slim/time/Date.hh"
 
 # define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x100
-# define SLIM_DEBUG_ELEMENT_BUFFER_SIZE		0x200
 # define SLIM_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim
@@ -17,9 +16,6 @@ namespace debug
 
 class	LogBase
 {
-protected:
-    static const char*	s_levels[4];
-
 public:
     LogBase(const char* name);
     virtual ~LogBase();
@@ -29,32 +25,25 @@ public:
     virtual void	destroy() = 0;
 
 public:
-    inline void	setConsoleOutputLevel(char level);
-    inline void	setFileOutputLevel(char level);
-    template <typename T>
-    void	writeLog(const T& elem);
-    template <typename T>
-    void	writeInfo(const T& elem);
-    template <typename T>
-    void	writeWarning(const T& elem);
-    template <typename T>
-    void	writeError(const T& elem);
+    inline void		setConsoleOutputLevel(char level);
+    inline void		setFileOutputLevel(char level);
 
-    inline void	writeLog(const char* message);
-    inline void	writeInfo(const char* message);
-    inline void	writeWarning(const char* message);
-    inline void	writeError(const char* message);
+public:
+    virtual void	write(const char* line, unsigned int size) = 0;
 
-protected:
-    virtual void	flush(unsigned int level) = 0;
-    template <typename T>
-    void		write(const T& object, unsigned int level);
+public:
+    LogStream		log;
+    LogStream		info;
+    LogStream		warning;
+    LogStream		error;
 
 protected:
     const char*		m_name;
     unsigned int	m_consoleOutputLevel;
     unsigned int	m_fileOutputLevel;
-    containers::Buffer<char, SLIM_DEBUG_ELEMENT_BUFFER_SIZE>	m_buffer;
+
+private:
+    void	manageActivations();
 };
 
 }

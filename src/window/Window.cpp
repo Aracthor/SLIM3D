@@ -29,7 +29,7 @@ Window::Window(Parameters parameters) :
     {
 	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
     }
-    debug::LogManager::instance.graphics.writeInfo("Window created.");
+    debug::LogManager::instance.graphics.info << "Window created." << debug::LogStream::endline;
 
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1);

@@ -58,16 +58,18 @@ Buffer<T, N>::operator[](unsigned int index)
 
 
 template <typename T, unsigned int N>
-void
+Buffer<T, N>&
 Buffer<T, N>::operator<<(T c)
 {
     SLIM_DEBUG_ASSERT(m_size + 1 < N);
     m_data[m_size] = c;
     m_size++;
+
+    return *this;
 }
 
 template <typename T, unsigned int N>
-void
+Buffer<T, N>&
 Buffer<T, N>::operator<<(const T* str)
 {
     while (*str)
@@ -75,11 +77,13 @@ Buffer<T, N>::operator<<(const T* str)
 	*this << *str;
 	str++;
     }
+
+    return *this;
 }
 
 template <typename T, unsigned int N>
 template <typename U>
-void
+Buffer<T, N>&
 Buffer<T, N>::operator<<(U n)
 {
     if (n < 0)
@@ -95,6 +99,8 @@ Buffer<T, N>::operator<<(U n)
     {
 	*this << (static_cast<T>(n) + '0');
     }
+
+    return *this;
 }
 
 }

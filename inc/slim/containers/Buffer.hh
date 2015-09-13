@@ -25,12 +25,12 @@ public:
     inline T&	operator[](unsigned int index);
 
 public:
-    inline void	operator<<(T c);
-    void	operator<<(const T* str);
+    inline Buffer<T, N>&	operator<<(T c);
+    Buffer<T, N>&		operator<<(const T* str);
 
     // Used for numbers type (int, long etc)
     template <typename U>
-    void	operator<<(U n);
+    Buffer<T, N>&		operator<<(U n);
 
 private:
     T			m_data[N];
