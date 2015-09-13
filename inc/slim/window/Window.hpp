@@ -4,13 +4,26 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 21:06:58 2015 Aracthor
+// Last Update Sun Sep 13 09:56:46 2015 Aracthor
 //
 
 namespace slim
 {
 namespace window
 {
+
+void
+Window::resize(unsigned int width, unsigned int height)
+{
+    glfwSetWindowSize(m_window, width, height);
+}
+
+void
+Window::setTitle(const char* title)
+{
+    glfwSetWindowTitle(m_window, title);
+}
+
 
 bool
 Window::shouldClose() const

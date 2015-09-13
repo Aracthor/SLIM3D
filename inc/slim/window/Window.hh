@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 23:20:13 2015 Aracthor
+// Last Update Sun Sep 13 09:56:33 2015 Aracthor
 //
 
 #ifndef SLIM_WINDOW_WINDOW_HH_
@@ -41,7 +41,8 @@ public:
     ~Window();
 
 public:
-    void	activeFullscreen();
+    inline void	resize(unsigned int width, unsigned int height);
+    inline void	setTitle(const char* title);
 
 public:
     inline bool	shouldClose() const;

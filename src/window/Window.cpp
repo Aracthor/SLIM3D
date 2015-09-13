@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 14:02:37 2015 Aracthor
-// Last Update Sat Sep 12 23:24:36 2015 Aracthor
+// Last Update Sun Sep 13 09:57:01 2015 Aracthor
 //
 
 #include "slim/events/Coordinator.hh"
@@ -40,11 +40,6 @@ Window::Window(Parameters parameters) :
 	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
     }
 
-    if (parameters.fullscreen)
-    {
-	this->activeFullscreen();
-    }
-
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1);
 
@@ -54,13 +49,6 @@ Window::Window(Parameters parameters) :
 Window::~Window()
 {
     glfwDestroyWindow(m_window);
-}
-
-
-void
-Window::activeFullscreen()
-{
-    // TODO
 }
 
 
