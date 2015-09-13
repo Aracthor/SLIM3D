@@ -39,7 +39,7 @@ protected:
 private:
     void		init();
     void		loop();
-    bool		isRunning() const;
+    inline bool		isRunning() const;
     void		update(time::Clock::time elapsedTime);
     void		render() const;
     void		shutdown();

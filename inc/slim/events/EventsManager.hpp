@@ -1,3 +1,5 @@
+#include "slim/debug/assert.hh"
+
 namespace slim
 {
 namespace events
@@ -6,31 +8,43 @@ namespace events
 void
 EventsManager::addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
 {
+    SLIM_DEBUG_ASSERT(!m_keyPressListeners[keyCode]);
     m_keyPressListeners[keyCode] = listener;
 }
 
 void
 EventsManager::addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
 {
+    SLIM_DEBUG_ASSERT(!m_keyReleaseListeners[keyCode]);
     m_keyReleaseListeners[keyCode] = listener;
 }
 
 void
 EventsManager::addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button)
 {
+    SLIM_DEBUG_ASSERT(!m_mouseButtonPressListeners[button]);
     m_mouseButtonPressListeners[button] = listener;
 }
 
 void
 EventsManager::addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button)
 {
+    SLIM_DEBUG_ASSERT(!m_mouseButtonReleaseListeners[button]);
     m_mouseButtonReleaseListeners[button] = listener;
 }
 
 void
 EventsManager::addMouseMovementListener(IMouseListener* listener)
 {
-    m_mouseMovementListeners = listener;
+    SLIM_DEBUG_ASSERT(!m_mouseMovementListener);
+    m_mouseMovementListener = listener;
+}
+
+void
+EventsManager::addCloseListener(ICloseListener* listener)
+{
+    SLIM_DEBUG_ASSERT(!m_closeListener);
+    m_closeListener = listener;
 }
 
 bool

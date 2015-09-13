@@ -72,12 +72,6 @@ Engine::loop()
     }
 }
 
-bool
-Engine::isRunning() const
-{
-    return m_running && !m_window->shouldClose();
-}
-
 void
 Engine::update(time::Clock::time elapsedTime)
 {

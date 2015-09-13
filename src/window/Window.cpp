@@ -74,6 +74,14 @@ onMouseMovement(GLFWwindow* glfwWindow, double x, double y)
     window->getEventsManager().onMouseMovement(x, y);
 }
 
+static void
+onClose(GLFWwindow* glfwWindow)
+{
+    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
+
+    window->getEventsManager().onClose();
+}
+
 void
 Window::initEventsManager()
 {
@@ -81,6 +89,7 @@ Window::initEventsManager()
     glfwSetKeyCallback(m_window, &onKey);
     glfwSetMouseButtonCallback(m_window, &onMouseButton);
     glfwSetCursorPosCallback(m_window, &onMouseMovement);
+    glfwSetWindowCloseCallback(m_window, &onClose);
 }
 
 }
