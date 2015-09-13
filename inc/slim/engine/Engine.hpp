@@ -4,13 +4,20 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 15:04:21 2015 Aracthor
-// Last Update Sat Sep 12 18:19:08 2015 Aracthor
+// Last Update Sat Sep 12 22:16:39 2015 Aracthor
 //
 
 namespace slim
 {
 namespace engine
 {
+
+void
+Engine::stop()
+{
+    m_running = false;
+}
+
 
 unsigned int
 Engine::getGameplayFramerate() const
@@ -22,6 +29,12 @@ unsigned int
 Engine::getRenderFramerate() const
 {
     return m_renderLoop.getFramerate();
+}
+
+window::Window*
+Engine::getCurrentWindow()
+{
+    return m_window;
 }
 
 
