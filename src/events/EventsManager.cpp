@@ -4,10 +4,11 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:28 2015 Aracthor
-// Last Update Sun Sep 13 01:00:02 2015 Aracthor
+// Last Update Sun Sep 13 09:14:32 2015 Aracthor
 //
 
 #include "slim/core/attributes.h"
+#include "slim/core/templates.hh"
 #include "slim/events/EventsManager.hh"
 
 #include <cstring>
@@ -25,6 +26,14 @@ EventsManager::EventsManager()
 
 EventsManager::~EventsManager()
 {
+    this->deleteListeners(m_keyListeners, keyboard::keysNumber);
+    this->deleteListeners(m_keyPressListeners, keyboard::keysNumber);
+    this->deleteListeners(m_keyReleaseListeners, keyboard::keysNumber);
+
+    this->deleteListeners(m_mouseButtonListeners, mouse::buttonsNumber);
+    this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsNumber);
+    this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsNumber);
+    core::delete_content(m_mouseMovementListeners);
 }
 
 

@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:38 2015 Aracthor
-// Last Update Sun Sep 13 00:52:50 2015 Aracthor
+// Last Update Sun Sep 13 09:13:19 2015 Aracthor
 //
 
 namespace slim
@@ -52,6 +52,17 @@ void
 EventsManager::addMouseMovementListener(IMouseListener* listener)
 {
     m_mouseMovementListeners.push_back(listener);
+}
+
+
+template <class T>
+void
+EventsManager::deleteListeners(std::vector<T*>* listeners, unsigned int number)
+{
+    for (unsigned int i = 0; i < number; ++i)
+    {
+	core::delete_content(listeners[i]);
+    }
 }
 
 }

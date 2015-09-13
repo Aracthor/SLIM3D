@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 20:19:08 2015 Aracthor
-// Last Update Sun Sep 13 00:58:41 2015 Aracthor
+// Last Update Sun Sep 13 09:14:46 2015 Aracthor
 //
 
 #ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
@@ -46,6 +46,10 @@ public:
 
 public:
     void	manage();
+
+private:
+    template <class T>
+    void	deleteListeners(std::vector<T*>* listeners, unsigned int number);
 
 private:
     maths::Vector2d			m_currentMousePosition;

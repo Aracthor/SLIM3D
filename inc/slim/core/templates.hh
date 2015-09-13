@@ -4,7 +4,7 @@
 // Made by Aracthor
 // 
 // Started on  Sat Sep 12 16:52:39 2015 Aracthor
-// Last Update Sat Sep 12 17:09:22 2015 Aracthor
+// Last Update Sun Sep 13 09:08:58 2015 Aracthor
 //
 
 #ifndef SLIM_CORE_TEMPLATES_HH_
@@ -25,10 +25,15 @@ struct data_details
 template <typename T>
 struct data_details<T*>
 {
-    static const bool isPointer = false;
+    static const bool isPointer = true;
 };
+
+template <template <class, class> class U, class T, class Allocator>
+void	delete_content(U<T*, Allocator>& container);
 
 }
 }
+
+# include "templates.hpp"
 
 #endif // !SLIM_CORE_TEMPLATES_HH_
