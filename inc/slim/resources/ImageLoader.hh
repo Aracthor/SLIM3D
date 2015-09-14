@@ -17,7 +17,7 @@ public:
 
 public:
     void	preventImageCreation();
-    void	loadImage(const char* fileName, IFormatLoader::ImageData& data);
+    bool	loadImage(const char* fileName, IFormatLoader::ImageData& data);
     void	preventImageDeletion();
 
 private:

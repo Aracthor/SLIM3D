@@ -12,17 +12,16 @@ class	Image
 {
 private:
     static ImageLoader	s_imageLoader;
-    static const Image	s_errorImage;
-    static const byte	s_errorImagePixels[4];
 
 public:
-    static const Image&	getErrorImage();
+    static Image*	getErrorImage(); // Return single white pixel.
+    static Image*	createFromFile(const char* fileName);
 
 private:
-    Image(); // Error image constructor.
+    Image(const char* name, unsigned int width, unsigned int height, byte* pixels);
+    explicit Image(const char* fileName);
 
 public:
-    explicit Image(const char* fileName);
     Image(const Image& reference);
     virtual ~Image();
 

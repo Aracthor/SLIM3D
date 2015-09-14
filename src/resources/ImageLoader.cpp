@@ -1,6 +1,6 @@
 #include "slim/resources/BMPFormatLoader.hh"
-#include "slim/resources/FileException.hh"
 #include "slim/resources/ImageLoader.hh"
+#include "slim/resources/ResourceException.hh"
 
 #include <cstring>
 
@@ -28,7 +28,7 @@ ImageLoader::preventImageCreation()
     m_counter++;
 }
 
-void
+bool
 ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
 {
     const char*		extention = this->getExtention(fileName);
@@ -36,12 +36,11 @@ ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
 
     if (!strcmp(extention, "bmp"))
     {
-	m_bmpLoader->load(fileName, file, data);
+	return m_bmpLoader->load(fileName, file, data);
     }
     else
     {
-	// TODO replace it by an error log.
-	throw ResourceException(fileName, "Cannot recognize image format.", __FILE__, __func__, __LINE__);
+	return false;
     }
 
     delete file;
@@ -78,7 +77,7 @@ ImageLoader::getExtention(const char* fileName) const
 
     if (ptr == nullptr)
     {
-	throw FileException(fileName, "Image file doesn't have any extention.", __FILE__, __func__, __LINE__);
+	throw ResourceException(fileName, "Image file doesn't have any extention.", __FILE__, __func__, __LINE__);
     }
 
     return (ptr + 1);

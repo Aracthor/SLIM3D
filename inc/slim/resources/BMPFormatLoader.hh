@@ -44,13 +44,10 @@ public:
     ~BMPFormatLoader();
 
 public:
-    void	load(const char* name, VirtualFile* file, ImageData& data) override;
-
-protected:
-    void	onError(const char* name) override;
+    bool	load(const char* name, VirtualFile* file, ImageData& data) override;
 
 private:
-    void	loadHeaders(const char* name, VirtualFile* file, Header& header, InfoHeader& infoHeader);
+    bool	loadHeaders(VirtualFile* file, Header& header, InfoHeader& infoHeader);
 };
 
 }

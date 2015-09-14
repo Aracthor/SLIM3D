@@ -97,7 +97,7 @@ Buffer<T, N>::operator<<(U n)
     }
     else
     {
-	*this << (static_cast<T>(n) + '0');
+	*this << (static_cast<T>(n) + static_cast<T>('0'));
     }
 
     return *this;

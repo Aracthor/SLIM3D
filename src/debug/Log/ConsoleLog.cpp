@@ -41,17 +41,17 @@ Log::destroy()
 void
 Log::write(const char* line, unsigned int size, unsigned int level)
 {
-    if (level <= m_fileOutputLevel)
+    if (level >= m_fileOutputLevel)
     {
 	m_file->write(line, size);
     }
-    if (level <= m_consoleOutputLevel)
+    if (level >= m_consoleOutputLevel)
     {
 	if (level >= SLIM_DEBUG_WARNING_LEVEL)
 	{
 	    std::cerr << console::bold;
 	}
-	std::cerr << line << console::nothing << std::endl;
+	std::cerr << line << console::nothing;
     }
 }
 

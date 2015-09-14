@@ -1,12 +1,3 @@
-##
-## CMakeLists.txt for SLIM3D in /home/aracthor/programs/projects/SLIM3D
-## 
-## Made by Aracthor
-## 
-## Started on  Fri Sep 11 21:09:49 2015 Aracthor
-## Last Update Sat Sep 12 21:20:08 2015 Aracthor
-##
-
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 

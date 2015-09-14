@@ -1,3 +1,4 @@
+#include "slim/debug/LogManager.hh"
 #include "slim/resources/Image.hh"
 
 #include <cstring>
@@ -10,39 +11,47 @@ namespace resources
 ImageLoader
 Image::s_imageLoader;
 
-const Image
-Image::s_errorImage = Image();
 
-const byte
-Image::s_errorImagePixels[4] = {0xFF, 0xFF, 0xFF, 0xFF};
-
-
-const Image&
+Image*
 Image::getErrorImage()
 {
-    return s_errorImage;
+    byte*	pixels = new byte[4];
+
+    pixels[0] = 0xFF;
+    pixels[1] = 0xFF;
+    pixels[2] = 0xFF;
+    pixels[3] = 0xFF;
+    return new Image("SLIM error image", 1, 1, pixels);
 }
 
 
-// Single white pixel
-Image::Image() :
-    m_name("SLIM error image"),
-    m_width(1),
-    m_height(1)
+Image::Image(const char* name, unsigned int width, unsigned int height, byte* pixels) :
+    m_name(name),
+    m_width(width),
+    m_height(height),
+    m_pixels(pixels)
 {
-    m_pixels = const_cast<byte*>(s_errorImagePixels);
 }
 
 
-Image::Image(const char* fileName)
+Image*
+Image::createFromFile(const char* fileName)
 {
     IFormatLoader::ImageData	data;
+    Image*			image;
 
     s_imageLoader.preventImageCreation();
-    s_imageLoader.loadImage(fileName, data);
-    m_width = data.width;
-    m_height = data.height;
-    m_pixels = data.pixels;
+    if (s_imageLoader.loadImage(fileName, data) == true)
+    {
+	image = new Image(fileName, data.width, data.height, data.pixels);
+    }
+    else
+    {
+	debug::LogManager::instance.resources.warning << "Couldn't load image " << fileName << debug::LogStream::endline;
+	image = Image::getErrorImage();
+    }
+
+    return image;
 }
 
 Image::Image(const Image& reference) :

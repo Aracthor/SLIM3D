@@ -23,10 +23,7 @@ public:
     virtual ~IFormatLoader() {}
 
 public:
-    virtual void	load(const char* name, VirtualFile* file, ImageData& data) = 0;
-
-protected:
-    virtual void	onError(const char* name) = 0;
+    virtual bool	load(const char* name, VirtualFile* file, ImageData& data) = 0;
 };
 
 }

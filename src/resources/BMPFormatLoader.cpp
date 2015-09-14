@@ -1,6 +1,6 @@
+#include "slim/debug/LogManager.hh"
 #include "slim/resources/BMPFormatLoader.hh"
 #include "slim/resources/FileException.hh"
-#include "slim/resources/ResourceException.hh"
 
 namespace slim
 {
@@ -16,39 +16,30 @@ BMPFormatLoader::~BMPFormatLoader()
 }
 
 
-void
+bool
 BMPFormatLoader::load(const char* name, VirtualFile* file, BMPFormatLoader::ImageData& data)
 {
     Header	header;
     InfoHeader	infoHeader;
 
-    this->loadHeaders(name, file, header, infoHeader);
-    (void)file;
+    return this->loadHeaders(file, header, infoHeader);
+    (void)name;
     (void)data;
 }
 
 
-void
-BMPFormatLoader::onError(const char* name)
-{
-    throw ResourceException(name, "Corrupted bmp file.", __FILE__, __func__, __LINE__);
-}
-
-
-void
-BMPFormatLoader::loadHeaders(const char* name, VirtualFile* file, Header& header, InfoHeader& infoHeader)
+bool
+BMPFormatLoader::loadHeaders(VirtualFile* file, Header& header, InfoHeader& infoHeader)
 {
     file->readPureData(header);
     file->readPureData(infoHeader);
 
-    if (header.magic != SLIM_RESOURCES_BMP_MAGIC)
+    if (header.magic != SLIM_RESOURCES_BMP_MAGIC || infoHeader.compression != 0)
     {
-	this->onError(name);
+	debug::LogManager::instance.resources.error << "SLIM doesn't support compressed BMP files." << debug::LogStream::endline;
+	return false;
     }
-    if (infoHeader.compression != 0)
-    {
-	throw ResourceException(name, "SLIM doesn't handle compressed BMP files.", __FILE__, __func__, __LINE__);
-    }
+    return true;
 }
 
 }
