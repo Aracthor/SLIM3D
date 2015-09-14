@@ -1,4 +1,3 @@
-#include "slim/resources/BMPFormatLoader.hh"
 #include "slim/resources/ImageLoader.hh"
 #include "slim/resources/ResourceException.hh"
 
@@ -29,21 +28,12 @@ ImageLoader::preventImageCreation()
 }
 
 bool
-ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
+ImageLoader::loadImage(const char* fileName, ImageLoader::ImageData& data)
 {
-    const char*		extention = this->getExtention(fileName);
-    VirtualFile*	file = VirtualFile::fromRealFile(fileName);
+    (void)fileName;
+    (void)data;
 
-    if (!strcmp(extention, "bmp"))
-    {
-	return m_bmpLoader->load(fileName, file, data);
-    }
-    else
-    {
-	return false;
-    }
-
-    delete file;
+    return false;
 }
 
 void
@@ -60,13 +50,11 @@ ImageLoader::preventImageDeletion()
 void
 ImageLoader::init()
 {
-    m_bmpLoader = new BMPFormatLoader();
 }
 
 void
 ImageLoader::destroy()
 {
-    delete m_bmpLoader;
 }
 
 
@@ -84,7 +72,7 @@ ImageLoader::getExtention(const char* fileName) const
 }
 
 void
-ImageLoader::giveErrorImage(IFormatLoader::ImageData& data) const
+ImageLoader::giveErrorImage(ImageLoader::ImageData& data) const
 {
     // A single white pixel.
     data.width = 1;

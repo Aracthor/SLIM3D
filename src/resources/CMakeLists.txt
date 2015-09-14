@@ -1,7 +1,6 @@
 project("SLIM3D")
 
 set(SRCS_FILES
-  BMPFormatLoader.cpp
   BufferedFile.cpp
   BufferedReadingFile.cpp
   BufferedWritingFile.cpp

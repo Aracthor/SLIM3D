@@ -1,3 +1,4 @@
+#include "slim/debug/LogManager.hh"
 #include "slim/resources/ResourceException.hh"
 
 #include <cstdio>
@@ -17,6 +18,8 @@ ResourceException::ResourceException(const char* resourceName, const char* messa
 
     snprintf(newMessage, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, "Resource %s: %s", resourceName, m_whatMessage);
     strcpy(m_whatMessage, newMessage);
+
+    debug::LogManager::instance.resources.error << "FatalError: " << m_whatMessage << debug::LogStream::endline;
 }
 
 ResourceException::~ResourceException() throw()

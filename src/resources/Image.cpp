@@ -37,7 +37,7 @@ Image::Image(const char* name, unsigned int width, unsigned int height, byte* pi
 Image*
 Image::createFromFile(const char* fileName)
 {
-    IFormatLoader::ImageData	data;
+    ImageLoader::ImageData	data;
     Image*			image;
 
     s_imageLoader.preventImageCreation();
