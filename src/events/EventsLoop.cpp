@@ -1,5 +1,5 @@
 #include "slim/core/attributes.h"
-#include "slim/engine/glfw.hh"
+#include "slim/engine/glfw.h"
 #include "slim/events/EventsLoop.hh"
 
 namespace slim

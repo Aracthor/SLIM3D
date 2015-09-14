@@ -1,7 +1,7 @@
 #ifndef SLIM_EVENTS_MOUSE_HH_
 # define SLIM_EVENTS_MOUSE_HH_
 
-# include "slim/engine/glfw.hh"
+# include "slim/engine/glfw.h"
 
 namespace slim
 {

@@ -1,7 +1,7 @@
 #ifndef SLIM_WINDOW_CURSOR_HH_
 # define SLIM_WINDOW_CURSOR_HH_
 
-# include "slim/engine/glfw.hh"
+# include "slim/engine/glfw.h"
 # include "slim/resources/Image.hh"
 
 namespace slim
