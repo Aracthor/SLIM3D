@@ -7,12 +7,18 @@ namespace resources
 
 BMPFormatLoader::BMPFormatLoader()
 {
-    // TODO
 }
 
 BMPFormatLoader::~BMPFormatLoader()
 {
-    // TODO
+}
+
+
+void
+BMPFormatLoader::load(VirtualFile* file, BMPFormatLoader::ImageData& data)
+{
+    (void)file;
+    (void)data;
 }
 
 }

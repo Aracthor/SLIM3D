@@ -13,9 +13,6 @@ class	Image
 private:
     static ImageLoader	s_imageLoader;
 
-private:
-    Image();
-
 public:
     explicit Image(const char* fileName);
     Image(const Image& reference);

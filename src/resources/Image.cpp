@@ -11,24 +11,24 @@ ImageLoader
 Image::s_imageLoader;
 
 
-Image::Image()
+Image::Image(const char* fileName)
 {
-    s_imageLoader.preventImageCreation();
-}
+    IFormatLoader::ImageData	data;
 
-Image::Image(const char* fileName) :
-    Image()
-{
-    (void)fileName;
+    s_imageLoader.preventImageCreation();
+    s_imageLoader.loadImage(fileName, data);
+    m_width = data.width;
+    m_height = data.height;
+    m_pixels = data.pixels;
 }
 
 Image::Image(const Image& reference) :
-    Image()
+    m_width(reference.getWidth()),
+    m_height(reference.getHeight())
 {
     unsigned int	pixelsNumber = m_width * m_height;
 
-    m_width = reference.getWidth();
-    m_height = reference.getHeight();
+    s_imageLoader.preventImageCreation();
     m_pixels = new byte[pixelsNumber];
     memcpy(m_pixels, reference.m_pixels, pixelsNumber);
 }

@@ -31,17 +31,20 @@ ImageLoader::preventImageCreation()
 void
 ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
 {
-    const char*	extention = this->getExtention(fileName);
+    const char*		extention = this->getExtention(fileName);
+    VirtualFile*	file = VirtualFile::fromRealFile(fileName);
 
     if (!strcmp(extention, "bmp"))
     {
-	m_bmpLoader->load(nullptr, data); // TODO
+	m_bmpLoader->load(file, data);
     }
     else
     {
 	this->giveErrorImage(data);
 	// TODO put an error in log manager
     }
+
+    delete file;
 }
 
 void
@@ -84,6 +87,7 @@ ImageLoader::getExtention(const char* fileName) const
 void
 ImageLoader::giveErrorImage(IFormatLoader::ImageData& data) const
 {
+    // A single white pixel.
     data.width = 1;
     data.height = 1;
     data.pixels = new byte[4];

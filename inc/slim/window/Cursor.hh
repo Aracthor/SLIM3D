@@ -12,11 +12,13 @@ namespace window
 class	Cursor
 {
 public:
-    Cursor(const resources::Image* image, unsigned int x = 0, unsigned int y = 0);
+    Cursor(const resources::Image* image, unsigned int xhot = 0, unsigned int yhot = 0);
     virtual ~Cursor();
 
 public:
-    const resources::Image*	getImage() const;
+    inline const resources::Image*	getImage() const;
+    inline const GLFWcursor*		getGLFWResource() const;
+    inline GLFWcursor*			getGLFWResource();
 
 protected:
     GLFWcursor*			m_cursor;

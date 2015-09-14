@@ -1,16 +1,19 @@
 project("SLIM3D")
 
 set(SRCS_FILES
+  BMPFormatLoader.cpp
   BufferedFile.cpp
   BufferedReadingFile.cpp
   BufferedWritingFile.cpp
   Directory.cpp
   File.cpp
   FileException.cpp
+  FileInfos.cpp
   Image.cpp
   ImageLoader.cpp
   UnbufferedFile.cpp
   UnbufferedReadingFile.cpp
   UnbufferedWritingFile.cpp
+  VirtualFile.cpp
   PARENT_SCOPE
   )

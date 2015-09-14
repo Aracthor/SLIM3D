@@ -15,6 +15,18 @@ Window::setTitle(const char* title)
     glfwSetWindowTitle(m_window, title);
 }
 
+void
+Window::setCursor(Cursor* cursor)
+{
+    glfwSetCursor(m_window, cursor->getGLFWResource());
+}
+
+void
+Window::resetDefaultCursor()
+{
+    glfwSetCursor(m_window, nullptr);
+}
+
 
 bool
 Window::shouldClose() const

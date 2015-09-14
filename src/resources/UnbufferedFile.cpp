@@ -1,3 +1,4 @@
+#include "slim/debug/SyscallException.hh"
 #include "slim/resources/UnbufferedFile.hh"
 
 namespace slim

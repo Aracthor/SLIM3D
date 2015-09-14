@@ -4,6 +4,7 @@
 # include "slim/engine/glfw.h"
 # include "slim/events/EventsLoop.hh"
 # include "slim/events/EventsManager.hh"
+# include "slim/window/Cursor.hh"
 
 # define SLIM_WINDOW_DEFAULT_WIDTH	1600
 # define SLIM_WINDOW_DEFAULT_HEIGHT	900
@@ -33,6 +34,8 @@ public:
 public:
     inline void	resize(unsigned int width, unsigned int height);
     inline void	setTitle(const char* title);
+    inline void	setCursor(Cursor* cursor);
+    inline void	resetDefaultCursor();
 
 public:
     inline bool	shouldClose() const;

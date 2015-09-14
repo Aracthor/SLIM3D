@@ -2,6 +2,7 @@
 # define SLIM_RESOURCES_IFORMAT_LOADER_HH_
 
 # include "slim/resources/data.hh"
+# include "slim/resources/VirtualFile.hh"
 
 namespace slim
 {
@@ -22,7 +23,7 @@ public:
     virtual ~IFormatLoader() {}
 
 public:
-    virtual void	load(const byte* fileData, ImageData& data) = 0;
+    virtual void	load(VirtualFile* file, ImageData& data) = 0;
 };
 
 }
