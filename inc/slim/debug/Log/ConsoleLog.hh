@@ -18,7 +18,7 @@ public:
     void	destroy() override;
 
 protected:
-    void	write(const char* line, unsigned int size) override;
+    void	write(const char* line, unsigned int size, unsigned int level) override;
 
 private:
     resources::IWritingFile*	m_file;

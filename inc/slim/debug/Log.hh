@@ -29,7 +29,7 @@ public:
     inline void		setFileOutputLevel(char level);
 
 public:
-    virtual void	write(const char* line, unsigned int size) = 0;
+    virtual void	write(const char* line, unsigned int size, unsigned int level) = 0;
 
 public:
     LogStream		log;

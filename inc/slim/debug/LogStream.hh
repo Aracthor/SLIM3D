@@ -6,6 +6,11 @@
 
 # define SLIM_DEBUG_ELEMENT_BUFFER_SIZE		0x200
 
+# define SLIM_DEBUG_LOG_LEVEL			0
+# define SLIM_DEBUG_INFO_LEVEL			1
+# define SLIM_DEBUG_WARNING_LEVEL		2
+# define SLIM_DEBUG_ERROR_LEVEL			3
+
 namespace slim
 {
 namespace debug

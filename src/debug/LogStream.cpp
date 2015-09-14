@@ -31,7 +31,8 @@ LogStream::operator<<(ESpecialData data)
     SLIM_DEBUG_ASSERT(data == LogStream::endline);
 
     m_buffer << SLIM_RESOURCES_ENDLINE_STR;
-    m_log->write(m_buffer.getData(), m_buffer.getSize());
+    m_buffer[m_buffer.getSize()] = '\0';
+    m_log->write(m_buffer.getData(), m_buffer.getSize(), m_level);
     this->prepareNextLine();
 
     return *this;

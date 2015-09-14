@@ -1,3 +1,6 @@
+#include <iostream>
+
+#include "slim/debug/console.hh"
 #include "slim/resources/BufferedWritingFile.hh"
 
 #include <cstring>
@@ -36,9 +39,20 @@ Log::destroy()
 
 
 void
-Log::write(const char* line, unsigned int size)
+Log::write(const char* line, unsigned int size, unsigned int level)
 {
-    m_file->write(line, size);
+    if (level <= m_fileOutputLevel)
+    {
+	m_file->write(line, size);
+    }
+    if (level <= m_consoleOutputLevel)
+    {
+	if (level >= SLIM_DEBUG_WARNING_LEVEL)
+	{
+	    std::cerr << console::bold;
+	}
+	std::cerr << line << console::nothing << std::endl;
+    }
 }
 
 }
