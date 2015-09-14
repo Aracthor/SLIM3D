@@ -28,15 +28,7 @@ public:
     void	preventImageDeletion();
 
 private:
-    void	init();
-    void	destroy();
-
-private:
-    const char*	getExtention(const char* fileName) const;
     void	giveErrorImage(ImageData& data) const;
-
-private:
-    unsigned int        m_counter = 0;
 };
 
 }

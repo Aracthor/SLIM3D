@@ -60,7 +60,6 @@ Image::Image(const Image& reference) :
 {
     unsigned int	pixelsNumber = m_width * m_height;
 
-    s_imageLoader.preventImageCreation();
     m_pixels = new byte[pixelsNumber];
     memcpy(m_pixels, reference.m_pixels, pixelsNumber);
 }
@@ -68,7 +67,6 @@ Image::Image(const Image& reference) :
 Image::~Image()
 {
     delete[] m_pixels;
-    s_imageLoader.preventImageDeletion();
 }
 
 }
