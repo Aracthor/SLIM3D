@@ -1,0 +1,144 @@
+@startuml
+
+package slim {
+
+package maths {
+
+class	lib {
+  {static} <<template T>> T sqrt(T n)
+  {static} <<template T>> T cos(T angle)
+  {static} <<template T>> T sin(T angle)
+  {static} <<template T>> T tan(T angle)
+}
+
+class	Vector2 <<typename T>> {
+  T x
+  T y
+--
+  T getNorm() const
+  T getSquaredNorm() const
+  T crossProduct(const Vector2& vector) const
+  bool equals(const Vector2& vector) const
+  void normalize()
+
+  void addTo(const Vector2& vector)
+  void subTo(const Vector2& vector)
+  void scaleTo(T scale)
+  Vector2 add(const Vector2& vector) const
+  Vector2 sub(const Vector2& vector) const
+  Vector2 scale(T scale) const
+--
+  {abstract} many operators refering to methods
+}
+
+class	Vector3 <<typename T>> {
+  T x
+  T y
+  T z
+--
+  T getNorm() const
+  T getSquaredNorm() const
+  T crossProduct(const Vector3& vector) const
+  bool equals(const Vector3& vector) const
+  void normalize()
+
+  void addTo(const Vector3& vector)
+  void subTo(const Vector3& vector)
+  void scaleTo(T scale)
+  Vector3 add(const Vector3& vector) const
+  Vector3 sub(const Vector3& vector) const
+  Vector3 vectorProduct(const Vector3& vector) const
+  Vector3 scale(T scale) const
+--
+  {abstract} many operators refering to methods
+}
+
+class	Vector4 <<typename T>> {
+  T x
+  T y
+  T z
+  T w
+--
+  T getNorm() const
+  T getSquaredNorm() const
+  T crossProduct(const Vector4& vector) const
+  bool equals(const Vector4& vector) const
+  void normalize()
+
+  void addTo(const Vector4& vector)
+  void subTo(const Vector4& vector)
+  void scaleTo(T scale)
+  Vector4 add(const Vector4& vector) const
+  Vector4 sub(const Vector4& vector) const
+  Vector4 scale(T scale) const
+--
+  {abstract} many operators refering to methods
+}
+
+class	Matrix4x4 <<typename T>> {
+  Vector4 rows[4]
+
+  void setIdentity();
+  void setAllElements(T n);
+  void transpose();
+
+  void translate(const Vector3& vector);
+  void rotateX(T angle);
+  void rotateY(T angle);
+  void rotateZ(T angle);
+  void scale(const Vector3& vector);
+
+  void perspective(T angle, T aspectRatio, T minView, T maxView);
+  void lookAt(const Vector3& position, const Vector3& target, const Vector3& up);
+}
+
+class Quaternion <<typename T>> {
+  Vector3 vector
+  T angle
+--
+  void conjugate()
+  void invert()
+  Quaternion& productTo(const Quaternion& quaternion)
+  Quaternion product(const Quaternion& quaternion) const
+  bool isNormalized() const
+  T getNorm() const
+  const Vector& asVector() const
+  Vector& asVector()
+--
+  void rotate(Vector3& vector) const
+--
+  {abstract} many operators refering to methods
+}
+
+Vector4 --* Matrix4x4
+Vector3 --* Quaternion
+
+class	Helper <<singleton>> <<typename T>> {
+  T coses[X]
+  T sines[X]
+  T tanes[X]
+
+  void init()
+  void destroy()
+
+  T getCosinus(T angle) const
+  T getSinus(T angle) const
+  T getTangeante(T angle) const
+}
+
+Helper --> lib : uses
+
+}
+
+package core {
+  class Singleton {
+    {abstract} void init()
+    {abstract} void destroy()
+  }
+}
+
+Helper -|> Singleton
+
+}
+
+@enduml
