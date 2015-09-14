@@ -1,3 +1,4 @@
+#include "slim/debug/assert.hh"
 #include "slim/resources/VirtualFile.hh"
 #include "slim/resources/BufferedReadingFile.hh"
 
@@ -45,6 +46,15 @@ VirtualFile::VirtualFile(const VirtualFile& reference) :
 VirtualFile::~VirtualFile()
 {
     delete[] m_data;
+}
+
+
+void
+VirtualFile::read(byte* buffer, unsigned int size)
+{
+    SLIM_DEBUG_ASSERT(m_index + size <= m_size);
+    memcpy(buffer, &m_data[m_index], size);
+    m_index += size;
 }
 
 }

@@ -36,12 +36,11 @@ ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
 
     if (!strcmp(extention, "bmp"))
     {
-	m_bmpLoader->load(file, data);
+	m_bmpLoader->load(fileName, file, data);
     }
     else
     {
-	this->giveErrorImage(data);
-	// TODO put an error in log manager
+	throw FileException(fileName, "Cannot recognize image format.", __FILE__, __func__, __LINE__);
     }
 
     delete file;

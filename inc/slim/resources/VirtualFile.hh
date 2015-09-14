@@ -25,7 +25,8 @@ public:
 
 public:
     template <typename T>
-    void	readPureData(T& data);
+    void		readPureData(T& data);
+    void		read(byte* buffer, unsigned int size);
 
 private:
     byte*		m_data;

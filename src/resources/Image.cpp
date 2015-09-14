@@ -10,6 +10,22 @@ namespace resources
 ImageLoader
 Image::s_imageLoader;
 
+const Image
+Image::s_errorImage = Image();
+
+const byte
+Image::s_errorImagePixels[4] = {0xFF, 0xFF, 0xFF, 0xFF};
+
+
+// Single white pixel
+Image::Image() :
+    m_name("SLIM error image"),
+    m_width(1),
+    m_height(1)
+{
+    m_pixels = const_cast<byte*>(s_errorImagePixels);
+}
+
 
 Image::Image(const char* fileName)
 {

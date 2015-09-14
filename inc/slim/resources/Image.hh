@@ -12,6 +12,11 @@ class	Image
 {
 private:
     static ImageLoader	s_imageLoader;
+    static const Image	s_errorImage;
+    static const byte	s_errorImagePixels[4];
+
+private:
+    Image(); // Error image constructor.
 
 public:
     explicit Image(const char* fileName);

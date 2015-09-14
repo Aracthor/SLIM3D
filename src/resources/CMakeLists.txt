@@ -11,6 +11,7 @@ set(SRCS_FILES
   FileInfos.cpp
   Image.cpp
   ImageLoader.cpp
+  ResourceException.cpp
   UnbufferedFile.cpp
   UnbufferedReadingFile.cpp
   UnbufferedWritingFile.cpp

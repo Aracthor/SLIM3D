@@ -5,6 +5,8 @@
 # include "slim/resources/data.hh"
 # include "slim/resources/IFormatLoader.hh"
 
+# define SLIM_RESOURCES_BMP_MAGIC	0x4D42
+
 namespace slim
 {
 namespace resources
@@ -42,7 +44,13 @@ public:
     ~BMPFormatLoader();
 
 public:
-    void	load(VirtualFile* file, ImageData& data) override;
+    void	load(const char* name, VirtualFile* file, ImageData& data) override;
+
+protected:
+    void	onError(const char* name) override;
+
+private:
+    void	loadHeaders(const char* name, VirtualFile* file, Header& header, InfoHeader& infoHeader);
 };
 
 }
