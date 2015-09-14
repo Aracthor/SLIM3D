@@ -1,7 +1,6 @@
 #include "slim/core/attributes.h"
+#include "slim/engine/glfw.hh"
 #include "slim/events/EventsLoop.hh"
-
-#include <GLFW/glfw3.h>
 
 namespace slim
 {

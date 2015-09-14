@@ -1,7 +1,7 @@
 #ifndef SLIM_EVENTS_KEYBOARD_HH_
 # define SLIM_EVENTS_KEYBOARD_HH_
 
-# include <GLFW/glfw3.h>
+# include "slim/engine/glfw.hh"
 
 namespace slim
 {

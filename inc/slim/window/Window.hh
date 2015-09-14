@@ -1,8 +1,7 @@
 #ifndef SLIM_WINDOW_WINDOW_HH_
 # define SLIM_WINDOW_WINDOW_HH_
 
-# include <GLFW/glfw3.h>
-
+# include "slim/engine/glfw.hh"
 # include "slim/events/EventsLoop.hh"
 # include "slim/events/EventsManager.hh"
 
