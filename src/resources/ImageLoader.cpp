@@ -1,7 +1,14 @@
+#include <stdexcept>
+
+#include "slim/debug/Exception.hh"
+#include "slim/debug/LogManager.hh"
 #include "slim/resources/ImageLoader.hh"
 #include "slim/resources/ResourceException.hh"
 
 #include <cstring>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
 
 namespace slim
 {
@@ -30,10 +37,35 @@ ImageLoader::preventImageCreation()
 bool
 ImageLoader::loadImage(const char* fileName, ImageLoader::ImageData& data)
 {
-    (void)fileName;
-    (void)data;
+    debug::LogManager::instance.resources.info << "Loading image file " << fileName << "..." << debug::LogStream::endline;
 
-    return false;
+    try
+    {
+	int		width, height, comp;
+	byte*		image = stbi_load(fileName, &width, &height, &comp, STBI_rgb_alpha);
+
+	if (image == nullptr)
+	{
+	    throw std::runtime_error("Couldn't load file.");
+	}
+
+	data.width = width;
+	data.height = height;
+	data.pixels = new byte[data.width * data.height * 4];
+	memcpy(data.pixels, image, data.width * data.height * 4);
+
+	stbi_image_free(image);
+    }
+
+    catch (std::exception &exception)
+    {
+	debug::LogManager::instance.resources.error << "Error parsing image " << fileName << ": " << exception.what() << debug::LogStream::endline;
+	return false;
+    }
+
+    debug::LogManager::instance.resources.info << "Image file " << fileName << " successfully loaded." << debug::LogStream::endline;
+
+    return true;
 }
 
 void

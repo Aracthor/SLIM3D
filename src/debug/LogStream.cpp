@@ -1,3 +1,4 @@
+#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 #include "slim/debug/LogStream.hh"
 #include "slim/debug/Log.hh"
@@ -26,7 +27,7 @@ LogStream::~LogStream()
 
 
 LogStream&
-LogStream::operator<<(ESpecialData data)
+LogStream::operator<<(SLIM_CORE_UNUSED ESpecialData data)
 {
     SLIM_DEBUG_ASSERT(data == LogStream::endline);
 

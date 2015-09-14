@@ -93,11 +93,12 @@ Buffer<T, N>::operator<<(U n)
     }
     if (n >= 10)
     {
-	*this << n / 10;
+	*this << (n / 10);
+	*this << (n % 10);
     }
     else
     {
-	*this << (static_cast<T>(n) + static_cast<T>('0'));
+	*this << static_cast<T>(static_cast<T>(n) + static_cast<T>('0'));
     }
 
     return *this;
