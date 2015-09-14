@@ -1,16 +1,17 @@
 #include "slim/core/system.h"
 #include "slim/debug/Log.hh"
+#include "slim/maths/lib.hh"
 
 namespace slim
 {
 namespace debug
 {
 
-const char*
-LogBase::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
-
-
 LogBase::LogBase(const char* name) :
+    log(this, name, 0),
+    info(this, name, 1),
+    warning(this, name, 2),
+    error(this, name, 3),
     m_name(name)
 {
 #ifdef _DEBUG
@@ -20,6 +21,8 @@ LogBase::LogBase(const char* name) :
     m_fileOutputLevel = 1;
     m_consoleOutputLevel = 2;
 #endif
+
+    this->manageActivations();
 }
 
 LogBase::~LogBase()
@@ -27,13 +30,15 @@ LogBase::~LogBase()
 }
 
 
-Log::Log(const char* name) :
-    LogBase(name)
+void
+LogBase::manageActivations()
 {
-}
+    unsigned int	minimumLevel = maths::lib::min(m_fileOutputLevel, m_consoleOutputLevel);
 
-Log::~Log()
-{
+    log.setActive(minimumLevel <= 0);
+    info.setActive(minimumLevel <= 1);
+    warning.setActive(minimumLevel <= 2);
+    error.setActive(minimumLevel <= 3);
 }
 
 }

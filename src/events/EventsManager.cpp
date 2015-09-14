@@ -21,9 +21,14 @@ EventsManager::~EventsManager()
 
     this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsNumber);
     this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsNumber);
-    if (m_mouseMovementListeners)
+    if (m_mouseMovementListener)
     {
-	delete m_mouseMovementListeners;
+	delete m_mouseMovementListener;
+    }
+
+    if (m_closeListener)
+    {
+	delete m_closeListener;
     }
 }
 
@@ -76,7 +81,19 @@ EventsManager::onMouseMovement(double x, double y)
 {
     m_currentMousePosition.x = x;
     m_currentMousePosition.y = y;
-    m_mouseMovementListeners->onEvent(m_currentMousePosition);
+    if (m_mouseMovementListener)
+    {
+	m_mouseMovementListener->onEvent(m_currentMousePosition);
+    }
+}
+
+void
+EventsManager::onClose()
+{
+    if (m_closeListener)
+    {
+	m_closeListener->onEvent();
+    }
 }
 
 }

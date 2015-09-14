@@ -1,8 +1,7 @@
+#include "slim/debug/LogManager.hh"
 #include "slim/window/GLFWException.hh"
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/Window.hh"
-
-#include <iostream> // DEBUG
 
 namespace slim
 {
@@ -30,6 +29,7 @@ Window::Window(Parameters parameters) :
     {
 	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
     }
+    debug::LogManager::instance.graphics.info << "Window created." << debug::LogStream::endline;
 
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1);
@@ -74,6 +74,14 @@ onMouseMovement(GLFWwindow* glfwWindow, double x, double y)
     window->getEventsManager().onMouseMovement(x, y);
 }
 
+static void
+onClose(GLFWwindow* glfwWindow)
+{
+    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
+
+    window->getEventsManager().onClose();
+}
+
 void
 Window::initEventsManager()
 {
@@ -81,6 +89,7 @@ Window::initEventsManager()
     glfwSetKeyCallback(m_window, &onKey);
     glfwSetMouseButtonCallback(m_window, &onMouseButton);
     glfwSetCursorPosCallback(m_window, &onMouseMovement);
+    glfwSetWindowCloseCallback(m_window, &onClose);
 }
 
 }

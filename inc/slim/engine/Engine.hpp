@@ -41,5 +41,12 @@ Engine::setRenderFramerate(unsigned int framerate)
     m_renderLoop.setFramerate(framerate);
 }
 
+
+bool
+Engine::isRunning() const
+{
+    return m_running;
+}
+
 }
 }

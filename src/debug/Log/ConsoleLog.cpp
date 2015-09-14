@@ -1,11 +1,24 @@
+#include <iostream>
+
+#include "slim/debug/console.hh"
 #include "slim/resources/BufferedWritingFile.hh"
 
-#include <cstdio>
+#include <cstring>
 
 namespace slim
 {
 namespace debug
 {
+
+Log::Log(const char* name) :
+    LogBase(name)
+{
+}
+
+Log::~Log()
+{
+}
+
 
 void
 Log::init(resources::Directory& directory)
@@ -24,14 +37,21 @@ Log::destroy()
 }
 
 
+
 void
-Log::write(const char* message, unsigned int level)
+Log::write(const char* line, unsigned int size, unsigned int level)
 {
-    if (m_fileOutputLevel >= level)
+    if (level <= m_fileOutputLevel)
     {
-	size_t size = snprintf(m_buffer, SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE,
-			       "[%s] [%s] %s\n", m_name, s_levels[level], message);
-	m_file->write(m_buffer, size);
+	m_file->write(line, size);
+    }
+    if (level <= m_consoleOutputLevel)
+    {
+	if (level >= SLIM_DEBUG_WARNING_LEVEL)
+	{
+	    std::cerr << console::bold;
+	}
+	std::cerr << line << console::nothing << std::endl;
     }
 }
 

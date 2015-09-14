@@ -2,6 +2,7 @@
 # define SLIM_EVENTS_EVENTS_MANAGER_HH_
 
 # include "slim/containers/PresizedArray.hh"
+# include "slim/events/ICloseListener.hh"
 # include "slim/events/IKeyListener.hh"
 # include "slim/events/IMouseListener.hh"
 # include "slim/events/keyboard.hh"
@@ -22,6 +23,7 @@ public:
     void	onKeyAction(keyboard::EKeyCode keyCode, int scancode, keyboard::EAction action, int modifiers);
     void	onMouseButtonAction(mouse::EButton button, mouse::EAction action, int modifiers);
     void	onMouseMovement(double x, double y);
+    void	onClose();
 
 public:
     inline void	addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
@@ -30,6 +32,8 @@ public:
     inline void	addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseMovementListener(IMouseListener* listener);
+
+    inline void	addCloseListener(ICloseListener* listener);
 
     inline bool	isKeyPressed(keyboard::EKeyCode key) const;
     inline bool	isMouseButtonPressed(mouse::EButton button) const;
@@ -48,7 +52,9 @@ private:
     bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsNumber];
     IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsNumber];
     IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsNumber];
-    IMouseListener*	m_mouseMovementListeners;
+    IMouseListener*	m_mouseMovementListener;
+
+    ICloseListener*	m_closeListener;
 };
 
 }

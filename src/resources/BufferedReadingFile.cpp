@@ -23,17 +23,14 @@ BufferedReadingFile::~BufferedReadingFile()
 size_t
 BufferedReadingFile::read(void* buffer, size_t size)
 {
-    size_t	extracted = fread(buffer, size, 1, m_stream);
+    size_t	extracted = fread(buffer, 1, size, m_stream);
 
-    if (extracted != 1)
+    if (ferror(m_stream))
     {
-	if (ferror(m_stream))
-	{
-	    this->onError("Buffered mode, reading from");
-	}
+	this->onError("Buffered mode, reading from");
     }
 
-    return (extracted);
+    return extracted;
 }
 
 }

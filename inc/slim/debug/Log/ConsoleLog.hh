@@ -18,11 +18,11 @@ public:
     void	destroy() override;
 
 protected:
-    void	write(const char* message, unsigned int level) override;
+    void	write(const char* line, unsigned int size, unsigned int level) override;
 
 private:
     resources::IWritingFile*	m_file;
-    char			m_buffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
+    char			m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
 };
 
 }

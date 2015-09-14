@@ -13,10 +13,12 @@ Engine::Engine() :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
+    m_singletonsManager = new core::SingletonsManager();
 }
 
 Engine::~Engine()
 {
+    delete m_singletonsManager;
 }
 
 
@@ -52,7 +54,6 @@ Engine::start()
 void
 Engine::init()
 {
-    m_singletonsManager = new core::SingletonsManager();
     m_window = new window::Window(m_windowParameters);
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
@@ -70,12 +71,6 @@ Engine::loop()
     {
 	m_synchronizer.nextFrame();
     }
-}
-
-bool
-Engine::isRunning() const
-{
-    return m_running && !m_window->shouldClose();
 }
 
 void
@@ -96,10 +91,6 @@ Engine::shutdown()
     if (m_window)
     {
 	delete m_window;
-    }
-    if (m_singletonsManager)
-    {
-	delete m_singletonsManager;
     }
 }
 

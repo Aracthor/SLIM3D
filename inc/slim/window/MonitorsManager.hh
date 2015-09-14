@@ -4,9 +4,8 @@
 # include <map> // TODO implement our own.
 
 # include "slim/core/Singleton.hh"
+# include "slim/engine/glfw.h"
 # include "slim/window/Window.hh"
-
-# include <GLFW/glfw3.h>
 
 namespace slim
 {

@@ -1,4 +1,5 @@
 #include "slim/resources/File.hh"
+#include "slim/resources/FileException.hh"
 
 #include <cstdio>
 
@@ -8,7 +9,8 @@ namespace resources
 {
 
 File::File(const char* name) :
-    m_name(name)
+    m_name(name),
+    m_infos(name)
 {
 }
 
