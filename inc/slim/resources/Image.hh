@@ -15,6 +15,9 @@ private:
     static const Image	s_errorImage;
     static const byte	s_errorImagePixels[4];
 
+public:
+    static const Image&	getErrorImage();
+
 private:
     Image(); // Error image constructor.
 

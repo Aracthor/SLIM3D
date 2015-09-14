@@ -40,7 +40,8 @@ ImageLoader::loadImage(const char* fileName, IFormatLoader::ImageData& data)
     }
     else
     {
-	throw FileException(fileName, "Cannot recognize image format.", __FILE__, __func__, __LINE__);
+	// TODO replace it by an error log.
+	throw ResourceException(fileName, "Cannot recognize image format.", __FILE__, __func__, __LINE__);
     }
 
     delete file;

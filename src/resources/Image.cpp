@@ -17,6 +17,13 @@ const byte
 Image::s_errorImagePixels[4] = {0xFF, 0xFF, 0xFF, 0xFF};
 
 
+const Image&
+Image::getErrorImage()
+{
+    return s_errorImage;
+}
+
+
 // Single white pixel
 Image::Image() :
     m_name("SLIM error image"),
