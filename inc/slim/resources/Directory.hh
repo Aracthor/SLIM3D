@@ -7,10 +7,9 @@
 # include "slim/resources/UnbufferedWritingFile.hh"
 
 # include <cstring>
-# include <dirent.h>
 # include <sys/types.h>
 
-# define SLIM_RESOURCES_MAX_PATH_LENGTH	0x1000
+# define SLIM_RESOURCES_MAX_PATH_LENGTH		0x1000
 # define SLIM_RESOURCES_DIRECTORY_PERMISSIONS	0755
 
 namespace slim
@@ -37,7 +36,6 @@ private:
 private:
     char	m_path[SLIM_RESOURCES_MAX_PATH_LENGTH];
     size_t	m_pathSize;
-    DIR*	m_dir;
 };
 
 # include "Directory.hpp"

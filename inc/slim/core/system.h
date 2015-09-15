@@ -43,7 +43,7 @@
 #  endif
 
 /* Windows */
-# elif defined(__WIN32__)
+# elif defined(_WIN32) || defined(__WIN32__)
 #  undef SLIM_CORE_SYSTEM_IS_WINDOWS
 #  define SLIM_CORE_SYSTEM_IS_WINDOWS	1
 #  define SLIM_CORE_SYSTEM		SLIM_CORE_SYSTEM_WINDOWS

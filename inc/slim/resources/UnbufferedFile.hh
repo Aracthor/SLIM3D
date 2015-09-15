@@ -3,8 +3,6 @@
 
 # include "slim/resources/File.hh"
 
-# include <unistd.h>
-
 namespace slim
 {
 namespace resources
