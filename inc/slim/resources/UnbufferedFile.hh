@@ -10,12 +10,19 @@ namespace resources
 
 class	UnbufferedFile : public File
 {
+protected:
+# if SLIM_CORE_SYSTEM_IS_UNIX
+    typedef int		FileHandle;
+# else
+    typedef void*	FileHandle;
+# endif
+
 public:
     UnbufferedFile(const char* name);
     virtual ~UnbufferedFile();
 
 protected:
-    int	m_fd;
+    FileHandle	m_fd;
 };
 
 }

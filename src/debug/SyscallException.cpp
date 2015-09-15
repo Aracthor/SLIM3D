@@ -1,7 +1,7 @@
+#include "slim/core/string.h"
 #include "slim/debug/SyscallException.hh"
 
 #include <cerrno>
-#include <cstring>
 
 namespace slim
 {

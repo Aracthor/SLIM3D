@@ -53,11 +53,6 @@ endfunction(addSrcPath)
 addSrcPath(CORE_SRCS)
 addSrcPath(GRAPHICS_SRCS)
 
-add_library(slim3d-core SHARED ${CORE_SRCS})
-add_library(slim3d-graphics SHARED ${GRAPHICS_SRCS})
-target_link_libraries(slim3d-graphics slim3d-core)
-target_link_libraries(slim3d-graphics glfw3)
-
 if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" AND
     NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     foreach(source IN LISTS CORE_SRCS)
@@ -71,6 +66,11 @@ if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" AND
 	source_group("${source_path_msvc}" FILES "${source}")
     endforeach()
 endif()
+
+add_library(slim3d-core SHARED "${CORE_SRCS}")
+add_library(slim3d-graphics SHARED "${GRAPHICS_SRCS}")
+target_link_libraries(slim3d-graphics slim3d-core)
+target_link_libraries(slim3d-graphics glfw3)
 
 # TODO make link depending of plateform (currently for Linux only)
 target_link_libraries(slim3d-graphics X11)

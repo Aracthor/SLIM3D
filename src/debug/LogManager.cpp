@@ -10,8 +10,9 @@ LogManager::instance;
 
 
 LogManager::LogManager() :
-    m_logs({Log("graphics"),
-		Log("resources")}),
+    m_logs{
+    Log("graphics"),
+    Log("resources")},
     graphics(m_logs[0]),
     resources(m_logs[1])
 {

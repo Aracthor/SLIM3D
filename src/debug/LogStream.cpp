@@ -12,7 +12,7 @@ const char*
 LogStream::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
 
 
-LogStream::LogStream(LogBase* log, const char* name, unsigned int level) :
+LogStream::LogStream(Log* log, const char* name, unsigned int level) :
     m_log(log),
     m_name(name),
     m_level(level)

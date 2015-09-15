@@ -1,20 +1,8 @@
-#include "slim/debug/SyscallException.hh"
+#include "slim/core/system.h"
 #include "slim/resources/UnbufferedFile.hh"
 
-namespace slim
-{
-namespace resources
-{
-
-UnbufferedFile::UnbufferedFile(const char* name) :
-    File(name)
-{
-}
-
-UnbufferedFile::~UnbufferedFile()
-{
-    SLIM_DEBUG_SYSCALL_CALL(close(m_fd));
-}
-
-}
-}
+#if SLIM_CORE_SYSTEM_IS_UNIX
+# include "unix/UnbufferedFile.cpp"
+#else
+# include "win32/UnbufferedFile.cpp"
+#endif
