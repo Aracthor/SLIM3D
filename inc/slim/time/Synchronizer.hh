@@ -4,6 +4,7 @@
 # include "slim/containers/PresizedArray.hh"
 # include "slim/time/Clock.hh"
 # include "slim/time/Loop.hh"
+# include "slim/time/Sleeper.hh"
 
 # define SLIM_TIME_LOOPS_NUMBER	3
 
@@ -28,6 +29,7 @@ private:
 
 private:
     Clock       m_clock;
+    Sleeper	m_sleeper;
     containers::PresizedArray<Loop*, SLIM_TIME_LOOPS_NUMBER>	m_loops;
 };
 

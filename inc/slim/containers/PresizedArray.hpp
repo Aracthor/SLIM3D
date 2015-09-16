@@ -1,10 +1,9 @@
 #include <typeinfo>
 
 #include "slim/core/templates.hh"
+#include "slim/core/string.h"
 #include "slim/debug/assert.hh"
 #include "slim/debug/Exception.hh"
-
-#include <cstring>
 
 namespace slim
 {
