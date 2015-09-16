@@ -2,7 +2,10 @@
 #include <iostream> // Only to print exception error message
 
 #include "slim/core/attributes.h"
+#include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
+#include "slim/maths/Helper.hh"
+#include "slim/window/MonitorsManager.hh"
 
 namespace slim
 {
@@ -13,12 +16,13 @@ Engine::Engine() :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
-    m_singletonsManager = new core::SingletonsManager();
+    this->addModule<debug::LogManager>();
+    this->addModule<MathsHelper>();
+    this->addModule<window::MonitorsManager>();
 }
 
 Engine::~Engine()
 {
-    delete m_singletonsManager;
 }
 
 

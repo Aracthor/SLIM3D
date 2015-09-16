@@ -32,6 +32,10 @@ public:
     inline void		setGameplayFramerate(unsigned int framerate);
     inline void		setRenderFramerate(unsigned int framerate);
 
+public:
+    template <class Singleton>
+    inline void		addModule();
+
 protected:
     virtual void	onInit();
     virtual void	onUpdate(time::Clock::time elapsedTime);
@@ -48,8 +52,8 @@ protected:
     window::Window::Parameters	m_windowParameters;
 
 private:
+    core::SingletonsManager	m_singletonsManager;
     time::Synchronizer		m_synchronizer;
-    core::SingletonsManager*	m_singletonsManager = nullptr;
     window::Window*		m_window = nullptr;
     GameplayLoop		m_gameplayLoop;
     RenderLoop			m_renderLoop;
