@@ -21,7 +21,7 @@ MonitorsManager::~MonitorsManager()
 }
 
 
-static void error_callback(SLIM_CORE_UNUSED int error, const char* description)
+static void error_callback(SLIM_CORE_UNUSED(int, error), const char* description)
 {
     debug::LogManager::instance.graphics.error << description << debug::LogStream::endline;
 }

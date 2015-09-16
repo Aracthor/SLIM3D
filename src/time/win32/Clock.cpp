@@ -1,6 +1,6 @@
 #include "slim/debug/WindowsException.hh"
 
-#include <sysinfoapi.h>
+#include <Windows.h>
 
 namespace slim
 {
@@ -10,14 +10,20 @@ namespace time
 Clock::time
 Clock::getCurrentTime() const
 {
-    Clock::time	ticks = GetTickCount64();
+    LARGE_INTEGER 	time;
+    LARGE_INTEGER	frequency;
 
-    if (ticks == 0)
+    // TODO check if frequency can be stored.
+
+    if (!QueryPerformanceCounter(&time) || !QueryPerformanceFrequency(&frequency))
     {
 	debug::WindowsException::throws(__FILE__, __func__, __LINE__);
     }
 
-    return ticks;
+    time.QuadPart *= 1000000;
+    time.QuadPart /= frequency.QuadPart;
+
+    return static_cast<Clock::time>(time.QuadPart);
 }
 
 }

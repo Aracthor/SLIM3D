@@ -14,7 +14,7 @@ class	UnbufferedReadingFile : public UnbufferedFile,
 {
 public:
     UnbufferedReadingFile(const char* name);
-    virtual ~UnbufferedReadingFile();
+    virtual ~UnbufferedReadingFile() noexcept(false);
 
 public:
     size_t	read(void* buffer, size_t size);

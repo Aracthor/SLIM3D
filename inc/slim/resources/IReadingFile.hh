@@ -9,7 +9,7 @@ namespace resources
 class	IReadingFile
 {
 public:
-    virtual ~IReadingFile() {}
+    virtual ~IReadingFile() noexcept(false) {}
 
 public:
     virtual size_t	read(void* buffer, size_t size) = 0;

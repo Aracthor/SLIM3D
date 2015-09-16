@@ -19,7 +19,7 @@ UnbufferedWritingFile::UnbufferedWritingFile(const char* name) :
     }
 }
 
-UnbufferedWritingFile::~UnbufferedWritingFile()
+UnbufferedWritingFile::~UnbufferedWritingFile() noexcept(false)
 {
 }
 

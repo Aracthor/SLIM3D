@@ -5,7 +5,7 @@ namespace slim
 namespace debug
 {
 
-void
+SLIM_CORE_NORETURN void
 WindowsException::throws(const char* file, const char* func, int line)
 {
     char    buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
@@ -16,10 +16,11 @@ WindowsException::throws(const char* file, const char* func, int line)
 	GetLastError(),				    // Hey Windows: Please explain this error!
 	MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),  // Do it in the standard language
 	buffer,					    // Put the message here
-	STR_ELEMS(buffer) - 1,			    // Number of bytes to store the message
+	sizeof(buffer) - 1,			    // Number of bytes to store the message
 	nullptr);
     throw WindowsException(buffer, file, func, line);
 }
+
 
 WindowsException::WindowsException(const char* message, const char* file, const char* func, int line) :
     Exception(message, file, func, line)

@@ -9,7 +9,7 @@ namespace resources
 class	IWritingFile
 {
 public:
-    virtual ~IWritingFile() {}
+    virtual ~IWritingFile() noexcept(false) {}
 
 public:
     virtual size_t	write(const void* data, size_t size) = 0;

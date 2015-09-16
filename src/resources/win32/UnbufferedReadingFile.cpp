@@ -19,7 +19,7 @@ UnbufferedReadingFile::UnbufferedReadingFile(const char* name) :
     }
 }
 
-UnbufferedReadingFile::~UnbufferedReadingFile()
+UnbufferedReadingFile::~UnbufferedReadingFile() noexcept(false)
 {
 }
 

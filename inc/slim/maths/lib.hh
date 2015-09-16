@@ -1,6 +1,7 @@
 #ifndef SLIM_MATHS_LIB_HH_
 # define SLIM_MATHS_LIB_HH_
 
+# define _USE_MATH_DEFINES // MSC requirement for macros like M_PI
 # include <cmath>
 
 # define SLIM_MATHS_PI	M_PI

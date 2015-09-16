@@ -29,7 +29,7 @@ Engine::onInit()
 }
 
 void
-Engine::onUpdate(SLIM_CORE_UNUSED time::Clock::time elapsedTime)
+Engine::onUpdate(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     // Empty by default, should be overriden by user.
 }

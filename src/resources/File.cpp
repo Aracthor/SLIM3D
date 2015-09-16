@@ -14,7 +14,7 @@ File::File(const char* name) :
 {
 }
 
-File::~File()
+File::~File() noexcept(false)
 {
 }
 

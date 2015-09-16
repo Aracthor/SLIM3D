@@ -55,7 +55,7 @@ Directory::openDirectory()
     }
     else if (errno == ENOENT)
     {
-	SLIM_DEBUG_SYSCALL_CALL(CreateDirectory(m_path, SLIM_RESOURCES_DIRECTORY_PERMISSIONS));
+	SLIM_DEBUG_SYSCALL_CALL(CreateDirectory(m_path, nullptr));
     }
 }
 
