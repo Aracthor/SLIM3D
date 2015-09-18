@@ -47,15 +47,15 @@ Directory::~Directory()
 void
 Directory::openDirectory()
 {
-    int	accessCheck = _access_s(m_path, 00);
+    int	errno_value = _access_s(m_path, 00);
 
-    if (accessCheck == -1 && errno != ENOENT)
+    if (errno_value != 0 && errno != ENOENT)
     {
-	throw FileException(m_path, strerror(errno), __FILE__, __func__, __LINE__);
+	throw FileException(m_path, "Cannot check directory creation", __FILE__, __func__, __LINE__);
     }
-    else if (errno == ENOENT)
+    else if (errno_value == ENOENT)
     {
-	SLIM_DEBUG_SYSCALL_CALL(CreateDirectory(m_path, nullptr));
+	SLIM_DEBUG_WINDOWS_SYSCALL_CALL(CreateDirectory(m_path, nullptr));
     }
 }
 

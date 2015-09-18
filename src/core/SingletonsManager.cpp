@@ -11,7 +11,8 @@ namespace slim
 namespace core
 {
 
-SingletonsManager::SingletonsManager()
+SingletonsManager::SingletonsManager() :
+    m_inited(false)
 {
 }
 

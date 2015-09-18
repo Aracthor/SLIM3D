@@ -3,6 +3,8 @@
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/GLFWException.hh"
 
+#include <iostream> // DEBUG
+
 namespace slim
 {
 namespace window

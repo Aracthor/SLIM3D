@@ -58,6 +58,7 @@ Engine::start()
 void
 Engine::init()
 {
+    m_singletonsManager.initSingletons();
     m_window = new window::Window(m_windowParameters);
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
