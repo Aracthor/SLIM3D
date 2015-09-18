@@ -12,7 +12,7 @@ class	File
 {
 public:
     File(const char* name);
-    virtual ~File();
+    virtual ~File() noexcept(false);
 
 public:
     inline FileInfos&	getInfos() const;

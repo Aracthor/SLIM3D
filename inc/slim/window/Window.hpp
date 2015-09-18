@@ -31,7 +31,7 @@ Window::resetDefaultCursor()
 bool
 Window::shouldClose() const
 {
-    return glfwWindowShouldClose(m_window);
+    return (glfwWindowShouldClose(m_window) != 0);
 }
 
 void

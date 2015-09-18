@@ -1,8 +1,7 @@
+#include "slim/core/stdio.h"
+#include "slim/core/string.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/resources/ResourceException.hh"
-
-#include <cstdio>
-#include <cstring>
 
 namespace slim
 {

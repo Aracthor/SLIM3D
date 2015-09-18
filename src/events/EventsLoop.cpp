@@ -19,7 +19,7 @@ EventsLoop::~EventsLoop()
 
 
 void
-EventsLoop::onFrame(SLIM_CORE_UNUSED time::Clock::time elapsedTime)
+EventsLoop::onFrame(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     glfwPollEvents();
 }

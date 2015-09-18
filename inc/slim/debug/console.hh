@@ -12,26 +12,26 @@ namespace console
 {
 
 enum	EColor
-    {
-	black = 0,
-	red,
-	green,
-	yellow,
-	blue,
-	magenta,
-	cyan,
-	white
-    };
+{
+    black = 0,
+    red,
+    green,
+    yellow,
+    blue,
+    magenta,
+    cyan,
+    white
+};
 
 enum	EEffect
-    {
-	nothing = 0,
-	bold = 1,
-	subdued = 2,
-	underlined = 4,
-	highlighted = 7,
-	barred = 9
-    };
+{
+    nothing = 0,
+    bold = 1,
+    subdued = 2,
+    underlined = 4,
+    highlighted = 7,
+    barred = 9
+};
 
 }
 

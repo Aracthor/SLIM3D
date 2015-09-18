@@ -14,7 +14,7 @@ class	UnbufferedWritingFile : public UnbufferedFile,
 {
 public:
     UnbufferedWritingFile(const char* name);
-    virtual ~UnbufferedWritingFile();
+    virtual ~UnbufferedWritingFile() noexcept(false);
 
 public:
     size_t	write(const void* data, size_t size);

@@ -1,9 +1,8 @@
 #ifndef SLIM_RESOURCES_BUFFERED_FILE_HH_
 # define SLIM_RESOURCES_BUFFERED_FILE_HH_
 
-# include "slim/resources/File.hh"
-
-# include <cstdio>
+# include "slim/core/stdio.h"
+    # include "slim/resources/File.hh"
 
 namespace slim
 {

@@ -1,7 +1,4 @@
-#include "slim/debug/SyscallException.hh"
 #include "slim/time/Synchronizer.hh"
-
-#include <unistd.h>
 
 namespace slim
 {
@@ -34,7 +31,7 @@ Synchronizer::nextFrame()
     remaining = this->getMinimumRemainingTime();
     if (remaining > elapsed)
     {
-	SLIM_DEBUG_SYSCALL_CALL(usleep(remaining - elapsed));
+	m_sleeper.usleep(remaining - elapsed);
     }
 
     m_loops.forEach(&addTime, elapsed);

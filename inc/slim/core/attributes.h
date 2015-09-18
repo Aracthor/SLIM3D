@@ -2,12 +2,15 @@
 # define SLIM_CORE_ATTRIBUTES_H_
 
 # if defined(__GNUC__)
-#  define SLIM_CORE_UNUSED __attribute__ ((unused))
-#  define SLIM_CORE_PACKED __attribute__ ((packed))
+#  define SLIM_CORE_UNUSED(type, parameter)	__attribute__ ((unused)) type parameter
+#  define SLIM_CORE_PACKED(member)		__attribute__ ((packed)) member
+#  define SLIM_CORE_NOTETURN			__attribute__ ((noreturn))
+# elif defined(_MSC_VER)
+#  define SLIM_CORE_UNUSED(type, parameter)	type
+#  define SLIM_CORE_PACKED(structure)		structure // TODO
+#  define SLIM_CORE_NORETURN			__declspec(noreturn)
 # else
-#  error "Need to define attributes for this compiler."
-#  define SLIM_CORE_UNUSED
-#  define SLIM_CORE_PACKED
+#  error "Cannot recognize your compiler."
 # endif
 
 #endif /* !SLIM_CORE_ATTRIBUTES_H_ */

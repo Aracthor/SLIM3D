@@ -1,9 +1,9 @@
 #ifndef SINGLETONS_MANAGER_HH_
 # define SINGLETONS_MANAGER_HH_
 
-# include "slim/core/Singleton.hh"
+# include <vector> // TODO create our own
 
-# define SINGLETONS_NUMBER	3
+# include "slim/core/Singleton.hh"
 
 namespace slim
 {
@@ -16,13 +16,16 @@ public:
     SingletonsManager();
     ~SingletonsManager();
 
-private:
-    void	listSingletons();
+public:
+    void	addSingleton(Singleton* singleton);
+
+public:
     void	initSingletons();
     void	destroySingletons();
 
 private:
-    Singleton*	m_singletons[SINGLETONS_NUMBER];
+    bool			m_inited;
+    std::vector<Singleton*>	m_singletons;
 };
 
 }

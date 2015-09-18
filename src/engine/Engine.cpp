@@ -2,7 +2,10 @@
 #include <iostream> // Only to print exception error message
 
 #include "slim/core/attributes.h"
+#include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
+#include "slim/maths/Helper.hh"
+#include "slim/window/MonitorsManager.hh"
 
 namespace slim
 {
@@ -13,12 +16,13 @@ Engine::Engine() :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
-    m_singletonsManager = new core::SingletonsManager();
+    this->addModule<debug::LogManager>();
+    this->addModule<MathsHelper>();
+    this->addModule<window::MonitorsManager>();
 }
 
 Engine::~Engine()
 {
-    delete m_singletonsManager;
 }
 
 
@@ -29,7 +33,7 @@ Engine::onInit()
 }
 
 void
-Engine::onUpdate(SLIM_CORE_UNUSED time::Clock::time elapsedTime)
+Engine::onUpdate(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     // Empty by default, should be overriden by user.
 }
@@ -54,6 +58,7 @@ Engine::start()
 void
 Engine::init()
 {
+    m_singletonsManager.initSingletons();
     m_window = new window::Window(m_windowParameters);
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);

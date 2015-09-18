@@ -12,18 +12,19 @@ namespace mouse
 {
 
 enum	EButton
-    {
-	buttonLeft	= GLFW_MOUSE_BUTTON_LEFT,
-	buttonMiddle	= GLFW_MOUSE_BUTTON_MIDDLE,
-	buttonRight	= GLFW_MOUSE_BUTTON_RIGHT,
-	buttonsNumber
-    };
+{
+    buttonLeft	= GLFW_MOUSE_BUTTON_LEFT,
+    buttonMiddle	= GLFW_MOUSE_BUTTON_MIDDLE,
+    buttonRight	= GLFW_MOUSE_BUTTON_RIGHT,
+    buttonsNumber
+};
 
 enum	EAction
-    {
-	pressed		= GLFW_PRESS,
-	released	= GLFW_RELEASE
-    };
+{
+    pressed		= GLFW_PRESS,
+    released	= GLFW_RELEASE
+};
+
 }
 
 }

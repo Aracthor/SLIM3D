@@ -7,6 +7,7 @@
 # include "slim/time/Date.hh"
 
 # define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x100
+# define SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE	0x200
 # define SLIM_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim
@@ -14,22 +15,22 @@ namespace slim
 namespace debug
 {
 
-class	LogBase
+class	Log
 {
 public:
-    LogBase(const char* name);
-    virtual ~LogBase();
+    Log(const char* name);
+    virtual ~Log();
 
 public:
-    virtual void	init(resources::Directory& directory) = 0;
-    virtual void	destroy() = 0;
+    void	init(resources::Directory& directory);
+    void	destroy();
 
 public:
-    inline void		setConsoleOutputLevel(char level);
-    inline void		setFileOutputLevel(char level);
+    inline void	setConsoleOutputLevel(char level);
+    inline void	setFileOutputLevel(char level);
 
 public:
-    virtual void	write(const char* line, unsigned int size, unsigned int level) = 0;
+    void	write(const char* line, unsigned int size, unsigned int level);
 
 public:
     LogStream		log;
@@ -37,24 +38,20 @@ public:
     LogStream		warning;
     LogStream		error;
 
-protected:
-    const char*		m_name;
-    unsigned int	m_consoleOutputLevel;
-    unsigned int	m_fileOutputLevel;
+private:
+    void		manageActivations();
 
 private:
-    void	manageActivations();
+    const char*			m_name;
+    unsigned int		m_consoleOutputLevel;
+    unsigned int	  	m_fileOutputLevel;
+    resources::IWritingFile*	m_file;
+    char			m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
 };
 
 }
 }
 
 # include "Log.hpp"
-
-# if IS_COMPUTER(SLIM_CORE_SYSTEM)
-#  include "Log/ConsoleLog.hh"
-# else
-#  error "Log class not created for this system."
-# endif
 
 #endif // !SLIM_DEBUG_LOG_HH_

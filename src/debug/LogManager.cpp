@@ -1,5 +1,7 @@
 #include "slim/debug/LogManager.hh"
 
+#include <iostream> // DEBUG
+
 namespace slim
 {
 namespace debug
@@ -10,8 +12,9 @@ LogManager::instance;
 
 
 LogManager::LogManager() :
-    m_logs({Log("graphics"),
-		Log("resources")}),
+    m_logs{
+    Log("graphics"),
+    Log("resources")},
     graphics(m_logs[0]),
     resources(m_logs[1])
 {
@@ -28,7 +31,7 @@ LogManager::onInit()
     time::Date			now;
     char			dirName[SLIM_DEBUG_LOG_NAME_BUFFER_SIZE];
 
-    now.toFormat(dirName, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE, "%d-%m-%Y_%H:%M:%S");
+    now.toFormat(dirName, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE, "%d-%m-%Y_%H-%M-%S");
 
     resources::Directory	directory(dirName);
 
