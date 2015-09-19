@@ -37,6 +37,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
 include_directories(inc/)
 
 set(SRCS_DIR src)
+set(SAMPLES_DIR samples)
 set(TESTS_DIR tests)
 set(CORE_SRCS)
 set(GRAPHICS_SRCS)
@@ -85,6 +86,7 @@ elseif (MSVC)
   target_link_libraries(slim3d-graphics opengl32)
 endif()
 
+add_subdirectory(${SAMPLES_DIR})
 add_subdirectory(${TESTS_DIR})
 
 install (DIRECTORY inc/ DESTINATION include)

@@ -27,8 +27,9 @@ LogStream::~LogStream()
 
 
 LogStream&
-LogStream::operator<<(SLIM_CORE_UNUSED ESpecialData data)
+LogStream::operator<<(ESpecialData data)
 {
+    SLIM_CORE_USE(data);
     SLIM_DEBUG_ASSERT(data == LogStream::endline);
 
     m_buffer << SLIM_RESOURCES_ENDLINE_STR;
