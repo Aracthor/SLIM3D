@@ -39,6 +39,7 @@ public:
 protected:
     virtual void	onInit();
     virtual void	onUpdate(time::Clock::time elapsedTime);
+    virtual void	onShutdown();
 
 private:
     void		init();

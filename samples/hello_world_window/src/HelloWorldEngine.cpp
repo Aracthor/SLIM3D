@@ -3,6 +3,9 @@
 
 HelloWorldEngine::HelloWorldEngine()
 {
+    m_windowParameters.width = 800;
+    m_windowParameters.height = 600;
+    m_windowParameters.fullscreen = false;
     m_windowParameters.title = "SLIM3D samples - hello world window";
 }
 

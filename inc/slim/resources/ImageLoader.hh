@@ -23,9 +23,7 @@ public:
     ~ImageLoader();
 
 public:
-    void	preventImageCreation();
     bool	loadImage(const char* fileName, ImageData& data);
-    void	preventImageDeletion();
 
 private:
     void	giveErrorImage(ImageData& data) const;
@@ -33,7 +31,5 @@ private:
 
 }
 }
-
-# include "ImageLoader.hpp"
 
 #endif // !SLIM_RESOURCES_IMAGE_LOADER_HH_

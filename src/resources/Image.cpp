@@ -40,7 +40,6 @@ Image::createFromFile(const char* fileName)
     ImageLoader::ImageData	data;
     Image*			image;
 
-    s_imageLoader.preventImageCreation();
     if (s_imageLoader.loadImage(fileName, data) == true)
     {
 	image = new Image(fileName, data.width, data.height, data.pixels);
