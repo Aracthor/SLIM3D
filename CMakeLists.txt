@@ -32,8 +32,6 @@ else()
 endif()
 
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../bin)
-
 include_directories(inc/)
 
 set(SRCS_DIR src)
@@ -67,8 +65,12 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     endforeach()
 endif()
 
-add_library(slim3d-core "${CORE_SRCS}")
-add_library(slim3d-graphics "${GRAPHICS_SRCS}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../bin")
+
+add_library(slim3d-core ${CORE_SRCS})
+add_library(slim3d-graphics ${GRAPHICS_SRCS})
 
 target_link_libraries(slim3d-graphics slim3d-core)
 target_link_libraries(slim3d-graphics glfw3)
