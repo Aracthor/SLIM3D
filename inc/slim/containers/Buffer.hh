@@ -27,6 +27,7 @@ public:
 public:
     inline Buffer<T, N>&	operator<<(T c);
     Buffer<T, N>&		operator<<(const T* str);
+    inline Buffer<T, N>&	operator<<(T* str);
 
     // Used for numbers type (int, long etc)
     template <typename U>

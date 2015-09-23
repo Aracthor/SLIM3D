@@ -10,7 +10,7 @@ namespace resources
 {
 
 UnbufferedReadingFile::UnbufferedReadingFile(const char* name) :
-    UnbufferedFile(name)
+    ReadingFile(name)
 {
     m_fd = CreateFile(name, 0644, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (m_fd == INVALID_HANDLE_VALUE)

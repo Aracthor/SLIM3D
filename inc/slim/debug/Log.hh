@@ -45,7 +45,7 @@ private:
     const char*			m_name;
     unsigned int		m_consoleOutputLevel;
     unsigned int	  	m_fileOutputLevel;
-    resources::IWritingFile*	m_file;
+    resources::WritingFile*	m_file;
     char			m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
 };
 

@@ -10,10 +10,12 @@ set(SRCS_FILES
   FileInfos.cpp
   Image.cpp
   ImageLoader.cpp
+  ReadingFile.cpp
   ResourceException.cpp
   UnbufferedFile.cpp
   UnbufferedReadingFile.cpp
   UnbufferedWritingFile.cpp
   VirtualFile.cpp
+  WritingFile.cpp
   PARENT_SCOPE
   )

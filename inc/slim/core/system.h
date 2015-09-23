@@ -8,8 +8,8 @@
 # define SLIM_CORE_SYSTEM_ANDROID	0x10
 # define SLIM_CORE_SYSTEM_IPHONE	0x11
 
-# define IS_COMPUTER(SYSTEM)		((SYSTEM & 0xF0) == 0x00)
-# define IS_PHONE(SYSTEM)		((SYSTEM & 0xF0) == 0x10)
+# define SLIM_CORE_IS_COMPUTER(SYSTEM)	((SYSTEM & 0xF0) == 0x00)
+# define SLIM_CORE_IS_PHONE(SYSTEM)     ((SYSTEM & 0xF0) == 0x10)
 
 /* Set everything to false by default, and then change the good one. */
 # define SLIM_CORE_SYSTEM_IS_UNIX	0

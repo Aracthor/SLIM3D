@@ -9,10 +9,17 @@ namespace slim
 namespace resources
 {
 
-VirtualFile*
+VirtualFile
 VirtualFile::fromRealFile(const char* fileName)
 {
     BufferedReadingFile	file(fileName);
+
+    return VirtualFile::fromRealFile(file);
+}
+
+VirtualFile
+VirtualFile::fromRealFile(ReadingFile& file)
+{
     unsigned int	size = 0;
     byte*	        data = new byte[file.getInfos().getSize()];
     unsigned int	bufferSize;
@@ -26,7 +33,7 @@ VirtualFile::fromRealFile(const char* fileName)
     }
     while (bufferSize > 0);
 
-    return new VirtualFile(data, size);
+    return VirtualFile(data, size);
 }
 
 

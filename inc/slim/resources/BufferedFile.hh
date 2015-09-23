@@ -2,18 +2,17 @@
 # define SLIM_RESOURCES_BUFFERED_FILE_HH_
 
 # include "slim/core/stdio.h"
-    # include "slim/resources/File.hh"
 
 namespace slim
 {
 namespace resources
 {
 
-class	BufferedFile : public File
+class	BufferedFile
 {
 public:
-    BufferedFile(const char* name);
-    virtual ~BufferedFile();
+    BufferedFile();
+    virtual ~BufferedFile() noexcept(false);
 
 protected:
     FILE*	m_stream;

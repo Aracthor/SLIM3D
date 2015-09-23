@@ -6,7 +6,7 @@ namespace resources
 {
 
 BufferedReadingFile::BufferedReadingFile(const char* name) :
-    BufferedFile(name)
+    ReadingFile(name)
 {
     m_stream = fopen(name, "r");
     if (m_stream == NULL)

@@ -12,6 +12,8 @@ set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
   engine
   events
+  graphics
+  shader
   window
   )
 

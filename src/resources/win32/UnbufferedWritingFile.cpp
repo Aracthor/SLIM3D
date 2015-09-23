@@ -10,7 +10,7 @@ namespace resources
 {
 
 UnbufferedWritingFile::UnbufferedWritingFile(const char* name) :
-    UnbufferedFile(name)
+    WritingFile(name)
 {
     m_fd = CreateFile(name, 0644, FILE_SHARE_READ, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (m_fd == INVALID_HANDLE_VALUE)

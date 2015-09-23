@@ -82,6 +82,13 @@ Buffer<T, N>::operator<<(const T* str)
 }
 
 template <typename T, unsigned int N>
+Buffer<T, N>&
+Buffer<T, N>::operator<<(T* str)
+{
+    return (*this << const_cast<const T*>(str));
+}
+
+template <typename T, unsigned int N>
 template <typename U>
 Buffer<T, N>&
 Buffer<T, N>::operator<<(U n)

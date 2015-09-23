@@ -1,20 +1,20 @@
 #include "slim/resources/BufferedFile.hh"
+#include "slim/debug/Exception.hh"
 
 namespace slim
 {
 namespace resources
 {
 
-BufferedFile::BufferedFile(const char* name) :
-    File(name)
+BufferedFile::BufferedFile()
 {
 }
 
-BufferedFile::~BufferedFile()
+BufferedFile::~BufferedFile() noexcept(false)
 {
     if (fclose(m_stream) != 0)
     {
-	this->onError("Cannot close file");
+	throw debug::Exception("Cannot close buffered file.", __FILE__, __func__, __LINE__);
     }
 }
 

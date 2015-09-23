@@ -7,8 +7,7 @@ namespace slim
 namespace resources
 {
 
-UnbufferedFile::UnbufferedFile(const char* name) :
-    File(name)
+UnbufferedFile::UnbufferedFile()
 {
 }
 

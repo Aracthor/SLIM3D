@@ -7,6 +7,12 @@ namespace slim
 namespace resources
 {
 
+const byte*
+VirtualFile::getData() const
+{
+    return m_data;
+}
+
 unsigned int
 VirtualFile::getSize() const
 {

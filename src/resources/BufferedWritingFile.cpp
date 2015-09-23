@@ -7,7 +7,7 @@ namespace resources
 {
 
 BufferedWritingFile::BufferedWritingFile(const char* name) :
-    BufferedFile(name)
+    WritingFile(name)
 {
     m_stream = fopen(name, "w");
     if (m_stream == NULL)

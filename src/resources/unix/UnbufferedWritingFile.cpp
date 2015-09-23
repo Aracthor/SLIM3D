@@ -9,7 +9,7 @@ namespace resources
 {
 
 UnbufferedWritingFile::UnbufferedWritingFile(const char* name) :
-    UnbufferedFile(name)
+    WritingFile(name)
 {
     m_fd = open(name, O_RDONLY);
     if (m_fd == -1)

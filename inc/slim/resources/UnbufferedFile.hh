@@ -2,14 +2,13 @@
 # define SLIM_RESOURCES_UNBUFFERED_FILE_HH_
 
 # include "slim/core/system.h"
-# include "slim/resources/File.hh"
 
 namespace slim
 {
 namespace resources
 {
 
-class	UnbufferedFile : public File
+class	UnbufferedFile
 {
 protected:
 # if SLIM_CORE_SYSTEM_IS_UNIX
@@ -21,7 +20,7 @@ protected:
 # endif
 
 public:
-    UnbufferedFile(const char* name);
+    UnbufferedFile();
     virtual ~UnbufferedFile() noexcept(false);
 
 protected:

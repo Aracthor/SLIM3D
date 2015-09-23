@@ -9,7 +9,7 @@ namespace resources
 {
 
 UnbufferedReadingFile::UnbufferedReadingFile(const char* name) :
-    UnbufferedFile(name)
+    ReadingFile(name)
 {
     m_fd = open(name, O_RDONLY);
     if (m_fd == -1)
