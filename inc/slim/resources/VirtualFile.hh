@@ -23,13 +23,15 @@ public:
     virtual ~VirtualFile();
 
 public:
-    inline const byte*	getData() const;
-    inline unsigned int	getSize() const;
+    void	toBuffer(char* buffer, unsigned int size) const;
 
 public:
     template <typename T>
     void		readPureData(T& data);
     void		read(byte* buffer, unsigned int size);
+
+public:
+    inline unsigned int	getSize() const;
 
 private:
     byte*		m_data;

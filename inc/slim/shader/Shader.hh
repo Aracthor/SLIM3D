@@ -6,6 +6,8 @@
 
 # include "slim/graphics/gl.h"
 
+# define SLIM_SHADER_FILE_BUFFER_SIZE	0x10000
+
 namespace slim
 {
 namespace shader

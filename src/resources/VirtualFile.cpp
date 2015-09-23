@@ -1,3 +1,4 @@
+#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 #include "slim/resources/VirtualFile.hh"
 #include "slim/resources/BufferedReadingFile.hh"
@@ -53,6 +54,16 @@ VirtualFile::VirtualFile(const VirtualFile& reference) :
 VirtualFile::~VirtualFile()
 {
     delete[] m_data;
+}
+
+
+void
+VirtualFile::toBuffer(char* buffer, unsigned int size) const
+{
+    SLIM_CORE_USE(size);
+    SLIM_DEBUG_ASSERT(size > m_size);
+    memcpy(buffer, m_data, m_size);
+    buffer[m_size] = '\0';
 }
 
 

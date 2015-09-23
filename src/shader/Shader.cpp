@@ -44,7 +44,10 @@ Shader::readFromFile(resources::ReadingFile& file)
 void
 Shader::readFromFile(const resources::VirtualFile& file)
 {
-    this->readFromData(reinterpret_cast<const char*>(file.getData()));
+    char	buffer[SLIM_SHADER_FILE_BUFFER_SIZE];
+
+    file.toBuffer(buffer, SLIM_SHADER_FILE_BUFFER_SIZE);
+    this->readFromData(buffer);
 }
 
 void
