@@ -3,6 +3,7 @@
 
 #include <cerrno>
 #include <sys/stat.h>
+#include <unistd.h>
 
 namespace slim
 {
