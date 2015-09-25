@@ -1,3 +1,4 @@
+#include "slim/debug/SyscallException.hh"
 #include "slim/resources/BufferedReadingFile.hh"
 
 namespace slim
@@ -8,11 +9,7 @@ namespace resources
 BufferedReadingFile::BufferedReadingFile(const char* name) :
     ReadingFile(name)
 {
-    m_stream = fopen(name, "r");
-    if (m_stream == NULL)
-    {
-	this->onError("Buffered mode, cannot open file");
-    }
+    SLIM_DEBUG_SYSCALL_CALL_PTR(m_stream = fopen(name, "r"));
 }
 
 BufferedReadingFile::~BufferedReadingFile()

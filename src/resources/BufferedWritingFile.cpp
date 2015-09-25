@@ -1,5 +1,5 @@
+#include "slim/debug/SyscallException.hh"
 #include "slim/resources/BufferedWritingFile.hh"
-#include <iostream>
 
 namespace slim
 {
@@ -9,11 +9,7 @@ namespace resources
 BufferedWritingFile::BufferedWritingFile(const char* name) :
     WritingFile(name)
 {
-    m_stream = fopen(name, "w");
-    if (m_stream == NULL)
-    {
-	this->onError("Buffered mode, cannot open file");
-    }
+    SLIM_DEBUG_SYSCALL_CALL_PTR(m_stream = fopen(name, "w"))
 }
 
 BufferedWritingFile::~BufferedWritingFile()
