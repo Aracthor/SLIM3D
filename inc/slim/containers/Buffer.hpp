@@ -26,6 +26,16 @@ Buffer<T, N>::clear()
 
 
 template <typename T, unsigned int N>
+void
+Buffer<T, N>::resetToSize(unsigned int size)
+{
+    SLIM_DEBUG_ASSERT(size <= m_size);
+    m_size = size;
+    m_data[m_size] = '\0';
+}
+
+
+template <typename T, unsigned int N>
 unsigned int
 Buffer<T, N>::getSize() const
 {

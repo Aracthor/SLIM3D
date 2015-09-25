@@ -10,6 +10,7 @@ set(SRCS_FILES
   FileInfos.cpp
   Image.cpp
   ImageLoader.cpp
+  Manager.cpp
   ReadingFile.cpp
   ResourceException.cpp
   UnbufferedFile.cpp

@@ -15,6 +15,7 @@ public:
 
 public:
     inline void	clear();
+    void	resetToSize(unsigned int size);
 
 public:
     inline unsigned int	getSize() const;
