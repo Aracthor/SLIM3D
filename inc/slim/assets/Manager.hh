@@ -1,6 +1,10 @@
 #ifndef SLIM_ASSETS_MANAGER_HH_
 # define SLIM_ASSETS_MANAGER_HH_
 
+# include <map>
+# include <vector>
+
+# include "slim/assets/Asset.hh"
 # include "slim/core/Singleton.hh"
 
 # define SLIM_ASSETS_FOLDER	"assets"
@@ -23,6 +27,9 @@ public:
     void	onInit() override;
     void	onDestroy() override;
     inline void	setExecutablePath(const char* path);
+
+public:
+    void	addToLoadList(Asset* asset);
 
 private:
     const char*	m_path = nullptr;

@@ -5,15 +5,18 @@
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
+#include "slim/io/macros.h"
 #include "slim/maths/Helper.hh"
 #include "slim/window/MonitorsManager.hh"
+
+#include <cstring>
 
 namespace slim
 {
 namespace engine
 {
 
-Engine::Engine() :
+Engine::Engine(int argc, char** argv) :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
@@ -21,12 +24,33 @@ Engine::Engine() :
     this->addModule<MathsHelper>();
     this->addModule<assets::Manager>();
     this->addModule<window::MonitorsManager>();
+
+    this->parseCommandLine(argc, argv);
 }
 
 Engine::~Engine()
 {
 }
 
+
+void
+Engine::parseCommandLine(int argc, char** argv)
+{
+    char*	path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
+
+    if (path == nullptr)
+    {
+	assets::Manager::instance.setExecutablePath("");
+    }
+    else
+    {
+	*path = '\0';
+	assets::Manager::instance.setExecutablePath(argv[0]);
+    }
+
+    SLIM_CORE_USE(argc);
+    // TODO parse command line for real.
+}
 
 void
 Engine::onInit()

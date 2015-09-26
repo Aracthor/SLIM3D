@@ -1,7 +1,8 @@
 #include "CloseListener.hh"
 #include "CursorImageEngine.hh"
 
-CursorImageEngine::CursorImageEngine()
+CursorImageEngine::CursorImageEngine(int argc, char** argv) :
+    slim::engine::Engine(argc, argv)
 {
     m_windowParameters.width = 800;
     m_windowParameters.height = 600;

@@ -1,8 +1,8 @@
 #include "HelloWorldEngine.hh"
 
-int	main()
+int	main(int argc, char** argv)
 {
-    HelloWorldEngine	engine;
+    HelloWorldEngine	engine(argc, argv);
 
     engine.start();
 

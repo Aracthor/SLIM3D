@@ -4,7 +4,8 @@
 
 #include "HelloWorldShader.hh"
 
-HelloWorldShader::HelloWorldShader()
+HelloWorldShader::HelloWorldShader(int argc, char** argv) :
+    slim::engine::Engine(argc, argv)
 {
     m_windowParameters.width = 800;
     m_windowParameters.height = 600;
