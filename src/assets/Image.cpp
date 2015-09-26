@@ -1,60 +1,40 @@
+#include <stdexcept>
+
 #include "slim/debug/LogManager.hh"
+#include "slim/assets/data.hh"
 #include "slim/assets/Image.hh"
 
-#include <cstring>
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
 
 namespace slim
 {
 namespace assets
 {
 
-ImageLoader
-Image::s_imageLoader;
-
-
 Image*
 Image::getErrorImage()
 {
+    Image*	image = new Image("SLIM error image");
     byte*	pixels = new byte[4];
 
     pixels[0] = 0xFF;
     pixels[1] = 0xFF;
     pixels[2] = 0xFF;
     pixels[3] = 0xFF;
-    return new Image("SLIM error image", 1, 1, pixels);
-}
-
-
-Image*
-Image::createFromFile(const char* fileName)
-{
-    ImageLoader::ImageData	data;
-    Image*			image;
-
-    if (s_imageLoader.loadImage(fileName, data) == true)
-    {
-	image = new Image(fileName, data.width, data.height, data.pixels);
-    }
-    else
-    {
-	debug::LogManager::instance.assets.warning << "Couldn't load image " << fileName << debug::LogStream::endline;
-	image = Image::getErrorImage();
-    }
+    image->setData(1, 1, pixels);
 
     return image;
 }
 
-Image::Image(const char* name, unsigned int width, unsigned int height, byte* pixels) :
-    Asset(SLIM_ASSETS_IMAGE_ASSET_TYPE, name),
-    m_width(width),
-    m_height(height),
-    m_pixels(pixels)
+
+Image::Image(const char* name) :
+    SingleFileAsset(SLIM_ASSETS_IMAGE_ASSET_TYPE, name, name)
 {
 }
 
-
 Image::Image(const Image& reference) :
-    Asset(reference),
+    SingleFileAsset(reference),
     m_width(reference.getWidth()),
     m_height(reference.getHeight())
 {
@@ -66,7 +46,54 @@ Image::Image(const Image& reference) :
 
 Image::~Image()
 {
+}
+
+
+bool
+Image::loadFromFile(const char* const path)
+{
+    try
+    {
+	int		width, height, comp;
+	unsigned int	pixelsNumber;
+	byte*		image = stbi_load(path, &width, &height, &comp, STBI_rgb_alpha);
+
+	if (image == nullptr)
+	{
+	    throw std::runtime_error("Couldn't load file.");
+	}
+
+	m_width = width;
+	m_height = height;
+	pixelsNumber = m_width * m_height;
+	m_pixels = new byte[pixelsNumber];
+	memcpy(m_pixels, image, pixelsNumber);
+
+	stbi_image_free(image);
+    }
+
+    catch (std::exception &exception)
+    {
+	debug::LogManager::instance.assets.error << "Error parsing image " << path << ": " << exception.what() << debug::LogStream::endline;
+	return false;
+    }
+
+    return true;
+}
+
+void
+Image::unloadData()
+{
     delete[] m_pixels;
+}
+
+
+void
+Image::setData(unsigned int width, unsigned int height, byte* pixels)
+{
+    m_width = width;
+    m_height = height;
+    m_pixels = pixels;
 }
 
 }

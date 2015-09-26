@@ -2,7 +2,8 @@
 # define SLIM_ASSETS_IMAGE_HH_
 
 # include "slim/assets/Asset.hh"
-# include "slim/assets/ImageLoader.hh"
+# include "slim/assets/data.hh"
+# include "slim/assets/SingleFileAsset.hh"
 
 # define SLIM_ASSETS_IMAGE_ASSET_TYPE	"image"
 
@@ -11,20 +12,13 @@ namespace slim
 namespace assets
 {
 
-class	Image : public Asset
+class			Image : public SingleFileAsset
 {
-private:
-    static ImageLoader	s_imageLoader;
-
 public:
     static Image*	getErrorImage(); // Return single white pixel.
-    static Image*	createFromFile(const char* fileName);
-
-private:
-    Image(const char* name, unsigned int width, unsigned int height, byte* pixels);
-    explicit Image(const char* fileName);
 
 public:
+    explicit Image(const char* const name);
     Image(const Image& reference);
     virtual ~Image();
 
@@ -32,6 +26,13 @@ public:
     inline unsigned int	getWidth() const;
     inline unsigned int	getHeight() const;
     inline const byte*	getPixels() const;
+
+protected:
+    bool	loadFromFile(const char* const path) override;
+    void	unloadData() override;
+
+private:
+    void	setData(unsigned int width, unsigned int height, byte* pixels);
 
 protected:
     unsigned int	m_width;

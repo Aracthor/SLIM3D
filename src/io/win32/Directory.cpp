@@ -1,6 +1,6 @@
 #include "slim/debug/WindowsException.hh"
 #include "slim/io/FileException.hh"
-#include "slim/io/maccros.h"
+#include "slim/io/macros.h"
 
 #include <cerrno>
 #include <io.h>

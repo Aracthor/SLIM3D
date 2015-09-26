@@ -4,7 +4,7 @@ set(SRCS_FILES
   Asset.cpp
   Exception.cpp
   Image.cpp
-  ImageLoader.cpp
   Manager.cpp
+  SingleFileAsset.cpp
   PARENT_SCOPE
   )

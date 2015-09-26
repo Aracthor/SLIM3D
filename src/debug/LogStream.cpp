@@ -2,7 +2,7 @@
 #include "slim/debug/assert.hh"
 #include "slim/debug/LogStream.hh"
 #include "slim/debug/Log.hh"
-#include "slim/io/maccros.h"
+#include "slim/io/macros.h"
 
 namespace slim
 {
