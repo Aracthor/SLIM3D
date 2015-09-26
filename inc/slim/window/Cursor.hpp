@@ -3,7 +3,7 @@ namespace slim
 namespace window
 {
 
-const resources::Image*
+const assets::Image*
 Cursor::getImage() const
 {
     return m_image;

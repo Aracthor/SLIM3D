@@ -1,6 +1,7 @@
 #include <exception>
 #include <iostream> // Only to print exception error message
 
+#include "slim/assets/Manager.hh"
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
@@ -18,6 +19,7 @@ Engine::Engine() :
 {
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
+    this->addModule<assets::Manager>();
     this->addModule<window::MonitorsManager>();
 }
 

@@ -13,10 +13,10 @@ LogManager::instance;
 
 LogManager::LogManager() :
     m_logs{
-    Log("graphics"),
-    Log("resources")},
-    graphics(m_logs[0]),
-    resources(m_logs[1])
+    Log("assets"),
+    Log("graphics")},
+    assets(m_logs[0]),
+    graphics(m_logs[1])
 {
 }
 
@@ -33,7 +33,7 @@ LogManager::onInit()
 
     now.toFormat(dirName, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE, "%d-%m-%Y_%H-%M-%S");
 
-    resources::Directory	directory(dirName);
+    io::Directory	directory(dirName);
 
     for (Log& log : m_logs)
     {

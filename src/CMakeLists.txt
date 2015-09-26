@@ -2,9 +2,10 @@ project("SLIM3D")
 
 set(CORE_SRCS)
 set(CORE_DIRECTORIES
+  assets
   core
   debug
-  resources
+  io
   time
   )
 

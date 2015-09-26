@@ -28,8 +28,8 @@ private:
     Log		m_logs[SLIM_DEBUG_LOGS_NUMBER];
 
 public:
+    Log&	assets;
     Log&	graphics;
-    Log&	resources;
 };
 
 }

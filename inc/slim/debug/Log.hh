@@ -3,7 +3,7 @@
 
 # include "slim/core/system.h"
 # include "slim/debug/LogStream.hh"
-# include "slim/resources/Directory.hh"
+# include "slim/io/Directory.hh"
 # include "slim/time/Date.hh"
 
 # define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x100
@@ -22,7 +22,7 @@ public:
     virtual ~Log();
 
 public:
-    void	init(resources::Directory& directory);
+    void	init(io::Directory& directory);
     void	destroy();
 
 public:
@@ -45,7 +45,7 @@ private:
     const char*			m_name;
     unsigned int		m_consoleOutputLevel;
     unsigned int	  	m_fileOutputLevel;
-    resources::WritingFile*	m_file;
+    io::WritingFile*	m_file;
     char			m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
 };
 

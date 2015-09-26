@@ -17,7 +17,7 @@ CursorImageEngine::~CursorImageEngine()
 void
 CursorImageEngine::onInit()
 {
-    m_image = slim::resources::Image::createFromFile("../../samples/resources/textures/cursor.png");
+    m_image = slim::assets::Image::createFromFile("../../samples/assets/textures/cursor.png");
     m_cursor = new slim::window::Cursor(m_image);
     this->getCurrentWindow()->setCursor(m_cursor);
 

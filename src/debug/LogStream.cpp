@@ -2,7 +2,7 @@
 #include "slim/debug/assert.hh"
 #include "slim/debug/LogStream.hh"
 #include "slim/debug/Log.hh"
-#include "slim/resources/maccros.h"
+#include "slim/io/maccros.h"
 
 namespace slim
 {
@@ -32,7 +32,7 @@ LogStream::operator<<(ESpecialData data)
     SLIM_CORE_USE(data);
     SLIM_DEBUG_ASSERT(data == LogStream::endline);
 
-    m_buffer << SLIM_RESOURCES_ENDLINE_STR;
+    m_buffer << SLIM_IO_ENDLINE_STR;
     m_buffer[m_buffer.getSize()] = '\0';
     m_log->write(m_buffer.getData(), m_buffer.getSize(), m_level);
     this->prepareNextLine();

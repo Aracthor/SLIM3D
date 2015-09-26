@@ -1,8 +1,8 @@
 #ifndef SLIM_SHADER_SHADER_HH_
 # define SLIM_SHADER_SHADER_HH_
 
-# include "slim/resources/ReadingFile.hh"
-# include "slim/resources/VirtualFile.hh"
+# include "slim/io/ReadingFile.hh"
+# include "slim/io/VirtualFile.hh"
 
 # include "slim/graphics/gl.h"
 
@@ -23,8 +23,8 @@ public:
     };
 
 public:
-    Shader(EType type, resources::ReadingFile& file);
-    Shader(const char* name, EType type, resources::VirtualFile& file);
+    Shader(EType type, io::ReadingFile& file);
+    Shader(const char* name, EType type, io::VirtualFile& file);
     Shader(const char* name, EType type, const char* data);
     ~Shader();
 
@@ -34,8 +34,8 @@ public:
     inline GLuint	getId() const;
 
 private:
-    void	readFromFile(resources::ReadingFile& file);
-    void	readFromFile(const resources::VirtualFile& file);
+    void	readFromFile(io::ReadingFile& file);
+    void	readFromFile(const io::VirtualFile& file);
     void	readFromData(const char* data);
 
 private:

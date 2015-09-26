@@ -6,7 +6,7 @@ namespace slim
 namespace window
 {
 
-Cursor::Cursor(const resources::Image* image, unsigned int xhot, unsigned int yhot) :
+Cursor::Cursor(const assets::Image* image, unsigned int xhot, unsigned int yhot) :
     m_image(image)
 {
     GLFWimage	glfwImage;

@@ -3,7 +3,7 @@
 
 #include "slim/engine/Engine.hh"
 
-class HelloWorldShader : public slim::engine::Engine
+class	HelloWorldShader : public slim::engine::Engine
 {
 public:
     HelloWorldShader();
