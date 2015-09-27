@@ -2,9 +2,10 @@ project("SLIM3D")
 
 set(CORE_SRCS)
 set(CORE_DIRECTORIES
+  assets
   core
   debug
-  resources
+  io
   time
   )
 
@@ -12,6 +13,8 @@ set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
   engine
   events
+  graphics
+  shader
   window
   )
 

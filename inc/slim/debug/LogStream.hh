@@ -16,7 +16,7 @@ namespace slim
 namespace debug
 {
 
-class	LogBase;
+class	Log;
 
 class	LogStream
 {
@@ -27,7 +27,7 @@ private:
     static const char*	s_levels[4];
 
 public:
-    LogStream(LogBase* log, const char* name, unsigned int level);
+    LogStream(Log* log, const char* name, unsigned int level);
     ~LogStream();
 
 public:
@@ -42,7 +42,7 @@ private:
     void	prepareNextLine();
 
 private:
-    LogBase*		m_log;
+    Log*		m_log;
     const char*		m_name;
     unsigned int	m_level;
     bool	        m_active;

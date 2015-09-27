@@ -1,7 +1,8 @@
+#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 #include "slim/debug/LogStream.hh"
 #include "slim/debug/Log.hh"
-#include "slim/resources/maccros.h"
+#include "slim/io/macros.h"
 
 namespace slim
 {
@@ -9,10 +10,10 @@ namespace debug
 {
 
 const char*
-LogStream::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
+LogStream::s_levels[4] = {"LOG", "INFO", "WARN", "ERROR"};
 
 
-LogStream::LogStream(LogBase* log, const char* name, unsigned int level) :
+LogStream::LogStream(Log* log, const char* name, unsigned int level) :
     m_log(log),
     m_name(name),
     m_level(level)
@@ -28,9 +29,10 @@ LogStream::~LogStream()
 LogStream&
 LogStream::operator<<(ESpecialData data)
 {
+    SLIM_CORE_USE(data);
     SLIM_DEBUG_ASSERT(data == LogStream::endline);
 
-    m_buffer << SLIM_RESOURCES_ENDLINE_STR;
+    m_buffer << SLIM_IO_ENDLINE_STR;
     m_buffer[m_buffer.getSize()] = '\0';
     m_log->write(m_buffer.getData(), m_buffer.getSize(), m_level);
     this->prepareNextLine();
@@ -43,7 +45,7 @@ void
 LogStream::prepareNextLine()
 {
     m_buffer.clear();
-    m_buffer << '[' << m_name << "] [" << s_levels[m_level] << "] ";
+    m_buffer << '[' << m_name << "]\t[" << s_levels[m_level] << "]\t";
 }
 
 }

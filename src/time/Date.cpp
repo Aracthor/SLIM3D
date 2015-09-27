@@ -1,6 +1,11 @@
 #include "slim/debug/SyscallException.hh"
 #include "slim/time/Date.hh"
 
+// Disable warnings for localtime and gmtime use from Visual Studio
+# ifdef _MSC_VER
+#  pragma warning(disable: 4996)
+# endif // _MSC_VER
+
 namespace slim
 {
 namespace time

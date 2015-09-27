@@ -8,8 +8,8 @@
 # define SLIM_CORE_SYSTEM_ANDROID	0x10
 # define SLIM_CORE_SYSTEM_IPHONE	0x11
 
-# define IS_COMPUTER(SYSTEM)		((SYSTEM & 0xF0) == 0x00)
-# define IS_PHONE(SYSTEM)		((SYSTEM & 0xF0) == 0x10)
+# define SLIM_CORE_IS_COMPUTER(SYSTEM)	((SYSTEM & 0xF0) == 0x00)
+# define SLIM_CORE_IS_PHONE(SYSTEM)     ((SYSTEM & 0xF0) == 0x10)
 
 /* Set everything to false by default, and then change the good one. */
 # define SLIM_CORE_SYSTEM_IS_UNIX	0
@@ -43,7 +43,7 @@
 #  endif
 
 /* Windows */
-# elif defined(__WIN32__)
+# elif defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__)
 #  undef SLIM_CORE_SYSTEM_IS_WINDOWS
 #  define SLIM_CORE_SYSTEM_IS_WINDOWS	1
 #  define SLIM_CORE_SYSTEM		SLIM_CORE_SYSTEM_WINDOWS

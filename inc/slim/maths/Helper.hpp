@@ -27,7 +27,7 @@ Helper<T>::onInit()
 
     for (unsigned int i = 0; i < SLIM_MATHS_HELPER_PRECALC_NUMBER; i++)
     {
-	angle = SLIM_MATHS_PI * 2 * static_cast<float>(i) / static_cast<float>(SLIM_MATHS_HELPER_PRECALC_NUMBER);
+	angle = static_cast<T>(SLIM_MATHS_PI) * static_cast<T>(2.0) * static_cast<T>(i) / static_cast<T>(SLIM_MATHS_HELPER_PRECALC_NUMBER);
 	m_coses[i] = lib::cos(angle);
 	m_sines[i] = lib::sin(angle);
 	m_tanes[i] = lib::tan(angle);

@@ -1,3 +1,5 @@
+#include "slim/debug/assert.hh"
+
 namespace slim
 {
 namespace window
@@ -18,6 +20,7 @@ Window::setTitle(const char* title)
 void
 Window::setCursor(Cursor* cursor)
 {
+    SLIM_DEBUG_ASSERT(cursor->isReady());
     glfwSetCursor(m_window, cursor->getGLFWResource());
 }
 
@@ -31,7 +34,7 @@ Window::resetDefaultCursor()
 bool
 Window::shouldClose() const
 {
-    return glfwWindowShouldClose(m_window);
+    return (glfwWindowShouldClose(m_window) != 0);
 }
 
 void

@@ -1,7 +1,5 @@
-#include "slim/debug/SyscallException.hh"
+#include "slim/core/system.h"
 #include "slim/time/Clock.hh"
-
-#include <sys/time.h>
 
 namespace slim
 {
@@ -42,16 +40,11 @@ Clock::reset()
     return (elapsed);
 }
 
-
-Clock::time
-Clock::getCurrentTime() const
-{
-    struct timeval	tv;
-
-    SLIM_DEBUG_SYSCALL_CALL(gettimeofday(&tv, nullptr));
-
-    return (tv.tv_usec + tv.tv_sec * 1000000);
-}
-
 }
 }
+
+#if SLIM_CORE_SYSTEM_IS_UNIX
+# include "unix/Clock.cpp"
+#else
+# include "win32/Clock.cpp"
+#endif

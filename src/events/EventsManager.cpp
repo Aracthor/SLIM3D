@@ -34,8 +34,8 @@ EventsManager::~EventsManager()
 
 
 void
-EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED int scancode,
-			   keyboard::EAction action, SLIM_CORE_UNUSED int modifiers)
+EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED(int, scancode),
+			   keyboard::EAction action, SLIM_CORE_UNUSED(int, modifiers))
 {
     if (action == keyboard::pressed)
     {
@@ -56,7 +56,7 @@ EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED int scan
 }
 
 void
-EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action, SLIM_CORE_UNUSED int modifiers)
+EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action, SLIM_CORE_UNUSED(int, modifiers))
 {
     if (action == mouse::pressed)
     {

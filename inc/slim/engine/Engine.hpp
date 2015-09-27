@@ -42,6 +42,14 @@ Engine::setRenderFramerate(unsigned int framerate)
 }
 
 
+template <class Singleton>
+void
+Engine::addModule()
+{
+    m_singletonsManager.addSingleton(&Singleton::instance);
+}
+
+
 bool
 Engine::isRunning() const
 {

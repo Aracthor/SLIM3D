@@ -3,6 +3,8 @@
 #include "slim/window/MonitorsManager.hh"
 #include "slim/window/GLFWException.hh"
 
+#include <iostream> // DEBUG
+
 namespace slim
 {
 namespace window
@@ -21,7 +23,7 @@ MonitorsManager::~MonitorsManager()
 }
 
 
-static void error_callback(SLIM_CORE_UNUSED int error, const char* description)
+static void error_callback(SLIM_CORE_UNUSED(int, error), const char* description)
 {
     debug::LogManager::instance.graphics.error << description << debug::LogStream::endline;
 }

@@ -1,17 +1,10 @@
+#include "slim/core/system.h"
 #include "slim/debug/console.hh"
 
-std::ostream&
-operator<<(std::ostream& stream, slim::debug::console::EColor color)
-{
-    stream << static_cast<char>(0x1B) << "[3" << static_cast<char>(color + '0') << 'm';
-
-    return stream;
-}
-
-std::ostream&
-operator<<(std::ostream& stream, slim::debug::console::EEffect effect)
-{
-    stream << static_cast<char>(0x1B) << "[0" << static_cast<char>(effect + '0') << 'm';
-
-    return stream;
-}
+#if SLIM_CORE_SYSTEM_IS_UNIX
+# include "unix/console.cpp"
+#elif SLIM_CORE_SYSTEM_IS_WINDOWS
+# include "win32/console.cpp"
+#else
+# error "There is no slim::debug::console definition for your system."
+#endif

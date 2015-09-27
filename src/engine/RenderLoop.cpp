@@ -19,7 +19,7 @@ RenderLoop::~RenderLoop()
 
 
 void
-RenderLoop::onFrame(SLIM_CORE_UNUSED time::Clock::time elapsedTime)
+RenderLoop::onFrame(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     m_engine->render();
 }
