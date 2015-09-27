@@ -6,7 +6,6 @@
 # include "slim/assets/SingleFileAsset.hh"
 
 # define SLIM_ASSETS_IMAGE_ASSET_TYPE	"image"
-# define SLIM_ASSETS_IMAGE_FOLDER	SLIM_ASSETS_IMAGE_ASSET_TYPE"s"
 
 namespace slim
 {

@@ -40,7 +40,9 @@ Engine::parseCommandLine(int argc, char** argv)
 
     if (path == nullptr)
     {
-	assets::Manager::instance.setExecutablePath("");
+	containers::Buffer<char, 0x10>	buffer;
+	buffer << '.' << SLIM_IO_SEPARATOR_CHAR << '\0';
+	assets::Manager::instance.setExecutablePath(buffer.getData());
     }
     else
     {

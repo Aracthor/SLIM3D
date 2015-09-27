@@ -4,9 +4,9 @@ namespace assets
 {
 
 void
-Manager::setExecutablePath(const char* path)
+Manager::addToLoadList(Asset* asset)
 {
-    m_path = path;
+    m_assets[asset->getType()].push_back(asset);
 }
 
 }

@@ -18,6 +18,7 @@ public:
     void	resetToSize(unsigned int size);
 
 public:
+    inline bool		isEmpty() const;
     inline unsigned int	getSize() const;
     inline const T*	getData() const;
 

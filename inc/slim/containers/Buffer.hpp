@@ -36,6 +36,13 @@ Buffer<T, N>::resetToSize(unsigned int size)
 
 
 template <typename T, unsigned int N>
+bool
+Buffer<T, N>::isEmpty() const
+{
+    return (m_size == 0);
+}
+
+template <typename T, unsigned int N>
 unsigned int
 Buffer<T, N>::getSize() const
 {

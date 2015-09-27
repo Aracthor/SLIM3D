@@ -5,6 +5,7 @@
 # include <vector>
 
 # include "slim/assets/Asset.hh"
+# include "slim/containers/Buffer.hh"
 # include "slim/core/Singleton.hh"
 
 # define SLIM_ASSETS_FOLDER	"assets"
@@ -14,7 +15,7 @@ namespace slim
 namespace assets
 {
 
-class		Manager : public core::Singleton
+class			Manager : public core::Singleton
 {
 public:
     static Manager	instance;
@@ -26,13 +27,17 @@ public:
 public:
     void	onInit() override;
     void	onDestroy() override;
-    inline void	setExecutablePath(const char* path);
+    void	setExecutablePath(const char* path);
 
 public:
-    void	addToLoadList(Asset* asset);
+    inline void	addToLoadList(Asset* asset);
+    void	loadNeededAssets();
+    void	unloadUnneededAssets();
+    void	unloadAllAssets();
 
 private:
-    const char*	m_path = nullptr;
+    std::map<const char*, std::vector<Asset*>>		m_assets;
+    containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	m_path;
 };
 
 }
