@@ -1,4 +1,5 @@
 #include "slim/assets/Asset.hh"
+#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 
 #include <iostream> // DEBUG
@@ -48,6 +49,20 @@ Asset::setNeeded(bool needed) const
     {
 	asset->setNeeded(needed);
     }
+}
+
+
+bool
+Asset::loadData(SLIM_CORE_UNUSED(const char* const, path))
+{
+    // Can be overriden by user.
+    return true;
+}
+
+void
+Asset::unloadData()
+{
+    // Can be overriden by user.
 }
 
 }

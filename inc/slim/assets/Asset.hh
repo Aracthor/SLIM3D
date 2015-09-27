@@ -27,8 +27,8 @@ public:
     void		setNeeded(bool needed) const;
 
 protected:
-    virtual bool	loadData(const char* const path) = 0;
-    virtual void	unloadData() = 0;
+    virtual bool	loadData(const char* const path);
+    virtual void	unloadData();
 
 public:
     inline const char*	getType() const;

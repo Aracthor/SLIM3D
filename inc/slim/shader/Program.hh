@@ -19,8 +19,8 @@ public:
     ~Program();
 
 protected:
-    bool	loadData(const char* const path) override;
-    void	unloadData() override;
+    void	onAssetsReady() override;
+    void	onAssetsUnloaded() override;
 
 private:
     GLint		m_id;

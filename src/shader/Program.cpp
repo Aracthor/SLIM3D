@@ -1,5 +1,4 @@
 #include "slim/containers/Buffer.hh"
-#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 #include "slim/graphics/GLException.hh"
 #include "slim/shader/Program.hh"
@@ -31,8 +30,8 @@ Program::~Program()
 }
 
 
-bool
-Program::loadData(SLIM_CORE_UNUSED(const char* const, path))
+void
+Program::onAssetsReady()
 {
     GLint	linked;
 
@@ -52,12 +51,10 @@ Program::loadData(SLIM_CORE_UNUSED(const char* const, path))
 	buffer << "Error linking shader program: " << error;
 	throw io::ResourceException(this->getName(), buffer.getData(), __FILE__, __func__, __LINE__);
     }
-
-    return linked;
 }
 
 void
-Program::unloadData()
+Program::onAssetsUnloaded()
 {
     glDeleteProgram(m_id);
 }
