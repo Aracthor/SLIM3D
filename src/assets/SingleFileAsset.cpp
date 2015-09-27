@@ -37,7 +37,7 @@ SingleFileAsset::loadData(const char* const path)
     success = this->loadFromFile(buffer.getData());
     if (success)
     {
-	debug::LogManager::instance.assets.info << "Successfully loaded " << this->getType() << " file " << path << '.' << debug::LogStream::endline;
+	debug::LogManager::instance.assets.info << "Successfully loaded " << this->getType() << " file " << buffer.getData() << '.' << debug::LogStream::endline;
     }
 
     return success;

@@ -20,6 +20,7 @@ public:
 
 public:
     inline const char*	getType() const override;
+    void		onLoad(const Asset* asset) override;
 
 public:
     inline void		addAsset(const ASSET* asset);

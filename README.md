@@ -30,7 +30,8 @@ The first one is empty. For now. Move to one of two others and run the following
 
     make
 
-You'll have your library waiting in the `build/lib` folder and your binary samples in `build/bin` folder.
+You'll have your library waiting in the `~/lib` folder and your binary samples in `~/bin` folder at the project root.  
+You can try to execute binaries in `~/bin` from wherever you want.
 
 Once you compiled everything, you can install it from `build/debug` or `build/release` directory with the following command:
 

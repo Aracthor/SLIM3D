@@ -31,6 +31,10 @@ public:
     Buffer<T, N>&		operator<<(const T* str);
     inline Buffer<T, N>&	operator<<(T* str);
 
+    // Used for pointers type
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(U* ptr);
+
     // Used for numbers type (int, long etc)
     template <typename U>
     Buffer<T, N>&		operator<<(U n);

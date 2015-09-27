@@ -27,6 +27,9 @@ public:
     template <class ASSET> // Must inherit from class slim::asset::Asset.
     void	addListener(IListener<ASSET>* listener, const ASSET* asset);
 
+public:
+    void	onLoad(const Asset* asset);
+
 private:
     std::map<const char*, IListenerList*>	m_listenerLists;
 };

@@ -33,6 +33,7 @@ protected:
     void	unloadData() override;
 
 private:
+    void	setErrorImage();
     void	setData(unsigned int width, unsigned int height, byte* pixels);
 
 protected:

@@ -6,7 +6,7 @@ namespace assets
 {
 
 template <class ASSET, typename ...Args>
-Asset*
+ASSET*
 Asset::create(Args&&... args)
 {
     ASSET*	asset = new ASSET(args...);
@@ -14,6 +14,15 @@ Asset::create(Args&&... args)
     Manager::instance.registerAsset(asset);
 
     return asset;
+}
+
+
+template <class ASSET>
+void
+Asset::addListener(IListener<ASSET>* listener) const
+{
+    SLIM_DEBUG_ASSERT(this->getType() == ASSET::typeName); // Else, the static cast would fail.
+    Manager::instance.addListener(listener, static_cast<const ASSET*>(this));
 }
 
 
@@ -39,6 +48,12 @@ bool
 Asset::isLoaded() const
 {
     return m_loaded;
+}
+
+void
+Asset::setNeeded(bool needed) const
+{
+    m_needed = needed;
 }
 
 }

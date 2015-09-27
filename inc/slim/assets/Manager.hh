@@ -8,7 +8,7 @@
 # include "slim/containers/Buffer.hh"
 # include "slim/core/Singleton.hh"
 
-# define SLIM_ASSETS_FOLDER		"assets"
+# define SLIM_ASSETS_FOLDER		"../assets"
 # define SLIM_ASSETS_MAX_PATH_SIZE	0x1000
 
 namespace slim
@@ -34,15 +34,19 @@ public:
 
 public:
     template <class ASSET> // ASSET must inherit from slim::assets::Asset.
-    inline void	registerAsset(const ASSET* asset);
+    void	addListener(IListener<ASSET>* listener, const ASSET* asset);
+    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
+    void	registerAsset(ASSET* asset);
     template <class ASSET> // ASSET must inherit from slim::assets::Asset.
     inline void	registerAssetType();
 
 public:
-    void	addToLoadList(Asset* asset);
     void	loadNeededAssets();
     void	unloadUnneededAssets();
     void	unloadAllAssets();
+
+private:
+    void	addToLoadList(Asset* asset);
 
 private:
     std::map<const char*, std::vector<Asset*>>		m_assets;

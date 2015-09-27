@@ -108,6 +108,15 @@ Buffer<T, N>::operator<<(T* str)
 template <typename T, unsigned int N>
 template <typename U>
 Buffer<T, N>&
+Buffer<T, N>::operator<<(U* ptr)
+{
+    return (*this << reinterpret_cast<unsigned long long>(ptr));
+}
+
+
+template <typename T, unsigned int N>
+template <typename U>
+Buffer<T, N>&
 Buffer<T, N>::operator<<(U n)
 {
     if (n < 0)

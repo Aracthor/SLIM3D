@@ -9,6 +9,12 @@ Cursor::getImage() const
     return m_image;
 }
 
+const maths::Vector2ui&
+Cursor::getHot() const
+{
+    return m_hot;
+}
+
 const GLFWcursor*
 Cursor::getGLFWResource() const
 {
@@ -19,6 +25,13 @@ GLFWcursor*
 Cursor::getGLFWResource()
 {
     return m_cursor;
+}
+
+
+bool
+Cursor::isLoaded() const
+{
+    return m_image->isLoaded();
 }
 
 }

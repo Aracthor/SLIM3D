@@ -13,20 +13,15 @@ namespace assets
 {
 
 const char* const
-Image::typeName = "image";
+Image::typeName = "texture";
 
 
 Image*
 Image::getErrorImage()
 {
     Image*	image = new Image("SLIM error image");
-    byte*	pixels = new byte[4];
 
-    pixels[0] = 0xFF;
-    pixels[1] = 0xFF;
-    pixels[2] = 0xFF;
-    pixels[3] = 0xFF;
-    image->setData(1, 1, pixels);
+    image->setErrorImage();
 
     return image;
 }
@@ -42,10 +37,10 @@ Image::Image(const Image& reference) :
     m_width(reference.getWidth()),
     m_height(reference.getHeight())
 {
-    unsigned int	pixelsNumber = m_width * m_height;
+    unsigned int	bytesNumber = m_width * m_height * 4;
 
-    m_pixels = new byte[pixelsNumber];
-    memcpy(m_pixels, reference.m_pixels, pixelsNumber);
+    m_pixels = new byte[bytesNumber];
+    memcpy(m_pixels, reference.m_pixels, bytesNumber);
 }
 
 Image::~Image()
@@ -59,7 +54,7 @@ Image::loadFromFile(const char* const path)
     try
     {
 	int		width, height, comp;
-	unsigned int	pixelsNumber;
+	unsigned int	bytesNumber;
 	byte*		image = stbi_load(path, &width, &height, &comp, STBI_rgb_alpha);
 
 	if (image == nullptr)
@@ -69,9 +64,9 @@ Image::loadFromFile(const char* const path)
 
 	m_width = width;
 	m_height = height;
-	pixelsNumber = m_width * m_height;
-	m_pixels = new byte[pixelsNumber];
-	memcpy(m_pixels, image, pixelsNumber);
+	bytesNumber = m_width * m_height * 4;
+	m_pixels = new byte[bytesNumber];
+	memcpy(m_pixels, image, bytesNumber);
 
 	stbi_image_free(image);
     }
@@ -79,6 +74,7 @@ Image::loadFromFile(const char* const path)
     catch (std::exception &exception)
     {
 	debug::LogManager::instance.assets.error << "Error parsing image " << path << ": " << exception.what() << debug::LogStream::endline;
+	this->setErrorImage();
 	return false;
     }
 
@@ -91,6 +87,18 @@ Image::unloadData()
     delete[] m_pixels;
 }
 
+
+void
+Image::setErrorImage()
+{
+    byte*	pixels = new byte[4];
+
+    pixels[0] = 0xFF;
+    pixels[1] = 0xFF;
+    pixels[2] = 0xFF;
+    pixels[3] = 0xFF;
+    this->setData(1, 1, pixels);
+}
 
 void
 Image::setData(unsigned int width, unsigned int height, byte* pixels)

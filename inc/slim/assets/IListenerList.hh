@@ -6,6 +6,8 @@ namespace slim
 namespace assets
 {
 
+class	Asset;
+
 class	IListenerList
 {
 public:
@@ -13,6 +15,7 @@ public:
 
 public:
     virtual const char*	getType() const = 0;
+    virtual void	onLoad(const Asset* asset) = 0;
 };
 
 }

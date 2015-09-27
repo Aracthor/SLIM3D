@@ -10,7 +10,7 @@ namespace debug
 {
 
 const char*
-LogStream::s_levels[4] = {"LOG", "INFO", "WARNING", "ERROR"};
+LogStream::s_levels[4] = {"LOG", "INFO", "WARN", "ERROR"};
 
 
 LogStream::LogStream(Log* log, const char* name, unsigned int level) :
@@ -45,7 +45,7 @@ void
 LogStream::prepareNextLine()
 {
     m_buffer.clear();
-    m_buffer << '[' << m_name << "] [" << s_levels[m_level] << "] ";
+    m_buffer << '[' << m_name << "]\t[" << s_levels[m_level] << "]\t";
 }
 
 }

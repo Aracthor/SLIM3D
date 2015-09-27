@@ -18,8 +18,9 @@ CursorImageEngine::~CursorImageEngine()
 void
 CursorImageEngine::onInit()
 {
-    m_image = new slim::assets::Image("cursor.png");
+    m_image = slim::assets::Asset::create<slim::assets::Image>("cursor.png");
     m_cursor = new slim::window::Cursor(m_image);
+    slim::assets::Manager::instance.loadNeededAssets();
     this->getCurrentWindow()->setCursor(m_cursor);
 
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
