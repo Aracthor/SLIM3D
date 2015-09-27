@@ -5,8 +5,6 @@
 # include "slim/assets/data.hh"
 # include "slim/assets/SingleFileAsset.hh"
 
-# define SLIM_ASSETS_IMAGE_ASSET_TYPE	"image"
-
 namespace slim
 {
 namespace assets
@@ -14,6 +12,9 @@ namespace assets
 
 class			Image : public SingleFileAsset
 {
+public:
+    static const char* const	typeName;
+
 public:
     static Image*	getErrorImage(); // Return single white pixel.
 

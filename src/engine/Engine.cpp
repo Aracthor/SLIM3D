@@ -2,6 +2,7 @@
 #include <iostream> // Only to print exception error message
 
 #include "slim/assets/Manager.hh"
+#include "slim/assets/Image.hh"
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
@@ -92,13 +93,19 @@ Engine::start()
 void
 Engine::init()
 {
+    m_running = true;
+
     m_singletonsManager.initSingletons();
     m_window = new window::Window(m_windowParameters);
+
+    // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
     m_synchronizer.addLoop(&m_window->getEventsLoop());
     m_synchronizer.restart();
-    m_running = true;
+
+    // Add default asset types.
+    assets::Manager::instance.getListenersManager().registerAssetType<assets::Image>();
 
     this->onInit(); // Implemented by user
 }

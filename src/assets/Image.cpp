@@ -12,6 +12,10 @@ namespace slim
 namespace assets
 {
 
+const char* const
+Image::typeName = "image";
+
+
 Image*
 Image::getErrorImage()
 {
@@ -29,7 +33,7 @@ Image::getErrorImage()
 
 
 Image::Image(const char* name) :
-    SingleFileAsset(SLIM_ASSETS_IMAGE_ASSET_TYPE, name, name)
+    SingleFileAsset(Image::typeName, name, name)
 {
 }
 

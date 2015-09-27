@@ -5,6 +5,7 @@
 # include <vector>
 
 # include "slim/assets/Asset.hh"
+# include "slim/assets/ListenersManager.hh"
 # include "slim/containers/Buffer.hh"
 # include "slim/core/Singleton.hh"
 
@@ -35,8 +36,12 @@ public:
     void	unloadUnneededAssets();
     void	unloadAllAssets();
 
+public:
+    inline ListenersManager&	getListenersManager();
+
 private:
     std::map<const char*, std::vector<Asset*>>		m_assets;
+    ListenersManager					m_listenersManager;
     containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	m_path;
 };
 
