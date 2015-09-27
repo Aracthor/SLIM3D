@@ -1,30 +1,61 @@
 #include <exception>
 #include <iostream> // Only to print exception error message
 
+#include "slim/assets/Manager.hh"
+#include "slim/assets/Image.hh"
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
+#include "slim/io/macros.h"
 #include "slim/maths/Helper.hh"
+#include "slim/shader/Program.hh"
+#include "slim/shader/Shader.hh"
 #include "slim/window/MonitorsManager.hh"
+
+#include <cstring>
 
 namespace slim
 {
 namespace engine
 {
 
-Engine::Engine() :
+Engine::Engine(int argc, char** argv) :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
+    this->addModule<assets::Manager>();
     this->addModule<window::MonitorsManager>();
+
+    this->parseCommandLine(argc, argv);
 }
 
 Engine::~Engine()
 {
 }
 
+
+void
+Engine::parseCommandLine(int argc, char** argv)
+{
+    char*	path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
+
+    if (path == nullptr)
+    {
+	containers::Buffer<char, 0x10>	buffer;
+	buffer << '.' << SLIM_IO_SEPARATOR_CHAR << '\0';
+	assets::Manager::instance.setExecutablePath(buffer.getData());
+    }
+    else
+    {
+	*path = '\0';
+	assets::Manager::instance.setExecutablePath(argv[0]);
+    }
+
+    SLIM_CORE_USE(argc);
+    // TODO parse command line for real.
+}
 
 void
 Engine::onInit()
@@ -64,13 +95,21 @@ Engine::start()
 void
 Engine::init()
 {
+    m_running = true;
+
     m_singletonsManager.initSingletons();
     m_window = new window::Window(m_windowParameters);
+
+    // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
     m_synchronizer.addLoop(&m_window->getEventsLoop());
     m_synchronizer.restart();
-    m_running = true;
+
+    // Add default asset types.
+    assets::Manager::instance.registerAssetType<assets::Image>();
+    assets::Manager::instance.registerAssetType<shader::Shader>();
+    assets::Manager::instance.registerAssetType<shader::Program>();
 
     this->onInit(); // Implemented by user
 }

@@ -26,6 +26,23 @@ Buffer<T, N>::clear()
 
 
 template <typename T, unsigned int N>
+void
+Buffer<T, N>::resetToSize(unsigned int size)
+{
+    SLIM_DEBUG_ASSERT(size <= m_size);
+    m_size = size;
+    m_data[m_size] = '\0';
+}
+
+
+template <typename T, unsigned int N>
+bool
+Buffer<T, N>::isEmpty() const
+{
+    return (m_size == 0);
+}
+
+template <typename T, unsigned int N>
 unsigned int
 Buffer<T, N>::getSize() const
 {
@@ -80,6 +97,22 @@ Buffer<T, N>::operator<<(const T* str)
 
     return *this;
 }
+
+template <typename T, unsigned int N>
+Buffer<T, N>&
+Buffer<T, N>::operator<<(T* str)
+{
+    return (*this << static_cast<const T*>(str));
+}
+
+template <typename T, unsigned int N>
+template <typename U>
+Buffer<T, N>&
+Buffer<T, N>::operator<<(U* ptr)
+{
+    return (*this << reinterpret_cast<unsigned long long>(ptr));
+}
+
 
 template <typename T, unsigned int N>
 template <typename U>

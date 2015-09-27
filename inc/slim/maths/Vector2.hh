@@ -71,7 +71,9 @@ typedef Vector2<float>		Vector2f;
 typedef Vector2<double>		Vector2d;
 typedef Vector2<long double>	Vector2ld;
 typedef Vector2<int>		Vector2i;
+typedef Vector2<unsigned int>	Vector2ui;
 typedef Vector2<long>		Vector2l;
+typedef Vector2<unsigned long>	Vector2ul;
 
 }
 

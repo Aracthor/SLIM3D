@@ -3,10 +3,16 @@ namespace slim
 namespace window
 {
 
-const resources::Image*
+const assets::Image*
 Cursor::getImage() const
 {
     return m_image;
+}
+
+const maths::Vector2ui&
+Cursor::getHot() const
+{
+    return m_hot;
 }
 
 const GLFWcursor*

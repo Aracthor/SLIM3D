@@ -1,11 +1,16 @@
-#include "slim/engine/Engine.hh"
+#ifndef HELLO_WORLD_ENGINE_HH_
+# define HELLO_WORLD_ENGINE_HH_
 
-class HelloWorldEngine : public slim::engine::Engine
+# include "slim/engine/Engine.hh"
+
+class	HelloWorldEngine : public slim::engine::Engine
 {
 public:
-    HelloWorldEngine();
+    HelloWorldEngine(int argc, char** argv);
     ~HelloWorldEngine();
 
 public:
     void    onInit() override;
 };
+
+#endif // !HELLO_WORLD_ENGINE_HH_

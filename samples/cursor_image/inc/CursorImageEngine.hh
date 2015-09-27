@@ -1,10 +1,13 @@
-#include "slim/engine/Engine.hh"
-#include "slim/window/Cursor.hh"
+#ifndef CURSOR_IMAGE_ENGINE_HH_
+# define CURSOR_IMAGE_ENGINE_HH_
 
-class CursorImageEngine : public slim::engine::Engine
+# include "slim/engine/Engine.hh"
+# include "slim/window/Cursor.hh"
+
+class	CursorImageEngine : public slim::engine::Engine
 {
 public:
-    CursorImageEngine();
+    CursorImageEngine(int argc, char** argv);
     ~CursorImageEngine();
 
 public:
@@ -12,6 +15,8 @@ public:
     void    onShutdown() override;
 
 private:
-    slim::resources::Image*	m_image;
+    slim::assets::Image*	m_image;
     slim::window::Cursor*	m_cursor;
 };
+
+#endif // !CURSOR_IMAGE_ENGINE_HH_

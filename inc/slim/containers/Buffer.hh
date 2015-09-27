@@ -15,8 +15,10 @@ public:
 
 public:
     inline void	clear();
+    void	resetToSize(unsigned int size);
 
 public:
+    inline bool		isEmpty() const;
     inline unsigned int	getSize() const;
     inline const T*	getData() const;
 
@@ -27,6 +29,11 @@ public:
 public:
     inline Buffer<T, N>&	operator<<(T c);
     Buffer<T, N>&		operator<<(const T* str);
+    inline Buffer<T, N>&	operator<<(T* str);
+
+    // Used for pointers type
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(U* ptr);
 
     // Used for numbers type (int, long etc)
     template <typename U>

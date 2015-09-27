@@ -102,7 +102,9 @@ typedef Vector4<float>		Vector4f;
 typedef Vector4<double>		Vector4d;
 typedef Vector4<long double>	Vector4ld;
 typedef Vector4<int>		Vector4i;
+typedef Vector4<unsigned int>	Vector4ui;
 typedef Vector4<long>		Vector4l;
+typedef Vector4<unsigned long>	Vector4ul;
 
 }
 

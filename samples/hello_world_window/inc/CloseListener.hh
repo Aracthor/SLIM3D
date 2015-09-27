@@ -1,3 +1,6 @@
+#ifndef CLOSE_LISTENER_HH_
+# define CLOSE_LISTENER_HH_
+
 #include "slim/engine/Engine.hh"
 #include "slim/events/ICloseListener.hh"
 
@@ -12,3 +15,5 @@ public:
 private:
     slim::engine::Engine*	m_engine;
 };
+
+#endif // !CLOSE_LISTENER
