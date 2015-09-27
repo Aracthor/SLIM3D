@@ -11,7 +11,7 @@ namespace time
 class	Date
 {
 public:
-    Date(time_t seconds = ::time(NULL), bool local = true);
+    Date(time_t seconds = ::time(nullptr), bool local = true);
     ~Date();
 
 public:
