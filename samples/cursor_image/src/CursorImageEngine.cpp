@@ -1,7 +1,8 @@
 #include "CloseListener.hh"
 #include "CursorImageEngine.hh"
 
-CursorImageEngine::CursorImageEngine()
+CursorImageEngine::CursorImageEngine(int argc, char** argv) :
+    slim::engine::Engine(argc, argv)
 {
     m_windowParameters.width = 800;
     m_windowParameters.height = 600;
@@ -17,8 +18,9 @@ CursorImageEngine::~CursorImageEngine()
 void
 CursorImageEngine::onInit()
 {
-    m_image = slim::resources::Image::createFromFile("../../samples/resources/textures/cursor.png");
+    m_image = slim::assets::Asset::create<slim::assets::Image>("cursor.png");
     m_cursor = new slim::window::Cursor(m_image);
+    slim::assets::Manager::instance.loadNeededAssets();
     this->getCurrentWindow()->setCursor(m_cursor);
 
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));

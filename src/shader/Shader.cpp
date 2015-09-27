@@ -1,6 +1,6 @@
 #include "slim/containers/Buffer.hh"
 #include "slim/graphics/GLException.hh"
-#include "slim/resources/ResourceException.hh"
+#include "slim/io/ResourceException.hh"
 #include "slim/shader/Shader.hh"
 
 namespace slim
@@ -8,14 +8,14 @@ namespace slim
 namespace shader
 {
 
-Shader::Shader(EType type, resources::ReadingFile& file) :
+Shader::Shader(EType type, io::ReadingFile& file) :
     m_name(file.getName()),
     m_type(type)
 {
     this->readFromFile(file);
 }
 
-Shader::Shader(const char* name, EType type, resources::VirtualFile& file) :
+Shader::Shader(const char* name, EType type, io::VirtualFile& file) :
     m_name(name),
     m_type(type)
 {
@@ -36,13 +36,13 @@ Shader::~Shader()
 
 
 void
-Shader::readFromFile(resources::ReadingFile& file)
+Shader::readFromFile(io::ReadingFile& file)
 {
-    this->readFromFile(resources::VirtualFile::fromRealFile(file));
+    this->readFromFile(io::VirtualFile::fromRealFile(file));
 }
 
 void
-Shader::readFromFile(const resources::VirtualFile& file)
+Shader::readFromFile(const io::VirtualFile& file)
 {
     char	buffer[SLIM_SHADER_FILE_BUFFER_SIZE];
 
@@ -68,7 +68,7 @@ Shader::readFromData(const char* data)
 
 	glGetShaderInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
 	buffer << "Error compiling shader: " << error;
-	throw resources::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
+	throw io::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
     }
 }
 

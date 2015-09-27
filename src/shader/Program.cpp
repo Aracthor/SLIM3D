@@ -2,7 +2,7 @@
 #include "slim/debug/assert.hh"
 #include "slim/graphics/GLException.hh"
 #include "slim/shader/Program.hh"
-#include "slim/resources/ResourceException.hh"
+#include "slim/io/ResourceException.hh"
 
 namespace slim
 {
@@ -31,7 +31,7 @@ Program::Program(const char* name, const Shader& vertexShader, const Shader& fra
 
 	glGetProgramInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
 	buffer << "Error linking shader program: " << error;
-	throw resources::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
+	throw io::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
     }
 }
 

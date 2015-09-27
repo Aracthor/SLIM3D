@@ -1,12 +1,12 @@
 #ifndef HELLO_WORD_SHADER_HH_
 # define HELLO_WORD_SHADER_HH_
 
-#include "slim/engine/Engine.hh"
+# include "slim/engine/Engine.hh"
 
-class HelloWorldShader : public slim::engine::Engine
+class	HelloWorldShader : public slim::engine::Engine
 {
 public:
-    HelloWorldShader();
+    HelloWorldShader(int argc, char** argv);
     ~HelloWorldShader();
 
 public:

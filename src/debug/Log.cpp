@@ -3,7 +3,7 @@
 #include "slim/core/system.h"
 #include "slim/debug/console.hh"
 #include "slim/debug/Log.hh"
-#include "slim/resources/BufferedWritingFile.hh"
+#include "slim/io/BufferedWritingFile.hh"
 #include "slim/maths/lib.hh"
 
 namespace slim
@@ -35,13 +35,13 @@ Log::~Log()
 
 
 void
-Log::init(resources::Directory& directory)
+Log::init(io::Directory& directory)
 {
     char	fileName[SLIM_DEBUG_LOG_NAME_BUFFER_SIZE];
 
     strncpy(fileName, m_name, SLIM_DEBUG_LOG_NAME_BUFFER_SIZE);
     strncat(fileName, ".slim.log", SLIM_DEBUG_LOG_NAME_BUFFER_SIZE - strlen(m_name));
-    m_file = directory.newFile<resources::BufferedWritingFile>(fileName);
+    m_file = directory.newFile<io::BufferedWritingFile>(fileName);
 }
 
 void

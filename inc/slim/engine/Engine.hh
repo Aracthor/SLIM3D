@@ -16,7 +16,7 @@ namespace engine
 class	Engine
 {
 public:
-    Engine();
+    Engine(int argc, char** argv);
     virtual ~Engine();
 
 public:
@@ -42,6 +42,7 @@ protected:
     virtual void	onShutdown();
 
 private:
+    void        	parseCommandLine(int argc, char** argv);
     void		init();
     void		loop();
     inline bool		isRunning() const;

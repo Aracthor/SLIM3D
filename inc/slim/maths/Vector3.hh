@@ -80,7 +80,9 @@ typedef Vector3<float>		Vector3f;
 typedef Vector3<double>		Vector3d;
 typedef Vector3<long double>	Vector3ld;
 typedef Vector3<int>		Vector3i;
+typedef Vector3<unsigned int>	Vector3ui;
 typedef Vector3<long>		Vector3l;
+typedef Vector3<unsigned long>	Vector3ul;
 
 }
 

@@ -1,8 +1,8 @@
 #include "HelloWorldShader.hh"
 
-int	main()
+int	main(int argc, char** argv)
 {
-    HelloWorldShader	engine;
+    HelloWorldShader	engine(argc, argv);
 
     engine.start();
 
