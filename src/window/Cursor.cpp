@@ -6,6 +6,19 @@ namespace slim
 namespace window
 {
 
+Cursor*
+Cursor::createStandardCursor(EType type)
+{
+    GLFWcursor*	glfwCursor = glfwCreateStandardCursor(type);
+    if (glfwCursor == nullptr)
+    {
+	throw GLFWException("Couldn't create standard cursor.", __FILE__, __func__, __LINE__);
+    }
+
+    return new Cursor(glfwCursor);
+}
+
+
 Cursor::Cursor(const resources::Image* image, unsigned int xhot, unsigned int yhot) :
     m_image(image)
 {
@@ -25,6 +38,13 @@ Cursor::Cursor(const resources::Image* image, unsigned int xhot, unsigned int yh
 Cursor::~Cursor()
 {
     glfwDestroyCursor(m_cursor);
+}
+
+
+Cursor::Cursor(GLFWcursor* glfwCursor) :
+    m_cursor(glfwCursor),
+    m_image(nullptr)
+{
 }
 
 }

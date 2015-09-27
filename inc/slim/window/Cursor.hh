@@ -12,6 +12,20 @@ namespace window
 class	Cursor
 {
 public:
+    enum	EType
+    {
+	arrow = GLFW_ARROW_CURSOR,
+	ibeam = GLFW_IBEAM_CURSOR,
+	crosshair = GLFW_CROSSHAIR_CURSOR,
+	hand = GLFW_HAND_CURSOR,
+	horizontalResize = GLFW_HRESIZE_CURSOR,
+	verticalResize = GLFW_VRESIZE_CURSOR
+    };
+
+public:
+    Cursor*	createStandardCursor(EType type);
+
+public:
     Cursor(const resources::Image* image, unsigned int xhot = 0, unsigned int yhot = 0);
     virtual ~Cursor();
 
@@ -23,6 +37,9 @@ public:
 protected:
     GLFWcursor*			m_cursor;
     const resources::Image*	m_image;
+
+private:
+    Cursor(GLFWcursor* glfwCursor);
 };
 
 }
