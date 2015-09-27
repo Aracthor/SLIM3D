@@ -1,7 +1,21 @@
+#include "slim/assets/Manager.hh"
+
 namespace slim
 {
 namespace assets
 {
+
+template <class ASSET, typename ...Args>
+Asset*
+Asset::create(Args&&... args)
+{
+    ASSET*	asset = new ASSET(args...);
+
+    Manager::instance.registerAsset(asset);
+
+    return asset;
+}
+
 
 const char*
 Asset::getType() const

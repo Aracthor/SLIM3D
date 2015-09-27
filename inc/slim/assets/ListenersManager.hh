@@ -19,7 +19,13 @@ public:
 
 public:
     template <class ASSET> // Must inherit from class slim::asset::Asset.
-    void	registerAssetType();
+    inline void	registerAssetType();
+
+public:
+    template <class ASSET> // Must inherit from class slim::asset::Asset.
+    void	addAsset(const ASSET* asset);
+    template <class ASSET> // Must inherit from class slim::asset::Asset.
+    void	addListener(IListener<ASSET>* listener, const ASSET* asset);
 
 private:
     std::map<const char*, IListenerList*>	m_listenerLists;

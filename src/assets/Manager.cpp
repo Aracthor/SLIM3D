@@ -1,3 +1,4 @@
+#include "slim/assets/Asset.hh"
 #include "slim/assets/Manager.hh"
 #include "slim/debug/assert.hh"
 #include "slim/debug/LogManager.hh"
@@ -38,6 +39,13 @@ Manager::setExecutablePath(const char* path)
     m_path << path << SLIM_IO_SEPARATOR_CHAR << SLIM_ASSETS_FOLDER << SLIM_IO_SEPARATOR_CHAR << '\0';
 }
 
+
+
+void
+Manager::addToLoadList(Asset* asset)
+{
+    m_assets[asset->getType()].push_back(asset);
+}
 
 void
 Manager::loadNeededAssets()

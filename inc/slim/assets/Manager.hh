@@ -4,17 +4,19 @@
 # include <map>
 # include <vector>
 
-# include "slim/assets/Asset.hh"
 # include "slim/assets/ListenersManager.hh"
 # include "slim/containers/Buffer.hh"
 # include "slim/core/Singleton.hh"
 
-# define SLIM_ASSETS_FOLDER	"assets"
+# define SLIM_ASSETS_FOLDER		"assets"
+# define SLIM_ASSETS_MAX_PATH_SIZE	0x1000
 
 namespace slim
 {
 namespace assets
 {
+
+class			Asset;
 
 class			Manager : public core::Singleton
 {
@@ -31,13 +33,16 @@ public:
     void	setExecutablePath(const char* path);
 
 public:
-    inline void	addToLoadList(Asset* asset);
+    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
+    inline void	registerAsset(const ASSET* asset);
+    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
+    inline void	registerAssetType();
+
+public:
+    void	addToLoadList(Asset* asset);
     void	loadNeededAssets();
     void	unloadUnneededAssets();
     void	unloadAllAssets();
-
-public:
-    inline ListenersManager&	getListenersManager();
 
 private:
     std::map<const char*, std::vector<Asset*>>		m_assets;

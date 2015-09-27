@@ -1,8 +1,6 @@
 #ifndef SLIM_ASSETS_ASSET_HH_
 # define SLIM_ASSETS_ASSET_HH_
 
-# define SLIM_ASSETS_MAX_PATH_SIZE	0x1000
-
 namespace slim
 {
 namespace assets
@@ -11,8 +9,14 @@ namespace assets
 class	Asset
 {
 public:
+    template <class ASSET, typename ...Args> // ASSET must inherit from this class.
+    static Asset*	create(Args&&... args);
+
+protected:
     Asset(const char* const type, const char* const name);
     Asset(const Asset& reference);
+
+public:
     virtual ~Asset();
 
 public:

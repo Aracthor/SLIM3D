@@ -105,7 +105,7 @@ Engine::init()
     m_synchronizer.restart();
 
     // Add default asset types.
-    assets::Manager::instance.getListenersManager().registerAssetType<assets::Image>();
+    assets::Manager::instance.registerAssetType<assets::Image>();
 
     this->onInit(); // Implemented by user
 }

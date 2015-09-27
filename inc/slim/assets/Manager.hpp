@@ -3,16 +3,18 @@ namespace slim
 namespace assets
 {
 
+template <class ASSET>
 void
-Manager::addToLoadList(Asset* asset)
+Manager::registerAsset(const ASSET* asset)
 {
-    m_assets[asset->getType()].push_back(asset);
+    m_listenersManager.addAsset(asset);
 }
 
-ListenersManager&
-Manager::getListenersManager()
+template <class ASSET>
+void
+Manager::registerAssetType()
 {
-    return m_listenersManager;
+    m_listenersManager.registerAssetType<ASSET>();
 }
 
 }
