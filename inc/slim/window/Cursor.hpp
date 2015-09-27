@@ -27,12 +27,5 @@ Cursor::getGLFWResource()
     return m_cursor;
 }
 
-
-bool
-Cursor::isLoaded() const
-{
-    return m_image->isLoaded();
-}
-
 }
 }

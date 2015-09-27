@@ -3,13 +3,14 @@
 
 # include <map>
 
-# include "slim/assets/IListener.hh"
-# include "slim/assets/IListenerList.hh"
+# include "slim/assets/Listener.hh"
 
 namespace slim
 {
 namespace assets
 {
+
+class	Asset;
 
 class	ListenersManager
 {
@@ -22,16 +23,18 @@ public:
     inline void	registerAssetType();
 
 public:
-    template <class ASSET> // Must inherit from class slim::asset::Asset.
-    void	addAsset(const ASSET* asset);
-    template <class ASSET> // Must inherit from class slim::asset::Asset.
-    void	addListener(IListener<ASSET>* listener, const ASSET* asset);
+    void	addAsset(const Asset* asset);
+    void	addListener(Listener* listener, const Asset* asset);
 
 public:
     void	onLoad(const Asset* asset);
+    void	onUnload(const Asset* asset);
 
 private:
-    std::map<const char*, IListenerList*>	m_listenerLists;
+    typedef std::map<const Asset*, std::vector<Listener*>>	ListenerList;
+
+private:
+    std::map<const char*, ListenerList>	m_listenerLists;
 };
 
 }

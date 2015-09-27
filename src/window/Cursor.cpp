@@ -13,7 +13,7 @@ Cursor::Cursor(const assets::Image* image, unsigned int xhot, unsigned int yhot)
     m_image(image)
 {
     m_image->setNeeded(true);
-    m_image->addListener(this);
+    this->listen(m_image);
 }
 
 Cursor::~Cursor()
@@ -23,16 +23,16 @@ Cursor::~Cursor()
 
 
 void
-Cursor::onLoad(const assets::Image* image)
+Cursor::onAssetsReady()
 {
     GLFWimage	glfwImage;
 
-    SLIM_DEBUG_ASSERT(image->isLoaded());
+    SLIM_DEBUG_ASSERT(m_image->isLoaded());
 
-    debug::LogManager::instance.graphics.info << "New cursor created with image " << image->getName() << debug::LogStream::endline;
-    glfwImage.width = image->getWidth();
-    glfwImage.height = image->getHeight();
-    glfwImage.pixels = const_cast<assets::byte*>(image->getPixels());
+    debug::LogManager::instance.graphics.info << "New cursor created with image " << m_image->getName() << debug::LogStream::endline;
+    glfwImage.width = m_image->getWidth();
+    glfwImage.height = m_image->getHeight();
+    glfwImage.pixels = const_cast<assets::byte*>(m_image->getPixels());
 
     m_cursor = glfwCreateCursor(&glfwImage, m_hot.x, m_hot.y);
     if (m_cursor == nullptr)

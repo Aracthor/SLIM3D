@@ -20,7 +20,7 @@ Window::setTitle(const char* title)
 void
 Window::setCursor(Cursor* cursor)
 {
-    SLIM_DEBUG_ASSERT(cursor->isLoaded());
+    SLIM_DEBUG_ASSERT(cursor->isReady());
     glfwSetCursor(m_window, cursor->getGLFWResource());
 }
 

@@ -1,14 +1,14 @@
 #ifndef SLIM_ASSETS_ASSET_HH_
 # define SLIM_ASSETS_ASSET_HH_
 
-# include "slim/assets/IListener.hh"
+# include "slim/assets/Listener.hh"
 
 namespace slim
 {
 namespace assets
 {
 
-class	Asset
+class	Asset : public Listener
 {
 public:
     template <class ASSET, typename ...Args> // ASSET must inherit from this class.
@@ -22,8 +22,6 @@ public:
     virtual ~Asset();
 
 public:
-    template <class ASSET> // ASSET must inherit from this class.
-    inline void		addListener(IListener<ASSET>* listener) const;
     bool		load(const char* const path);
     void		unload();
 

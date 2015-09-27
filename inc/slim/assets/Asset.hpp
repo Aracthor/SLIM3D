@@ -17,15 +17,6 @@ Asset::create(Args&&... args)
 }
 
 
-template <class ASSET>
-void
-Asset::addListener(IListener<ASSET>* listener) const
-{
-    SLIM_DEBUG_ASSERT(this->getType() == ASSET::typeName); // Else, the static cast would fail.
-    Manager::instance.addListener(listener, static_cast<const ASSET*>(this));
-}
-
-
 const char*
 Asset::getType() const
 {

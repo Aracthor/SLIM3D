@@ -31,13 +31,13 @@ SingleFileAsset::loadData(const char* const path)
     containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	buffer;
     bool						success;
 
-    buffer << path << SLIM_IO_SEPARATOR_CHAR << m_file << '\0';
+    buffer << path << m_file << '\0';
 
-    debug::LogManager::instance.assets.info << "Loading " << this->getType() << " file " << m_file << "..." << debug::LogStream::endline;
+    debug::LogManager::instance.assets.info << "Loading " << this->getType() << " file \"" << buffer.getData() << "\"..." << debug::LogStream::endline;
     success = this->loadFromFile(buffer.getData());
     if (success)
     {
-	debug::LogManager::instance.assets.info << "Successfully loaded " << this->getType() << " file " << buffer.getData() << '.' << debug::LogStream::endline;
+	debug::LogManager::instance.assets.info << "Successfully loaded " << this->getType() << " file \"" << buffer.getData() << "\"." << debug::LogStream::endline;
     }
 
     return success;

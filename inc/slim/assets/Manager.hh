@@ -33,8 +33,7 @@ public:
     void	setExecutablePath(const char* path);
 
 public:
-    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
-    void	addListener(IListener<ASSET>* listener, const ASSET* asset);
+    inline void	addListener(Listener* listener, const Asset* asset);
     template <class ASSET> // ASSET must inherit from slim::assets::Asset.
     void	registerAsset(ASSET* asset);
     template <class ASSET> // ASSET must inherit from slim::assets::Asset.
@@ -47,6 +46,8 @@ public:
 
 private:
     void	addToLoadList(Asset* asset);
+    void	load(Asset* asset);
+    void	unload(Asset* asset);
 
 private:
     std::map<const char*, std::vector<Asset*>>		m_assets;

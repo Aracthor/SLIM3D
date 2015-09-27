@@ -3,12 +3,12 @@ namespace slim
 namespace assets
 {
 
-template <class ASSET>
 void
-Manager::addListener(IListener<ASSET>* listener, const ASSET* asset)
+Manager::addListener(Listener* listener, const Asset* asset)
 {
     m_listenersManager.addListener(listener, asset);
 }
+
 
 template <class ASSET>
 void
