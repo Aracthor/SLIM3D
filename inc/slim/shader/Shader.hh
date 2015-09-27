@@ -1,9 +1,7 @@
 #ifndef SLIM_SHADER_SHADER_HH_
 # define SLIM_SHADER_SHADER_HH_
 
-# include "slim/io/ReadingFile.hh"
-# include "slim/io/VirtualFile.hh"
-
+# include "slim/assets/SingleFileAsset.hh"
 # include "slim/graphics/gl.h"
 
 # define SLIM_SHADER_FILE_BUFFER_SIZE	0x10000
@@ -13,7 +11,7 @@ namespace slim
 namespace shader
 {
 
-class	Shader
+class	Shader : public assets::SingleFileAsset
 {
 public:
     enum	EType
@@ -23,25 +21,26 @@ public:
     };
 
 public:
-    Shader(EType type, io::ReadingFile& file);
-    Shader(const char* name, EType type, io::VirtualFile& file);
-    Shader(const char* name, EType type, const char* data);
+    static const char* const	typeName;
+
+public:
+    Shader(const char* name, EType type);
     ~Shader();
 
 public:
-    inline const char*	getName() const;
     inline EType	getType() const;
     inline GLuint	getId() const;
 
-private:
-    void	readFromFile(io::ReadingFile& file);
-    void	readFromFile(const io::VirtualFile& file);
-    void	readFromData(const char* data);
+public:
+    bool		loadFromFile(const char* const path) override;
+    void		unloadData() override;
 
 private:
-    const char*	m_name;
-    EType	m_type;
-    GLuint	m_id;
+    bool		readFromData(const char* const data);
+
+private:
+    EType		m_type;
+    GLuint		m_id;
 };
 
 }

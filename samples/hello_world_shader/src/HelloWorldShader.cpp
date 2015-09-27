@@ -1,7 +1,3 @@
-#include "slim/io/BufferedReadingFile.hh"
-#include "slim/shader/Shader.hh"
-#include "slim/shader/Program.hh"
-
 #include "HelloWorldShader.hh"
 
 HelloWorldShader::HelloWorldShader(int argc, char** argv) :
@@ -21,12 +17,20 @@ HelloWorldShader::~HelloWorldShader()
 void
 HelloWorldShader::onInit()
 {
-    slim::io::BufferedReadingFile	vertexShaderFile("../../samples/resources/shaders/basic.vert");
-    slim::io::BufferedReadingFile	fragmentShaderFile("../../samples/resources/shaders/basic.frag");
+    m_vertexShader = slim::assets::Asset::create<slim::shader::Shader>("basic.vert", slim::shader::Shader::VERTEX);
+    m_fragmentShader = slim::assets::Asset::create<slim::shader::Shader>("basic.frag", slim::shader::Shader::FRAGMENT);
+    m_program = slim::assets::Asset::create<slim::shader::Program>("basic", m_vertexShader, m_fragmentShader);
 
-    slim::shader::Shader	vertexShader(slim::shader::Shader::VERTEX, vertexShaderFile);
-    slim::shader::Shader	fragmentShader(slim::shader::Shader::FRAGMENT, fragmentShaderFile);
-    slim::shader::Program	program("Test program", vertexShader, fragmentShader);
+    m_program->setNeeded(true);
+    slim::assets::Manager::instance.loadNeededAssets();
 
     this->stop();
+}
+
+
+void
+HelloWorldShader::onShutdown()
+{
+    delete m_vertexShader;
+    delete m_fragmentShader;
 }

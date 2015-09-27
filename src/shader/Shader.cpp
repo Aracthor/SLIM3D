@@ -1,6 +1,7 @@
 #include "slim/containers/Buffer.hh"
+#include "slim/debug/LogManager.hh"
 #include "slim/graphics/GLException.hh"
-#include "slim/io/ResourceException.hh"
+#include "slim/io/VirtualFile.hh"
 #include "slim/shader/Shader.hh"
 
 namespace slim
@@ -8,52 +9,45 @@ namespace slim
 namespace shader
 {
 
-Shader::Shader(EType type, io::ReadingFile& file) :
-    m_name(file.getName()),
-    m_type(type)
-{
-    this->readFromFile(file);
-}
+const char* const
+Shader::typeName = "shader";
 
-Shader::Shader(const char* name, EType type, io::VirtualFile& file) :
-    m_name(name),
-    m_type(type)
-{
-    this->readFromFile(file);
-}
 
-Shader::Shader(const char* name, EType type, const char* data) :
-    m_name(name),
+Shader::Shader(const char* name, EType type) :
+    assets::SingleFileAsset(Shader::typeName, name, name),
     m_type(type)
 {
-    this->readFromData(data);
 }
 
 Shader::~Shader()
+{
+}
+
+
+bool
+Shader::loadFromFile(const char* const path)
+{
+    io::VirtualFile	file = io::VirtualFile::fromRealFile(path);
+    char		buffer[SLIM_SHADER_FILE_BUFFER_SIZE];
+
+    file.toBuffer(buffer, SLIM_SHADER_FILE_BUFFER_SIZE);
+    return this->readFromData(buffer);
+}
+
+
+void
+Shader::unloadData()
 {
     glDeleteShader(m_id);
 }
 
 
-void
-Shader::readFromFile(io::ReadingFile& file)
-{
-    this->readFromFile(io::VirtualFile::fromRealFile(file));
-}
-
-void
-Shader::readFromFile(const io::VirtualFile& file)
-{
-    char	buffer[SLIM_SHADER_FILE_BUFFER_SIZE];
-
-    file.toBuffer(buffer, SLIM_SHADER_FILE_BUFFER_SIZE);
-    this->readFromData(buffer);
-}
-
-void
-Shader::readFromData(const char* data)
+bool
+Shader::readFromData(const char* const data)
 {
     GLint	compiled;
+
+    debug::LogManager::instance.graphics.info << "Compiling shader \"" << this->getName() << "\"..." << debug::LogStream::endline;
 
     // TODO what are those nullptr ?
     SLIM_GRAPHICS_GL_CHECK(m_id = glCreateShader(m_type));
@@ -63,13 +57,15 @@ Shader::readFromData(const char* data)
     glGetShaderiv(m_id, GL_COMPILE_STATUS, &compiled);
     if (!compiled)
     {
-	containers::Buffer<char, SLIM_DEBUG_MESSAGE_BUFFER_SIZE>	buffer;
 	char	error[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
 	glGetShaderInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
-	buffer << "Error compiling shader: " << error;
-	throw io::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
+	debug::LogManager::instance.graphics.error << "Error compiling shader " << this->getName() << ": " << error << debug::LogStream::endline;
     }
+
+    debug::LogManager::instance.graphics.info << "Compiled shader \"" << this->getName() << "\"." << debug::LogStream::endline;
+
+    return compiled;
 }
 
 }

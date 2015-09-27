@@ -1,6 +1,8 @@
 #ifndef SLIM_ASSETS_LISTENER_HH_
 # define SLIM_ASSETS_LISTENER_HH_
 
+# include <vector>
+
 namespace slim
 {
 namespace assets
@@ -26,6 +28,9 @@ public:
 public:
     inline unsigned int	getWaitedNumber() const;
     inline bool		isReady() const;
+
+protected:
+    std::vector<const Asset*>	m_assets;
 
 private:
     unsigned int	m_waitedNumber = 0;

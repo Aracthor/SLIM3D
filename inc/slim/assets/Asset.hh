@@ -24,6 +24,7 @@ public:
 public:
     bool		load(const char* const path);
     void		unload();
+    void		setNeeded(bool needed) const;
 
 protected:
     virtual bool	loadData(const char* const path) = 0;
@@ -34,7 +35,6 @@ public:
     inline const char*	getName() const;
     inline bool		isNeeded() const;
     inline bool		isLoaded() const;
-    inline void		setNeeded(bool needed) const;
 
 private:
     const char* const	m_type;

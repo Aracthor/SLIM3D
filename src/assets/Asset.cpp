@@ -1,6 +1,8 @@
 #include "slim/assets/Asset.hh"
 #include "slim/debug/assert.hh"
 
+#include <iostream> // DEBUG
+
 namespace slim
 {
 namespace assets
@@ -36,6 +38,16 @@ Asset::unload()
     SLIM_DEBUG_ASSERT(m_loaded == true);
     m_loaded = false;
     this->unloadData();
+}
+
+void
+Asset::setNeeded(bool needed) const
+{
+    m_needed = needed;
+    for (const Asset* asset : m_assets)
+    {
+	asset->setNeeded(needed);
+    }
 }
 
 }

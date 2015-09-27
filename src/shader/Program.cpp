@@ -1,4 +1,5 @@
 #include "slim/containers/Buffer.hh"
+#include "slim/core/attributes.h"
 #include "slim/debug/assert.hh"
 #include "slim/graphics/GLException.hh"
 #include "slim/shader/Program.hh"
@@ -9,18 +10,36 @@ namespace slim
 namespace shader
 {
 
-Program::Program(const char* name, const Shader& vertexShader, const Shader& fragmentShader) :
-    m_name(name)
+const char* const
+Program::typeName = "shader program";
+
+
+Program::Program(const char* name, const Shader* vertexShader, const Shader* fragmentShader) :
+    assets::Asset(Program::typeName, name),
+    m_vertexShader(vertexShader),
+    m_fragmentShader(vertexShader)
+{
+    SLIM_DEBUG_ASSERT(vertexShader->getType() == Shader::VERTEX);
+    SLIM_DEBUG_ASSERT(fragmentShader->getType() == Shader::FRAGMENT);
+
+    this->listen(vertexShader);
+    this->listen(fragmentShader);
+}
+
+Program::~Program()
+{
+}
+
+
+bool
+Program::loadData(SLIM_CORE_UNUSED(const char* const, path))
 {
     GLint	linked;
 
-    SLIM_DEBUG_ASSERT(vertexShader.getType() == Shader::VERTEX);
-    SLIM_DEBUG_ASSERT(fragmentShader.getType() == Shader::FRAGMENT);
-
     SLIM_GRAPHICS_GL_CHECK(m_id = glCreateProgram());
 
-    glAttachShader(m_id, vertexShader.getId());
-    glAttachShader(m_id, fragmentShader.getId());
+    glAttachShader(m_id, m_vertexShader->getId());
+    glAttachShader(m_id, m_fragmentShader->getId());
     glLinkProgram(m_id);
 
     glGetProgramiv(m_id, GL_LINK_STATUS, &linked);
@@ -31,11 +50,14 @@ Program::Program(const char* name, const Shader& vertexShader, const Shader& fra
 
 	glGetProgramInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
 	buffer << "Error linking shader program: " << error;
-	throw io::ResourceException(m_name, buffer.getData(), __FILE__, __func__, __LINE__);
+	throw io::ResourceException(this->getName(), buffer.getData(), __FILE__, __func__, __LINE__);
     }
+
+    return linked;
 }
 
-Program::~Program()
+void
+Program::unloadData()
 {
     glDeleteProgram(m_id);
 }

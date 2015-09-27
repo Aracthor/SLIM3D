@@ -3,12 +3,6 @@ namespace slim
 namespace shader
 {
 
-const char*
-Shader::getName() const
-{
-    return m_name;
-}
-
 Shader::EType
 Shader::getType() const
 {

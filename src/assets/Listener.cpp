@@ -37,6 +37,7 @@ Listener::listen(const Asset* asset)
 	++m_waitedNumber;
 	Manager::instance.addListener(this, asset);
     }
+    m_assets.push_back(asset);
 }
 
 void

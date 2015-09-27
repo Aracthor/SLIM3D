@@ -8,6 +8,8 @@
 #include "slim/engine/Engine.hh"
 #include "slim/io/macros.h"
 #include "slim/maths/Helper.hh"
+#include "slim/shader/Program.hh"
+#include "slim/shader/Shader.hh"
 #include "slim/window/MonitorsManager.hh"
 
 #include <cstring>
@@ -106,6 +108,8 @@ Engine::init()
 
     // Add default asset types.
     assets::Manager::instance.registerAssetType<assets::Image>();
+    assets::Manager::instance.registerAssetType<shader::Shader>();
+    assets::Manager::instance.registerAssetType<shader::Program>();
 
     this->onInit(); // Implemented by user
 }

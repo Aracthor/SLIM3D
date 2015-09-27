@@ -41,11 +41,5 @@ Asset::isLoaded() const
     return m_loaded;
 }
 
-void
-Asset::setNeeded(bool needed) const
-{
-    m_needed = needed;
-}
-
 }
 }
