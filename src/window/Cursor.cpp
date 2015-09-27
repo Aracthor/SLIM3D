@@ -13,7 +13,7 @@ Cursor::Cursor(const resources::Image* image, unsigned int xhot, unsigned int yh
 
     glfwImage.width = image->getWidth();
     glfwImage.height = image->getHeight();
-    glfwImage.pixels = const_cast<unsigned char*>(image->getPixels());
+    glfwImage.pixels = const_cast<unsigned char*>(image->getPixels()); // Need const_cast because GLFW pixels field is not const, but it should be.
 
     m_cursor = glfwCreateCursor(&glfwImage, xhot, yhot);
     if (m_cursor == nullptr)
