@@ -20,6 +20,9 @@ protected:
     void	resizeImplementation(unsigned int width, unsigned int height) override;
 
 private:
+    void	allowCloseEvents();
+
+private:
     ::Window	m_window;
 };
 
