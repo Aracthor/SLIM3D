@@ -1,5 +1,4 @@
 #include "slim/core/attributes.h"
-#include "slim/engine/glfw.h"
 #include "slim/events/EventsLoop.hh"
 
 namespace slim
@@ -21,7 +20,7 @@ EventsLoop::~EventsLoop()
 void
 EventsLoop::onFrame(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
-    glfwPollEvents();
+    // TODO
 }
 
 }

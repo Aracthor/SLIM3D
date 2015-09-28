@@ -2,9 +2,6 @@
 
 #include "slim/containers/Buffer.hh"
 #include "slim/core/SingletonsManager.hh"
-#include "slim/debug/LogManager.hh"
-#include "slim/maths/Helper.hh"
-#include "slim/window/MonitorsManager.hh"
 
 namespace slim
 {

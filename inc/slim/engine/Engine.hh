@@ -6,7 +6,7 @@
 # include "slim/engine/RenderLoop.hh"
 # include "slim/events/EventsLoop.hh"
 # include "slim/time/Synchronizer.hh"
-# include "slim/window/Window.hh"
+# include "slim/window/WindowImplementation.hh"
 
 namespace slim
 {
@@ -54,15 +54,15 @@ protected:
     window::Window::Parameters	m_windowParameters;
 
 private:
-    core::SingletonsManager	m_singletonsManager;
-    time::Synchronizer		m_synchronizer;
-    window::Window*		m_window = nullptr;
-    GameplayLoop		m_gameplayLoop;
-    RenderLoop			m_renderLoop;
-    bool			m_running;
+    core::SingletonsManager		m_singletonsManager;
+    time::Synchronizer			m_synchronizer;
+    window::WindowImplementation*	m_window = nullptr;
+    GameplayLoop			m_gameplayLoop;
+    RenderLoop				m_renderLoop;
+    bool				m_running;
 
-    friend class		GameplayLoop;
-    friend class		RenderLoop;
+    friend class	GameplayLoop;
+    friend class	RenderLoop;
 };
 
 }

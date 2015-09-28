@@ -3,6 +3,7 @@
 
 #include "slim/assets/Manager.hh"
 #include "slim/assets/Image.hh"
+#include "slim/context/Context.hh"
 #include "slim/core/attributes.h"
 #include "slim/debug/LogManager.hh"
 #include "slim/engine/Engine.hh"
@@ -10,7 +11,6 @@
 #include "slim/maths/Helper.hh"
 #include "slim/shader/Program.hh"
 #include "slim/shader/Shader.hh"
-#include "slim/window/MonitorsManager.hh"
 
 #include <cstring>
 
@@ -26,7 +26,7 @@ Engine::Engine(int argc, char** argv) :
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
     this->addModule<assets::Manager>();
-    this->addModule<window::MonitorsManager>();
+    this->addModule<context::Context>();
 
     this->parseCommandLine(argc, argv);
 }
@@ -98,7 +98,7 @@ Engine::init()
     m_running = true;
 
     m_singletonsManager.initSingletons();
-    m_window = new window::Window(m_windowParameters);
+    m_window = new window::WindowImplementation(m_windowParameters);
 
     // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);

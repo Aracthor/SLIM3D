@@ -1,7 +1,7 @@
 project("SLIM3D")
 
 set(SRCS_FILES
-  Window.cpp
-  WindowImplementation.cpp
+  Context.cpp
+  ContextImplementation.cpp
   PARENT_SCOPE
   )
