@@ -1,0 +1,8 @@
+namespace slim
+{
+namespace memory
+{
+
+
+}
+}
