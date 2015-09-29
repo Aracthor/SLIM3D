@@ -9,18 +9,38 @@ namespace window
 WindowImplementation::WindowImplementation(unsigned int width, unsigned int height, const char* title, bool fullscreen) :
     Window(width, height, title, fullscreen)
 {
-    Display*    display = context::Context::instance.getImplementation()->getDisplay();
+    Display*			display = context::Context::instance.getImplementation()->getDisplay();
+    XSetWindowAttributes	attributes;
 
-    m_window = XCreateSimpleWindow(display,			// Display singleton
-    				   DefaultRootWindow(display),	// Parent window (none in that case)
-    				   0, 0,			// Initial position (top-left screen corner)
-    				   width, height,		// Size
-    				   1, 1,			// Border size
-    				   0);				// Background pixel value (0 == black)
+    // m_window = XCreateSimpleWindow(display,			// Display singleton
+    // 				   DefaultRootWindow(display),	// Parent window (none in that case)
+    // 				   0, 0,			// Initial position (top-left screen corner)
+    // 				   width, height,		// Size
+    // 				   1, 1,			// Border size
+    // 				   0);				// Background pixel value (0 == black)
+
+
+
+    attributes.event_mask = 0xFFFFFF;
+    m_window = XCreateWindow(display,				// Display
+			     DefaultRootWindow(display),	// Parent (none)
+			     0, 0,				// x, y
+			     width, height,			// width, height
+			     1,					// border width
+			     CopyFromParent,			// depthx
+			     InputOutput,			// class
+			     CopyFromParent,			// visual
+			     CWEventMask,			// valuemask
+			     &attributes);			// attributes
 
     this->allowCloseEvents();
     XMapWindow(display, m_window); // Make it visible on screen
     this->setTitleImplementation(title);
+
+    // XEvent	ev;
+    // XWindowEvent(display, m_window, ExposureMask, &ev);
+    // XPutBackEvent(display, &ev);
+
 }
 
 WindowImplementation::WindowImplementation(const Parameters& parameters) :

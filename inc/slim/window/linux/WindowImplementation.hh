@@ -22,7 +22,7 @@ protected:
 private:
     void	allowCloseEvents();
 
-private:
+public:
     ::Window	m_window;
 };
 

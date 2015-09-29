@@ -14,9 +14,24 @@ HelloWorldEngine::~HelloWorldEngine()
 {
 }
 
+#include "slim/context/Context.hh"
+#include "slim/debug/LogManager.hh"
 
 void
 HelloWorldEngine::onInit()
 {
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
+}
+
+void
+HelloWorldEngine::onUpdate(slim::time::Clock::time elapsed)
+{
+    XEvent	event;
+    (void)elapsed;
+
+    slim::debug::LogManager::instance.graphics.info << elapsed << slim::debug::LogStream::endline;
+    while (XCheckWindowEvent(slim::context::Context::instance.getImplementation()->getDisplay(), dynamic_cast<slim::window::WindowImplementation*>(this->getCurrentWindow())->m_window, 0x00FFFFFF, &event) == 1)
+    {
+	slim::debug::LogManager::instance.graphics.info << "YOLO " << event.type << slim::debug::LogStream::endline;
+    }
 }
