@@ -11,11 +11,6 @@ namespace memory
 template <class T>
 class	Allocatable
 {
-protected:
-    Allocatable();
-    Allocatable(const Allocatable& reference);
-    virtual ~Allocatable();
-
 public:
     inline void*	operator new(std::size_t size);
     inline void		operator delete(void* ptr);
