@@ -80,20 +80,16 @@ StackAllocator::free(void* ptr)
 
 }
 
-StackAllocator::CheckPoint*
+StackAllocator::CheckPoint
 StackAllocator::saveCheckPoint() const
 {
-    CheckPoint*	point = new CheckPoint();
-
-    point->m_dataPoint = m_data;
-
-    return point;
+    return m_data;
 }
 
 void
-StackAllocator::backToCheckPoint(const CheckPoint* point)
+StackAllocator::backToCheckPoint(const CheckPoint point)
 {
-    m_data = point->m_dataPoint;
+    m_data = point;
 }
 
 }

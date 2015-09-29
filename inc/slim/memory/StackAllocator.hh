@@ -12,19 +12,7 @@ namespace memory
 class		StackAllocator
 {
 public:
-    class	CheckPoint
-    {
-    private:
-	CheckPoint() {}
-
-    public:
-	~CheckPoint() {}
-
-    private:
-	char*	m_dataPoint;
-
-	friend class	StackAllocator;
-    };
+    typedef char*		CheckPoint;
 
 public:
     static StackAllocator	instance;
@@ -38,8 +26,8 @@ public:
     void	destroy();
     void*	alloc(uint64_t size);
     void	free(void* ptr);
-    CheckPoint*	saveCheckPoint() const;
-    void	backToCheckPoint(const CheckPoint* point);
+    CheckPoint	saveCheckPoint() const;
+    void	backToCheckPoint(const CheckPoint point);
 
 private:
     char*	m_data = nullptr;
