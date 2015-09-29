@@ -62,9 +62,14 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     endforeach()
 endif()
 
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../bin")
+
+add_custom_target(make-binary-directory ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+  
 
 add_library(slim3d-core ${CORE_SRCS})
 add_library(slim3d-graphics ${GRAPHICS_SRCS})
