@@ -1,3 +1,4 @@
+#include "slim/core/attributes.h"
 #include "slim/debug/exit.hh"
 
 #include <cstdlib>
@@ -63,7 +64,7 @@ StackAllocator::alloc(uint64_t size)
 }
 
 void
-StackAllocator::free(void* ptr)
+StackAllocator::free(SLIM_CORE_UNUSED(void*, ptr))
 {
     m_data = m_data - *(reinterpret_cast<uint64_t*>(m_data) - 1) - sizeof(uint64_t);
 }
