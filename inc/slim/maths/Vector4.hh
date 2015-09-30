@@ -53,6 +53,7 @@ public:
     Vector4<T>&	lerpInterpolation(const Vector4<T>& vector, T ratio);
 
 public:
+    inline const T*		asArray() const;
     inline const Quaternion<T>&	asQuaternion() const;
     inline Quaternion<T>&	asQuaternion();
 
@@ -77,6 +78,9 @@ public:
     inline Vector4<T>	operator/(T n) const;
     inline bool		operator==(const Vector4<T>& vector) const;
     inline bool		operator!=(const Vector4<T>& vector) const;
+
+public:
+    Vector4<T>&		operator=(const Vector4<T>& vector);
 
 public:
     inline T		operator[](unsigned int index) const;

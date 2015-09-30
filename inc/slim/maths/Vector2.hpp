@@ -238,6 +238,17 @@ Vector2<T>::operator!=(const Vector2<T>& vector) const
 
 
 template <typename T>
+Vector2<T>&
+Vector2<T>::operator=(const Vector2<T>& vector)
+{
+    this->x = vector.x;
+    this->y = vector.y;
+
+    return *this;
+}
+
+
+template <typename T>
 T
 Vector2<T>::operator[](unsigned int index) const
 {
