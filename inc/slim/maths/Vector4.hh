@@ -119,7 +119,7 @@ typedef maths::Vector4f	        Vector4;
 # include "Vector4.hpp"
 
 # if __SSE__ == 1
-#  include "Vector4/SSE.hpp"
+#  include "SSE/Vector4.hpp"
 # endif
 
 #endif // !SLIM_MATHS_VECTOR4_HH_
