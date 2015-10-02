@@ -36,5 +36,35 @@ Vector4<float>::operator=(__m128 data)
 }
 
 
+template <>
+Vector4<float>&
+Vector4<float>::addTo(const Vector4<float>& vector)
+{
+    return this->set(_mm_add_ps(this->asSSE(), vector.asSSE()));
+}
+
+template <>
+Vector4<float>&
+Vector4<float>::subTo(const Vector4<float>& vector)
+{
+    return this->set(_mm_sub_ps(this->asSSE(), vector.asSSE()));
+}
+
+
+template <>
+Vector4<float>
+Vector4<float>::add(const Vector4<float>& vector) const
+{
+    return Vector4<float>(_mm_add_ps(this->asSSE(), vector.asSSE()));
+}
+
+template <>
+Vector4<float>
+Vector4<float>::sub(const Vector4<float>& vector) const
+{
+    return Vector4<float>(_mm_sub_ps(this->asSSE(), vector.asSSE()));
+}
+
+
 }
 }
