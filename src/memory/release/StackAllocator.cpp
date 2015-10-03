@@ -32,6 +32,7 @@ StackAllocator::init(uint64_t size)
     {
 	SLIM_DEBUG_EXIT("Trying to initialize already initalized allocator.");
     }
+
     m_data = static_cast<char*>(malloc(size));
     if (!m_data)
     {
@@ -46,52 +47,21 @@ StackAllocator::destroy()
     {
 	SLIM_DEBUG_EXIT("Trying to destroy non initialized allocator.");
     }
-    free(m_data);
+    ::free(m_data);
     m_data = nullptr;
 }
 
-void*
-StackAllocator::alloc(uint64_t size)
+}
+}
+
+SLIM_CORE_NORETURN void*
+operator new(SLIM_CORE_UNUSED(std::size_t, size))
 {
-    void*	ptr = m_data;
-    m_data += size;
-
-    uint64_t*	sizeHeader = reinterpret_cast<uint64_t*>(m_data);
-    *sizeHeader = size;
-    m_data += sizeof(*sizeHeader);
-
-    return ptr;
+    SLIM_DEBUG_EXIT("Cannot allocate object not heriting from slim::memory::Allocatable.");
 }
 
-void
-StackAllocator::free(SLIM_CORE_UNUSED(void*, ptr))
+SLIM_CORE_NORETURN void
+operator delete(SLIM_CORE_UNUSED(void*, ptr)) noexcept(true)
 {
-    m_data = m_data - *(reinterpret_cast<uint64_t*>(m_data) - 1) - sizeof(uint64_t);
-}
-
-StackAllocator::CheckPoint
-StackAllocator::saveCheckPoint() const
-{
-    return m_data;
-}
-
-void
-StackAllocator::backToCheckPoint(const CheckPoint point)
-{
-    m_data = point;
-}
-
-}
-}
-
-void*
-operator new(std::size_t size)
-{
-    return slim::memory::StackAllocator::instance.alloc(size);
-}
-
-void
-operator delete(void* ptr) noexcept(true)
-{
-    slim::memory::StackAllocator::instance.free(ptr);
+    SLIM_DEBUG_EXIT("Cannot allocate object not heriting from slim::memory::Allocatable.");
 }

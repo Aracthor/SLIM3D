@@ -4,6 +4,9 @@
 # include <cstdint>
 # include <new>
 
+# include "slim/core/attributes.h"
+# include "slim/debug/debug_modes.h"
+
 namespace slim
 {
 namespace memory
@@ -22,23 +25,30 @@ private:
     ~StackAllocator();
 
 public:
-    void	init(uint64_t size);
-    void	destroy();
-    void*	alloc(uint64_t size);
-    void	free(void* ptr);
-    CheckPoint	saveCheckPoint() const;
-    void	backToCheckPoint(const CheckPoint point);
+    void		init(uint64_t size);
+    void		destroy();
+    inline void*	alloc(uint64_t size);
+    inline void		free(uint64_t size);
+    inline CheckPoint	saveCheckPoint() const;
+    inline void		backToCheckPoint(const CheckPoint point);
 
 private:
-    char*	m_data = nullptr;
+    char*		m_data = nullptr;
+# if SLIM_DEBUG_MEMORY_MODE
+    uint64_t		m_index;
+# endif // SLIM_DEBUG_MEMORY_MODE
 };
 
 }
 }
 
-void*	operator new(std::size_t size);
-void	operator delete(void* ptr) noexcept(true);
+SLIM_CORE_NORETURN void*	operator new(std::size_t size);
+SLIM_CORE_NORETURN void		operator delete(void* ptr) noexcept(true);
 
-# include "StackAllocator.hpp"
+# if SLIM_DEBUG_MEMORY_MODE
+#  include "debug/StackAllocator.hpp"
+# else
+#  include "release/StackAllocator.hpp"
+# endif
 
 #endif // !SLIM_MEMORY_STACK_ALLOCATOR_HH_

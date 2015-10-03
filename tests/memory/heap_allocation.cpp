@@ -1,11 +1,12 @@
 #include "slim/memory/StackAllocator.hh"
+#include "slim/memory/Allocatable.hh"
 #include "slim/time/Clock.hh"
 
 #include <iostream>
 
 #define TESTS_NUMBER	1000000
 
-struct	Toto
+struct	Toto : public slim::memory::Allocatable<Toto>
 {
     unsigned int	x;
     unsigned int	y;
