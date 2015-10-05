@@ -19,10 +19,12 @@ Context::~Context()
 }
 
 
-void
+bool
 Context::onInit()
 {
     m_implementation = new ContextImplementation();
+
+    return true;
 }
 
 void
