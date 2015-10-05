@@ -26,7 +26,7 @@ Manager::~Manager()
 bool
 Manager::onInit()
 {
-    m_memory = malloc(Manager::size);
+    m_memory = static_cast<char*>(malloc(Manager::size));
 
     return (m_memory == nullptr);
 }

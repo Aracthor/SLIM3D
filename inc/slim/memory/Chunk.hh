@@ -29,7 +29,7 @@ protected:
     char*		m_start;
     char*		m_data;
     std::size_t		m_size;
-    const std::size_t	m_maxSize;
+    std::size_t		m_maxSize;
 };
 
 }

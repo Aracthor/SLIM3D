@@ -1,13 +1,14 @@
-#include "slim/memory/Allocatable.hh"
 #include "slim/memory/Manager.hh"
 #include "slim/memory/ArenaChunk.hh"
+#include "slim/memory/StackChunk.hh"
 #include "slim/time/Clock.hh"
 
 #include <iostream>
+#include <typeinfo>
 
 #define TESTS_NUMBER	1000000
 
-struct	Toto : public slim::memory::Allocatable<Toto>
+struct	Toto
 {
     unsigned int	x;
     unsigned int	y;
@@ -34,18 +35,18 @@ malloc_test()
 	}
     }
     clock.update();
-    std::cout << "Elpased time for standard malloc:\t" << clock.getElapsedTime() << std::endl;
+    std::cout << "Elpased time for standard malloc:\t\t\t\t" << clock.getElapsedTime() << std::endl;
 }
 
 void
 StackAllocator_test()
 {
-    slim::memory::Manager::instance.onInit();
+    slim::memory::Manager::instance.init();
 
-    slim::memory::ArenaChunk	chunk((char*)malloc(TESTS_NUMBER * sizeof(Toto)), TESTS_NUMBER * sizeof(Toto));
-    slim::time::Clock	clock;
-    int			i;
-    Toto*		toto[TESTS_NUMBER];
+    slim::memory::Chunk&	chunk = slim::memory::Manager::instance.createChunk<slim::memory::StackChunk>(100000000);
+    slim::time::Clock		clock;
+    int				i;
+    Toto*			toto[TESTS_NUMBER];
 
     clock.reset();
     {
@@ -60,7 +61,7 @@ StackAllocator_test()
     }
     chunk.clear();
     clock.update();
-    std::cout << "Elpased time for StackAllocator:\t" << clock.getElapsedTime() << std::endl;
+    std::cout << "Elpased time for Memory chunk " << typeid(chunk).name() << ":\t" << clock.getElapsedTime() << std::endl;
 }
 
 int
