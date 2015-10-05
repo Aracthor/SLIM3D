@@ -28,7 +28,7 @@ public:
     ~Manager();
 
 public:
-    void	onInit() override;
+    bool	onInit() override;
     void	onDestroy() override;
     void	setExecutablePath(const char* path);
 

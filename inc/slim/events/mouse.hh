@@ -1,33 +1,14 @@
 #ifndef SLIM_EVENTS_MOUSE_HH_
 # define SLIM_EVENTS_MOUSE_HH_
 
-# include "slim/engine/glfw.h"
+# include "slim/core/system.h"
 
-namespace slim
-{
-namespace events
-{
-
-namespace mouse
-{
-
-enum	EButton
-{
-    buttonLeft	= GLFW_MOUSE_BUTTON_LEFT,
-    buttonMiddle	= GLFW_MOUSE_BUTTON_MIDDLE,
-    buttonRight	= GLFW_MOUSE_BUTTON_RIGHT,
-    buttonsNumber
-};
-
-enum	EAction
-{
-    pressed		= GLFW_PRESS,
-    released	= GLFW_RELEASE
-};
-
-}
-
-}
-}
+# if SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_LINUX || SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_FREEBSD
+#  include "linux/mouse.hh"
+# elif SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_WINDOWS
+#  include "win32/mouse.hh"
+# else
+#  error "mouse not implemented yet for this system."
+# endif
 
 #endif // !SLIM_EVENTS_MOUSE_HH_

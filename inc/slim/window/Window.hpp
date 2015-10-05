@@ -1,71 +1,24 @@
-#include "slim/debug/assert.hh"
-
 namespace slim
 {
 namespace window
 {
 
-void
-Window::resize(unsigned int width, unsigned int height)
-{
-    glfwSetWindowSize(m_window, width, height);
-}
-
-void
-Window::setTitle(const char* title)
-{
-    glfwSetWindowTitle(m_window, title);
-}
-
-void
-Window::setCursor(Cursor* cursor)
-{
-    SLIM_DEBUG_ASSERT(cursor->isReady());
-    glfwSetCursor(m_window, cursor->getGLFWResource());
-}
-
-void
-Window::resetDefaultCursor()
-{
-    glfwSetCursor(m_window, nullptr);
-}
-
-
-bool
-Window::shouldClose() const
-{
-    return (glfwWindowShouldClose(m_window) != 0);
-}
-
-void
-Window::display() const
-{
-    glfwSwapBuffers(m_window);
-}
-
-
 unsigned int
 Window::getWidth() const
 {
-    return m_parameters.width;
+    return m_width;
 }
 
 unsigned int
 Window::getHeight() const
 {
-    return m_parameters.height;
-}
-
-bool
-Window::isFullscreen() const
-{
-    return m_parameters.fullscreen;
+    return m_height;
 }
 
 const char*
 Window::getTitle() const
 {
-    return m_parameters.title;
+    return m_title;
 }
 
 events::EventsManager&

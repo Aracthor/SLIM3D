@@ -11,6 +11,7 @@ public:
 
 public:
     void    onInit() override;
+    void    onUpdate(slim::time::Clock::time elapsed) override;
 };
 
 #endif // !HELLO_WORLD_ENGINE_HH_

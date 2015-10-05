@@ -20,7 +20,7 @@ Helper<T>::~Helper()
 
 
 template <typename T>
-void
+bool
 Helper<T>::onInit()
 {
     T	angle;
@@ -32,6 +32,8 @@ Helper<T>::onInit()
 	m_sines[i] = lib::sin(angle);
 	m_tanes[i] = lib::tan(angle);
     }
+
+    return true;
 }
 
 template <typename T>

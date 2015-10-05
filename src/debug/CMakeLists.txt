@@ -4,6 +4,7 @@ set(SRCS_FILES
   AssertionException.cpp
   console.cpp
   Exception.cpp
+  exit.cpp
   Log.cpp
   LogManager.cpp
   LogStream.cpp

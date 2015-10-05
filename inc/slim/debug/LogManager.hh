@@ -21,7 +21,7 @@ public:
     ~LogManager();
 
 protected:
-    void	onInit() override;
+    bool	onInit() override;
     void	onDestroy() override;
 
 private:

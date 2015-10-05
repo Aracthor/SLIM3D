@@ -45,13 +45,13 @@ private:
 private:
     maths::Vector2d	m_currentMousePosition;
 
-    bool		m_keysCurrentlyPressed[keyboard::keysNumber];
-    IKeyListener*	m_keyPressListeners[keyboard::keysNumber];
-    IKeyListener*	m_keyReleaseListeners[keyboard::keysNumber];
+    bool		m_keysCurrentlyPressed[keyboard::keysMax];
+    IKeyListener*	m_keyPressListeners[keyboard::keysMax];
+    IKeyListener*	m_keyReleaseListeners[keyboard::keysMax];
 
-    bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsNumber];
-    IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsNumber];
-    IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsNumber];
+    bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsMax];
+    IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsMax];
+    IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseMovementListener;
 
     ICloseListener*	m_closeListener;

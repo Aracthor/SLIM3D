@@ -13,11 +13,11 @@ protected:
     virtual ~Singleton();
 
 public:
-    void		init();
+    bool		init();
     void		destroy();
 
 protected:
-    virtual void	onInit() = 0;
+    virtual bool	onInit() = 0;
     virtual void	onDestroy() = 0;
 
 private:

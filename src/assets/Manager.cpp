@@ -24,9 +24,10 @@ Manager::~Manager()
 }
 
 
-void
+bool
 Manager::onInit()
 {
+    return true;
 }
 
 void

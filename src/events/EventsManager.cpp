@@ -16,11 +16,11 @@ EventsManager::EventsManager()
 
 EventsManager::~EventsManager()
 {
-    this->deleteListeners(m_keyPressListeners, keyboard::keysNumber);
-    this->deleteListeners(m_keyReleaseListeners, keyboard::keysNumber);
+    this->deleteListeners(m_keyPressListeners, keyboard::keysMax);
+    this->deleteListeners(m_keyReleaseListeners, keyboard::keysMax);
 
-    this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsNumber);
-    this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsNumber);
+    this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsMax);
+    this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsMax);
     if (m_mouseMovementListener)
     {
 	delete m_mouseMovementListener;

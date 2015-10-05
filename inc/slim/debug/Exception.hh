@@ -5,6 +5,8 @@
 
 # define SLIM_DEBUG_MESSAGE_BUFFER_SIZE	0x1000
 
+# define SLIM_DEBUG_THROW_EXCEPTION(message)	throw slim::debug::Exception(message, __FILE__, __func__, __LINE__)
+
 namespace slim
 {
 namespace debug
