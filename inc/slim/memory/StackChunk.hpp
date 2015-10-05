@@ -1,5 +1,3 @@
-#include "slim/memory/StackChunk.hh"
-
 namespace slim
 {
 namespace memory
@@ -18,7 +16,7 @@ StackChunk::~StackChunk()
 }
 
 #if _DEBUG
-# include "debug/StackChunk.cpp"
+# include "debug/StackChunk.hpp"
 #else
-# include "release/StackChunk.cpp"
+# include "release/StackChunk.hpp"
 #endif

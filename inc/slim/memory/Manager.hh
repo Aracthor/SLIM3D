@@ -26,8 +26,7 @@ public:
     bool	onInit() override;
     void	onDestroy() override;
 
-
-public:
+private:
     void*	m_memory;
     std::size_t	m_allocated;
 };

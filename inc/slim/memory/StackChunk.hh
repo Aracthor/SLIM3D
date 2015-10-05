@@ -11,15 +11,17 @@ namespace memory
 class		StackChunk : public Chunk
 {
 public:
-    StackChunk(char* data, std::size_t size);
-    ~StackChunk();
+    inline StackChunk(char* data, std::size_t size);
+    inline ~StackChunk();
 
 public:
-    void*	alloc(std::size_t size) override;
-    void	free(char* ptr) override;
+    inline void*	alloc(std::size_t size) override;
+    inline void 	free(char* ptr) override;
 };
 
 }
 }
+
+# include "StackChunk.hpp"
 
 #endif // !SLIM_MEMORY_STACK_CHUNK_HH_

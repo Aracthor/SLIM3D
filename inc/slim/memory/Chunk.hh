@@ -15,6 +15,9 @@ public:
     virtual ~Chunk();
 
 public:
+    void		clear();
+
+public:
     virtual void*	alloc(std::size_t size) = 0;
     virtual void	free(char* ptr) = 0;
 
@@ -23,6 +26,7 @@ public:
     inline std::size_t	getSize() const;
 
 protected:
+    char*		m_start;
     char*		m_data;
     std::size_t		m_size;
     const std::size_t	m_maxSize;
