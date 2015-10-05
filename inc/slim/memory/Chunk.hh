@@ -8,18 +8,24 @@ namespace slim
 namespace memory
 {
 
-class	Chunk
+class			Chunk
 {
 public:
-    Chunk(void* data, std::size_t size);
+    Chunk(char* data, std::size_t size);
     virtual ~Chunk();
 
 public:
+    virtual void*	alloc(std::size_t size) = 0;
+    virtual void	free(char* ptr) = 0;
+
+public:
+    // For some chunk implementations, this may not work on release mode !
     inline std::size_t	getSize() const;
 
 protected:
-    void*		m_data;
-    const std::size_t	m_size;
+    char*		m_data;
+    std::size_t		m_size;
+    const std::size_t	m_maxSize;
 };
 
 }

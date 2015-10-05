@@ -1,5 +1,6 @@
-#include "slim/memory/Manager.hh"
 #include "slim/memory/Allocatable.hh"
+#include "slim/memory/Manager.hh"
+#include "slim/memory/StackChunk.hh"
 #include "slim/time/Clock.hh"
 
 #include <iostream>
@@ -41,7 +42,8 @@ StackAllocator_test()
 {
     slim::memory::Manager::instance.onInit();
 
-    slim::time::Clock   clock;
+    slim::memory::StackChunk	chunk((char*)malloc(TESTS_NUMBER * (sizeof(Toto) + sizeof(std::size_t))), TESTS_NUMBER * (sizeof(Toto) + sizeof(std::size_t)));
+    slim::time::Clock	clock;
     int			i;
     Toto*		toto[TESTS_NUMBER];
 
@@ -49,11 +51,11 @@ StackAllocator_test()
     {
 	for (i = 0; i < TESTS_NUMBER; i++)
 	{
-	    toto[i] = new Toto();
+	    toto[i] = (Toto*)chunk.alloc(sizeof(toto[i]));
 	}
 	for (i = TESTS_NUMBER - 1; i >= 0; i--)
 	{
-	    delete toto[i];
+	    chunk.free((char*)toto[i]);
 	}
     }
     clock.update();

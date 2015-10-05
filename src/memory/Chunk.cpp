@@ -5,9 +5,10 @@ namespace slim
 namespace memory
 {
 
-Chunk::Chunk(void* data, std::size_t size) :
+Chunk::Chunk(char* data, std::size_t size) :
     m_data(data),
-    m_size(size)
+    m_size(0),
+    m_maxSize(size)
 {
 }
 
