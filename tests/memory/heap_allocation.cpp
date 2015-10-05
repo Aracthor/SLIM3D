@@ -1,4 +1,4 @@
-#include "slim/memory/StackAllocator.hh"
+#include "slim/memory/Manager.hh"
 #include "slim/memory/Allocatable.hh"
 #include "slim/time/Clock.hh"
 
@@ -39,11 +39,11 @@ malloc_test()
 void
 StackAllocator_test()
 {
+    slim::memory::Manager::instance.onInit();
+
     slim::time::Clock   clock;
     int			i;
     Toto*		toto[TESTS_NUMBER];
-
-    slim::memory::StackAllocator::instance.init(1 * 1024 * 1024 * 1024); // 1 GB
 
     clock.reset();
     {

@@ -25,7 +25,7 @@ LogManager::~LogManager()
 }
 
 
-void
+bool
 LogManager::onInit()
 {
     time::Date			now;
@@ -39,6 +39,8 @@ LogManager::onInit()
     {
 	log.init(directory);
     }
+
+    return true; // TODO check
 }
 
 void

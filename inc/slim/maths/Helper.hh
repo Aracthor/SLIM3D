@@ -39,7 +39,7 @@ public:
     ~Helper();
 
 public:
-    void	onInit() override;
+    bool	onInit() override;
     void	onDestroy() override;
 
 public:

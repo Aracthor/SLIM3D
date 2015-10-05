@@ -15,11 +15,11 @@ Singleton::~Singleton()
 }
 
 
-void
+bool
 Singleton::init()
 {
     m_inited = true;
-    this->onInit();
+    return this->onInit();
 }
 
 void
