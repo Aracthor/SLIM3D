@@ -1,4 +1,4 @@
-#include "slim/io/Directory.hh"
+#include "slim/io/Directory.hpp"
 
 #if SLIM_CORE_SYSTEM_IS_UNIX
 # include "unix/Directory.cpp"

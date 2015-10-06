@@ -1,60 +1,40 @@
-#include "slim/debug/assert.hh"
-
-#include <cstring>
+#ifndef SLIM_CONTAINERS_ABSTRACT_ARRAY_HH_
+# define SLIM_CONTAINERS_ABSTRACT_ARRAY_HH_
 
 namespace slim
 {
 namespace containers
 {
 
+// Every class inheriting from T used in this container must have the same size.
 template <class T, unsigned int N>
-AbstractArray<T, N>::AbstractArray()
+class	AbstractArray
 {
-}
+public:
+    AbstractArray();
+    ~AbstractArray();
 
-template <class T, unsigned int N>
-AbstractArray<T, N>::~AbstractArray()
-{
-}
+public:
+    inline unsigned int	getSize() const;
 
+public:
+    template <class U, typename ...Args>
+    void		insert(Args&&... args);
 
-template <class T, unsigned int N>
-unsigned int
-AbstractArray<T, N>::getSize() const
-{
-    return m_size;
-}
+public:
+    template <class U>
+    inline const U&	operator[](unsigned int index) const;
+    template <class U>
+    inline U&		operator[](unsigned int index);
 
-
-template <class T, unsigned int N>
-template <class U, typename ...Args>
-void
-AbstractArray<T, N>::insert(Args&&... args)
-{
-    U	elem(args...);
-
-    memcpy(&(reinterpret_cast<U*>(m_data))[m_size], &elem, sizeof(U));
-    (reinterpret_cast<U*>(m_data))[m_size].alloc(42);
-    m_size++;
-
-}
-
-
-template <class T, unsigned int N>
-template <class U>
-const U&
-AbstractArray<T, N>::operator[](unsigned int index) const
-{
-    return reinterpret_cast<const U*>(m_data)[index];
-}
-
-template <class T, unsigned int N>
-template <class U>
-U&
-AbstractArray<T, N>::operator[](unsigned int index)
-{
-    return reinterpret_cast<U*>(m_data)[index];
-}
+private:
+    char		m_data[sizeof(T) * N];
+    unsigned int	m_size = 0;
+};
 
 }
 }
+
+# include "AbstractArray.ipp"
+
+#endif // !SLIM_CONTAINERS_ABSTRACT_ARRAY_HH_

@@ -1,4 +1,4 @@
-#include "slim/debug/LogManager.hh"
+#include "slim/debug/LogManager.hpp"
 
 #include <iostream> // DEBUG
 

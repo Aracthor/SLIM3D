@@ -1,5 +1,5 @@
-#include "slim/core/system.h"
-#include "slim/io/UnbufferedFile.hh"
+#include "slim/system.h"
+#include "slim/io/UnbufferedFile.hpp"
 
 #if SLIM_CORE_SYSTEM_IS_UNIX
 # include "unix/UnbufferedFile.cpp"

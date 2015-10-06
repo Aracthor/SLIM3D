@@ -1,5 +1,5 @@
-#include "slim/core/system.h"
-#include "slim/time/Clock.hh"
+#include "slim/system.h"
+#include "slim/time/Clock.hpp"
 
 namespace slim
 {

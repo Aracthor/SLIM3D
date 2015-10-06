@@ -1,5 +1,5 @@
-#include "slim/io/File.hh"
-#include "slim/io/FileException.hh"
+#include "slim/io/File.hpp"
+#include "slim/io/FileException.hpp"
 
 #include <cstdio>
 

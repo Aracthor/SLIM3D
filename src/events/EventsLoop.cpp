@@ -1,5 +1,5 @@
-#include "slim/core/attributes.h"
-#include "slim/events/EventsLoop.hh"
+#include "slim/attributes.h"
+#include "slim/events/EventsLoop.hpp"
 
 namespace slim
 {

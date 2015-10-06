@@ -1,7 +1,7 @@
-#include "slim/core/attributes.h"
-#include "slim/debug/assert.hh"
-#include "slim/debug/LogStream.hh"
-#include "slim/debug/Log.hh"
+#include "slim/attributes.h"
+#include "slim/debug/assert.hpp"
+#include "slim/debug/LogStream.hpp"
+#include "slim/debug/Log.hpp"
 #include "slim/io/macros.h"
 
 namespace slim

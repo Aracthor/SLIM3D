@@ -2,7 +2,6 @@ project("SLIM3D")
 
 set(CORE_SRCS)
 set(CORE_DIRECTORIES
-  assets
   core
   debug
   io
@@ -12,11 +11,9 @@ set(CORE_DIRECTORIES
 
 set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
-  context
   engine
   events
   graphics
-  shader
   window
   )
 

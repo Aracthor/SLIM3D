@@ -1,4 +1,4 @@
-#include "slim/core/Singleton.hh"
+#include "slim/core/Singleton.hpp"
 
 namespace slim
 {

@@ -2,7 +2,7 @@
 #include <sys/types.h>
 #include <Windows.h>
 
-#include "slim/debug/WindowsException.hh"
+#include "slim/debug/WindowsException.hpp"
 
 namespace slim
 {

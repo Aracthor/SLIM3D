@@ -1,4 +1,4 @@
-#include "slim/io/ReadingFile.hh"
+#include "slim/io/ReadingFile.hpp"
 
 namespace slim
 {

@@ -1,77 +1,65 @@
-#include "slim/debug/assert.hh"
+#ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
+# define SLIM_EVENTS_EVENTS_MANAGER_HH_
+
+# include "slim/containers/PresizedArray.hpp"
+# include "slim/events/ICloseListener.hpp"
+# include "slim/events/IKeyListener.hpp"
+# include "slim/events/IMouseListener.hpp"
+# include "slim/events/keyboard.hpp"
+# include "slim/events/mouse.hpp"
 
 namespace slim
 {
 namespace events
 {
 
-void
-EventsManager::addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
+class	EventsManager
 {
-    SLIM_DEBUG_ASSERT(!m_keyPressListeners[keyCode]);
-    m_keyPressListeners[keyCode] = listener;
-}
+public:
+    EventsManager();
+    ~EventsManager();
 
-void
-EventsManager::addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
-{
-    SLIM_DEBUG_ASSERT(!m_keyReleaseListeners[keyCode]);
-    m_keyReleaseListeners[keyCode] = listener;
-}
+public:
+    void	onKeyAction(keyboard::EKeyCode keyCode, int scancode, keyboard::EAction action, int modifiers);
+    void	onMouseButtonAction(mouse::EButton button, mouse::EAction action, int modifiers);
+    void	onMouseMovement(double x, double y);
+    void	onClose();
 
-void
-EventsManager::addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button)
-{
-    SLIM_DEBUG_ASSERT(!m_mouseButtonPressListeners[button]);
-    m_mouseButtonPressListeners[button] = listener;
-}
+public:
+    inline void	addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
 
-void
-EventsManager::addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button)
-{
-    SLIM_DEBUG_ASSERT(!m_mouseButtonReleaseListeners[button]);
-    m_mouseButtonReleaseListeners[button] = listener;
-}
+    inline void	addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button);
+    inline void	addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button);
+    inline void	addMouseMovementListener(IMouseListener* listener);
 
-void
-EventsManager::addMouseMovementListener(IMouseListener* listener)
-{
-    SLIM_DEBUG_ASSERT(!m_mouseMovementListener);
-    m_mouseMovementListener = listener;
-}
+    inline void	addCloseListener(ICloseListener* listener);
 
-void
-EventsManager::addCloseListener(ICloseListener* listener)
-{
-    SLIM_DEBUG_ASSERT(!m_closeListener);
-    m_closeListener = listener;
-}
+    inline bool	isKeyPressed(keyboard::EKeyCode key) const;
+    inline bool	isMouseButtonPressed(mouse::EButton button) const;
 
-bool
-EventsManager::isKeyPressed(keyboard::EKeyCode key) const
-{
-    return m_keysCurrentlyPressed[key];
-}
+private:
+    template <class T>
+    void	deleteListeners(T** listeners, unsigned int number);
 
-bool
-EventsManager::isMouseButtonPressed(mouse::EButton button) const
-{
-    return m_mouseButtonsCurrentlyPressed[button];
-}
+private:
+    maths::Vector2d	m_currentMousePosition;
 
+    bool		m_keysCurrentlyPressed[keyboard::keysMax];
+    IKeyListener*	m_keyPressListeners[keyboard::keysMax];
+    IKeyListener*	m_keyReleaseListeners[keyboard::keysMax];
 
-template <class T>
-void
-EventsManager::deleteListeners(T** listeners, unsigned int number)
-{
-    for (unsigned int i = 0; i < number; ++i)
-    {
-	if (listeners[i])
-	{
-	    delete listeners[i];
-	}
-    }
-}
+    bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsMax];
+    IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsMax];
+    IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsMax];
+    IMouseListener*	m_mouseMovementListener;
+
+    ICloseListener*	m_closeListener;
+};
 
 }
 }
+
+# include "EventsManager.ipp"
+
+#endif // !SLIM_EVENTS_EVENTS_MANAGER_HH_

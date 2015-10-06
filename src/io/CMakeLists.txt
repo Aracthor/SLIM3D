@@ -6,10 +6,8 @@ set(SRCS_FILES
   BufferedWritingFile.cpp
   Directory.cpp
   File.cpp
-  FileException.cpp
   FileInfos.cpp
   ReadingFile.cpp
-  ResourceException.cpp
   UnbufferedFile.cpp
   UnbufferedReadingFile.cpp
   UnbufferedWritingFile.cpp

@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "slim/maths/Vector4.hh"
-#include "slim/time/Clock.hh"
+#include "slim/maths/Vector4.hpp"
+#include "slim/time/Clock.hpp"
 
 #define TESTS_NUMBER	10000000
 

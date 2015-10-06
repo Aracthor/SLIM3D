@@ -1,5 +1,5 @@
-#include "slim/debug/SyscallException.hh"
-#include "slim/io/BufferedWritingFile.hh"
+#include "slim/debug/SyscallException.hpp"
+#include "slim/io/BufferedWritingFile.hpp"
 
 namespace slim
 {

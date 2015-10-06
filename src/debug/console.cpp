@@ -1,5 +1,5 @@
-#include "slim/core/system.h"
-#include "slim/debug/console.hh"
+#include "slim/system.h"
+#include "slim/debug/console.hpp"
 
 #if SLIM_CORE_SYSTEM_IS_UNIX
 # include "unix/console.cpp"

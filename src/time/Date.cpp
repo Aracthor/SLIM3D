@@ -1,5 +1,5 @@
-#include "slim/debug/SyscallException.hh"
-#include "slim/time/Date.hh"
+#include "slim/debug/SyscallException.hpp"
+#include "slim/time/Date.hpp"
 
 // Disable warnings for localtime and gmtime use from Visual Studio
 # ifdef _MSC_VER

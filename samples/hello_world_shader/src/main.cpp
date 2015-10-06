@@ -1,4 +1,4 @@
-#include "HelloWorldShader.hh"
+#include "HelloWorldShader.hpp"
 
 int	main(int argc, char** argv)
 {

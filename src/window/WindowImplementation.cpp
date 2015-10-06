@@ -1,5 +1,5 @@
-#include "slim/core/system.h"
-#include "slim/window/WindowImplementation.hh"
+#include "slim/system.h"
+#include "slim/window/WindowImplementation.hpp"
 
 #if SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_LINUX || SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_FREEBSD
 # include "linux/WindowImplementation.cpp"

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "slim/debug/exit.hh"
+#include "slim/debug/exit.hpp"
 
 #include <unistd.h>
 

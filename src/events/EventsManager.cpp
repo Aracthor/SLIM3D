@@ -1,6 +1,6 @@
-#include "slim/core/attributes.h"
-#include "slim/core/templates.hh"
-#include "slim/events/EventsManager.hh"
+#include "slim/attributes.h"
+#include "slim/core/templates.hpp"
+#include "slim/events/EventsManager.hpp"
 
 #include <cstring>
 

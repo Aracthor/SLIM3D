@@ -1,16 +1,16 @@
 #include <exception>
 #include <iostream> // Only to print exception error message
 
-#include "slim/assets/Manager.hh"
-#include "slim/assets/Image.hh"
-#include "slim/context/Context.hh"
-#include "slim/core/attributes.h"
-#include "slim/debug/LogManager.hh"
-#include "slim/engine/Engine.hh"
+#include "slim/assets/Manager.hpp"
+#include "slim/assets/Image.hpp"
+#include "slim/context/Context.hpp"
+#include "slim/attributes.h"
+#include "slim/debug/LogManager.hpp"
+#include "slim/engine/Engine.hpp"
 #include "slim/io/macros.h"
-#include "slim/maths/Helper.hh"
-#include "slim/shader/Program.hh"
-#include "slim/shader/Shader.hh"
+#include "slim/maths/Helper.hpp"
+#include "slim/shader/Program.hpp"
+#include "slim/shader/Shader.hpp"
 
 #include <cstring>
 

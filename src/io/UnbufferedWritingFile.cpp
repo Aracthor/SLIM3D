@@ -1,4 +1,4 @@
-#include "slim/io/UnbufferedWritingFile.hh"
+#include "slim/io/UnbufferedWritingFile.hpp"
 
 #if SLIM_CORE_SYSTEM_IS_UNIX
 # include "unix/UnbufferedWritingFile.cpp"

@@ -1,77 +1,67 @@
+#ifndef SLIM_MATHS_HELPER_HH_
+# define SLIM_MATHS_HELPER_HH_
+
+# include "slim/core/Singleton.hpp"
+# include "slim/debug/assert.hpp"
+# include "slim/maths/lib.hpp"
+
+# define SLIM_MATHS_HELPER_PRECALC_NUMBER	(360 * 100)
+
+# if _USE_MATHS_HELPER
+#  define SLIM_MATHS_COS(angle)		slim::MathsHelper::instance.getCosinus(angle)
+#  define SLIM_MATHS_SIN(angle)		slim::MathsHelper::instance.getSinus(angle)
+#  define SLIM_MATHS_TAN(angle)		slim::MathsHelper::instance.getTangeante(angle)
+#  define SLIM_MATHS_ACOS(angle)	slim::MathsHelper::instance.getACosinus(angle)
+#  define SLIM_MATHS_ASIN(angle)	slim::MathsHelper::instance.getASinus(angle)
+#  define SLIM_MATHS_ATAN(angle)	slim::MathsHelper::instance.getATangeante(angle)
+# else
+#  define SLIM_MATHS_COS(angle)		slim::maths::lib::cos(angle)
+#  define SLIM_MATHS_SIN(angle)		slim::maths::lib::sin(angle)
+#  define SLIM_MATHS_TAN(angle)		slim::maths::lib::tan(angle)
+#  define SLIM_MATHS_ACOS(angle)	slim::maths::lib::acos(angle)
+#  define SLIM_MATHS_ASIN(angle)	slim::maths::lib::asin(angle)
+#  define SLIM_MATHS_ATAN(angle)	slim::maths::lib::atan(angle)
+# endif
+
 namespace slim
 {
 namespace maths
 {
 
 template <typename T>
-Helper<T>
-Helper<T>::instance;
-
-
-template <typename T>
-Helper<T>::Helper()
+class		Helper : public core::Singleton
 {
-}
+public:
+    static Helper<T>	instance;
 
-template <typename T>
-Helper<T>::~Helper()
-{
-}
+public:
+    Helper();
+    ~Helper();
 
+public:
+    bool	onInit() override;
+    void	onDestroy() override;
 
-template <typename T>
-bool
-Helper<T>::onInit()
-{
-    T	angle;
+public:
+    inline T	getCosinus(T angle) const;
+    inline T	getSinus(T angle) const;
+    inline T	getTangeante(T angle) const;
 
-    for (unsigned int i = 0; i < SLIM_MATHS_HELPER_PRECALC_NUMBER; i++)
-    {
-	angle = static_cast<T>(SLIM_MATHS_PI) * static_cast<T>(2.0) * static_cast<T>(i) / static_cast<T>(SLIM_MATHS_HELPER_PRECALC_NUMBER);
-	m_coses[i] = lib::cos(angle);
-	m_sines[i] = lib::sin(angle);
-	m_tanes[i] = lib::tan(angle);
-    }
+private:
+    inline T	getAroundAngle(T angle) const;
 
-    return true;
-}
-
-template <typename T>
-void
-Helper<T>::onDestroy()
-{
-}
-
-
-template <typename T>
-T
-Helper<T>::getCosinus(T angle) const
-{
-    return (m_coses[this->getAroundAngle(angle)]);
-}
-
-template <typename T>
-T
-Helper<T>::getSinus(T angle) const
-{
-    return (m_sines[this->getAroundAngle(angle)]);
-}
-
-template <typename T>
-T
-Helper<T>::getTangeante(T angle) const
-{
-    return (m_tanes[this->getAroundAngle(angle)]);
-}
-
-
-template <typename T>
-T
-Helper<T>::getAroundAngle(T angle) const
-{
-    ASSERT(angle >= 0.0 && angle < SLIM_MATHS_PI * 2);
-    return (static_cast<T>((static_cast<unsigned int>(SLIM_MATHS_HELPER_PRECALC_NUMBER) * angle) / SLIM_MATHS_HELPER_PRECALC_NUMBER));
-}
+private:
+    T		m_coses[SLIM_MATHS_HELPER_PRECALC_NUMBER];
+    T		m_sines[SLIM_MATHS_HELPER_PRECALC_NUMBER];
+    T		m_tanes[SLIM_MATHS_HELPER_PRECALC_NUMBER];
+};
 
 }
+
+typedef maths::Helper<float>	MathsHelper;
+
 }
+
+# include "Helper.ipp"
+
+#endif // !SLIM_MATHS_HELPER_HH_

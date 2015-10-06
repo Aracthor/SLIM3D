@@ -1,4 +1,4 @@
-#include "slim/io/FileException.hh"
+#include "slim/io/FileException.hpp"
 #include "slim/io/macros.h"
 
 #include <cerrno>

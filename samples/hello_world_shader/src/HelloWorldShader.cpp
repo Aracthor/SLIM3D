@@ -1,4 +1,4 @@
-#include "HelloWorldShader.hh"
+#include "HelloWorldShader.hpp"
 
 HelloWorldShader::HelloWorldShader(int argc, char** argv) :
     slim::engine::Engine(argc, argv)

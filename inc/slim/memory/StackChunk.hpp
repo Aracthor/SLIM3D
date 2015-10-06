@@ -1,22 +1,27 @@
+#ifndef SLIM_MEMORY_STACK_CHUNK_HH_
+# define SLIM_MEMORY_STACK_CHUNK_HH_
+
+# include "slim/memory/Chunk.hpp"
+
 namespace slim
 {
 namespace memory
 {
 
-StackChunk::StackChunk(char* data, std::size_t size) :
-    Chunk(data, size)
+class		StackChunk : public Chunk
 {
+public:
+    inline StackChunk(char* data, std::size_t size);
+    inline ~StackChunk();
+
+public:
+    inline void*	alloc(std::size_t size) override;
+    inline void 	free(char* ptr) override;
+};
+
+}
 }
 
-StackChunk::~StackChunk()
-{
-}
+# include "StackChunk.ipp"
 
-}
-}
-
-#if _DEBUG
-# include "debug/StackChunk.hpp"
-#else
-# include "release/StackChunk.hpp"
-#endif
+#endif // !SLIM_MEMORY_STACK_CHUNK_HH_

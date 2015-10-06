@@ -1,5 +1,5 @@
-#include "slim/context/Context.hh"
-#include "slim/debug/LogManager.hh"
+#include "slim/context/Context.hpp"
+#include "slim/debug/LogManager.hpp"
 
 namespace slim
 {

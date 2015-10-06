@@ -1,5 +1,5 @@
-#include "slim/io/BufferedFile.hh"
-#include "slim/debug/Exception.hh"
+#include "slim/io/BufferedFile.hpp"
+#include "slim/debug/Exception.hpp"
 
 namespace slim
 {

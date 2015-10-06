@@ -1,4 +1,4 @@
-#include "slim/time/Synchronizer.hh"
+#include "slim/time/Synchronizer.hpp"
 
 namespace slim
 {

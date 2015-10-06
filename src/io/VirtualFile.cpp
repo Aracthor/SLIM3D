@@ -1,7 +1,7 @@
-#include "slim/core/attributes.h"
-#include "slim/debug/assert.hh"
-#include "slim/io/VirtualFile.hh"
-#include "slim/io/BufferedReadingFile.hh"
+#include "slim/attributes.h"
+#include "slim/debug/assert.hpp"
+#include "slim/io/VirtualFile.hpp"
+#include "slim/io/BufferedReadingFile.hpp"
 
 #include <cstring>
 

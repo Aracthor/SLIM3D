@@ -1,4 +1,4 @@
-#include "slim/memory/Manager.hh"
+#include "slim/memory/Manager.hpp"
 
 #include <cstdlib>
 

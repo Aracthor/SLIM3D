@@ -1,4 +1,4 @@
-#include "slim/memory/Chunk.hh"
+#include "slim/memory/Chunk.hpp"
 
 namespace slim
 {

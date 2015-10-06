@@ -1,7 +1,7 @@
 #include <typeinfo>
 
-#include "slim/containers/Buffer.hh"
-#include "slim/core/SingletonsManager.hh"
+#include "slim/containers/Buffer.hpp"
+#include "slim/core/SingletonsManager.hpp"
 
 namespace slim
 {

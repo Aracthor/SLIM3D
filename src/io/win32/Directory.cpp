@@ -1,5 +1,5 @@
-#include "slim/debug/WindowsException.hh"
-#include "slim/io/FileException.hh"
+#include "slim/debug/WindowsException.hpp"
+#include "slim/io/FileException.hpp"
 #include "slim/io/macros.h"
 
 #include <cerrno>

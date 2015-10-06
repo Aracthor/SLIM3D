@@ -1,5 +1,5 @@
-#include "slim/debug/LogManager.hh"
-#include "slim/window/Window.hh"
+#include "slim/debug/LogManager.hpp"
+#include "slim/window/Window.hpp"
 
 namespace slim
 {

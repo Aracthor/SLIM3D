@@ -1,156 +1,63 @@
+#ifndef SLIM_MATHS_LIB_HH_
+# define SLIM_MATHS_LIB_HH_
+
+# define _USE_MATH_DEFINES // MSC requirement for macros like M_PI
+# include <cmath>
+
+# ifdef M_PI
+#  define SLIM_MATHS_PI	M_PI
+# else
+#  define SLIM_MATHS_PI	3.1415926
+# endif
+
+namespace slim
+{
+namespace maths
+{
+
+namespace lib
+{
 template <typename T>
-T
-min(T a, T b)
-{
-    return (a <= b ? a : b);
-}
-
+inline T		min(T a, T b);
 template <typename T>
-T
-max(T a, T b)
-{
-    return (a >= b ? a : b);
-}
+inline T		max(T a, T b);
 
-float
-sqrt(float n)
-{
-    return (::sqrtf(n));
-}
+inline float		sqrt(float n);
+inline double		sqrt(double n);
+inline long double	sqrt(long double n);
 
-double
-sqrt(double n)
-{
-    return (::sqrt(n));
-}
+inline float		cos(float angle);
+inline double		cos(double angle);
+inline long double	cos(long double angle);
 
-long double
-sqrt(long double n)
-{
-    return (::sqrtl(n));
-}
+inline float		sin(float angle);
+inline double		sin(double angle);
+inline long double	sin(long double angle);
 
+inline float		tan(float angle);
+inline double		tan(double angle);
+inline long double	tan(long double angle);
 
-float
-cos(float angle)
-{
-    return (::cosf(angle));
-}
+inline float		acos(float angle);
+inline double		acos(double angle);
+inline long double	acos(long double angle);
 
-double
-cos(double angle)
-{
-    return (::cos(angle));
-}
+inline float		asin(float angle);
+inline double		asin(double angle);
+inline long double	asin(long double angle);
 
-long double
-cos(long double angle)
-{
-    return (::cosl(angle));
-}
-
-
-float
-sin(float angle)
-{
-    return (::sinf(angle));
-}
-
-double
-sin(double angle)
-{
-    return (::sin(angle));
-}
-
-long double
-sin(long double angle)
-{
-    return (::sinl(angle));
-}
-
-
-float
-tan(float angle)
-{
-    return (::tanf(angle));
-}
-
-double
-tan(double angle)
-{
-    return (::tan(angle));
-}
-
-long double
-tan(long double angle)
-{
-    return (::tanl(angle));
-}
-
-
-float
-acos(float angle)
-{
-    return (::acosf(angle));
-}
-
-double
-acos(double angle)
-{
-    return (::acos(angle));
-}
-
-long double
-acos(long double angle)
-{
-    return (::acosl(angle));
-}
-
-
-float
-asin(float angle)
-{
-    return (::asinf(angle));
-}
-
-double
-asin(double angle)
-{
-    return (::asin(angle));
-}
-
-long double
-asin(long double angle)
-{
-    return (::asinl(angle));
-}
-
-
-float
-atan(float angle)
-{
-    return (::atanf(angle));
-}
-
-double
-atan(double angle)
-{
-    return (::atan(angle));
-}
-
-long double
-atan(long double angle)
-{
-    return (::atanl(angle));
-}
-
+inline float		atan(float angle);
+inline double		atan(double angle);
+inline long double	atan(long double angle);
 
 template <typename T>
-T
-lerp(T a, T b, T ratio)
-{
-    // Unperfect but quick method
-    return (a + ratio * (b - a));
-    // Perfect but slow method
-    // return ((1.0 - ratio) * a + ratio * b);
+inline T		lerp(T a, T b, T ratio);
+
 }
+
+}
+}
+
+# include "lib.ipp"
+
+#endif // !SLIM_MATHS_LIB_HH_

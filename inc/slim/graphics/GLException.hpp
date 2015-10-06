@@ -1,8 +1,0 @@
-namespace slim
-{
-namespace graphics
-{
-
-
-}
-}

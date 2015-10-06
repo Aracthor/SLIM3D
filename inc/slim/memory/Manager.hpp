@@ -1,19 +1,46 @@
+#ifndef SLIM_MEMORY_MANAGER_HH_
+# define SLIM_MEMORY_MANAGER_HH_
+
+# include "slim/containers/AbstractArray.hpp"
+# include "slim/core/Singleton.hpp"
+# include "slim/memory/Chunk.hpp"
+# include "slim/memory/units.h"
+
+# define SLIM_MEMORY_TOTAL_SIZE	(100 * SLIM_MEMORY_MEBIBYTE)
+# define SLIM_MEMORY_MAX_CHUNKS	20
+
 namespace slim
 {
 namespace memory
 {
 
-template <class CHUNK>
-CHUNK&
-Manager::createChunk(std::size_t size)
+class		Manager : public core::Singleton
 {
-    char*	data = static_cast<char*>(m_memory);
+public:
+    const static std::size_t	size;
+    static Manager		instance;
 
-    m_chunks.insert<CHUNK>(data, size);
-    m_memory += size;
+public:
+    Manager();
+    ~Manager();
 
-    return m_chunks.operator[]<CHUNK>(m_chunks.getSize() - 1);
+public:
+    template <class CHUNK> // CHUNK must inherit from slim::memory::Chunk
+    CHUNK&	createChunk(std::size_t size);
+
+protected:
+    bool	onInit() override;
+    void	onDestroy() override;
+
+private:
+    char*	m_memory;
+    std::size_t	m_allocated;
+    containers::AbstractArray<Chunk, SLIM_MEMORY_MAX_CHUNKS>	m_chunks;
+};
+
+}
 }
 
-}
-}
+# include "Manager.ipp"
+
+#endif // !SLIM_MEMORY_MANAGER_HH_

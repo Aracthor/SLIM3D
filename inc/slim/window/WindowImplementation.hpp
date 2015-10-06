@@ -1,0 +1,15 @@
+#ifndef SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_
+# define SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_
+
+# include "slim/system.h"
+# include "slim/window/Window.hpp"
+
+# if SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_LINUX || SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_FREEBSD
+#  include "linux/WindowImplementation.hpp"
+# elif SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_WINDOWS
+#  include "win32/WindowImplementation.hpp"
+# else
+#  error "WindowImplementation not implemented yet for this system."
+# endif
+
+#endif // !SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_

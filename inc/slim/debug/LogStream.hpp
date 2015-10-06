@@ -1,28 +1,57 @@
-#include "slim/debug/Log.hh"
+#ifndef SLIM_DEBUG_LOG_STREAM_HH_
+# define SLIM_DEBUG_LOG_STREAM_HH_
+
+# include "slim/containers/Buffer.hpp"
+# include "slim/system.h"
+
+# define SLIM_DEBUG_ELEMENT_BUFFER_SIZE		0x200
+
+# define SLIM_DEBUG_LOG_LEVEL			0
+# define SLIM_DEBUG_INFO_LEVEL			1
+# define SLIM_DEBUG_WARNING_LEVEL		2
+# define SLIM_DEBUG_ERROR_LEVEL			3
 
 namespace slim
 {
 namespace debug
 {
 
-void
-LogStream::setActive(bool active)
+class	Log;
+
+class	LogStream
 {
-    m_active = active;
+public:
+    enum	ESpecialData {endline};
+
+private:
+    static const char*	s_levels[4];
+
+public:
+    LogStream(Log* log, const char* name, unsigned int level);
+    ~LogStream();
+
+public:
+    inline void	setActive(bool active);
+
+public:
+    template <typename T>
+    LogStream&	operator<<(const T& object);
+    LogStream&	operator<<(ESpecialData data);
+
+private:
+    void	prepareNextLine();
+
+private:
+    Log*		m_log;
+    const char*		m_name;
+    unsigned int	m_level;
+    bool	        m_active;
+    containers::Buffer<char, SLIM_DEBUG_ELEMENT_BUFFER_SIZE>	m_buffer;
+};
+
+}
 }
 
+# include "LogStream.ipp"
 
-template <typename T>
-LogStream&
-LogStream::operator<<(const T& object)
-{
-    if (m_active)
-    {
-	m_buffer << object;
-    }
-
-    return *this;
-}
-
-}
-}
+#endif // !SLIM_DEBUG_LOG_STREAM_HH_

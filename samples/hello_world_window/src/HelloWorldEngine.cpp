@@ -1,5 +1,5 @@
-#include "CloseListener.hh"
-#include "HelloWorldEngine.hh"
+#include "CloseListener.hpp"
+#include "HelloWorldEngine.hpp"
 
 HelloWorldEngine::HelloWorldEngine(int argc, char** argv) :
     slim::engine::Engine(argc, argv)
@@ -14,8 +14,8 @@ HelloWorldEngine::~HelloWorldEngine()
 {
 }
 
-#include "slim/context/Context.hh"
-#include "slim/debug/LogManager.hh"
+#include "slim/context/Context.hpp"
+#include "slim/debug/LogManager.hpp"
 
 void
 HelloWorldEngine::onInit()

@@ -1,4 +1,4 @@
-#include "slim/io/WritingFile.hh"
+#include "slim/io/WritingFile.hpp"
 
 namespace slim
 {

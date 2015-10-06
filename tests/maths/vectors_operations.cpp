@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "slim/maths/Vector4.hh"
+#include "slim/maths/Vector4.hpp"
 
 using namespace slim;
 

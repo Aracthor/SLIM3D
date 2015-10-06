@@ -1,8 +1,8 @@
-#include "slim/containers/Buffer.hh"
-#include "slim/debug/LogManager.hh"
-#include "slim/graphics/GLException.hh"
-#include "slim/io/VirtualFile.hh"
-#include "slim/shader/Shader.hh"
+#include "slim/containers/Buffer.hpp"
+#include "slim/debug/LogManager.hpp"
+#include "slim/graphics/GLException.hpp"
+#include "slim/io/VirtualFile.hpp"
+#include "slim/shader/Shader.hpp"
 
 namespace slim
 {

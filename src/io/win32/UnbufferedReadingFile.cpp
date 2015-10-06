@@ -1,4 +1,4 @@
-#include "slim/debug/WindowsException.hh"
+#include "slim/debug/WindowsException.hpp"
 
 #include <sys/stat.h>
 #include <sys/types.h>
