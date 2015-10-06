@@ -180,6 +180,13 @@ Vector4<T>::lerpInterpolation(const Vector4<T>& vector, T ratio)
 
 
 template <typename T>
+const T*
+Vector4<T>::asArray() const
+{
+    return static_cast<const float*>(this);
+}
+
+template <typename T>
 const Quaternion<T>&
 Vector4<T>::asQuaternion() const
 {
@@ -299,6 +306,19 @@ bool
 Vector4<T>::operator!=(const Vector4<T>& vector) const
 {
     return !this->equals(vector);
+}
+
+
+template <typename T>
+Vector4<T>&
+Vector4<T>::operator=(const Vector4<T>& vector)
+{
+    this->x = vector.x;
+    this->y = vector.y;
+    this->z = vector.z;
+    this->w = vector.w;
+
+    return *this;
 }
 
 

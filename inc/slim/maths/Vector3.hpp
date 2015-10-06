@@ -301,6 +301,18 @@ Vector3<T>::operator!=(const Vector3<T>& vector) const
 
 
 template <typename T>
+Vector3<T>&
+Vector3<T>::operator=(const Vector3<T>& vector)
+{
+    this->x = vector.x;
+    this->y = vector.y;
+    this->z = vector.z;
+
+    return *this;
+}
+
+
+template <typename T>
 T
 Vector3<T>::operator[](unsigned int index) const
 {

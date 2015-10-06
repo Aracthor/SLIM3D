@@ -60,9 +60,7 @@ typedef maths::Matrix4x4f		Matrix4x4;
 # include "Matrix4x4.hpp"
 
 # if __SSE__ == 1
-#  include "Matrix4x4/SSE.hpp"
-# else
-#  include "Matrix4x4/default.hpp"
+#  include "SSE/Matrix4x4.hpp"
 # endif
 
 #endif // !SLIM_MATHS_MATRIX4X4_HH_

@@ -5,9 +5,9 @@ namespace slim
 namespace maths
 {
 
-template <typename T>
+template <>
 void
-Matrix4x4<T>::transpose()
+Matrix4x4<float>::transpose()
 {
     __m128 row0 = m_rows[0].asSSE();
     __m128 row1 = m_rows[1].asSSE();

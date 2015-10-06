@@ -59,6 +59,9 @@ public:
     inline bool		operator!=(const Vector2<T>& vector) const;
 
 public:
+    Vector2<T>&		operator=(const Vector2<T>& vector);
+
+public:
     inline T		operator[](unsigned int index) const;
     inline T&		operator[](unsigned int index);
 
