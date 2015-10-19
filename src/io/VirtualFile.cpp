@@ -22,9 +22,9 @@ VirtualFile
 VirtualFile::fromRealFile(ReadingFile& file)
 {
     unsigned int	size = 0;
-    assets::byte*	data = new assets::byte[file.getInfos().getSize()];
+    unsigned char*	data = new unsigned char[file.getInfos().getSize()];
     unsigned int	bufferSize;
-    assets::byte	buffer[SLIM_IO_FILE_READ_BUFFER_SIZE];
+    unsigned char	buffer[SLIM_IO_FILE_READ_BUFFER_SIZE];
 
     do
     {
@@ -38,7 +38,7 @@ VirtualFile::fromRealFile(ReadingFile& file)
 }
 
 
-VirtualFile::VirtualFile(assets::byte* data, unsigned int size) :
+VirtualFile::VirtualFile(unsigned char* data, unsigned int size) :
     m_data(data),
     m_size(size)
 {
@@ -47,7 +47,7 @@ VirtualFile::VirtualFile(assets::byte* data, unsigned int size) :
 VirtualFile::VirtualFile(const VirtualFile& reference) :
     m_size(reference.getSize())
 {
-    m_data = new assets::byte[m_size];
+    m_data = new unsigned char[m_size];
     memcpy(m_data, reference.m_data, m_size);
 }
 
@@ -68,7 +68,7 @@ VirtualFile::toBuffer(char* buffer, unsigned int size) const
 
 
 void
-VirtualFile::read(assets::byte* buffer, unsigned int size)
+VirtualFile::read(unsigned char* buffer, unsigned int size)
 {
     SLIM_DEBUG_ASSERT(m_index + size <= m_size);
     memcpy(buffer, &m_data[m_index], size);

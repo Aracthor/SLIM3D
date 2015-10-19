@@ -2,15 +2,11 @@
 #include <iostream> // Only to print exception error message
 
 #include "slim/assets/Manager.hpp"
-#include "slim/assets/Image.hpp"
-#include "slim/context/Context.hpp"
 #include "slim/attributes.h"
 #include "slim/debug/LogManager.hpp"
 #include "slim/engine/Engine.hpp"
 #include "slim/io/macros.h"
 #include "slim/maths/Helper.hpp"
-#include "slim/shader/Program.hpp"
-#include "slim/shader/Shader.hpp"
 
 #include <cstring>
 
@@ -26,7 +22,6 @@ Engine::Engine(int argc, char** argv) :
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
     this->addModule<assets::Manager>();
-    this->addModule<context::Context>();
 
     this->parseCommandLine(argc, argv);
 }
@@ -105,11 +100,6 @@ Engine::init()
     m_synchronizer.addLoop(&m_renderLoop);
     m_synchronizer.addLoop(&m_window->getEventsLoop());
     m_synchronizer.restart();
-
-    // Add default asset types.
-    assets::Manager::instance.registerAssetType<assets::Image>();
-    assets::Manager::instance.registerAssetType<shader::Shader>();
-    assets::Manager::instance.registerAssetType<shader::Program>();
 
     this->onInit(); // Implemented by user
 }

@@ -1,4 +1,4 @@
-#include "slim/debug/SyscallException.hpp"
+#include "slim/debug/syscall.hpp"
 #include "slim/io/BufferedWritingFile.hpp"
 
 namespace slim
@@ -9,7 +9,7 @@ namespace io
 BufferedWritingFile::BufferedWritingFile(const char* name) :
     WritingFile(name)
 {
-    SLIM_DEBUG_SYSCALL_CALL_PTR(m_stream = fopen(name, "w"))
+    SLIM_DEBUG_SYSCALL_CALL_PTR(m_stream = fopen(name, "w"));
 }
 
 BufferedWritingFile::~BufferedWritingFile()

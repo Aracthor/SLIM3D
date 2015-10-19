@@ -1,29 +1,9 @@
-#include <iostream>
+#include "slim/system.h"
 
-#include "slim/debug/exit.hpp"
-
-#include <unistd.h>
-
-namespace slim
-{
-namespace debug
-{
-
-void
-exit(const char* message)
-{
-    std::cerr << message << std::endl;
-    ::_exit(1);
-}
-
-void
-debugExit(const char* message, const char* file, int line)
-{
-    std::cerr << file << ':' << std::endl
-	      << "Line " << line << ':' << std::endl
-	      << "Fatal error: " << message << std::endl;
-    ::_exit(1);
-}
-
-}
-}
+#if SLIM_SYSTEM_IS_UNIX
+# include "unix/exit.cpp"
+#elif SLIM_SYSTEM_IS_WINDOWS
+# include "win32/exit.cpp"
+#else
+# error "There is no slim::debug::exit definition for your system."
+#endif

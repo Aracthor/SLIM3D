@@ -12,7 +12,7 @@ class	BufferedFile
 {
 public:
     BufferedFile();
-    virtual ~BufferedFile() noexcept(false);
+    virtual ~BufferedFile();
 
 protected:
     FILE*	m_stream;

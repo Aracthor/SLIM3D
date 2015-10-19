@@ -3,8 +3,6 @@
 
 # include "slim/io/BufferedReadingFile.hpp"
 # include "slim/io/BufferedWritingFile.hpp"
-# include "slim/io/UnbufferedReadingFile.hpp"
-# include "slim/io/UnbufferedWritingFile.hpp"
 
 # include <cstring>
 # include <sys/types.h>
@@ -24,7 +22,7 @@ public:
     virtual ~Directory();
 
 public:
-    template <class T>
+    template <class T> // T must inherit from slim::io::File
     T*	newFile(const char* fileName);
 
 public:

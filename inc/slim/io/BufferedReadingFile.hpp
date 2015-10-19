@@ -14,7 +14,7 @@ class	BufferedReadingFile : public BufferedFile,
 {
 public:
     BufferedReadingFile(const char* name);
-    virtual ~BufferedReadingFile() noexcept(false);
+    virtual ~BufferedReadingFile();
 
 public:
     size_t	read(void* buffer, size_t size) override;

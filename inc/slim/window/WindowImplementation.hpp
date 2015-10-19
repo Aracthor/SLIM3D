@@ -4,9 +4,9 @@
 # include "slim/system.h"
 # include "slim/window/Window.hpp"
 
-# if SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_LINUX || SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_FREEBSD
+# if SLIM_SYSTEM == SLIM_SYSTEM_LINUX || SLIM_SYSTEM == SLIM_SYSTEM_FREEBSD
 #  include "linux/WindowImplementation.hpp"
-# elif SLIM_CORE_SYSTEM == SLIM_CORE_SYSTEM_WINDOWS
+# elif SLIM_SYSTEM == SLIM_SYSTEM_WINDOWS
 #  include "win32/WindowImplementation.hpp"
 # else
 #  error "WindowImplementation not implemented yet for this system."

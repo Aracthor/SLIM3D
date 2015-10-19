@@ -11,6 +11,7 @@ set(CORE_DIRECTORIES
 
 set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
+  assets
   engine
   events
   graphics

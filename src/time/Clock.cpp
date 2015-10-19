@@ -43,7 +43,7 @@ Clock::reset()
 }
 }
 
-#if SLIM_CORE_SYSTEM_IS_UNIX
+#if SLIM_SYSTEM_IS_UNIX
 # include "unix/Clock.cpp"
 #else
 # include "win32/Clock.cpp"

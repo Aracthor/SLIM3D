@@ -1,7 +1,6 @@
 #ifndef SLIM_IO_VIRTUAL_FILE_HH_
 # define SLIM_IO_VIRTUAL_FILE_HH_
 
-# include "slim/assets/data.hpp"
 # include "slim/io/ReadingFile.hpp"
 
 # define SLIM_IO_FILE_READ_BUFFER_SIZE	0x1000
@@ -18,7 +17,7 @@ public:
     static VirtualFile	fromRealFile(ReadingFile& file);
 
 public:
-    VirtualFile(assets::byte* data, unsigned int size);
+    VirtualFile(unsigned char* data, unsigned int size);
     VirtualFile(const VirtualFile& reference);
     virtual ~VirtualFile();
 
@@ -28,13 +27,13 @@ public:
 public:
     template <typename T>
     void		readPureData(T& data);
-    void		read(assets::byte* buffer, unsigned int size);
+    void		read(unsigned char* buffer, unsigned int size);
 
 public:
     inline unsigned int	getSize() const;
 
 private:
-    assets::byte*	m_data;
+    unsigned char*	m_data;
     unsigned int	m_size;
     unsigned int	m_index = 0;
 };

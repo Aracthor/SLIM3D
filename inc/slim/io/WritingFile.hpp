@@ -12,7 +12,7 @@ class	WritingFile : public File
 {
 public:
     WritingFile(const char* name);
-    virtual ~WritingFile() noexcept(false);
+    virtual ~WritingFile();
 
 public:
     virtual size_t	write(const void* data, size_t size) = 0;

@@ -10,7 +10,7 @@ ReadingFile::ReadingFile(const char* name) :
 {
 }
 
-ReadingFile::~ReadingFile() noexcept(false)
+ReadingFile::~ReadingFile()
 {
 }
 

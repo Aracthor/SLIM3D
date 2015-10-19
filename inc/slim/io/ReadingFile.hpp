@@ -12,7 +12,7 @@ class	ReadingFile : public File
 {
 public:
     ReadingFile(const char* name);
-    virtual ~ReadingFile() noexcept(false);
+    virtual ~ReadingFile();
 
 public:
     virtual size_t	read(void* buffer, size_t size) = 0;

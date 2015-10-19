@@ -20,9 +20,12 @@ protected:
     void	resizeImplementation(unsigned int width, unsigned int height) override;
 
 private:
+    void	createDisplay();
+    void	createWindow(int width, int height);
     void	allowCloseEvents();
 
 public:
+    ::Display*	m_display;
     ::Window	m_window;
 };
 

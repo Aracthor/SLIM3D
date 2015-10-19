@@ -1,7 +1,5 @@
+#include "slim/debug/exit.hpp"
 #include "slim/io/File.hpp"
-#include "slim/io/FileException.hpp"
-
-#include <cstdio>
 
 namespace slim
 {
@@ -14,7 +12,7 @@ File::File(const char* name) :
 {
 }
 
-File::~File() noexcept(false)
+File::~File()
 {
 }
 
@@ -22,10 +20,7 @@ File::~File() noexcept(false)
 void
 File::onError(const char* message) const
 {
-    char	buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
-
-    snprintf(buffer, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, "%s %s.", message, m_name);
-    throw FileException(m_name, buffer, __FILE__, __func__, __LINE__);
+    SLIM_DEBUG_EXIT("Error with file ", m_name, message);
 }
 
 }

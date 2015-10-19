@@ -1,5 +1,8 @@
-#include "slim/debug/SyscallException.hpp"
+#include "slim/string.h"
+#include "slim/debug/exit.hpp"
 #include "slim/time/Date.hpp"
+
+#include <cerrno>
 
 // Disable warnings for localtime and gmtime use from Visual Studio
 # ifdef _MSC_VER
@@ -16,7 +19,7 @@ Date::Date(time_t seconds, bool local) :
 {
     if (seconds == static_cast<time_t>(-1))
     {
-	throw debug::SyscallException("Cannot get current time", __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Cannot get current time: ", strerror(errno));
     }
     this->setSeconds(seconds);
 }

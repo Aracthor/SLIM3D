@@ -10,7 +10,7 @@ WritingFile::WritingFile(const char* name) :
 {
 }
 
-WritingFile::~WritingFile() noexcept(false)
+WritingFile::~WritingFile()
 {
 }
 

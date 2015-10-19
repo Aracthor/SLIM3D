@@ -1,9 +1,8 @@
 #include <typeinfo>
 
-#include "slim/core/templates.hpp"
 #include "slim/string.h"
 #include "slim/debug/assert.hpp"
-#include "slim/debug/Exception.hpp"
+#include "slim/debug/exit.hpp"
 
 namespace slim
 {
@@ -45,11 +44,7 @@ PresizedArray<T, N>::insert(T elem)
 {
     if (m_currentSize == N)
     {
-	char	buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
-
-	strncpy(buffer, "Inserting data in a full PresizedArray of type ", SLIM_DEBUG_MESSAGE_BUFFER_SIZE);
-	strncat(buffer, typeid(T).name(), SLIM_DEBUG_MESSAGE_BUFFER_SIZE - strlen(buffer));
-	throw debug::Exception(buffer, __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Inserting data in a full PresizedArray of type ", typeid(T).name());
     }
     m_data[m_currentSize] = elem;
     m_currentSize++;

@@ -1,7 +1,7 @@
 #include <typeinfo>
 
-#include "slim/containers/Buffer.hpp"
 #include "slim/core/SingletonsManager.hpp"
+#include "slim/debug/exit.hpp"
 
 namespace slim
 {
@@ -23,10 +23,7 @@ SingletonsManager::addSingleton(Singleton* singleton)
 {
     if (m_inited)
     {
-	containers::Buffer<char, 0x200>	buffer;
-
-	buffer << "Trying to add singleton " << typeid(*singleton).name() << " after SingletonManager initialization." << '\0';
-	throw debug::Exception(buffer.getData(), __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Trying to add singleton ", typeid(*singleton).name(), " after SingletonManager initialization.");
     }
     m_singletons.push_back(singleton);
 }

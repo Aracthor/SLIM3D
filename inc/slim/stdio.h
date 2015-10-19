@@ -1,7 +1,7 @@
-#ifndef SLIM_CORE_STDIO_H_
-# define SLIM_CORE_STDIO_H_
+#ifndef SLIM_STDIO_H_
+# define SLIM_STDIO_H_
 
-# include "slim/core/system.h"
+# include "slim/system.h"
 
 /* Disable warnings for clib use from Visual Studio */
 # ifdef _MSC_VER
@@ -10,4 +10,4 @@
 
 # include <cstdio>
 
-#endif // !SLIM_CORE_STDIO_H_
+#endif // !SLIM_STDIO_H_
