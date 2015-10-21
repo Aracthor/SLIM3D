@@ -7,7 +7,7 @@ namespace debug
 
 template <typename ...Args>
 void
-windowsExit(const char* message, const char* file, int line, Args&& ...args)
+windowsExit(const char* message, const char* file, const char* func, int line, Args&& ...args)
 {
     char    buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
@@ -19,7 +19,7 @@ windowsExit(const char* message, const char* file, int line, Args&& ...args)
 		    buffer,    // Put the message here
 		    sizeof(buffer) - 1,    // Number of bytes to store the message
 		    nullptr);
-    exit(buffer, file, func, line);
+    exit(buffer, file, func, line, args...);
 }
 
 }

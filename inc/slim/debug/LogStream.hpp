@@ -45,7 +45,7 @@ private:
     Log*		m_log;
     const char*		m_name;
     unsigned int	m_level;
-    bool	        m_active;
+    bool		m_active;
     containers::Buffer<char, SLIM_DEBUG_ELEMENT_BUFFER_SIZE>	m_buffer;
 };
 

@@ -20,9 +20,10 @@ printErrorMessage(const char* message, Args&& ...args)
     printErrorMessage(args...);
 }
 
+
 template <typename ...Args>
 void
-exit(const char* message, Args&& ...args)
+exit::releaseExit(const char* message, Args&& ...args)
 {
     std::cerr << "Fatal error: ";
     printErrorMessage(message, args...);
@@ -32,9 +33,10 @@ exit(const char* message, Args&& ...args)
 
 template <typename ...Args>
 void
-debugExit(const char* message, const char* file, int line, Args&& ...args)
+exit::debugExit(const char* message, const char* file, const char* func, int line, Args&& ...args)
 {
     std::cerr << file << ':' << std::endl
+	      << "Function " << func << ':' << std::endl
 	      << "Line " << line << ':' << std::endl
 	      << "Fatal error: ";
     printErrorMessage(message, args...);

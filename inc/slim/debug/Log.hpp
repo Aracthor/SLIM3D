@@ -6,8 +6,8 @@
 # include "slim/io/Directory.hpp"
 # include "slim/time/Date.hpp"
 
-# define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x100
 # define SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE	0x200
+# define SLIM_DEBUG_LOG_NAME_BUFFER_SIZE	0x200
 # define SLIM_DEBUG_LOG_LEVELS_NUMBER		4
 
 namespace slim

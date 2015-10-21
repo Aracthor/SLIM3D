@@ -6,7 +6,7 @@ namespace debug
 {
 
 void
-exitImplementation(int returnValue)
+exit::exitImplementation(int returnValue)
 {
     ::_exit(returnValue);
 }

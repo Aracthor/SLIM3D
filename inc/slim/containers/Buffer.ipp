@@ -106,6 +106,14 @@ Buffer<T, N>::operator<<(T* str)
 }
 
 template <typename T, unsigned int N>
+template <unsigned int M>
+Buffer<T, N>&
+Buffer<T, N>::operator<<(const Buffer<T, M> buffer)
+{
+    return (*this << buffer.getData());
+}
+
+template <typename T, unsigned int N>
 template <typename U>
 Buffer<T, N>&
 Buffer<T, N>::operator<<(U* ptr)

@@ -34,19 +34,21 @@ Engine::~Engine()
 void
 Engine::parseCommandLine(int argc, char** argv)
 {
-    char*	path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
+    containers::Buffer<char, 0x10>	buffer;
+    char*				path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
 
     if (path == nullptr)
     {
-	containers::Buffer<char, 0x10>	buffer;
 	buffer << '.' << SLIM_IO_SEPARATOR_CHAR << '\0';
-	assets::Manager::instance.setExecutablePath(buffer.getData());
     }
     else
     {
 	*path = '\0';
-	assets::Manager::instance.setExecutablePath(argv[0]);
+	buffer << argv[0] << '\0';
     }
+
+    assets::Manager::instance.setExecutablePath(buffer.getData());
+    debug::LogManager::instance.setExecutablePath(buffer.getData());
 
     SLIM_CORE_USE(argc);
     // TODO parse command line for real.
