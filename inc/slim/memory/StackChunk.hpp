@@ -8,7 +8,7 @@ namespace slim
 namespace memory
 {
 
-class		StackChunk : public Chunk
+class			StackChunk : public Chunk
 {
 public:
     inline StackChunk(char* data, std::size_t size);

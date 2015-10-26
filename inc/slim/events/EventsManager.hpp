@@ -1,7 +1,6 @@
 #ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
 # define SLIM_EVENTS_EVENTS_MANAGER_HH_
 
-# include "slim/containers/PresizedArray.hpp"
 # include "slim/events/ICloseListener.hpp"
 # include "slim/events/IKeyListener.hpp"
 # include "slim/events/IMouseListener.hpp"

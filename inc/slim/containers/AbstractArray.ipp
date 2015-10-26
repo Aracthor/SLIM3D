@@ -31,10 +31,9 @@ template <class U, typename ...Args>
 void
 AbstractArray<T, N>::insert(Args&&... args)
 {
-    U	elem(args...);
+    U*	pointer = &(reinterpret_cast<U*>(m_data))[m_size];
 
-    memcpy(&(reinterpret_cast<U*>(m_data))[m_size], &elem, sizeof(U));
-    (reinterpret_cast<U*>(m_data))[m_size].alloc(42);
+    new (pointer) U(args...);
     m_size++;
 
 }

@@ -16,7 +16,7 @@ ArenaChunk::~ArenaChunk()
 }
 
 #if _DEBUG
-# include "debug/ArenaChunk.hpp"
+# include "debug/ArenaChunk.ipp"
 #else
-# include "release/ArenaChunk.hpp"
+# include "release/ArenaChunk.ipp"
 #endif

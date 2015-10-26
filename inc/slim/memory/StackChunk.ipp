@@ -16,7 +16,7 @@ StackChunk::~StackChunk()
 }
 
 #if _DEBUG
-# include "debug/StackChunk.hpp"
+# include "debug/StackChunk.ipp"
 #else
-# include "release/StackChunk.hpp"
+# include "release/StackChunk.ipp"
 #endif

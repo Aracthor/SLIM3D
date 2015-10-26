@@ -6,6 +6,7 @@
 #include "slim/debug/LogManager.hpp"
 #include "slim/engine/Engine.hpp"
 #include "slim/io/macros.h"
+#include "slim/memory/Manager.hpp"
 #include "slim/maths/Helper.hpp"
 
 #include <cstring>
@@ -19,6 +20,7 @@ Engine::Engine(int argc, char** argv) :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
+    this->addModule<memory::Manager>();
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
     this->addModule<assets::Manager>();
@@ -76,15 +78,8 @@ Engine::onShutdown()
 void
 Engine::start()
 {
-    try
-    {
-	this->init();
-	this->loop();
-    }
-    catch (const std::exception& exception)
-    {
-	std::cerr << exception.what() << std::endl;
-    }
+    this->init();
+    this->loop();
     this->shutdown();
 }
 
@@ -95,7 +90,8 @@ Engine::init()
     m_running = true;
 
     m_singletonsManager.initSingletons();
-    m_window = new window::WindowImplementation(m_windowParameters);
+    m_memory = &memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ENGINE_CORE_MEMORY_SIZE);
+    m_window = m_memory->create<window::WindowImplementation>(m_windowParameters);
 
     // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
@@ -132,7 +128,7 @@ Engine::shutdown()
 {
     if (m_window)
     {
-	delete m_window;
+	m_memory->destroy(m_window);
     }
 }
 

@@ -5,8 +5,13 @@
 # include "slim/engine/GameplayLoop.hpp"
 # include "slim/engine/RenderLoop.hpp"
 # include "slim/events/EventsLoop.hpp"
+# include "slim/memory/ArenaChunk.hpp"
 # include "slim/time/Synchronizer.hpp"
 # include "slim/window/WindowImplementation.hpp"
+
+# include "slim/memory/units.h"
+
+# define SLIM_ENGINE_CORE_MEMORY_SIZE	(1 * SLIM_MEMORY_MEBIBYTE)
 
 namespace slim
 {
@@ -55,6 +60,7 @@ protected:
 
 private:
     core::SingletonsManager		m_singletonsManager;
+    memory::ArenaChunk*			m_memory;
     time::Synchronizer			m_synchronizer;
     window::WindowImplementation*	m_window = nullptr;
     GameplayLoop			m_gameplayLoop;

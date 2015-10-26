@@ -16,6 +16,10 @@ public:
 
 public:
     void		clear();
+    template <class T, typename ...Args>
+    T*			create(Args&&... args);
+    template <class T>
+    void	        destroy(T* object);
 
 public:
     virtual void*	alloc(std::size_t size) = 0;
