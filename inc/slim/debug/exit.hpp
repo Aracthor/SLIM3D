@@ -11,6 +11,8 @@
 #  define SLIM_DEBUG_EXIT(message, ...)	slim::debug::exit::releaseExit(message, ## __VA_ARGS__)
 # endif
 
+# define SLIM_DEBUG_MESSAGE_BUFFER_SIZE	0x1000
+
 namespace slim
 {
 namespace debug

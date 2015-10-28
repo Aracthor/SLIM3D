@@ -7,7 +7,7 @@
 #  define SLIM_DEBUG_ASSERT(condition) if (!(condition)) SLIM_DEBUG_EXIT("Assertion error");
 # else
 #  define SLIM_DEBUG_ASSERT(condition)
-# endif // _DEBUG
+# endif
 
 # define SLIM_DEBUG_REINTERPRET_CAST(type, dest, src)	SLIM_DEBUG_ASSERT(dynamic_cast<type>(src) != nullptr); dest = reinterpret_cast<type>(src)
 

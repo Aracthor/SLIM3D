@@ -1,6 +1,7 @@
 #ifndef SLIM_SHADER_PROGRAM_HH_
 # define SLIM_SHADER_PROGRAM_HH_
 
+# include "slim/assets/Asset.hpp"
 # include "slim/shader/Shader.hpp"
 
 namespace slim
@@ -8,7 +9,7 @@ namespace slim
 namespace shader
 {
 
-class	Program
+class	Program : public assets::Asset
 {
 public:
     static const char* const	typeName;

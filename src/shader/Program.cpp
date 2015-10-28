@@ -1,8 +1,7 @@
 #include "slim/containers/Buffer.hpp"
 #include "slim/debug/assert.hpp"
-#include "slim/graphics/GLException.hpp"
+#include "slim/graphics/glDebug.hpp"
 #include "slim/shader/Program.hpp"
-#include "slim/io/ResourceException.hpp"
 
 namespace slim
 {
@@ -44,12 +43,10 @@ Program::onAssetsReady()
     glGetProgramiv(m_id, GL_LINK_STATUS, &linked);
     if (!linked)
     {
-	containers::Buffer<char, SLIM_DEBUG_MESSAGE_BUFFER_SIZE>	buffer;
 	char	error[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
 	glGetProgramInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
-	buffer << "Error linking shader program: " << error;
-	throw io::ResourceException(this->getName(), buffer.getData(), __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Error linking shader program: ", error);
     }
 }
 

@@ -3,7 +3,7 @@
 
 # include "slim/system.h"
 
-# if SLIM_SYSTEM_US_APPLE
+# if SLIM_SYSTEM_IS_APPLE
 #  include <OpenGLES/ES3/gl.h>
 # else
 #  include <EGL/egl.h>
