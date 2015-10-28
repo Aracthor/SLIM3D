@@ -4,7 +4,7 @@
 
 #include <cerrno>
 #include <io.h>
-#include <Windows.h>
+#include "slim/windows.h"
 
 namespace slim
 {

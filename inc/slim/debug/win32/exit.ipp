@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include "slim/windows.h"
 
 namespace slim
 {

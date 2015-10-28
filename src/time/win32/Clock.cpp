@@ -1,6 +1,5 @@
 #include "slim/debug/WindowsException.hpp"
-
-#include <Windows.h>
+#include "slim/windows.h"
 
 namespace slim
 {
