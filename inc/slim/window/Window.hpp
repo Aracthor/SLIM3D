@@ -2,7 +2,7 @@
 # define SLIM_WINDOW_WINDOW_HPP_
 
 # include "slim/events/EventsLoop.hpp"
-# include "slim/events/EventsManager.hpp"
+# include "slim/events/Manager.hpp"
 
 namespace slim
 {
@@ -29,7 +29,7 @@ public:
     inline unsigned int			getWidth() const;
     inline unsigned int			getHeight() const;
     inline const char*			getTitle() const;
-    inline events::EventsManager&	getEventsManager();
+    inline events::Manager&		getEventsManager();
     inline const events::EventsLoop&	getEventsLoop() const;
     inline events::EventsLoop&		getEventsLoop();
 
@@ -49,7 +49,7 @@ protected:
     unsigned int		m_height;
     const char*			m_title;
     bool			m_fullscreen;
-    events::EventsManager	m_eventsManager;
+    events::Manager		m_eventsManager;
     events::EventsLoop		m_eventsLoop;
 };
 

@@ -6,9 +6,9 @@ namespace slim
 namespace events
 {
 
-EventsLoop::EventsLoop(EventsManager& eventsManager) :
+EventsLoop::EventsLoop(Manager& manager) :
     time::Loop(SLIM_EVENTS_DEFAULT_EVENTS_FRAMERATE),
-    m_eventsManager(eventsManager)
+    m_manager(manager)
 {
 }
 

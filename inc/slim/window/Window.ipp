@@ -21,7 +21,7 @@ Window::getTitle() const
     return m_title;
 }
 
-events::EventsManager&
+events::Manager&
 Window::getEventsManager()
 {
     return m_eventsManager;

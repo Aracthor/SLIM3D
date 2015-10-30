@@ -1,19 +1,19 @@
 #include "slim/attributes.h"
-#include "slim/events/EventsManager.hpp"
+#include "slim/events/Manager.hpp"
 
-#include <cstring>
+#include "slim/string.h" // For memset
 
 namespace slim
 {
 namespace events
 {
 
-EventsManager::EventsManager()
+Manager::Manager()
 {
     memset(this, 0, sizeof(*this));
 }
 
-EventsManager::~EventsManager()
+Manager::~Manager()
 {
     this->deleteListeners(m_keyPressListeners, keyboard::keysMax);
     this->deleteListeners(m_keyReleaseListeners, keyboard::keysMax);
@@ -33,8 +33,7 @@ EventsManager::~EventsManager()
 
 
 void
-EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED(int, scancode),
-			   keyboard::EAction action, SLIM_CORE_UNUSED(int, modifiers))
+Manager::onKeyAction(keyboard::EKeyCode keyCode, keyboard::EAction action)
 {
     if (action == keyboard::pressed)
     {
@@ -55,7 +54,7 @@ EventsManager::onKeyAction(keyboard::EKeyCode keyCode, SLIM_CORE_UNUSED(int, sca
 }
 
 void
-EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action, SLIM_CORE_UNUSED(int, modifiers))
+Manager::onMouseButtonAction(mouse::EButton button, mouse::EAction action)
 {
     if (action == mouse::pressed)
     {
@@ -76,7 +75,7 @@ EventsManager::onMouseButtonAction(mouse::EButton button, mouse::EAction action,
 }
 
 void
-EventsManager::onMouseMovement(double x, double y)
+Manager::onMouseMovement(double x, double y)
 {
     m_currentMousePosition.x = x;
     m_currentMousePosition.y = y;
@@ -87,7 +86,7 @@ EventsManager::onMouseMovement(double x, double y)
 }
 
 void
-EventsManager::onClose()
+Manager::onClose()
 {
     if (m_closeListener)
     {

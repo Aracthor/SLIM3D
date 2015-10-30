@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_EVENTS_MANAGER_HPP_
-# define SLIM_EVENTS_EVENTS_MANAGER_HPP_
+#ifndef SLIM_EVENTS_MANAGER_HPP_
+# define SLIM_EVENTS_MANAGER_HPP_
 
 # include "slim/events/ICloseListener.hpp"
 # include "slim/events/IKeyListener.hpp"
@@ -12,15 +12,15 @@ namespace slim
 namespace events
 {
 
-class	EventsManager
+class	Manager
 {
 public:
-    EventsManager();
-    ~EventsManager();
+    Manager();
+    ~Manager();
 
 public:
-    void	onKeyAction(keyboard::EKeyCode keyCode, int scancode, keyboard::EAction action, int modifiers);
-    void	onMouseButtonAction(mouse::EButton button, mouse::EAction action, int modifiers);
+    void	onKeyAction(keyboard::EKeyCode keyCode, keyboard::EAction action);
+    void	onMouseButtonAction(mouse::EButton button, mouse::EAction action);
     void	onMouseMovement(double x, double y);
     void	onClose();
 
@@ -59,6 +59,6 @@ private:
 }
 }
 
-# include "EventsManager.ipp"
+# include "Manager.ipp"
 
-#endif // !SLIM_EVENTS_EVENTS_MANAGER_HPP_
+#endif // !SLIM_EVENTS_MANAGER_HPP_

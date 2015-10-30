@@ -2,6 +2,6 @@ project("SLIM3D")
 
 set(SRCS_FILES
   EventsLoop.cpp
-  EventsManager.cpp
+  Manager.cpp
   PARENT_SCOPE
   )
