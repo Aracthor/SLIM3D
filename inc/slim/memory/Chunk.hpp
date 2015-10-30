@@ -15,7 +15,7 @@ public:
     virtual ~Chunk();
 
 public:
-    void		clear();
+    virtual void	clear();
     template <class T, typename ...Args>
     T*			create(Args&&... args);
     template <class T>
@@ -30,8 +30,8 @@ public:
     inline std::size_t	getSize() const;
 
 protected:
-    char*		m_start;
     char*		m_data;
+    char*		m_start;
     std::size_t		m_size;
     std::size_t		m_maxSize;
 };

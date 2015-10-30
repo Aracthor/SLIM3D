@@ -31,7 +31,7 @@ StackChunk::free(char* ptr)
     ptr -= sizeof(std::size_t);
     std::size_t	size = *(reinterpret_cast<std::size_t*>(ptr)) + sizeof(std::size_t);
 
-    if (m_data - size != ptr)
+o    if (m_data - size != ptr)
     {
 	SLIM_DEBUG_EXIT("Trying to delete non-last element of StackChunk.");
     }
