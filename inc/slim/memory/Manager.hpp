@@ -1,5 +1,5 @@
-#ifndef SLIM_MEMORY_MANAGER_HH_
-# define SLIM_MEMORY_MANAGER_HH_
+#ifndef SLIM_MEMORY_MANAGER_HPP_
+# define SLIM_MEMORY_MANAGER_HPP_
 
 # include "slim/containers/AbstractArray.hpp"
 # include "slim/core/Singleton.hpp"
@@ -43,4 +43,4 @@ private:
 
 # include "Manager.ipp"
 
-#endif // !SLIM_MEMORY_MANAGER_HH_
+#endif // !SLIM_MEMORY_MANAGER_HPP_

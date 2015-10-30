@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_DIRECTORY_HH_
-# define SLIM_IO_DIRECTORY_HH_
+#ifndef SLIM_IO_DIRECTORY_HPP_
+# define SLIM_IO_DIRECTORY_HPP_
 
 # include "slim/io/BufferedReadingFile.hpp"
 # include "slim/io/BufferedWritingFile.hpp"
@@ -41,4 +41,4 @@ private:
 }
 }
 
-#endif // !SLIM_IO_DIRECTORY_HH_
+#endif // !SLIM_IO_DIRECTORY_HPP_

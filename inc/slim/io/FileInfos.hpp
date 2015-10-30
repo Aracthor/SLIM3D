@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_FILE_INFOS_HH_
-# define SLIM_IO_FILE_INFOS_HH_
+#ifndef SLIM_IO_FILE_INFOS_HPP_
+# define SLIM_IO_FILE_INFOS_HPP_
 
 # include <sys/stat.h>
 # include <sys/types.h>
@@ -31,4 +31,4 @@ private:
 }
 }
 
-#endif // !SLIM_IO_FILE_INFOS_HH_
+#endif // !SLIM_IO_FILE_INFOS_HPP_

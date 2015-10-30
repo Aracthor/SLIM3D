@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_VIRTUAL_FILE_HH_
-# define SLIM_IO_VIRTUAL_FILE_HH_
+#ifndef SLIM_IO_VIRTUAL_FILE_HPP_
+# define SLIM_IO_VIRTUAL_FILE_HPP_
 
 # include "slim/io/ReadingFile.hpp"
 
@@ -43,4 +43,4 @@ private:
 
 # include "VirtualFile.ipp"
 
-#endif // !SLIM_IO_VIRTUAL_FILE_HH_
+#endif // !SLIM_IO_VIRTUAL_FILE_HPP_

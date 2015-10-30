@@ -1,5 +1,5 @@
-#ifndef SLIMD_IO_FILE_HH_
-# define SLIMD_IO_FILE_HH_
+#ifndef SLIMD_IO_FILE_HPP_
+# define SLIMD_IO_FILE_HPP_
 
 # include "slim/io/FileInfos.hpp"
 
@@ -35,4 +35,4 @@ private:
 
 # include "File.ipp"
 
-#endif // !SLIMD_IO_FILE_HH_
+#endif // !SLIMD_IO_FILE_HPP_

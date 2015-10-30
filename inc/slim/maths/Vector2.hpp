@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_VECTOR2_HH_
-# define SLIM_MATHS_VECTOR2_HH_
+#ifndef SLIM_MATHS_VECTOR2_HPP_
+# define SLIM_MATHS_VECTOR2_HPP_
 
 namespace slim
 {
@@ -86,4 +86,4 @@ typedef maths::Vector2f	        Vector2;
 
 # include "Vector2.ipp"
 
-#endif // !SLIM_MATHS_VECTOR2_HH_
+#endif // !SLIM_MATHS_VECTOR2_HPP_

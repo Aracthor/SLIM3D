@@ -1,5 +1,5 @@
-#ifndef SINGLETONS_MANAGER_HH_
-# define SINGLETONS_MANAGER_HH_
+#ifndef SINGLETONS_MANAGER_HPP_
+# define SINGLETONS_MANAGER_HPP_
 
 # include <vector> // TODO create our own
 
@@ -31,4 +31,4 @@ private:
 }
 }
 
-#endif // !SINGLETONS_MANAGER_HH_
+#endif // !SINGLETONS_MANAGER_HPP_

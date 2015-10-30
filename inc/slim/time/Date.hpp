@@ -1,5 +1,5 @@
-#ifndef SLIM_TIME_DATE_HH_
-# define SLIM_TIME_DATE_HH_
+#ifndef SLIM_TIME_DATE_HPP_
+# define SLIM_TIME_DATE_HPP_
 
 # include <ctime>
 
@@ -33,4 +33,4 @@ private:
 
 # include "Date.ipp"
 
-#endif // !SLIM_TIME_DATE_HH_
+#endif // !SLIM_TIME_DATE_HPP_

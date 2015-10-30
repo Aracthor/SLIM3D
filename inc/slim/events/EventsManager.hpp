@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_EVENTS_MANAGER_HH_
-# define SLIM_EVENTS_EVENTS_MANAGER_HH_
+#ifndef SLIM_EVENTS_EVENTS_MANAGER_HPP_
+# define SLIM_EVENTS_EVENTS_MANAGER_HPP_
 
 # include "slim/events/ICloseListener.hpp"
 # include "slim/events/IKeyListener.hpp"
@@ -61,4 +61,4 @@ private:
 
 # include "EventsManager.ipp"
 
-#endif // !SLIM_EVENTS_EVENTS_MANAGER_HH_
+#endif // !SLIM_EVENTS_EVENTS_MANAGER_HPP_

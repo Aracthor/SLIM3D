@@ -1,5 +1,5 @@
-#ifndef SLIM_SHADER_PROGRAM_HH_
-# define SLIM_SHADER_PROGRAM_HH_
+#ifndef SLIM_SHADER_PROGRAM_HPP_
+# define SLIM_SHADER_PROGRAM_HPP_
 
 # include "slim/assets/Asset.hpp"
 # include "slim/shader/Shader.hpp"
@@ -33,4 +33,4 @@ private:
 
 # include "Program.ipp"
 
-#endif // !SLIM_SHADER_PROGRAM_HH_
+#endif // !SLIM_SHADER_PROGRAM_HPP_

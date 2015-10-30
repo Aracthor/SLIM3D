@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_MATRIX4X4_HH_
-# define SLIM_MATHS_MATRIX4X4_HH_
+#ifndef SLIM_MATHS_MATRIX4X4_HPP_
+# define SLIM_MATHS_MATRIX4X4_HPP_
 
 # include "slim/maths/Vector4.hpp"
 
@@ -63,4 +63,4 @@ typedef maths::Matrix4x4f		Matrix4x4;
 #  include "SSE/Matrix4x4.ipp"
 # endif
 
-#endif // !SLIM_MATHS_MATRIX4X4_HH_
+#endif // !SLIM_MATHS_MATRIX4X4_HPP_

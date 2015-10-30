@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_VECTOR4_HH_
-# define SLIM_MATHS_VECTOR4_HH_
+#ifndef SLIM_MATHS_VECTOR4_HPP_
+# define SLIM_MATHS_VECTOR4_HPP_
 
 # include "slim/maths/Vector2.hpp"
 # include "slim/maths/Vector3.hpp"
@@ -122,4 +122,4 @@ typedef maths::Vector4f	        Vector4;
 #  include "SSE/Vector4.ipp"
 # endif
 
-#endif // !SLIM_MATHS_VECTOR4_HH_
+#endif // !SLIM_MATHS_VECTOR4_HPP_

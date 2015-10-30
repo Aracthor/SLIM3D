@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_WRITING_FILE_HH_
-# define SLIM_IO_WRITING_FILE_HH_
+#ifndef SLIM_IO_WRITING_FILE_HPP_
+# define SLIM_IO_WRITING_FILE_HPP_
 
 # include "slim/io/File.hpp"
 
@@ -21,4 +21,4 @@ public:
 }
 }
 
-#endif // !SLIM_IO_WRITING_FILE_HH_
+#endif // !SLIM_IO_WRITING_FILE_HPP_

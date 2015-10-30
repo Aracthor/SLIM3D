@@ -1,5 +1,5 @@
-#ifndef SLIM_ENGINE_ENGINE_HH_
-# define SLIM_ENGINE_ENGINE_HH_
+#ifndef SLIM_ENGINE_ENGINE_HPP_
+# define SLIM_ENGINE_ENGINE_HPP_
 
 # include "slim/core/SingletonsManager.hpp"
 # include "slim/engine/GameplayLoop.hpp"
@@ -76,4 +76,4 @@ private:
 
 # include "Engine.ipp"
 
-#endif // !SLIM_ENGINE_ENGINE_HH_
+#endif // !SLIM_ENGINE_ENGINE_HPP_

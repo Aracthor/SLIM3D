@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_IKEY_LISTENER_HH_
-# define SLIM_EVENTS_IKEY_LISTENER_HH_
+#ifndef SLIM_EVENTS_IKEY_LISTENER_HPP_
+# define SLIM_EVENTS_IKEY_LISTENER_HPP_
 
 namespace slim
 {
@@ -18,4 +18,4 @@ public:
 }
 }
 
-#endif // !SLIM_EVENTS_IKEY_LISTENER_HH_
+#endif // !SLIM_EVENTS_IKEY_LISTENER_HPP_

@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_HELPER_HH_
-# define SLIM_MATHS_HELPER_HH_
+#ifndef SLIM_MATHS_HELPER_HPP_
+# define SLIM_MATHS_HELPER_HPP_
 
 # include "slim/core/Singleton.hpp"
 # include "slim/debug/assert.hpp"
@@ -64,4 +64,4 @@ typedef maths::Helper<float>	MathsHelper;
 
 # include "Helper.ipp"
 
-#endif // !SLIM_MATHS_HELPER_HH_
+#endif // !SLIM_MATHS_HELPER_HPP_

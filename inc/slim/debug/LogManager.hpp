@@ -1,5 +1,5 @@
-#ifndef SLIM_DEBUG_LOG_MANAGER_HH_
-# define SLIM_DEBUG_LOG_MANAGER_HH_
+#ifndef SLIM_DEBUG_LOG_MANAGER_HPP_
+# define SLIM_DEBUG_LOG_MANAGER_HPP_
 
 # include "slim/core/FileAccesser.hpp"
 # include "slim/core/Singleton.hpp"
@@ -38,4 +38,4 @@ public:
 }
 }
 
-#endif // !SLIM_DEBUG_LOG_MANAGER_HH_
+#endif // !SLIM_DEBUG_LOG_MANAGER_HPP_

@@ -1,5 +1,5 @@
-#ifndef SLIM_TIME_SYNCHRONIZER_HH_
-# define SLIM_TIME_SYNCHRONIZER_HH_
+#ifndef SLIM_TIME_SYNCHRONIZER_HPP_
+# define SLIM_TIME_SYNCHRONIZER_HPP_
 
 # include "slim/containers/PresizedArray.hpp"
 # include "slim/time/Clock.hpp"
@@ -38,4 +38,4 @@ private:
 
 # include "Synchronizer.ipp"
 
-#endif // !SLIM_TIME_SYNCHRONIZER_HH_
+#endif // !SLIM_TIME_SYNCHRONIZER_HPP_

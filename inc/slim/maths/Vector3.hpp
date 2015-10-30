@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_VECTOR3_HH_
-# define SLIM_MATHS_VECTOR3_HH_
+#ifndef SLIM_MATHS_VECTOR3_HPP_
+# define SLIM_MATHS_VECTOR3_HPP_
 
 # include "slim/maths/Vector2.hpp"
 
@@ -95,4 +95,4 @@ typedef maths::Vector3f	        Vector3;
 
 # include "Vector3.ipp"
 
-#endif // !SLIM_MATHS_VECTOR3_HH_
+#endif // !SLIM_MATHS_VECTOR3_HPP_

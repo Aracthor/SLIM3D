@@ -1,5 +1,5 @@
-#ifndef SLIM_MEMORY_STACK_CHUNK_HH_
-# define SLIM_MEMORY_STACK_CHUNK_HH_
+#ifndef SLIM_MEMORY_STACK_CHUNK_HPP_
+# define SLIM_MEMORY_STACK_CHUNK_HPP_
 
 # include "slim/memory/Chunk.hpp"
 
@@ -24,4 +24,4 @@ public:
 
 # include "StackChunk.ipp"
 
-#endif // !SLIM_MEMORY_STACK_CHUNK_HH_
+#endif // !SLIM_MEMORY_STACK_CHUNK_HPP_

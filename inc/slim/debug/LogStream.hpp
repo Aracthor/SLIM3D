@@ -1,5 +1,5 @@
-#ifndef SLIM_DEBUG_LOG_STREAM_HH_
-# define SLIM_DEBUG_LOG_STREAM_HH_
+#ifndef SLIM_DEBUG_LOG_STREAM_HPP_
+# define SLIM_DEBUG_LOG_STREAM_HPP_
 
 # include "slim/containers/Buffer.hpp"
 # include "slim/system.h"
@@ -54,4 +54,4 @@ private:
 
 # include "LogStream.ipp"
 
-#endif // !SLIM_DEBUG_LOG_STREAM_HH_
+#endif // !SLIM_DEBUG_LOG_STREAM_HPP_

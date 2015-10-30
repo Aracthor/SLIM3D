@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_EVENTS_LOOP_HH_
-# define SLIM_EVENTS_EVENTS_LOOP_HH_
+#ifndef SLIM_EVENTS_EVENTS_LOOP_HPP_
+# define SLIM_EVENTS_EVENTS_LOOP_HPP_
 
 # include "slim/engine/GameplayLoop.hpp"
 # include "slim/events/EventsManager.hpp"
@@ -28,4 +28,4 @@ private:
 }
 }
 
-#endif // !SLIM_EVENTS_EVENTS_LOOP_HH_
+#endif // !SLIM_EVENTS_EVENTS_LOOP_HPP_

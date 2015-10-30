@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_KEYBOARD_HH_
-# define SLIM_EVENTS_KEYBOARD_HH_
+#ifndef SLIM_EVENTS_KEYBOARD_HPP_
+# define SLIM_EVENTS_KEYBOARD_HPP_
 
 # include "slim/system.h"
 
@@ -11,4 +11,4 @@
 #  error "keyboard not implemented yet for this system."
 # endif
 
-#endif // !SLIM_EVENTS_KEYBOARD_HH_
+#endif // !SLIM_EVENTS_KEYBOARD_HPP_

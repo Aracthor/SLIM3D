@@ -1,5 +1,5 @@
-#ifndef SLIM_TIME_SLEEPER_HH_
-# define SLIM_TIME_SLEEPER_HH_
+#ifndef SLIM_TIME_SLEEPER_HPP_
+# define SLIM_TIME_SLEEPER_HPP_
 
 # include <ctime>
 
@@ -22,4 +22,4 @@ public:
 }
 }
 
-#endif // !SLIM_TIME_SLEEPER_HH_
+#endif // !SLIM_TIME_SLEEPER_HPP_

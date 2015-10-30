@@ -1,5 +1,5 @@
-#ifndef SLIM_CORE_SINGLETON_HH_
-# define SLIM_CORE_SINGLETON_HH_
+#ifndef SLIM_CORE_SINGLETON_HPP_
+# define SLIM_CORE_SINGLETON_HPP_
 
 namespace slim
 {
@@ -27,4 +27,4 @@ private:
 }
 }
 
-#endif // !SLIM_CORE_SINGLETON_HH_
+#endif // !SLIM_CORE_SINGLETON_HPP_

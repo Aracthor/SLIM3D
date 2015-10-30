@@ -1,5 +1,5 @@
-#ifndef SLIM_ENGINE_GAMEPLAY_LOOP_HH_
-# define SLIM_ENGINE_GAMEPLAY_LOOP_HH_
+#ifndef SLIM_ENGINE_GAMEPLAY_LOOP_HPP_
+# define SLIM_ENGINE_GAMEPLAY_LOOP_HPP_
 
 # include "slim/time/Loop.hpp"
 
@@ -28,4 +28,4 @@ private:
 }
 }
 
-#endif // !SLIM_ENGINE_GAMEPLAY_LOOP_HH_
+#endif // !SLIM_ENGINE_GAMEPLAY_LOOP_HPP_

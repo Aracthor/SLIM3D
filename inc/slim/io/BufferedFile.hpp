@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_BUFFERED_FILE_HH_
-# define SLIM_IO_BUFFERED_FILE_HH_
+#ifndef SLIM_IO_BUFFERED_FILE_HPP_
+# define SLIM_IO_BUFFERED_FILE_HPP_
 
 # include "slim/stdio.h"
 
@@ -21,4 +21,4 @@ protected:
 }
 }
 
-#endif // !SLIM_IO_BUFFERED_FILE_HH_
+#endif // !SLIM_IO_BUFFERED_FILE_HPP_

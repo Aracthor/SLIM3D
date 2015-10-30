@@ -1,5 +1,5 @@
-#ifndef SLIM_WINDOW_WINDOW_HH_
-# define SLIM_WINDOW_WINDOW_HH_
+#ifndef SLIM_WINDOW_WINDOW_HPP_
+# define SLIM_WINDOW_WINDOW_HPP_
 
 # include "slim/events/EventsLoop.hpp"
 # include "slim/events/EventsManager.hpp"
@@ -9,7 +9,7 @@ namespace slim
 namespace window
 {
 
-class	Window
+class			Window
 {
 public:
     struct		Parameters
@@ -58,4 +58,4 @@ protected:
 
 # include "Window.ipp"
 
-#endif // !SLIM_WINDOW_WINDOW_HH_
+#endif // !SLIM_WINDOW_WINDOW_HPP_

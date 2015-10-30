@@ -1,5 +1,5 @@
-#ifndef SLIM_DEBUG_ASSERT_HH_
-# define SLIM_DEBUG_ASSERT_HH_
+#ifndef SLIM_DEBUG_ASSERT_HPP_
+# define SLIM_DEBUG_ASSERT_HPP_
 
 # include "slim/debug/exit.hpp"
 
@@ -11,4 +11,4 @@
 
 # define SLIM_DEBUG_REINTERPRET_CAST(type, dest, src)	SLIM_DEBUG_ASSERT(dynamic_cast<type>(src) != nullptr); dest = reinterpret_cast<type>(src)
 
-#endif /* !SLIM_DEBUG_ASSERT_HH_ */
+#endif /* !SLIM_DEBUG_ASSERT_HPP_ */

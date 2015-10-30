@@ -1,5 +1,5 @@
-#ifndef SLIM_DEBUG_CONSOLE_HH_
-# define SLIM_DEBUG_CONSOLE_HH_
+#ifndef SLIM_DEBUG_CONSOLE_HPP_
+# define SLIM_DEBUG_CONSOLE_HPP_
 
 # include <ostream>
 
@@ -41,4 +41,4 @@ enum	EEffect
 std::ostream&	operator<<(std::ostream& stream, slim::debug::console::EColor color);
 std::ostream&	operator<<(std::ostream& stream, slim::debug::console::EEffect color);
 
-#endif // !SLIM_DEBUG_CONSOLE_HH_
+#endif // !SLIM_DEBUG_CONSOLE_HPP_

@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_LIB_HH_
-# define SLIM_MATHS_LIB_HH_
+#ifndef SLIM_MATHS_LIB_HPP_
+# define SLIM_MATHS_LIB_HPP_
 
 # define _USE_MATH_DEFINES // MSC requirement for macros like M_PI
 # include <cmath>
@@ -60,4 +60,4 @@ inline T		lerp(T a, T b, T ratio);
 
 # include "lib.ipp"
 
-#endif // !SLIM_MATHS_LIB_HH_
+#endif // !SLIM_MATHS_LIB_HPP_

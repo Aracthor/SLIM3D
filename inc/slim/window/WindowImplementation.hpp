@@ -1,5 +1,5 @@
-#ifndef SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_
-# define SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_
+#ifndef SLIM_WINDOW_WINDOW_IMPLEMENTATION_HPP_
+# define SLIM_WINDOW_WINDOW_IMPLEMENTATION_HPP_
 
 # include "slim/system.h"
 # include "slim/window/Window.hpp"
@@ -12,4 +12,4 @@
 #  error "WindowImplementation not implemented yet for this system."
 # endif
 
-#endif // !SLIM_WINDOW_WINDOW_IMPLEMENTATION_HH_
+#endif // !SLIM_WINDOW_WINDOW_IMPLEMENTATION_HPP_

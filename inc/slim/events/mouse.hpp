@@ -1,5 +1,5 @@
-#ifndef SLIM_EVENTS_MOUSE_HH_
-# define SLIM_EVENTS_MOUSE_HH_
+#ifndef SLIM_EVENTS_MOUSE_HPP_
+# define SLIM_EVENTS_MOUSE_HPP_
 
 # include "slim/system.h"
 
@@ -11,4 +11,4 @@
 #  error "mouse not implemented yet for this system."
 # endif
 
-#endif // !SLIM_EVENTS_MOUSE_HH_
+#endif // !SLIM_EVENTS_MOUSE_HPP_

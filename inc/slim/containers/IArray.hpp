@@ -1,5 +1,5 @@
-#ifndef SLIM_CONTAINERS_IARRAY_HH_
-# define SLIM_CONTAINERS_IARRAY_HH_
+#ifndef SLIM_CONTAINERS_IARRAY_HPP_
+# define SLIM_CONTAINERS_IARRAY_HPP_
 
 namespace slim
 {
@@ -24,4 +24,4 @@ public:
 }
 }
 
-#endif // !SLIM_CONTAINERS_IARRAY_HH_
+#endif // !SLIM_CONTAINERS_IARRAY_HPP_

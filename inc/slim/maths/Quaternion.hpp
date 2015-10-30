@@ -1,5 +1,5 @@
-#ifndef SLIM_MATHS_QUATERNION_HH_
-# define SLIM_MATHS_QUATERNION_HH_
+#ifndef SLIM_MATHS_QUATERNION_HPP_
+# define SLIM_MATHS_QUATERNION_HPP_
 
 # include "slim/maths/Vector3.hpp"
 # include "slim/maths/Matrix4x4.hpp"
@@ -62,4 +62,4 @@ private:
 
 # include "Quaternion.hpp"
 
-#endif // !SLIM_MATHS_QUATERNION_HH_
+#endif // !SLIM_MATHS_QUATERNION_HPP_

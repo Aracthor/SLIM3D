@@ -1,5 +1,5 @@
-#ifndef SLIM_CONTAINERS_PRESIZED_ARRAY_HH_
-# define SLIM_CONTAINERS_PRESIZED_ARRAY_HH_
+#ifndef SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_
+# define SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_
 
 # include "slim/containers/IArray.hpp"
 
@@ -47,4 +47,4 @@ private:
 
 # include "PresizedArray.ipp"
 
-#endif // !SLIM_CONTAINERS_PRESIZED_ARRAY_HH_
+#endif // !SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_

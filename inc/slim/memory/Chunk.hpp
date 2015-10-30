@@ -1,5 +1,5 @@
-#ifndef SLIM_MEMORY_CHUNK_HH_
-# define SLIM_MEMORY_CHUNK_HH_
+#ifndef SLIM_MEMORY_CHUNK_HPP_
+# define SLIM_MEMORY_CHUNK_HPP_
 
 # include <cstddef>
 
@@ -41,4 +41,4 @@ protected:
 
 # include "Chunk.ipp"
 
-#endif // !SLIM_MEMORY_CHUNK_HH_
+#endif // !SLIM_MEMORY_CHUNK_HPP_

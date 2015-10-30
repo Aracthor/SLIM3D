@@ -1,5 +1,5 @@
-#ifndef SLIM_IO_BUFFERED_READING_FILE_HH_
-# define SLIM_IO_BUFFERED_READING_FILE_HH_
+#ifndef SLIM_IO_BUFFERED_READING_FILE_HPP_
+# define SLIM_IO_BUFFERED_READING_FILE_HPP_
 
 # include "slim/io/BufferedFile.hpp"
 # include "slim/io/ReadingFile.hpp"
@@ -23,4 +23,4 @@ public:
 }
 }
 
-#endif // !SLIM_IO_BUFFERED_READING_FILE_HH_
+#endif // !SLIM_IO_BUFFERED_READING_FILE_HPP_

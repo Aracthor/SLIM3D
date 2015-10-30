@@ -1,5 +1,5 @@
-#ifndef SLIM_CONTAINERS_BUFFER_HH_
-# define SLIM_CONTAINERS_BUFFER_HH_
+#ifndef SLIM_CONTAINERS_BUFFER_HPP_
+# define SLIM_CONTAINERS_BUFFER_HPP_
 
 namespace slim
 {
@@ -51,4 +51,4 @@ private:
 
 # include "Buffer.ipp"
 
-#endif // !SLIM_CONTAINERS_BUFFER_HH_
+#endif // !SLIM_CONTAINERS_BUFFER_HPP_

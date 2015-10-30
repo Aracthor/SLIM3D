@@ -1,5 +1,5 @@
-#ifndef SLIM_SHADER_SHADER_HH_
-# define SLIM_SHADER_SHADER_HH_
+#ifndef SLIM_SHADER_SHADER_HPP_
+# define SLIM_SHADER_SHADER_HPP_
 
 # include "slim/assets/SingleFileAsset.hpp"
 # include "slim/graphics/gl.h"
@@ -48,4 +48,4 @@ private:
 
 # include "Shader.ipp"
 
-#endif // !SLIM_SHADER_SHADER_HH_
+#endif // !SLIM_SHADER_SHADER_HPP_

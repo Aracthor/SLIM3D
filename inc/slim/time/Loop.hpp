@@ -1,5 +1,5 @@
-#ifndef SLIM_TIME_LOOP_HH_
-# define SLIM_TIME_LOOP_HH_
+#ifndef SLIM_TIME_LOOP_HPP_
+# define SLIM_TIME_LOOP_HPP_
 
 # include "slim/time/Clock.hpp"
 
@@ -36,4 +36,4 @@ private:
 
 # include "Loop.ipp"
 
-#endif // !SLIM_TIME_LOOP_HH_
+#endif // !SLIM_TIME_LOOP_HPP_

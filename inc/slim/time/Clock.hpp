@@ -1,5 +1,5 @@
-#ifndef SLIM_CLOCK_TIME_HH_
-# define SLIM_CLOCK_TIME_HH_
+#ifndef SLIM_CLOCK_TIME_HPP_
+# define SLIM_CLOCK_TIME_HPP_
 
 namespace slim
 {
@@ -40,4 +40,4 @@ private:
 
 # include "Clock.ipp"
 
-#endif // !SLIM_CLOCK_TIME_HH_
+#endif // !SLIM_CLOCK_TIME_HPP_
