@@ -1,5 +1,5 @@
 #include "slim/memory/Chunk.hpp"
-#include <iostream> // DEBUG
+
 namespace slim
 {
 namespace memory
