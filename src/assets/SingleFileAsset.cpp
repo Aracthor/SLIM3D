@@ -1,6 +1,6 @@
-#include "slim/assets/SingleFileAsset.hh"
-#include "slim/containers/Buffer.hh"
-#include "slim/debug/LogManager.hh"
+#include "slim/assets/SingleFileAsset.hpp"
+#include "slim/containers/Buffer.hpp"
+#include "slim/debug/LogManager.hpp"
 #include "slim/io/macros.h"
 
 namespace slim

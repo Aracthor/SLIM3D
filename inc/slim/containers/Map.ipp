@@ -1,0 +1,6 @@
+namespace slim
+{
+namespace containers
+{
+}
+}

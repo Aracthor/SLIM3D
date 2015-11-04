@@ -1,4 +1,4 @@
-#include "CloseListener.hh"
+#include "CloseListener.hpp"
 
 CloseListener::CloseListener(slim::engine::Engine* engine) :
     m_engine(engine)

@@ -1,18 +1,45 @@
-#include "slim/debug/assert.hh"
+#ifndef SLIM_ASSETS_LISTENERS_MANAGER_HPP_
+# define SLIM_ASSETS_LISTENERS_MANAGER_HPP_
+
+# include <map>
+
+# include "slim/assets/Listener.hpp"
 
 namespace slim
 {
 namespace assets
 {
 
-template <class ASSET>
-void
-ListenersManager::registerAssetType()
+class	Asset;
+
+class	ListenersManager
 {
-    SLIM_DEBUG_ASSERT(m_listenerLists.count(ASSET::typeName) == 0);
+public:
+    ListenersManager();
+    ~ListenersManager();
 
-    m_listenerLists[ASSET::typeName] = ListenerList();
-}
+public:
+    template <class ASSET> // Must inherit from class slim::asset::Asset.
+    inline void	registerAssetType();
+
+public:
+    void	addAsset(const Asset* asset);
+    void	addListener(Listener* listener, const Asset* asset);
+
+public:
+    void	onLoad(const Asset* asset);
+    void	onUnload(const Asset* asset);
+
+private:
+    typedef std::map<const Asset*, std::vector<Listener*>>	ListenerList;
+
+private:
+    std::map<const char*, ListenerList>	m_listenerLists;
+};
 
 }
 }
+
+# include "ListenersManager.ipp"
+
+#endif // !SLIM_ASSETS_LISTENERS_MANAGER_HPP_

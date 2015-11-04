@@ -1,29 +1,63 @@
+#ifndef SLIM_ASSETS_MANAGER_HPP_
+# define SLIM_ASSETS_MANAGER_HPP_
+
+# include <map>
+# include <vector>
+
+# include "slim/assets/ListenersManager.hpp"
+# include "slim/containers/Buffer.hpp"
+# include "slim/core/Singleton.hpp"
+
+# define SLIM_ASSETS_FOLDER		"../assets"
+# define SLIM_ASSETS_MAX_PATH_SIZE	0x1000
+
 namespace slim
 {
 namespace assets
 {
 
-void
-Manager::addListener(Listener* listener, const Asset* asset)
+class			Asset;
+
+class			Manager : public core::Singleton
 {
-    m_listenersManager.addListener(listener, asset);
+public:
+    static Manager	instance;
+
+public:
+    Manager();
+    ~Manager();
+
+public:
+    bool	onInit() override;
+    void	onDestroy() override;
+    void	setExecutablePath(const char* path);
+
+public:
+    inline void	addListener(Listener* listener, const Asset* asset);
+    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
+    void	registerAsset(ASSET* asset);
+    template <class ASSET> // ASSET must inherit from slim::assets::Asset.
+    inline void	registerAssetType();
+
+public:
+    void	loadNeededAssets();
+    void	unloadUnneededAssets();
+    void	unloadAllAssets();
+
+private:
+    void	addToLoadList(Asset* asset);
+    void	load(Asset* asset);
+    void	unload(Asset* asset);
+
+private:
+    std::map<const char*, std::vector<Asset*>>		m_assets;
+    ListenersManager					m_listenersManager;
+    containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	m_path;
+};
+
+}
 }
 
+# include "Manager.ipp"
 
-template <class ASSET>
-void
-Manager::registerAsset(ASSET* asset)
-{
-    m_listenersManager.addAsset(asset);
-    this->addToLoadList(asset);
-}
-
-template <class ASSET>
-void
-Manager::registerAssetType()
-{
-    m_listenersManager.registerAssetType<ASSET>();
-}
-
-}
-}
+#endif // !SLIM_ASSETS_MANAGER_HPP_

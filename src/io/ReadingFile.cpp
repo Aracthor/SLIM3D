@@ -1,4 +1,4 @@
-#include "slim/io/ReadingFile.hh"
+#include "slim/io/ReadingFile.hpp"
 
 namespace slim
 {
@@ -10,7 +10,7 @@ ReadingFile::ReadingFile(const char* name) :
 {
 }
 
-ReadingFile::~ReadingFile() noexcept(false)
+ReadingFile::~ReadingFile()
 {
 }
 

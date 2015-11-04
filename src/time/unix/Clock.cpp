@@ -1,4 +1,4 @@
-#include "slim/debug/SyscallException.hh"
+#include "slim/debug/syscall.hpp"
 
 #include <sys/time.h>
 

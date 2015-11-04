@@ -1,4 +1,4 @@
-#include "slim/core/attributes.h"
+#include "slim/attributes.h"
 
 // Windows seems to not handle color in its terminal,
 // So those fonctions are just empty here.

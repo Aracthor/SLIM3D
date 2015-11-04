@@ -1,8 +1,7 @@
-#include "slim/containers/Buffer.hh"
-#include "slim/debug/assert.hh"
-#include "slim/graphics/GLException.hh"
-#include "slim/shader/Program.hh"
-#include "slim/io/ResourceException.hh"
+#include "slim/containers/Buffer.hpp"
+#include "slim/debug/assert.hpp"
+#include "slim/graphics/glDebug.hpp"
+#include "slim/shader/Program.hpp"
 
 namespace slim
 {
@@ -16,7 +15,7 @@ Program::typeName = "shader program";
 Program::Program(const char* name, const Shader* vertexShader, const Shader* fragmentShader) :
     assets::Asset(Program::typeName, name),
     m_vertexShader(vertexShader),
-    m_fragmentShader(vertexShader)
+    m_fragmentShader(fragmentShader)
 {
     SLIM_DEBUG_ASSERT(vertexShader->getType() == Shader::VERTEX);
     SLIM_DEBUG_ASSERT(fragmentShader->getType() == Shader::FRAGMENT);
@@ -44,12 +43,10 @@ Program::onAssetsReady()
     glGetProgramiv(m_id, GL_LINK_STATUS, &linked);
     if (!linked)
     {
-	containers::Buffer<char, SLIM_DEBUG_MESSAGE_BUFFER_SIZE>	buffer;
 	char	error[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
 	glGetProgramInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
-	buffer << "Error linking shader program: " << error;
-	throw io::ResourceException(this->getName(), buffer.getData(), __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Error linking shader program: ", error);
     }
 }
 

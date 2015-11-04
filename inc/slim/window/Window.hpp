@@ -1,90 +1,62 @@
-#include "slim/debug/assert.hh"
+#ifndef SLIM_WINDOW_WINDOW_HPP_
+# define SLIM_WINDOW_WINDOW_HPP_
+
+# include "slim/events/Manager.hpp"
+
+# include <EGL/egl.h>
 
 namespace slim
 {
 namespace window
 {
 
-void
-Window::resize(unsigned int width, unsigned int height)
+class			Window
 {
-    glfwSetWindowSize(m_window, width, height);
-}
+public:
+    struct		Parameters
+    {
+	unsigned int	width;
+	unsigned int	height;
+	const char*	title;
+	bool		fullscreen;
+    };
 
-void
-Window::setTitle(const char* title)
-{
-    glfwSetWindowTitle(m_window, title);
-}
+public:
+    Window(unsigned int width, unsigned int height, const char* title, bool fullscreen);
+    Window(const Parameters& parameters);
+    virtual ~Window();
 
-void
-Window::setCursor(Cursor* cursor)
-{
-    SLIM_DEBUG_ASSERT(cursor->isReady());
-    glfwSetCursor(m_window, cursor->getGLFWResource());
-}
+public:
+    inline unsigned int			getWidth() const;
+    inline unsigned int			getHeight() const;
+    inline const char*			getTitle() const;
+    inline events::Manager&		getEventsManager();
 
-void
-Window::resetDefaultCursor()
-{
-    glfwSetCursor(m_window, nullptr);
-}
+public:
+    void		setTitle(const char* title);
+    void		resize(unsigned int width, unsigned int height);
 
+public:
+    virtual void			display() = 0;
+    virtual void			pollEvents() = 0;
+    virtual EGLNativeDisplayType	getEGLDisplay() = 0;
+    virtual EGLNativeWindowType		getEGLWindow() = 0;
 
-bool
-Window::shouldClose() const
-{
-    return (glfwWindowShouldClose(m_window) != 0);
-}
+protected:
+    virtual void        setTitleImplementation(const char* title) = 0;
+    virtual void        resizeImplementation(unsigned int width, unsigned int height) = 0;
 
-void
-Window::display() const
-{
-    glfwSwapBuffers(m_window);
-}
-
-
-unsigned int
-Window::getWidth() const
-{
-    return m_parameters.width;
-}
-
-unsigned int
-Window::getHeight() const
-{
-    return m_parameters.height;
-}
-
-bool
-Window::isFullscreen() const
-{
-    return m_parameters.fullscreen;
-}
-
-const char*
-Window::getTitle() const
-{
-    return m_parameters.title;
-}
-
-events::EventsManager&
-Window::getEventsManager()
-{
-    return m_eventsManager;
-}
-
-const events::EventsLoop&
-Window::getEventsLoop() const
-{
-    return m_eventsLoop;
-}
-
-events::EventsLoop&
-Window::getEventsLoop()
-{
-    return m_eventsLoop;
-}
+protected:
+    unsigned int		m_width;
+    unsigned int		m_height;
+    const char*			m_title;
+    bool			m_fullscreen;
+    events::Manager		m_eventsManager;
+};
 
 }
 }
+
+# include "Window.ipp"
+
+#endif // !SLIM_WINDOW_WINDOW_HPP_

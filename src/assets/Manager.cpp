@@ -1,9 +1,12 @@
 #include <algorithm>
 
-#include "slim/assets/Asset.hh"
-#include "slim/assets/Manager.hh"
-#include "slim/debug/assert.hh"
-#include "slim/debug/LogManager.hh"
+#include "slim/assets/Asset.hpp"
+#include "slim/assets/Image.hpp"
+#include "slim/assets/Manager.hpp"
+#include "slim/debug/assert.hpp"
+#include "slim/debug/LogManager.hpp"
+#include "slim/shader/Program.hpp"
+#include "slim/shader/Shader.hpp"
 #include "slim/io/macros.h"
 
 namespace slim
@@ -24,9 +27,15 @@ Manager::~Manager()
 }
 
 
-void
+bool
 Manager::onInit()
 {
+    // Register SLIM predefined assets.
+    this->registerAssetType<assets::Image>();
+    this->registerAssetType<shader::Program>();
+    this->registerAssetType<shader::Shader>();
+    
+    return true;
 }
 
 void

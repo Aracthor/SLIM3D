@@ -5,8 +5,9 @@ project("SLIM3D")
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
    "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  set(warnings "-Wall -Wextra -Werror")
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -D_DEBUG")
+ set(warnings "-Wall -Wextra -Werror")
+ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -D_DEBUG")
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   set(warnings "/W4 /WX /EHsc")
 else()
@@ -62,26 +63,27 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     endforeach()
 endif()
 
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../bin")
+
+add_custom_target(make-binary-directory ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+  
 
 add_library(slim3d-core ${CORE_SRCS})
 add_library(slim3d-graphics ${GRAPHICS_SRCS})
 
 target_link_libraries(slim3d-graphics slim3d-core)
-target_link_libraries(slim3d-graphics glfw3)
+target_link_libraries(slim3d-graphics EGL)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  target_link_libraries(slim3d-graphics GL)
+  target_link_libraries(slim3d-graphics GLESv2)
   target_link_libraries(slim3d-graphics X11)
-  target_link_libraries(slim3d-graphics Xxf86vm)
   target_link_libraries(slim3d-graphics pthread)
-  target_link_libraries(slim3d-graphics dl)
-  target_link_libraries(slim3d-graphics Xcursor)
-  target_link_libraries(slim3d-graphics Xrandr)
-  target_link_libraries(slim3d-graphics Xi)
-  target_link_libraries(slim3d-graphics Xinerama)
+  # target_link_libraries(slim3d-graphics Xcursor)
+  # target_link_libraries(slim3d-graphics Xrandr)
 elseif (MSVC)
   target_link_libraries(slim3d-graphics opengl32)
 endif()

@@ -1,18 +1,13 @@
-#include <exception>
 #include <iostream> // Only to print exception error message
 
-#include "slim/assets/Manager.hh"
-#include "slim/assets/Image.hh"
-#include "slim/core/attributes.h"
-#include "slim/debug/LogManager.hh"
-#include "slim/engine/Engine.hh"
+#include "slim/assets/Manager.hpp"
+#include "slim/attributes.h"
+#include "slim/debug/LogManager.hpp"
+#include "slim/engine/Engine.hpp"
 #include "slim/io/macros.h"
-#include "slim/maths/Helper.hh"
-#include "slim/shader/Program.hh"
-#include "slim/shader/Shader.hh"
-#include "slim/window/MonitorsManager.hh"
-
-#include <cstring>
+#include "slim/memory/Manager.hpp"
+#include "slim/maths/Helper.hpp"
+#include "slim/string.h"
 
 namespace slim
 {
@@ -23,10 +18,10 @@ Engine::Engine(int argc, char** argv) :
     m_gameplayLoop(this),
     m_renderLoop(this)
 {
+    this->addModule<memory::Manager>();
     this->addModule<debug::LogManager>();
     this->addModule<MathsHelper>();
     this->addModule<assets::Manager>();
-    this->addModule<window::MonitorsManager>();
 
     this->parseCommandLine(argc, argv);
 }
@@ -39,19 +34,21 @@ Engine::~Engine()
 void
 Engine::parseCommandLine(int argc, char** argv)
 {
-    char*	path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
+    containers::Buffer<char, 0x10>	buffer;
+    char*				path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
 
     if (path == nullptr)
     {
-	containers::Buffer<char, 0x10>	buffer;
 	buffer << '.' << SLIM_IO_SEPARATOR_CHAR << '\0';
-	assets::Manager::instance.setExecutablePath(buffer.getData());
     }
     else
     {
 	*path = '\0';
-	assets::Manager::instance.setExecutablePath(argv[0]);
+	buffer << argv[0] << '\0';
     }
+
+    assets::Manager::instance.setExecutablePath(buffer.getData());
+    debug::LogManager::instance.setExecutablePath(buffer.getData());
 
     SLIM_CORE_USE(argc);
     // TODO parse command line for real.
@@ -79,15 +76,8 @@ Engine::onShutdown()
 void
 Engine::start()
 {
-    try
-    {
-	this->init();
-	this->loop();
-    }
-    catch (const std::exception& exception)
-    {
-	std::cerr << exception.what() << std::endl;
-    }
+    this->init();
+    this->loop();
     this->shutdown();
 }
 
@@ -98,18 +88,16 @@ Engine::init()
     m_running = true;
 
     m_singletonsManager.initSingletons();
-    m_window = new window::Window(m_windowParameters);
+    m_memory = &memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ENGINE_CORE_MEMORY_SIZE, "engine core");
+    m_window = m_memory->create<window::WindowImplementation>(m_windowParameters);
+    m_context = m_memory->create<graphics::Context>(m_window);
+    m_eventsLoop.setWindow(m_window);
 
     // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
-    m_synchronizer.addLoop(&m_window->getEventsLoop());
+    m_synchronizer.addLoop(&m_eventsLoop);
     m_synchronizer.restart();
-
-    // Add default asset types.
-    assets::Manager::instance.registerAssetType<assets::Image>();
-    assets::Manager::instance.registerAssetType<shader::Shader>();
-    assets::Manager::instance.registerAssetType<shader::Program>();
 
     this->onInit(); // Implemented by user
 }
@@ -140,8 +128,10 @@ Engine::shutdown()
 {
     if (m_window)
     {
-	delete m_window;
+	m_memory->destroy(m_context);
+	m_memory->destroy(m_window);
     }
+    m_singletonsManager.destroySingletons();
 }
 
 }

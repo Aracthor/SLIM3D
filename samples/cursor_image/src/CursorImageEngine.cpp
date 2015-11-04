@@ -1,5 +1,5 @@
-#include "CloseListener.hh"
-#include "CursorImageEngine.hh"
+#include "CloseListener.hpp"
+#include "CursorImageEngine.hpp"
 
 CursorImageEngine::CursorImageEngine(int argc, char** argv) :
     slim::engine::Engine(argc, argv)

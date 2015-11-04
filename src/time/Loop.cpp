@@ -1,4 +1,4 @@
-#include "slim/time/Loop.hh"
+#include "slim/time/Loop.hpp"
 
 namespace slim
 {

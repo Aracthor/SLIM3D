@@ -1,17 +1,44 @@
-template <class T>
-T*
-Directory::newFile(const char* fileName)
+#ifndef SLIM_IO_DIRECTORY_HPP_
+# define SLIM_IO_DIRECTORY_HPP_
+
+# include "slim/io/BufferedReadingFile.hpp"
+# include "slim/io/BufferedWritingFile.hpp"
+
+# include <cstring>
+# include <sys/types.h>
+
+# define SLIM_IO_MAX_PATH_LENGTH		0x1000
+# define SLIM_IO_DIRECTORY_PERMISSIONS	0755
+
+namespace slim
 {
-    char	completePath[SLIM_IO_MAX_PATH_LENGTH];
+namespace io
+{
 
-    strcpy(completePath, m_path);
-    strncat(completePath, fileName, SLIM_IO_MAX_PATH_LENGTH - m_pathSize);
+class	Directory
+{
+public:
+    Directory(const char* name, bool completePath = false);
+    virtual ~Directory();
 
-    return new T(completePath);
+public:
+    template <class T> // T must inherit from slim::io::File
+    T*	newFile(const char* fileName);
+
+public:
+    inline const char*	getPath() const;
+
+private:
+    void	openDirectory();
+
+private:
+    char	m_path[SLIM_IO_MAX_PATH_LENGTH];
+    size_t	m_pathSize;
+};
+
+# include "Directory.ipp"
+
+}
 }
 
-const char*
-Directory::getPath() const
-{
-    return (m_path);
-}
+#endif // !SLIM_IO_DIRECTORY_HPP_

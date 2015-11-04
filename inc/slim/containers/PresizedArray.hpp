@@ -1,9 +1,7 @@
-#include <typeinfo>
+#ifndef SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_
+# define SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_
 
-#include "slim/core/templates.hh"
-#include "slim/core/string.h"
-#include "slim/debug/assert.hh"
-#include "slim/debug/Exception.hh"
+# include "slim/containers/IArray.hpp"
 
 namespace slim
 {
@@ -11,156 +9,40 @@ namespace containers
 {
 
 template <typename T, unsigned int N>
-PresizedArray<T, N>::PresizedArray()
+class	PresizedArray : public IArray<T>
 {
-    m_currentSize = 0;
-}
+public:
+    PresizedArray();
+    explicit PresizedArray(T defaultData);
+    ~PresizedArray();
 
-template <typename T, unsigned int N>
-PresizedArray<T, N>::PresizedArray(T defaultData)
-{
-    this->fill(defaultData);
-}
+public:
+    void		fill(T elem);
+    void		insert(T elem) override;
+    inline unsigned int	getSize() const override;
 
-template <typename T, unsigned int N>
-PresizedArray<T, N>::~PresizedArray()
-{
-}
+public:
+    template <typename ...Args>
+    void		forEach(void (*function)(const T& elem, Args ...args), Args& ...args) const;
+    template <typename ...Args>
+    void		forEach(void (*function)(T& elem, Args ...args), Args& ...args);
+    template <typename U>
+    U			minimum(U (*function)(const T& elem)) const;
+    template <typename U>
+    U			maximum(U (*function)(const T& elem)) const;
 
+public:
+    const T&	operator[](unsigned int index) const override;
+    T&		operator[](unsigned int index) override;
 
-template <typename T, unsigned int N>
-void
-PresizedArray<T, N>::fill(T elem)
-{
-    for (unsigned int i = 0; i < N; i++)
-    {
-	m_data[i] = elem;
-    }
-    m_currentSize = N;
-}
-
-template <typename T, unsigned int N>
-void
-PresizedArray<T, N>::insert(T elem)
-{
-    if (m_currentSize == N)
-    {
-	char	buffer[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
-
-	strncpy(buffer, "Inserting data in a full PresizedArray of type ", SLIM_DEBUG_MESSAGE_BUFFER_SIZE);
-	strncat(buffer, typeid(T).name(), SLIM_DEBUG_MESSAGE_BUFFER_SIZE - strlen(buffer));
-	throw debug::Exception(buffer, __FILE__, __func__, __LINE__);
-    }
-    m_data[m_currentSize] = elem;
-    m_currentSize++;
-}
-
-template <typename T, unsigned int N>
-unsigned int
-PresizedArray<T, N>::getSize() const
-{
-    return m_currentSize;
-}
-
-
-template <typename T, unsigned int N>
-void
-PresizedArray<T, N>::forEach(void (*function)(const T& elem)) const
-{
-    for (const T& elem : m_data)
-    {
-	function(elem);
-    }
-}
-
-template <typename T, unsigned int N>
-void
-PresizedArray<T, N>::forEach(void (*function)(T& elem))
-{
-    for (T& elem : m_data)
-    {
-	function(elem);
-    }
-}
-
-template <typename T, unsigned int N>
-template <typename U>
-void
-PresizedArray<T, N>::forEach(void (*function)(const T& elem, const U& param), const U& param) const
-{
-    for (T& elem : m_data)
-    {
-	function(elem, param);
-    }
-}
-
-template <typename T, unsigned int N>
-template <typename U>
-void
-PresizedArray<T, N>::forEach(void (*function)(T& elem, const U& param), const U& param)
-{
-    for (T& elem : m_data)
-    {
-	function(elem, param);
-    }
-}
-
-template <typename T, unsigned int N>
-template <typename U>
-U
-PresizedArray<T, N>::minimum(U (*function)(const T& elem)) const
-{
-    U	minimum = function(m_data[0]);
-    U	result = minimum;
-
-    for (const T& elem : m_data)
-    {
-	result = function(elem);
-	if (result < minimum)
-	{
-	    minimum = result;
-	}
-    }
-
-    return result;
-}
-
-template <typename T, unsigned int N>
-template <typename U>
-U
-PresizedArray<T, N>::maximum(U (*function)(const T& elem)) const
-{
-    U	maximum = function(m_data[0]);
-    U	result = minimum;
-
-    for (const T& elem : m_data)
-    {
-	result = function(elem);
-	if (result > maximum)
-	{
-	    maximum = result;
-	}
-    }
-
-    return result;
-}
-
-
-template <typename T, unsigned int N>
-const T&
-PresizedArray<T, N>::operator[](unsigned int index) const
-{
-    SLIM_DEBUG_ASSERT(index < N);
-    return m_data[index];
-}
-
-template <typename T, unsigned int N>
-T&
-PresizedArray<T, N>::operator[](unsigned int index)
-{
-    SLIM_DEBUG_ASSERT(index < N);
-    return m_data[index];
-}
+private:
+    unsigned int	m_currentSize;
+    T			m_data[N];
+};
 
 }
 }
+
+# include "PresizedArray.ipp"
+
+#endif // !SLIM_CONTAINERS_PRESIZED_ARRAY_HPP_

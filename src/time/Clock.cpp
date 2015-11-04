@@ -1,5 +1,5 @@
-#include "slim/core/system.h"
-#include "slim/time/Clock.hh"
+#include "slim/system.h"
+#include "slim/time/Clock.hpp"
 
 namespace slim
 {
@@ -43,7 +43,7 @@ Clock::reset()
 }
 }
 
-#if SLIM_CORE_SYSTEM_IS_UNIX
+#if SLIM_SYSTEM_IS_UNIX
 # include "unix/Clock.cpp"
 #else
 # include "win32/Clock.cpp"

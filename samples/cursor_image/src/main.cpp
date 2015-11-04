@@ -1,4 +1,4 @@
-#include "CursorImageEngine.hh"
+#include "CursorImageEngine.hpp"
 
 int	main(int argc, char** argv)
 {

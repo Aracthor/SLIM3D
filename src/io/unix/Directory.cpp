@@ -1,4 +1,4 @@
-#include "slim/io/FileException.hh"
+#include "slim/debug/syscall.hpp"
 #include "slim/io/macros.h"
 
 #include <cerrno>
@@ -22,7 +22,7 @@ Directory::Directory(const char* path, bool completePath)
 
 	if (getcwd(m_path, SLIM_IO_MAX_PATH_LENGTH - strlen(path) - 2) == nullptr)
 	{
-	    throw FileException(path, "Cannot open directory because of cwd recovery", __FILE__, __func__, __LINE__);
+	    SLIM_DEBUG_EXIT("Cannot open ", path, " directory because of cwd recovery");
 	}
 
 	size = strlen(m_path);
@@ -50,7 +50,7 @@ Directory::openDirectory()
 
     if (accessCheck == -1 && errno != ENOENT)
     {
-	throw FileException(m_path, strerror(errno), __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Cannot check existence of ", m_path, ": ", strerror(errno));
     }
     else if (errno == ENOENT)
     {

@@ -1,7 +1,7 @@
-#include "slim/io/Directory.hh"
+#include "slim/io/Directory.hpp"
 
-#if SLIM_CORE_SYSTEM_IS_UNIX
+#if SLIM_SYSTEM_IS_UNIX
 # include "unix/Directory.cpp"
-#elif SLIM_CORE_SYSTEM_IS_WINDOWS
+#elif SLIM_SYSTEM_IS_WINDOWS
 # include "win32/Directory.cpp"
-#endif // SLIM_CORE_SYSTEM_IS_WINDOWS
+#endif // SLIM_SYSTEM_IS_WINDOWS

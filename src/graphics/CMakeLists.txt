@@ -1,6 +1,7 @@
 project("SLIM3D")
 
 set(SRCS_FILES
-  GLException.cpp
+  Context.cpp
+  glDebug.cpp
   PARENT_SCOPE
   )

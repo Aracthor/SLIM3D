@@ -1,5 +1,5 @@
-#include "slim/io/BufferedFile.hh"
-#include "slim/debug/Exception.hh"
+#include "slim/debug/exit.hpp"
+#include "slim/io/BufferedFile.hpp"
 
 namespace slim
 {
@@ -10,11 +10,11 @@ BufferedFile::BufferedFile()
 {
 }
 
-BufferedFile::~BufferedFile() noexcept(false)
+BufferedFile::~BufferedFile()
 {
     if (fclose(m_stream) != 0)
     {
-	throw debug::Exception("Cannot close buffered file.", __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Cannot close buffered file.");
     }
 }
 
