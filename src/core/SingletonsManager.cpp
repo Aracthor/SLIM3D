@@ -32,20 +32,24 @@ SingletonsManager::addSingleton(Singleton* singleton)
 void
 SingletonsManager::initSingletons()
 {
+    unsigned int	i;
+
     m_inited = true;
-    for (Singleton* singleton : m_singletons)
+    for (i = 0; i < m_singletons.size(); i++)
     {
-	singleton->init();
+	m_singletons[i]->init();
     }
 }
 
 void
 SingletonsManager::destroySingletons()
 {
+    int	i;
+
     m_inited = false;
-    for (Singleton* singleton : m_singletons)
+    for (i = m_singletons.size() - 1; i >= 0; i--)
     {
-	singleton->destroy();
+	m_singletons[i]->destroy();
     }
     m_singletons.clear();
 }

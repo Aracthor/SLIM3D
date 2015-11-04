@@ -1,4 +1,3 @@
-#include <exception>
 #include <iostream> // Only to print exception error message
 
 #include "slim/assets/Manager.hpp"
@@ -8,8 +7,7 @@
 #include "slim/io/macros.h"
 #include "slim/memory/Manager.hpp"
 #include "slim/maths/Helper.hpp"
-
-#include <cstring>
+#include "slim/string.h"
 
 namespace slim
 {
@@ -90,14 +88,15 @@ Engine::init()
     m_running = true;
 
     m_singletonsManager.initSingletons();
-    m_memory = &memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ENGINE_CORE_MEMORY_SIZE);
+    m_memory = &memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ENGINE_CORE_MEMORY_SIZE, "engine core");
     m_window = m_memory->create<window::WindowImplementation>(m_windowParameters);
     m_context = m_memory->create<graphics::Context>(m_window);
+    m_eventsLoop.setWindow(m_window);
 
     // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
     m_synchronizer.addLoop(&m_renderLoop);
-    m_synchronizer.addLoop(&m_window->getEventsLoop());
+    m_synchronizer.addLoop(&m_eventsLoop);
     m_synchronizer.restart();
 
     this->onInit(); // Implemented by user
@@ -132,6 +131,7 @@ Engine::shutdown()
 	m_memory->destroy(m_context);
 	m_memory->destroy(m_window);
     }
+    m_singletonsManager.destroySingletons();
 }
 
 }

@@ -33,44 +33,42 @@ Manager::~Manager()
 
 
 void
-Manager::onKeyAction(keyboard::EKeyCode keyCode, keyboard::EAction action)
+Manager::onKeyPressed(keyboard::EKeyCode keyCode)
 {
-    if (action == keyboard::pressed)
+    m_keysCurrentlyPressed[keyCode] = true;
+    if (m_keyPressListeners[keyCode])
     {
-	m_keysCurrentlyPressed[keyCode] = true;
-	if (m_keyPressListeners[keyCode])
-	{
-	    m_keyPressListeners[keyCode]->onEvent();
-	}
-    }
-    else if (action == keyboard::released)
-    {
-	m_keysCurrentlyPressed[keyCode] = false;
-	if (m_keyReleaseListeners[keyCode])
-	{
-	    m_keyReleaseListeners[keyCode]->onEvent();
-	}
+	m_keyPressListeners[keyCode]->onEvent();
     }
 }
 
 void
-Manager::onMouseButtonAction(mouse::EButton button, mouse::EAction action)
+Manager::onKeyReleased(keyboard::EKeyCode keyCode)
 {
-    if (action == mouse::pressed)
+    m_keysCurrentlyPressed[keyCode] = false;
+    if (m_keyReleaseListeners[keyCode])
     {
-	m_mouseButtonsCurrentlyPressed[button] = true;
-	if (m_mouseButtonPressListeners[button])
-	{
-	    m_mouseButtonPressListeners[button]->onEvent(m_currentMousePosition);
-	}
+	m_keyReleaseListeners[keyCode]->onEvent();
     }
-    else if (action == mouse::released)
+}
+
+void
+Manager::onMouseButtonPressed(mouse::EButton button)
+{
+    m_mouseButtonsCurrentlyPressed[button] = true;
+    if (m_mouseButtonPressListeners[button])
     {
-	m_mouseButtonsCurrentlyPressed[button] = false;
-	if (m_mouseButtonReleaseListeners[button])
-	{
-	    m_mouseButtonReleaseListeners[button]->onEvent(m_currentMousePosition);
-	}
+	m_mouseButtonPressListeners[button]->onEvent(m_currentMousePosition);
+    }
+}
+
+void
+Manager::onMouseButtonReleased(mouse::EButton button)
+{
+    m_mouseButtonsCurrentlyPressed[button] = false;
+    if (m_mouseButtonReleaseListeners[button])
+    {
+	m_mouseButtonReleaseListeners[button]->onEvent(m_currentMousePosition);
     }
 }
 

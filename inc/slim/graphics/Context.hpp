@@ -1,7 +1,10 @@
 #ifndef SLIM_GRAPHICS_CONTEXT_HPP_
 # define SLIM_GRAPHICS_CONTEXT_HPP_
 
+# include "slim/debug/exit.hpp"
 # include "slim/window/Window.hpp"
+
+# define SLIM_GRAPHICS_EGL_CHECK(function, message)	if ((function) == EGL_FALSE) SLIM_DEBUG_EXIT(message)
 
 namespace slim
 {

@@ -1,5 +1,7 @@
 #include "slim/debug/exit.hpp"
 #include "slim/debug/LogManager.hpp"
+#include "slim/events/keyboard.hpp"
+#include "slim/events/mouse.hpp"
 
 namespace slim
 {
@@ -31,6 +33,38 @@ WindowImplementation::display()
 {
     // TODO
     XFlush(m_display);
+}
+
+void
+WindowImplementation::pollEvents()
+{
+    XEvent	event;
+    
+    while (XCheckWindowEvent(m_display, m_window, 0xFFFFFFFF, &event) ||
+	   XCheckTypedWindowEvent(m_display, m_window, ClientMessage, &event))
+    {
+	switch (event.type)
+	{
+	case ClientMessage:
+	    m_eventsManager.onClose();
+	    break;
+	case KeyPress:
+	    m_eventsManager.onKeyPressed(m_keyCodeConverter.convert(event.xkey.keycode));
+	    break;
+	case KeyRelease:
+	    m_eventsManager.onKeyReleased(m_keyCodeConverter.convert(event.xkey.keycode));
+	    break;
+	case ButtonPress:
+	    m_eventsManager.onMouseButtonPressed(m_mouseButtonConverter.convert(event.xbutton.button));
+	    break;
+	case ButtonRelease:
+	    m_eventsManager.onMouseButtonReleased(m_mouseButtonConverter.convert(event.xbutton.button));
+	    break;
+	case MotionNotify:
+	    m_eventsManager.onMouseMovement(event.xmotion.x, event.xmotion.y);
+	    break;
+	}
+    }
 }
 
 EGLNativeDisplayType
@@ -81,28 +115,40 @@ WindowImplementation::createDisplay()
 void
 WindowImplementation::createWindow(int width, int height)
 {
-    XSetWindowAttributes	attributes;
+    int				screen;
 
-    attributes.event_mask = 0xFFFFFF;
-    m_window = XCreateWindow(m_display,				// Display
-			     DefaultRootWindow(m_display),	// Parent (none)
-			     0, 0,				// x, y
-			     width, height,			// width, height
-			     1,					// border width
-			     CopyFromParent,			// depthx
-			     InputOutput,			// class
-			     CopyFromParent,			// visual
-			     CWEventMask,			// valuemask
-			     &attributes);			// attributes
+    screen = DefaultScreen(m_display);
+    m_window = XCreateSimpleWindow(m_display,				// Dislpay
+				   RootWindow(m_display, screen),	// Parent (none)
+				   0, 0,				// x, y
+				   width, height,			// width, height
+				   1,					// depthx
+				   BlackPixel(m_display, screen),	// Border color
+				   BlackPixel(m_display, screen));	// Background color
+    if (m_window == BadWindow)
+    {
+	SLIM_DEBUG_EXIT("Cannot create window..");
+    }
 
-    this->allowCloseEvents();
+    if (XSelectInput(m_display, m_window,
+		     ExposureMask |
+		     KeyPressMask |
+		     KeyReleaseMask |
+		     ButtonPressMask |
+		     ButtonReleaseMask |
+		     PointerMotionMask) == BadWindow)
+    {
+	SLIM_DEBUG_EXIT("Failed to select input mask for window.");
+    }
+
     XMapWindow(m_display, m_window); // Make it visible on screen
+    this->allowCloseEvents();
 }
 
 void
 WindowImplementation::allowCloseEvents()
 {
-    Atom	deleteProtocol = XInternAtom(m_display, "WM_DELETE_WINDOW", True);
+    Atom	deleteProtocol = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
 
     XSetWMProtocols(m_display, m_window, &deleteProtocol, 1);
 }

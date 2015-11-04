@@ -15,7 +15,7 @@ Synchronizer::~Synchronizer()
 
 
 static void
-addTime(Loop*& loop, const Clock::time& time)
+addTime(Loop*& loop, Clock::time time)
 {
     loop->addTime(time);
 }

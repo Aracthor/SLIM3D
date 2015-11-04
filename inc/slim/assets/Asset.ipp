@@ -7,9 +7,9 @@ namespace assets
 
 template <class ASSET, typename ...Args>
 ASSET*
-Asset::create(Args&&... args)
+Asset::create(memory::Chunk& chunk, Args&&... args)
 {
-    ASSET*	asset = new ASSET(args...);
+    ASSET*	asset = chunk.create<ASSET>(args...);
 
     Manager::instance.registerAsset(asset);
 

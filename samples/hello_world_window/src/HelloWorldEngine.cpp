@@ -1,3 +1,5 @@
+#include "slim/debug/LogManager.hpp"
+
 #include "CloseListener.hpp"
 #include "HelloWorldEngine.hpp"
 
@@ -14,12 +16,11 @@ HelloWorldEngine::~HelloWorldEngine()
 {
 }
 
-#include "slim/debug/LogManager.hpp"
-
 void
 HelloWorldEngine::onInit()
 {
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
+    this->getCurrentWindow()->getEventsManager().addKeyPressListener(new CloseListener(this), slim::events::keyboard::escape);
 }
 
 void

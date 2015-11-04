@@ -1,7 +1,9 @@
 #ifndef SLIM_ASSETS_LISTENER_HPP_
 # define SLIM_ASSETS_LISTENER_HPP_
 
-# include <vector>
+# include "slim/containers/PresizedArray.hpp"
+
+# define SLIM_ASSETS_MAX_LISTENED	50
 
 namespace slim
 {
@@ -30,7 +32,7 @@ public:
     inline bool		isReady() const;
 
 protected:
-    std::vector<const Asset*>	m_assets;
+    containers::PresizedArray<const Asset*, SLIM_ASSETS_MAX_LISTENED>	m_assets;
 
 private:
     unsigned int	m_waitedNumber = 0;

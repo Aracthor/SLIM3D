@@ -22,12 +22,10 @@ public:
     inline unsigned int	getSize() const override;
 
 public:
-    void		forEach(void (*function)(const T& elem)) const;
-    void		forEach(void (*function)(T& elem));
-    template <typename U>
-    void		forEach(void (*function)(const T& elem, const U& param), const U& param) const;
-    template <typename U>
-    void		forEach(void (*function)(T& elem, const U& param), const U& param);
+    template <typename ...Args>
+    void		forEach(void (*function)(const T& elem, Args ...args), Args& ...args) const;
+    template <typename ...Args>
+    void		forEach(void (*function)(T& elem, Args ...args), Args& ...args);
     template <typename U>
     U			minimum(U (*function)(const T& elem)) const;
     template <typename U>

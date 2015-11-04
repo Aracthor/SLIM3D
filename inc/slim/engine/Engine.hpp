@@ -4,7 +4,7 @@
 # include "slim/core/SingletonsManager.hpp"
 # include "slim/engine/GameplayLoop.hpp"
 # include "slim/engine/RenderLoop.hpp"
-# include "slim/events/EventsLoop.hpp"
+# include "slim/events/Loop.hpp"
 # include "slim/graphics/Context.hpp"
 # include "slim/memory/ArenaChunk.hpp"
 # include "slim/time/Synchronizer.hpp"
@@ -67,6 +67,7 @@ private:
     graphics::Context*			m_context = nullptr;
     GameplayLoop			m_gameplayLoop;
     RenderLoop				m_renderLoop;
+    events::Loop			m_eventsLoop;
     bool				m_running;
 
     friend class	GameplayLoop;

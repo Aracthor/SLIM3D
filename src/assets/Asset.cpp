@@ -40,14 +40,17 @@ Asset::unload()
     this->unloadData();
 }
 
+static void
+setAssetNeeded(const Asset* const& asset)
+{
+    asset->setNeeded(true);
+}
+
 void
 Asset::setNeeded(bool needed) const
 {
     m_needed = needed;
-    for (const Asset* asset : m_assets)
-    {
-	asset->setNeeded(needed);
-    }
+    m_assets.forEach(&setAssetNeeded);
 }
 
 

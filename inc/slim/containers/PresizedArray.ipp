@@ -59,44 +59,28 @@ PresizedArray<T, N>::getSize() const
 
 
 template <typename T, unsigned int N>
+template <typename ...Args>
 void
-PresizedArray<T, N>::forEach(void (*function)(const T& elem)) const
+PresizedArray<T, N>::forEach(void (*function)(const T& elem, Args ...args), Args& ...args) const
 {
-    for (const T& elem : m_data)
-    {
-	function(elem);
+    unsigned int	i;
+
+    for (i = 0; i < m_currentSize; ++i)
+    { 
+	function(m_data[i], args...);
     }
 }
 
 template <typename T, unsigned int N>
+template <typename ...Args>
 void
-PresizedArray<T, N>::forEach(void (*function)(T& elem))
+PresizedArray<T, N>::forEach(void (*function)(T& elem, Args ...args), Args&... args)
 {
-    for (T& elem : m_data)
-    {
-	function(elem);
-    }
-}
+    unsigned int	i;
 
-template <typename T, unsigned int N>
-template <typename U>
-void
-PresizedArray<T, N>::forEach(void (*function)(const T& elem, const U& param), const U& param) const
-{
-    for (T& elem : m_data)
-    {
-	function(elem, param);
-    }
-}
-
-template <typename T, unsigned int N>
-template <typename U>
-void
-PresizedArray<T, N>::forEach(void (*function)(T& elem, const U& param), const U& param)
-{
-    for (T& elem : m_data)
-    {
-	function(elem, param);
+    for (i = 0; i < m_currentSize; ++i)
+    { 
+	function(m_data[i], args...);
     }
 }
 

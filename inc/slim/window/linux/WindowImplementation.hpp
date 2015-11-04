@@ -1,3 +1,6 @@
+#include "slim/events/linux/KeyCodeConverter.hpp"
+#include "slim/events/linux/MouseButtonConverter.hpp"
+
 #include <X11/Xlib.h>
 
 namespace slim
@@ -14,6 +17,7 @@ public:
 
 public:
     void			display() override;
+    void			pollEvents() override;
     EGLNativeDisplayType	getEGLDisplay() override;
     EGLNativeWindowType		getEGLWindow() override;
 
@@ -27,8 +31,10 @@ private:
     void	allowCloseEvents();
 
 public:
-    ::Display*	m_display;
-    ::Window	m_window;
+    ::Display*				m_display;
+    ::Window				m_window;
+    events::KeyCodeConverter		m_keyCodeConverter;
+    events::MouseButtonConverter	m_mouseButtonConverter;
 };
 
 }

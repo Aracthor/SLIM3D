@@ -6,14 +6,14 @@ namespace events
 {
 
 void
-Manager::addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
+Manager::addKeyPressListener(IListener* listener, keyboard::EKeyCode keyCode)
 {
     SLIM_DEBUG_ASSERT(!m_keyPressListeners[keyCode]);
     m_keyPressListeners[keyCode] = listener;
 }
 
 void
-Manager::addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode)
+Manager::addKeyReleaseListener(IListener* listener, keyboard::EKeyCode keyCode)
 {
     SLIM_DEBUG_ASSERT(!m_keyReleaseListeners[keyCode]);
     m_keyReleaseListeners[keyCode] = listener;
@@ -41,7 +41,7 @@ Manager::addMouseMovementListener(IMouseListener* listener)
 }
 
 void
-Manager::addCloseListener(ICloseListener* listener)
+Manager::addCloseListener(IListener* listener)
 {
     SLIM_DEBUG_ASSERT(!m_closeListener);
     m_closeListener = listener;

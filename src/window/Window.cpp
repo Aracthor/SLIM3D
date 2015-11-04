@@ -11,8 +11,7 @@ Window::Window(unsigned int width, unsigned int height, const char* title, bool 
     m_height(height),
     m_title(title),
     m_fullscreen(fullscreen),
-    m_eventsManager(),
-    m_eventsLoop(m_eventsManager)
+    m_eventsManager()
 {
     debug::LogManager::instance.graphics.info << "Window created: " << title << debug::LogStream::endline;
 }

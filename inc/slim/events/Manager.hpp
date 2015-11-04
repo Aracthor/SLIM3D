@@ -1,8 +1,7 @@
 #ifndef SLIM_EVENTS_MANAGER_HPP_
 # define SLIM_EVENTS_MANAGER_HPP_
 
-# include "slim/events/ICloseListener.hpp"
-# include "slim/events/IKeyListener.hpp"
+# include "slim/events/IListener.hpp"
 # include "slim/events/IMouseListener.hpp"
 # include "slim/events/keyboard.hpp"
 # include "slim/events/mouse.hpp"
@@ -19,20 +18,22 @@ public:
     ~Manager();
 
 public:
-    void	onKeyAction(keyboard::EKeyCode keyCode, keyboard::EAction action);
-    void	onMouseButtonAction(mouse::EButton button, mouse::EAction action);
+    void	onKeyPressed(keyboard::EKeyCode keyCode);
+    void	onKeyReleased(keyboard::EKeyCode keyCode);
+    void	onMouseButtonPressed(mouse::EButton button);
+    void	onMouseButtonReleased(mouse::EButton button);
     void	onMouseMovement(double x, double y);
     void	onClose();
 
 public:
-    inline void	addKeyPressListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
-    inline void	addKeyReleaseListener(IKeyListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyPressListener(IListener* listener, keyboard::EKeyCode keyCode);
+    inline void	addKeyReleaseListener(IListener* listener, keyboard::EKeyCode keyCode);
 
     inline void	addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseMovementListener(IMouseListener* listener);
 
-    inline void	addCloseListener(ICloseListener* listener);
+    inline void	addCloseListener(IListener* listener);
 
     inline bool	isKeyPressed(keyboard::EKeyCode key) const;
     inline bool	isMouseButtonPressed(mouse::EButton button) const;
@@ -45,15 +46,15 @@ private:
     maths::Vector2d	m_currentMousePosition;
 
     bool		m_keysCurrentlyPressed[keyboard::keysMax];
-    IKeyListener*	m_keyPressListeners[keyboard::keysMax];
-    IKeyListener*	m_keyReleaseListeners[keyboard::keysMax];
+    IListener*		m_keyPressListeners[keyboard::keysMax];
+    IListener*		m_keyReleaseListeners[keyboard::keysMax];
 
     bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsMax];
     IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseMovementListener;
 
-    ICloseListener*	m_closeListener;
+    IListener*		m_closeListener;
 };
 
 }

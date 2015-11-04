@@ -27,17 +27,5 @@ Window::getEventsManager()
     return m_eventsManager;
 }
 
-const events::EventsLoop&
-Window::getEventsLoop() const
-{
-    return m_eventsLoop;
-}
-
-events::EventsLoop&
-Window::getEventsLoop()
-{
-    return m_eventsLoop;
-}
-
 }
 }

@@ -2,6 +2,7 @@
 # define SLIM_ASSETS_ASSET_HPP_
 
 # include "slim/assets/Listener.hpp"
+# include "slim/memory/Chunk.hpp"
 
 namespace slim
 {
@@ -12,7 +13,7 @@ class	Asset : public Listener
 {
 public:
     template <class ASSET, typename ...Args> // ASSET must inherit from this class.
-    static ASSET*	create(Args&&... args);
+    static ASSET*	create(memory::Chunk& chunk, Args&&... args);
 
 protected:
     Asset(const char* const type, const char* const name);

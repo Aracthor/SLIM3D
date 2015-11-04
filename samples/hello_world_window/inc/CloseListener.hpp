@@ -2,9 +2,9 @@
 # define CLOSE_LISTENER_HH_
 
 # include "slim/engine/Engine.hpp"
-# include "slim/events/ICloseListener.hpp"
+# include "slim/events/IListener.hpp"
 
-class CloseListener : public slim::events::ICloseListener
+class CloseListener : public slim::events::IListener
 {
 public:
     CloseListener(slim::engine::Engine* engine);

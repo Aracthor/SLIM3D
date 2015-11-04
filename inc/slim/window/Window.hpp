@@ -1,7 +1,6 @@
 #ifndef SLIM_WINDOW_WINDOW_HPP_
 # define SLIM_WINDOW_WINDOW_HPP_
 
-# include "slim/events/EventsLoop.hpp"
 # include "slim/events/Manager.hpp"
 
 # include <EGL/egl.h>
@@ -32,8 +31,6 @@ public:
     inline unsigned int			getHeight() const;
     inline const char*			getTitle() const;
     inline events::Manager&		getEventsManager();
-    inline const events::EventsLoop&	getEventsLoop() const;
-    inline events::EventsLoop&		getEventsLoop();
 
 public:
     void		setTitle(const char* title);
@@ -41,6 +38,7 @@ public:
 
 public:
     virtual void			display() = 0;
+    virtual void			pollEvents() = 0;
     virtual EGLNativeDisplayType	getEGLDisplay() = 0;
     virtual EGLNativeWindowType		getEGLWindow() = 0;
 
@@ -54,7 +52,6 @@ protected:
     const char*			m_title;
     bool			m_fullscreen;
     events::Manager		m_eventsManager;
-    events::EventsLoop		m_eventsLoop;
 };
 
 }

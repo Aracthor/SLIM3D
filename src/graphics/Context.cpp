@@ -36,16 +36,12 @@ Context::Context(window::Window* window)
 	SLIM_DEBUG_EXIT("Cannot create EGL display.");
     }
 
-    if (eglInitialize(m_display, &m_version.major, &m_version.minor) == EGL_FALSE)
-    {
-	SLIM_DEBUG_EXIT("Cannot initialize EGL.");
-    }
+    SLIM_GRAPHICS_EGL_CHECK(eglInitialize(m_display, &m_version.major, &m_version.minor),
+			    "Cannot initialize EGL.");
     debug::LogManager::instance.graphics.info << "EGL version " << m_version.major << '.' << m_version.minor << " initialized." << debug::LogStream::endline;
 
-    if (eglChooseConfig(m_display, eglAttribs, &m_config, 1, &configsNumber) == EGL_FALSE)
-    {
-	SLIM_DEBUG_EXIT("Cannot set EGL configs.");
-    }
+    SLIM_GRAPHICS_EGL_CHECK(eglChooseConfig(m_display, eglAttribs, &m_config, 1, &configsNumber),
+			    "Cannot set EGL configs.");
 
     m_surface = eglCreateWindowSurface(m_display, m_config, window->getEGLWindow(), nullptr);
     if (m_surface == EGL_NO_SURFACE)
@@ -59,16 +55,19 @@ Context::Context(window::Window* window)
 	SLIM_DEBUG_EXIT("Cannot create EGL context.");
     }
 
-    if (eglMakeCurrent(m_display, m_surface, m_surface, m_context) == EGL_FALSE)
-    {
-	SLIM_DEBUG_EXIT("Cannot make created EGL context the current one..");
-    }
+    SLIM_GRAPHICS_EGL_CHECK(eglMakeCurrent(m_display, m_surface, m_surface, m_context),
+			    "Cannot make created EGL context the current one.");
 
     debug::LogManager::instance.graphics.info << "Context successfully created." << debug::LogStream::endline;
 }
 
 Context::~Context()
 {
+    SLIM_GRAPHICS_EGL_CHECK(eglMakeCurrent(m_display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT),
+			    "Cannot disable current EGL context.");
+    SLIM_GRAPHICS_EGL_CHECK(eglDestroyContext(m_display, m_context), "Cannot destroy EGL context.");
+    SLIM_GRAPHICS_EGL_CHECK(eglDestroySurface(m_display, m_surface), "Cannot destroy EGL surface.");
+    SLIM_GRAPHICS_EGL_CHECK(eglTerminate(m_display), "Cannot terminate EGL.");
 }
 
 }

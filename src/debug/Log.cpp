@@ -62,9 +62,12 @@ Log::write(const char* line, unsigned int size, unsigned int level)
     {
 	if (level >= SLIM_DEBUG_WARNING_LEVEL)
 	{
-	    std::cerr << console::bold;
+	    std::cerr << console::bold << line << console::nothing;
 	}
-	std::cerr << line << console::nothing;
+	else
+	{
+	    std::cout << line;
+	}
     }
 }
 
