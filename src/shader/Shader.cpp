@@ -47,7 +47,7 @@ Shader::readFromData(const char* const data)
 {
     GLint	compiled;
 
-    debug::LogManager::instance.graphics.info << "Compiling shader \"" << this->getName() << "\"..." << debug::LogStream::endline;
+    debug::LogManager::instance.assets.info << "Compiling shader \"" << this->getName() << "\"..." << debug::LogStream::endline;
 
     SLIM_GRAPHICS_GL_CHECK(m_id = glCreateShader(m_type));
     glShaderSource(m_id, 1, &data, nullptr);

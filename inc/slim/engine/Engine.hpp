@@ -5,6 +5,7 @@
 # include "slim/engine/GameplayLoop.hpp"
 # include "slim/engine/RenderLoop.hpp"
 # include "slim/events/EventsLoop.hpp"
+# include "slim/graphics/Context.hpp"
 # include "slim/memory/ArenaChunk.hpp"
 # include "slim/time/Synchronizer.hpp"
 # include "slim/window/WindowImplementation.hpp"
@@ -62,7 +63,8 @@ private:
     core::SingletonsManager		m_singletonsManager;
     memory::ArenaChunk*			m_memory;
     time::Synchronizer			m_synchronizer;
-    window::WindowImplementation*	m_window = nullptr;
+    window::Window*			m_window = nullptr;
+    graphics::Context*			m_context = nullptr;
     GameplayLoop			m_gameplayLoop;
     RenderLoop				m_renderLoop;
     bool				m_running;

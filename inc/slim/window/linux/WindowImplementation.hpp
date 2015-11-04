@@ -13,7 +13,9 @@ public:
     virtual ~WindowImplementation();
 
 public:
-    void	display() override;
+    void			display() override;
+    EGLNativeDisplayType	getEGLDisplay() override;
+    EGLNativeWindowType		getEGLWindow() override;
 
 protected:
     void	setTitleImplementation(const char* title) override;

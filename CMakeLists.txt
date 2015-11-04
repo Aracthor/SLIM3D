@@ -76,6 +76,7 @@ add_library(slim3d-core ${CORE_SRCS})
 add_library(slim3d-graphics ${GRAPHICS_SRCS})
 
 target_link_libraries(slim3d-graphics slim3d-core)
+target_link_libraries(slim3d-graphics EGL)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
   target_link_libraries(slim3d-graphics GLESv2)

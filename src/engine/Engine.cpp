@@ -92,6 +92,7 @@ Engine::init()
     m_singletonsManager.initSingletons();
     m_memory = &memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ENGINE_CORE_MEMORY_SIZE);
     m_window = m_memory->create<window::WindowImplementation>(m_windowParameters);
+    m_context = m_memory->create<graphics::Context>(m_window);
 
     // Add default loops.
     m_synchronizer.addLoop(&m_gameplayLoop);
@@ -128,6 +129,7 @@ Engine::shutdown()
 {
     if (m_window)
     {
+	m_memory->destroy(m_context);
 	m_memory->destroy(m_window);
     }
 }

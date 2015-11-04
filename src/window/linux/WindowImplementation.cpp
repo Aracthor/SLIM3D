@@ -33,6 +33,18 @@ WindowImplementation::display()
     XFlush(m_display);
 }
 
+EGLNativeDisplayType
+WindowImplementation::getEGLDisplay()
+{
+    return (EGLNativeDisplayType)m_display;
+}
+
+EGLNativeWindowType
+WindowImplementation::getEGLWindow()
+{
+    return (EGLNativeWindowType)m_window;
+}
+
 
 void
 WindowImplementation::resizeImplementation(unsigned int width, unsigned int height)

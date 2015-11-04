@@ -15,7 +15,7 @@ Program::typeName = "shader program";
 Program::Program(const char* name, const Shader* vertexShader, const Shader* fragmentShader) :
     assets::Asset(Program::typeName, name),
     m_vertexShader(vertexShader),
-    m_fragmentShader(vertexShader)
+    m_fragmentShader(fragmentShader)
 {
     SLIM_DEBUG_ASSERT(vertexShader->getType() == Shader::VERTEX);
     SLIM_DEBUG_ASSERT(fragmentShader->getType() == Shader::FRAGMENT);

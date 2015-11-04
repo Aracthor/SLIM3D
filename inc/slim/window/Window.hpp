@@ -4,6 +4,8 @@
 # include "slim/events/EventsLoop.hpp"
 # include "slim/events/Manager.hpp"
 
+# include <EGL/egl.h>
+
 namespace slim
 {
 namespace window
@@ -38,7 +40,9 @@ public:
     void		resize(unsigned int width, unsigned int height);
 
 public:
-    virtual void	display() = 0;
+    virtual void			display() = 0;
+    virtual EGLNativeDisplayType	getEGLDisplay() = 0;
+    virtual EGLNativeWindowType		getEGLWindow() = 0;
 
 protected:
     virtual void        setTitleImplementation(const char* title) = 0;
