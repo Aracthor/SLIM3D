@@ -8,10 +8,10 @@ namespace slim
 namespace memory
 {
 
-class	QueueChunk : public Chunk
+class			QueueChunk : public Chunk
 {
 public:
-    inline QueueChunk(char* data, std::size_t size);
+    inline QueueChunk(char* data, std::size_t size, const char* name);
     inline ~QueueChunk();
 
 public:

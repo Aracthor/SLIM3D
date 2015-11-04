@@ -16,7 +16,7 @@ QueueChunk::alloc(std::size_t size)
 
     if (m_maxSize - m_size < size + sizeof(std::size_t))
     {
-	SLIM_DEBUG_EXIT("Memory overflow in stack chunk.");
+	SLIM_DEBUG_EXIT("Memory overflow in queue chunk \"", m_name, "\".");
     }
 
     *(reinterpret_cast<std::size_t*>(m_queueEnd)) = size;
@@ -44,7 +44,7 @@ QueueChunk::free(char* ptr)
 
     if (m_queueStart != ptr)
     {
-	SLIM_DEBUG_EXIT("Trying to delete non-first element of QueueChunk.");
+	SLIM_DEBUG_EXIT("Trying to delete non-first element of queue chunk \"", m_name, "\".");
     }
 
     m_queueStart += size;

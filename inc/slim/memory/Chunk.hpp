@@ -11,7 +11,7 @@ namespace memory
 class			Chunk
 {
 public:
-    Chunk(char* data, std::size_t size);
+    Chunk(char* data, std::size_t size, const char* name);
     virtual ~Chunk();
 
 public:
@@ -34,6 +34,7 @@ protected:
     char*		m_start;
     std::size_t		m_size;
     std::size_t		m_maxSize;
+    const char*		m_name;
 };
 
 }

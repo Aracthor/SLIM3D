@@ -26,15 +26,16 @@ Manager::~Manager()
 bool
 Manager::onInit()
 {
-    m_memory = static_cast<char*>(malloc(Manager::size));
+    m_memoryStart = malloc(Manager::size);
+    m_memory = static_cast<char*>(m_memoryStart);
 
-    return (m_memory == nullptr);
+    return (m_memoryStart == nullptr);
 }
 
 void
 Manager::onDestroy()
 {
-    free(m_memory);
+    free(m_memoryStart);
 }
 
 }

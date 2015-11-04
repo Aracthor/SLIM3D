@@ -26,13 +26,14 @@ public:
 
 public:
     template <class CHUNK> // CHUNK must inherit from slim::memory::Chunk
-    CHUNK&	createChunk(std::size_t size);
+    CHUNK&	createChunk(std::size_t size, const char* name);
 
 protected:
     bool	onInit() override;
     void	onDestroy() override;
 
 private:
+    void*	m_memoryStart;
     char*	m_memory;
     std::size_t	m_allocated;
     containers::AbstractArray<Chunk, SLIM_MEMORY_MAX_CHUNKS>	m_chunks;

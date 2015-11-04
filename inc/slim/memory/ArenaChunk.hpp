@@ -11,7 +11,7 @@ namespace memory
 class			ArenaChunk : public Chunk
 {
 public:
-    inline ArenaChunk(char* data, std::size_t size);
+    inline ArenaChunk(char* data, std::size_t size, const char* name);
     inline ~ArenaChunk();
 
 public:

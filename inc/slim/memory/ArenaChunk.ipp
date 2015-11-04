@@ -3,8 +3,8 @@ namespace slim
 namespace memory
 {
 
-ArenaChunk::ArenaChunk(char* data, std::size_t size) :
-    Chunk(data, size)
+ArenaChunk::ArenaChunk(char* data, std::size_t size, const char* name) :
+    Chunk(data, size, name)
 {
 }
 

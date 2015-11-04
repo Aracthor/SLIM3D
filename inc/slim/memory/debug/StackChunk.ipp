@@ -10,7 +10,7 @@ StackChunk::alloc(std::size_t size)
 {
     if (m_maxSize - m_size < size + sizeof(std::size_t))
     {
-	SLIM_DEBUG_EXIT("Memory overflow in stack chunk.");
+	SLIM_DEBUG_EXIT("Memory overflow in stack chunk \"", m_name, "\".");
     }
 
     *(reinterpret_cast<std::size_t*>(m_data)) = size;
@@ -31,9 +31,9 @@ StackChunk::free(char* ptr)
     ptr -= sizeof(std::size_t);
     std::size_t	size = *(reinterpret_cast<std::size_t*>(ptr)) + sizeof(std::size_t);
 
-o    if (m_data - size != ptr)
+    if (m_data - size != ptr)
     {
-	SLIM_DEBUG_EXIT("Trying to delete non-last element of StackChunk.");
+	SLIM_DEBUG_EXIT("Trying to delete non-last element of stack chunk \"", m_name, "\".");
     }
 
     m_data = ptr;

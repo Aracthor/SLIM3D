@@ -11,7 +11,7 @@ namespace memory
 class			StackChunk : public Chunk
 {
 public:
-    inline StackChunk(char* data, std::size_t size);
+    inline StackChunk(char* data, std::size_t size, const char* name);
     inline ~StackChunk();
 
 public:

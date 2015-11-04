@@ -3,8 +3,8 @@ namespace slim
 namespace memory
 {
 
-StackChunk::StackChunk(char* data, std::size_t size) :
-    Chunk(data, size)
+StackChunk::StackChunk(char* data, std::size_t size, const char* name) :
+    Chunk(data, size, name)
 {
 }
 
