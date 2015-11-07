@@ -24,6 +24,7 @@ public:
 public:
     virtual void*	alloc(std::size_t size) = 0;
     virtual void	free(char* ptr) = 0;
+    inline void		free(void* ptr);
 
 public:
     // For some chunk implementations, this may not work on release mode !

@@ -22,6 +22,13 @@ Chunk::destroy(T* object)
 }
 
 
+void
+Chunk::free(void* ptr)
+{
+    this->free(reinterpret_cast<char*>(ptr));
+}
+
+
 std::size_t
 Chunk::getSize() const
 {
