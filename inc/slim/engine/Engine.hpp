@@ -7,6 +7,7 @@
 # include "slim/events/Loop.hpp"
 # include "slim/graphics/Context.hpp"
 # include "slim/memory/ArenaChunk.hpp"
+# include "slim/scene/Scene.hpp"
 # include "slim/time/Synchronizer.hpp"
 # include "slim/window/WindowImplementation.hpp"
 
@@ -33,6 +34,7 @@ public:
     inline unsigned int		getGameplayFramerate() const;
     inline unsigned int		getRenderFramerate() const;
     inline window::Window*	getCurrentWindow();
+    inline scene::Scene*	getCurrentScene();
 
 public:
     inline void		setGameplayFramerate(unsigned int framerate);
@@ -65,6 +67,7 @@ private:
     time::Synchronizer			m_synchronizer;
     window::Window*			m_window = nullptr;
     graphics::Context*			m_context = nullptr;
+    scene::Scene*			m_currentScene = nullptr;
     GameplayLoop			m_gameplayLoop;
     RenderLoop				m_renderLoop;
     events::Loop			m_eventsLoop;

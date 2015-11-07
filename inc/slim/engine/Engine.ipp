@@ -28,6 +28,12 @@ Engine::getCurrentWindow()
     return m_window;
 }
 
+scene::Scene*
+Engine::getCurrentScene()
+{
+    return m_currentScene;
+}
+
 
 void
 Engine::setGameplayFramerate(unsigned int framerate)
