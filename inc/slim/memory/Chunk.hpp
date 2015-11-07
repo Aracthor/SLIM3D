@@ -22,6 +22,7 @@ public:
     void	        destroy(T* object);
 
 public:
+    virtual void*	realloc(void* ptr, std::size_t size); // ptr can be nullptr for a simple alloc.
     virtual void*	alloc(std::size_t size) = 0;
     virtual void	free(char* ptr) = 0;
     inline void		free(void* ptr);
