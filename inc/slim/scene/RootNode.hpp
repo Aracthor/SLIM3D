@@ -11,8 +11,11 @@ namespace scene
 class	RootNode : public Node
 {
 public:
-    RootNode();
+    RootNode(memory::Chunk& chunk);
     ~RootNode();
+
+protected:
+    void	updateData() override;
 };
 
 }

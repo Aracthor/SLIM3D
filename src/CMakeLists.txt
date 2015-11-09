@@ -5,6 +5,7 @@ set(CORE_DIRECTORIES
   core
   debug
   io
+  maths
   memory
   time
   )

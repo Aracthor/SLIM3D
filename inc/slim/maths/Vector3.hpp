@@ -37,7 +37,7 @@ public:
 public:
     Vector3<T>&	addTo(const Vector3<T>& vector);
     Vector3<T>&	subTo(const Vector3<T>& vector);
-    Vector3<T>&	crossProductTo(const Vector3<T>& vector);
+    Vector3<T>&	vectorProductTo(const Vector3<T>& vector);
     Vector3<T>&	scaleTo(T n);
     Vector3<T>&	unscaleTo(T n);
     Vector3<T>&	lerpInterpolation(const Vector3<T>& vector, T ratio);

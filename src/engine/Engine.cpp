@@ -114,6 +114,10 @@ Engine::loop()
 void
 Engine::update(time::Clock::time elapsedTime)
 {
+    if (m_currentScene != nullptr)
+    {
+	m_currentScene->update();
+    }
     this->onUpdate(elapsedTime);
 }
 

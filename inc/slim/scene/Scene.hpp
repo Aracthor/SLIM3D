@@ -21,6 +21,9 @@ public:
     ~Scene();
 
 public:
+    void		update();
+
+public:
     inline const char*	getName() const;
 
 private:

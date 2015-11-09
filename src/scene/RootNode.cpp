@@ -5,13 +5,20 @@ namespace slim
 namespace scene
 {
 
-RootNode::RootNode() :
-    Node("root", nullptr)
+RootNode::RootNode(memory::Chunk& chunk) :
+    Node(chunk, "root", nullptr)
 {
 }
 
 RootNode::~RootNode()
 {
+}
+
+
+void
+RootNode::updateData()
+{
+    // A root node is perfectly static.
 }
 
 }

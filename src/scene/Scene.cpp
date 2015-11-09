@@ -9,12 +9,19 @@ namespace scene
 Scene::Scene(const char* name) :
     m_name(name),
     m_memory(memory::Manager::instance.createChunk<SceneChunk>(SLIM_SCENE_MEMORY_SIZE, name)),
-    m_root(m_memory.create<RootNode>())
+    m_root(m_memory.create<RootNode>(m_memory))
 {
 }
 
 Scene::~Scene()
 {
+}
+
+
+void
+Scene::update()
+{
+    m_root->update();
 }
 
 }
