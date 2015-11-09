@@ -18,14 +18,14 @@ Node::~Node()
 
 
 void
-Node::update()
+Node::update(time::Clock::time elapsedTime)
 {
     if (!this->isUpdated())
     {
 	this->updateMatrix();
     }
-    this->updateData();
-    m_children.forEach(&Node::updateData);
+    this->updateData(elapsedTime);
+    m_children.forEach(&Node::updateData, elapsedTime);
 }
 
 

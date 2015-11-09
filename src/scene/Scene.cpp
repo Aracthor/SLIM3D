@@ -19,9 +19,9 @@ Scene::~Scene()
 
 
 void
-Scene::update()
+Scene::update(time::Clock::time elapsedTime)
 {
-    m_root->update();
+    m_root->update(elapsedTime);
 }
 
 }

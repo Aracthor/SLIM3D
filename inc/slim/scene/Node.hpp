@@ -5,6 +5,7 @@
 # include "slim/memory/Chunk.hpp"
 # include "slim/scene/Node.hpp"
 # include "slim/scene/Transformable.hpp"
+# include "slim/time/Clock.hpp"
 
 namespace slim
 {
@@ -20,14 +21,14 @@ public:
     inline const char*	getName() const;
 
 public:
-    void		update();
+    void		update(time::Clock::time elapsedTime);
 
 protected:
     Node(memory::Chunk& chunk, const char* name, Node* parent);
 
 protected:
     void		updateMatrix();
-    virtual void        updateData() = 0;
+    virtual void        updateData(time::Clock::time elapsedTime) = 0;
 
 private:
     const char*			m_name;

@@ -4,6 +4,7 @@
 # include "slim/memory/Chunk.hpp"
 # include "slim/memory/SmartStackChunk.hpp"
 # include "slim/scene/RootNode.hpp"
+# include "slim/time/Clock.hpp"
 
 # include "slim/memory/units.h"
 
@@ -21,7 +22,7 @@ public:
     ~Scene();
 
 public:
-    void		update();
+    void		update(time::Clock::time elapsedTime);
 
 public:
     inline const char*	getName() const;

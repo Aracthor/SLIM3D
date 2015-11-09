@@ -16,7 +16,7 @@ RootNode::~RootNode()
 
 
 void
-RootNode::updateData()
+RootNode::updateData(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     // A root node is perfectly static.
 }

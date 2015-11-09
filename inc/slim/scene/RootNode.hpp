@@ -15,7 +15,7 @@ public:
     ~RootNode();
 
 protected:
-    void	updateData() override;
+    void	updateData(time::Clock::time elapsedTime) override;
 };
 
 }

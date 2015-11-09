@@ -28,10 +28,10 @@ Engine::getCurrentWindow()
     return m_window;
 }
 
-scene::Scene*
-Engine::getCurrentScene()
+scene::Manager&
+Engine::getSceneManager()
 {
-    return m_currentScene;
+    return m_sceneManager;
 }
 
 
