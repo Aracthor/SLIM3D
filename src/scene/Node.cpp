@@ -34,11 +34,11 @@ Node::updateMatrix()
 {
     if (m_parent)
     {
-	this->calcMatrix();
+	this->calcMatrix(m_parent->getTransformationMatrix());
     }
     else
     {
-	this->calcMatrix(m_parent->getTransformationMatrix());
+	this->calcMatrix();
     }
     m_children.forEach(&Node::updateMatrix);
 }
