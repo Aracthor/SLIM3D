@@ -10,6 +10,10 @@
 #  define SLIM_MATHS_PI	3.1415926
 # endif
 
+# define SLIM_MATHS_ABS(n)	(n < 0 ? -n : n)
+# define SLIM_MATHS_MIN(a, b)	(a <= b ? a : b)
+# define SLIM_MATHS_MAX(a, b)	(a >= b ? a : b)
+
 namespace slim
 {
 namespace maths
