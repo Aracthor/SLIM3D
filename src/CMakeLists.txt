@@ -5,6 +5,7 @@ set(CORE_DIRECTORIES
   core
   debug
   io
+  maths
   memory
   time
   )
@@ -15,6 +16,7 @@ set(GRAPHICS_DIRECTORIES
   engine
   events
   graphics
+  scene
   shader
   window
   )

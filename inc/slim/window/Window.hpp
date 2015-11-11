@@ -47,11 +47,11 @@ protected:
     virtual void        resizeImplementation(unsigned int width, unsigned int height) = 0;
 
 protected:
-    unsigned int		m_width;
-    unsigned int		m_height;
-    const char*			m_title;
-    bool			m_fullscreen;
-    events::Manager		m_eventsManager;
+    unsigned int	m_width;
+    unsigned int	m_height;
+    const char*		m_title;
+    bool		m_fullscreen;
+    events::Manager	m_eventsManager;
 };
 
 }

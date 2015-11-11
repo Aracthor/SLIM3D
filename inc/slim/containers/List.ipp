@@ -98,5 +98,20 @@ List<T>::getSize() const
     return m_size;
 }
 
+
+template <typename T>
+template <typename ...Args>
+void
+List<T>::forEach(void (T::*function)(Args ...args), Args& ...args)
+{
+    ListNode<T>*	element = m_begin;
+
+    while (element != nullptr)
+    {
+	(**element.*function)(args...);
+	element = element->m_next;
+    }
+}
+
 }
 }

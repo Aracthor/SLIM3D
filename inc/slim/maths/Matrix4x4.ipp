@@ -1,4 +1,5 @@
 #include "slim/debug/assert.hpp"
+#include "slim/maths/Helper.hpp"
 
 namespace slim
 {

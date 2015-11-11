@@ -121,7 +121,7 @@ Vector3<T>::subTo(const Vector3<T>& vector)
 
 template <typename T>
 Vector3<T>&
-Vector3<T>::crossProductTo(const Vector3<T>& vector)
+Vector3<T>::vectorProductTo(const Vector3<T>& vector)
 {
     T	x, y, z;
 

@@ -25,6 +25,10 @@ public:
 public:
     inline std::size_t		getSize() const;
 
+public:
+    template <typename ...Args>
+    void		forEach(void (T::*function)(Args ...args), Args& ...args);
+
 private:
     memory::Chunk&	m_chunk;
     std::size_t		m_size;

@@ -1,5 +1,3 @@
-# include <xmmintrin.h>
-
 namespace slim
 {
 namespace maths

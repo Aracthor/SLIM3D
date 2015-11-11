@@ -96,9 +96,9 @@ public:
 
     Vector4<T>&	set(__m128 data);
 
-    inline __m128	asSSE() const;
+    __m128	asSSE() const;
 
-    inline Vector4<T>&	operator=(__m128 data);
+    Vector4<T>&	operator=(__m128 data);
 #endif
 };
 
@@ -117,9 +117,5 @@ typedef maths::Vector4f	        Vector4;
 }
 
 # include "Vector4.ipp"
-
-# if __SSE__ == 1
-#  include "SSE/Vector4.ipp"
-# endif
 
 #endif // !SLIM_MATHS_VECTOR4_HPP_

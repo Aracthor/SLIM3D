@@ -59,8 +59,4 @@ typedef maths::Matrix4x4f		Matrix4x4;
 
 # include "Matrix4x4.ipp"
 
-# if __SSE__ == 1
-#  include "SSE/Matrix4x4.ipp"
-# endif
-
 #endif // !SLIM_MATHS_MATRIX4X4_HPP_
