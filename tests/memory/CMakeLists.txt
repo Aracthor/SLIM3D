@@ -1,5 +1,5 @@
 project("SLIM3D")
 
-add_executable(smart_chunks smart_chunks.cpp)
+add_executable(chunks chunks.cpp)
 
-target_link_libraries(smart_chunks slim3d-core)
+target_link_libraries(chunks slim3d-core)

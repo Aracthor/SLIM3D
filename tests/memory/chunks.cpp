@@ -1,13 +1,19 @@
 #include <iostream>
+#include <typeinfo>
 
+#include "slim/memory/ArenaChunk.hpp"
+#include "slim/memory/DirtyChunk.hpp"
+#include "slim/memory/QueueChunk.hpp"
 #include "slim/memory/Manager.hpp"
 #include "slim/memory/SmartStackChunk.hpp"
+#include "slim/memory/StackChunk.hpp"
 
 using namespace slim::memory;
 
-int	smart_stack_test()
+template <class CHUNK>
+int	chunk_test(std::size_t size)
 {
-    Chunk&	chunk = Manager::instance.createChunk<SmartStackChunk>(10000, "test");
+    Chunk&	chunk = Manager::instance.createChunk<CHUNK>(size, typeid(CHUNK).name());
     void*	ptr1;
     void*	ptr2;
     void*	ptr3;
@@ -26,13 +32,13 @@ int	smart_stack_test()
 
 int	main()
 {
-    int	return_value;
-    
     Manager::instance.init();
 
-    return_value = (smart_stack_test() == 0);
+    chunk_test<ArenaChunk>(12000);
+    chunk_test<DirtyChunk>(10000);
+    chunk_test<SmartStackChunk>(10000);
 
     Manager::instance.destroy();
 
-    return return_value;
+    return 0;
 }
