@@ -5,96 +5,141 @@ namespace slim
 namespace maths
 {
 
-Box::Box()
+template <typename T>
+Box<T>::Box(T x, T y, T z) :
+    m_min(x, y, z),
+    m_max(x, y, z)
 {
 }
 
-Box::Box(const Box<T>& box)
-{
-    this->reset();
-    this->addBox(box);
-}
-
-Box::~Box()
+template <typename T>
+Box<T>::Box(const Vector3<T>& point) :
+    m_min(point),
+    m_max(point)
 {
 }
 
+template <typename T>
+Box<T>::Box(const Box<T>& box)
+{
+    m_min = box.getMin();
+    m_max = box.getMax();
+}
 
+template <typename T>
+Box<T>::~Box()
+{
+}
+
+
+template <typename T>
 const Vector3<T>&
-Box::getMin() const
+Box<T>::getMin() const
 {
     return m_min;
 }
 
+template <typename T>
 const Vector3<T>&
-Box::getMax() const
+Box<T>::getMax() const
 {
     return m_max;
 }
 
+template <typename T>
 T
-Box::getWidth() const
+Box<T>::getWidth() const
 {
     return m_max.x - m_min.x;
 }
 
+template <typename T>
 T
-Box::getHeight() const
+Box<T>::getHeight() const
 {
     return m_max.y - m_min.y;
 }
 
+template <typename T>
 T
-Box::getDepth() const
+Box<T>::getDepth() const
 {
     return m_max.z - m_min.z;
 }
 
 
+template <typename T>
 bool
-Box::contains(const Vector3<T>& point) const
+Box<T>::contains(T x, T y, T z) const
 {
-    return (point.x >= m_min.x && point.x <= m_max.x &&
-	    point.y >= m_min.y && point.y <= m_max.y &&
-	    point.z >= m_min.z && point.z <= m_max.z);
+    return (x >= m_min.x && x <= m_max.x &&
+	    y >= m_min.y && y <= m_max.y &&
+	    z >= m_min.z && z <= m_max.z);
 }
 
+template <typename T>
 bool
-Box::contains(const Box<T>& box) const
+Box<T>::contains(const Vector3<T>& point) const
+{
+    return this->contains(point.x, point.y, point.z);
+}
+
+template <typename T>
+bool
+Box<T>::contains(const Box<T>& box) const
 {
     return (this->isPointIniside(box.getMin()) && this->isPointInside(box.getMax()));
 }
 
+template <typename T>
 bool
-Box::intersects(const Box<T>& box) const
+Box<T>::intersects(const Box<T>& box) const
 {
     return (this->isPointIniside(box.getMin()) || this->isPointInside(box.getMax()) || box.contains(*this));
 }
 
 
+template <typename T>
 void
-Box::reset()
+Box<T>::reset(T x, T y, T z)
 {
-    m_min.set(0);
-    m_max.set(0);
+    m_min.set(x, y, z);
+    m_max.set(x, y, z);
 }
 
+template <typename T>
 void
-Box::addPoint(const Vector3<T>& point)
+Box<T>::reset(const Vector3<T>& point)
 {
-    m_min.x = SLIM_MATHS_MIN(m_min.x, point.x);
-    m_min.y = SLIM_MATHS_MIN(m_min.y, point.y);
-    m_min.z = SLIM_MATHS_MIN(m_min.z, point.z);
-    m_max.x = SLIM_MATHS_MAX(m_max.x, point.x);
-    m_max.y = SLIM_MATHS_MAX(m_max.y, point.y);
-    m_max.z = SLIM_MATHS_MAX(m_max.z, point.z);
+    m_min.set(point);
+    m_max.set(point);
 }
 
+template <typename T>
 void
-Box::addBox(const Box<T>& box)
+Box<T>::addPoint(T x, T y, T z)
 {
-    this->addPoint(m_min);
-    this->addPoint(m_max);
+    m_min.x = SLIM_MATHS_MIN(m_min.x, x);
+    m_min.y = SLIM_MATHS_MIN(m_min.y, y);
+    m_min.z = SLIM_MATHS_MIN(m_min.z, z);
+    m_max.x = SLIM_MATHS_MAX(m_max.x, x);
+    m_max.y = SLIM_MATHS_MAX(m_max.y, y);
+    m_max.z = SLIM_MATHS_MAX(m_max.z, z);
+}
+
+template <typename T>
+void
+Box<T>::addPoint(const Vector3<T>& point)
+{
+    this->addPoint(point.x, point.y, point.z);
+}
+
+template <typename T>
+void
+Box<T>::addBox(const Box<T>& box)
+{
+    this->addPoint(box.getMin());
+    this->addPoint(box.getMax());
 }
 
 }

@@ -12,7 +12,8 @@ template <typename T>
 class	Box
 {
 public:
-    Box();
+    Box(T x, T y, T z);
+    Box(const Vector3<T>& point);
     Box(const Box<T>& box);
     ~Box();
 
@@ -24,12 +25,15 @@ public:
     inline T			getDepth() const;
 
 public:
+    inline bool			contains(T x, T y, T z) const;
     inline bool			contains(const Vector3<T>& point) const;
     inline bool			contains(const Box<T>& box) const;
     inline bool			intersects(const Box<T>& box) const;
 
 public:
-    void	reset();
+    void	reset(T x, T y, T z);
+    void	reset(const Vector3<T>& point);
+    void        addPoint(T x, T y, T z);
     void        addPoint(const Vector3<T>& point);
     void        addBox(const Box<T>& box);
 
