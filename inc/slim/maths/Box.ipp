@@ -51,6 +51,27 @@ Box::getDepth() const
 }
 
 
+bool
+Box::contains(const Vector3<T>& point) const
+{
+    return (point.x >= m_min.x && point.x <= m_max.x &&
+	    point.y >= m_min.y && point.y <= m_max.y &&
+	    point.z >= m_min.z && point.z <= m_max.z);
+}
+
+bool
+Box::contains(const Box<T>& box) const
+{
+    return (this->isPointIniside(box.getMin()) && this->isPointInside(box.getMax()));
+}
+
+bool
+Box::intersects(const Box<T>& box) const
+{
+    return (this->isPointIniside(box.getMin()) || this->isPointInside(box.getMax()) || box.contains(*this));
+}
+
+
 void
 Box::reset()
 {
