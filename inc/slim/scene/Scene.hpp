@@ -1,6 +1,7 @@
 #ifndef SLIM_SCENE_SCENE_HPP_
 # define SLIM_SCENE_SCENE_HPP_
 
+# include "slim/camera/Camera.hpp"
 # include "slim/memory/Chunk.hpp"
 # include "slim/memory/SmartStackChunk.hpp"
 # include "slim/scene/RootNode.hpp"
@@ -34,6 +35,7 @@ private:
     const char*	        m_name;
     memory::Chunk&	m_memory;
     RootNode*		m_root;
+    camera::Camera*	m_activeCamera = nullptr;
 };
 
 }

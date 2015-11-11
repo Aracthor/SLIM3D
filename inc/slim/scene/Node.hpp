@@ -28,7 +28,10 @@ protected:
 
 protected:
     void		updateMatrix();
-    virtual void        updateData(time::Clock::time elapsedTime) = 0;
+    virtual void	updateData(time::Clock::time elapsedTime) = 0;
+
+protected:
+    memory::Chunk&		m_chunk;
 
 private:
     const char*			m_name;

@@ -241,7 +241,7 @@ Matrix4x4<T>::lookAt(const Vector3<T>& position, const Vector3<T>& target, const
     length = y.getNorm();
     if (length == 0)
     {
-	y,setAllElements(0);
+	y.setAllElements(0);
     }
     else
     {
