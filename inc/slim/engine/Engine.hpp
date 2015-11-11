@@ -6,6 +6,7 @@
 # include "slim/engine/RenderLoop.hpp"
 # include "slim/events/Loop.hpp"
 # include "slim/graphics/Context.hpp"
+# include "slim/graphics/GLPanel.hpp"
 # include "slim/memory/ArenaChunk.hpp"
 # include "slim/time/Synchronizer.hpp"
 # include "slim/window/WindowImplementation.hpp"
@@ -19,7 +20,7 @@ namespace slim
 namespace engine
 {
 
-class	Engine
+class	Engine : public graphics::GLPanel
 {
 public:
     Engine(int argc, char** argv);
