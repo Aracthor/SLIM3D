@@ -24,7 +24,7 @@ public:
 
 public:
     inline void			getViewMatrix(Matrix4x4& matrix) const;
-    virtual void		getPerspectiveMatrix(Matrix4x4& matrix) const = 0;
+    virtual void		getProjectionMatrix(Matrix4x4& matrix) const = 0;
 
 public:
     virtual void	        update(time::Clock::time elapsedTime);

@@ -189,7 +189,7 @@ template <typename T>
 void
 Matrix4x4<T>::perspective(T angle, T aspectRatio, T minView, T maxView)
 {
-    T	f = 1.0 / SLIM_MATHS_TAN(aspectRatio / 2.0);
+    T	f = 1.0 / SLIM_MATHS_TAN(angle / 2.0);
     T	nf = 1.0 / (minView - maxView);
     T	mm = minView + maxView;
 
