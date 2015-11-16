@@ -26,9 +26,14 @@ public:
     void	onClose();
 
 public:
+    void	tickListeners();
+
+public:
+    inline void	addKeyListener(IListener* listener, keyboard::EKeyCode keyCode);
     inline void	addKeyPressListener(IListener* listener, keyboard::EKeyCode keyCode);
     inline void	addKeyReleaseListener(IListener* listener, keyboard::EKeyCode keyCode);
 
+    inline void	addMouseButtonListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button);
     inline void	addMouseMovementListener(IMouseListener* listener);
@@ -43,13 +48,15 @@ private:
     void	deleteListeners(T** listeners, unsigned int number);
 
 private:
-    maths::Vector2d	m_currentMousePosition;
+    Vector2		m_currentMousePosition;
 
     bool		m_keysCurrentlyPressed[keyboard::keysMax];
+    IListener*		m_keyListeners[keyboard::keysMax];
     IListener*		m_keyPressListeners[keyboard::keysMax];
     IListener*		m_keyReleaseListeners[keyboard::keysMax];
 
     bool		m_mouseButtonsCurrentlyPressed[mouse::buttonsMax];
+    IMouseListener*	m_mouseButtonListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseButtonPressListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseButtonReleaseListeners[mouse::buttonsMax];
     IMouseListener*	m_mouseMovementListener;

@@ -22,6 +22,13 @@ public:
     };
 
 public:
+    static inline Window*	getCurrent();
+
+private:
+    static Window*		s_current;
+
+
+public:
     Window(unsigned int width, unsigned int height, const char* title, bool fullscreen);
     Window(const Parameters& parameters);
     virtual ~Window();
