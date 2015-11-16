@@ -16,6 +16,7 @@ set(GRAPHICS_DIRECTORIES
   engine
   events
   graphics
+  mesh
   scene
   shader
   window
