@@ -29,7 +29,7 @@ public:
     static const char* const	typeName;
 
 public:
-    Mesh();
+    Mesh(const char* name);
     virtual ~Mesh();
 
 protected:

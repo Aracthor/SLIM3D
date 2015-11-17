@@ -1,4 +1,5 @@
 #include "slim/mesh/Mesh.hpp"
+#include "slim/io/VirtualFile.hpp"
 
 namespace slim
 {
@@ -9,7 +10,8 @@ const char* const
 Mesh::typeName = "mesh";
 
 
-Mesh::Mesh()
+Mesh::Mesh(const char* name) :
+    assets::SingleFileAsset(Mesh::typeName, name, name)
 {
 }
 
@@ -22,8 +24,6 @@ bool
 Mesh::loadFromFile(const char* const path)
 {
     io::VirtualFile	file = io::VirtualFile::fromRealFile(path);
-    char		buffer[SLIM_MESH_FILE_LINE_BUFFER_SIZE];
-
     
 }
 
