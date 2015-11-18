@@ -107,7 +107,7 @@ Buffer<T, N>::operator<<(T* str)
 
 template <typename T, unsigned int N>
 Buffer<T, N>&
-Buffer<T, N>::operator<<(const String& str)
+Buffer<T, N>::operator<<(const ConstString& str)
 {
     return (*this << str.getData());
 }

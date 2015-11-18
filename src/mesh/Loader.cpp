@@ -21,7 +21,7 @@ Loader::~Loader()
 bool
 Loader::loadFile(io::VirtualFile& file, FileLoader::Data& dest)
 {
-    containers::String	extention(file.getExtention());
+    containers::ConstString	extention(file.getExtention());
 
     if (m_loaders.find(extention) == m_loaders.end())
     {

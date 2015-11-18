@@ -1,7 +1,7 @@
 #ifndef SLIM_CONTAINERS_BUFFER_HPP_
 # define SLIM_CONTAINERS_BUFFER_HPP_
 
-# include "slim/containers/String.hpp"
+# include "slim/containers/ConstString.hpp"
 
 namespace slim
 {
@@ -32,7 +32,7 @@ public:
     inline Buffer<T, N>&	operator<<(T c);
     Buffer<T, N>&		operator<<(const T* str);
     inline Buffer<T, N>&	operator<<(T* str);
-    inline Buffer<T, N>&	operator<<(const String& str);
+    inline Buffer<T, N>&	operator<<(const ConstString& str);
     template <unsigned int M>
     inline Buffer<T, N>&	operator<<(const Buffer<T, M> buffer);
 

@@ -2,6 +2,7 @@ project("SLIM3D")
 
 set(CORE_SRCS)
 set(CORE_DIRECTORIES
+  containers
   core
   debug
   io

@@ -24,7 +24,6 @@ bool
 Mesh::loadFromFile(const char* const path)
 {
     io::VirtualFile	file = io::VirtualFile::fromRealFile(path);
-    
 }
 
 void

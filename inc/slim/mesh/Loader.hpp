@@ -3,7 +3,7 @@
 
 # include <map> // TODO create our own
 
-# include "slim/containers/String.hpp"
+# include "slim/containers/ConstString.hpp"
 # include "slim/mesh/FileLoader.hpp"
 
 # include "slim/memory/units.h"
@@ -26,7 +26,7 @@ public:
     void	deleteData(FileLoader::Data& data);
 
 private:
-    std::map<containers::String, FileLoader*>	m_loaders;
+    std::map<containers::ConstString, FileLoader*>	m_loaders;
     memory::Chunk&	m_memory;
 };
 
