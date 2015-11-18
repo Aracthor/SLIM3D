@@ -1,4 +1,7 @@
 #include "slim/debug/LogManager.hpp"
+#include "slim/memory/Manager.hpp"
+#include "slim/mesh/Mesh.hpp"
+#include "slim/mesh/Node.hpp"
 
 #include "CloseListener.hpp"
 #include "HelloWorldScene.hpp"
@@ -22,7 +25,11 @@ HelloWorldScene::onInit()
     slim::scene::Manager&	manager = this->getSceneManager();
     slim::scene::Scene*		scene = manager.createBlankScene("Test scene");
 
+    slim::memory::ArenaChunk&	chunk = slim::memory::Manager::instance.createChunk<slim::memory::ArenaChunk>(10000, "assets");
+    slim::mesh::Mesh*		cube = slim::assets::Asset::create<slim::mesh::Mesh>(chunk, "cube.obj");
+
     manager.setCurrentScene(scene);
+    scene->getRoot()->addChild<slim::mesh::Node>("mesh test", cube);
 
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
     this->getCurrentWindow()->getEventsManager().addKeyPressListener(new CloseListener(this), slim::events::keyboard::escape);

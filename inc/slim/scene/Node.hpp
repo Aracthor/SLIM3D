@@ -23,6 +23,10 @@ public:
 public:
     void		update(time::Clock::time elapsedTime);
 
+public:
+    template <class NODE, typename ...Args> // NODE must inherit from slim::scene::Node, and cannot be RootNode.
+    NODE*		addChild(const char* name, Args&& ...args);
+
 protected:
     Node(memory::Chunk& chunk, const char* name, Node* parent);
 
@@ -31,6 +35,7 @@ protected:
     virtual void        updateData(time::Clock::time elapsedTime) = 0;
 
 private:
+    memory::Chunk&		m_memory;
     const char*			m_name;
     Node*			m_parent;
     containers::List<Node>	m_children;

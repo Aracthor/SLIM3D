@@ -6,10 +6,15 @@
 
 # include "slim/assets/ListenersManager.hpp"
 # include "slim/containers/Buffer.hpp"
+# include "slim/containers/SingleWrap.hpp"
 # include "slim/core/Singleton.hpp"
+# include "slim/memory/Chunk.hpp"
+
+# include "slim/memory/units.h"
 
 # define SLIM_ASSETS_FOLDER		"../assets"
 # define SLIM_ASSETS_MAX_PATH_SIZE	0x1000
+# define SLIM_ASSETS_MANAGER_SIZE	(10 * SLIM_MEMORY_KIBIBYTE)
 
 namespace slim
 {
@@ -50,6 +55,7 @@ private:
     void	unload(Asset* asset);
 
 private:
+    containers::SingleWrap<memory::Chunk>		m_memory;
     std::map<const char*, std::vector<Asset*>>		m_assets;
     ListenersManager					m_listenersManager;
     containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	m_path;

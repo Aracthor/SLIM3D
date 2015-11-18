@@ -22,10 +22,12 @@ public:
     ~Scene();
 
 public:
-    void		update(time::Clock::time elapsedTime);
+    void			update(time::Clock::time elapsedTime);
 
 public:
-    inline const char*	getName() const;
+    inline const char*		getName() const;
+    inline const RootNode*	getRoot() const;
+    inline RootNode*		getRoot();
 
 private:
     typedef memory::SmartStackChunk	SceneChunk;

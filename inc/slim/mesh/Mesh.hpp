@@ -2,6 +2,8 @@
 # define SLIM_MESH_MESH_HPP_
 
 # include "slim/assets/SingleFileAsset.hpp"
+# include "slim/memory/Chunk.hpp"
+# include "slim/mesh/Loader.hpp"
 # include "slim/mesh/Material.hpp"
 
 # define SLIM_MESH_FILE_LINE_BUFFER_SIZE	0x1000
@@ -27,6 +29,14 @@ public:
 
 public:
     static const char* const	typeName;
+
+public:
+    static void			initLoader(memory::Chunk& memory);
+    static void			destroyLoader(memory::Chunk& memory);
+
+private:
+    static Loader*		s_loader;
+
 
 public:
     Mesh(const char* name);

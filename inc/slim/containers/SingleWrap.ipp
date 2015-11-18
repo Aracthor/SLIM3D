@@ -32,7 +32,7 @@ void
 SingleWrap<T>::destroy()
 {
     SLIM_DEBUG_ASSERT(m_inited == true);
-    m_data.~T();
+    reinterpret_cast<T*>(&m_data)->~T();
     m_inited = false;
 }
 
