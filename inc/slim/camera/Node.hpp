@@ -12,7 +12,7 @@ namespace camera
 class	Node : public scene::Node
 {
 public:
-    Node(memory::Chunk& chunk, const char* name, Node* parent, Camera* camera = nullptr);
+    Node(memory::Chunk& memory, const char* name, Node* parent, Camera* camera = nullptr);
     ~Node();
 
 public:
@@ -25,7 +25,7 @@ public:
     inline Camera*		getCamera();
 
 protected:
-    void        updateData(time::Clock::time elapsedTime) = 0;
+    void        updateData(time::Clock::time elapsedTime) override;
 
 private:
     Camera*	m_camera;
