@@ -123,7 +123,7 @@ Manager::unloadAllAssets()
 		this->unload(asset);
 	    }
 	}
-	debug::LogManager::instance.assets.info << "Finished loading of " << assets.first << " assets."
+	debug::LogManager::instance.assets.info << "Finished unloading of " << assets.first << " assets."
 						<< debug::LogStream::endline;
     }
 }

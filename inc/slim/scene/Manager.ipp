@@ -28,11 +28,5 @@ Manager::getCurrentScene()
     return m_currentScene;
 }
 
-void
-Manager::setCurrentScene(Scene* scene)
-{
-    m_currentScene = scene;
-}
-
 }
 }

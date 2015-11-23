@@ -6,5 +6,6 @@ set(SRCS_FILES
   Material.cpp
   Mesh.cpp
   Node.cpp
+  ObjLoader.cpp
   PARENT_SCOPE
   )

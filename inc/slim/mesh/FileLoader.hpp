@@ -1,8 +1,7 @@
-#ifndef SLIM_FILE_MESH_LOADER_HPP_
-# define SLIM_FILE_MESH_LOADER_HPP_
+#ifndef SLIM_MESH_FILE_LOADER_HPP_
+# define SLIM_MESH_FILE_LOADER_HPP_
 
 # include "slim/io/VirtualFile.hpp"
-
 # include "slim/mesh/data.hpp"
 
 namespace slim
@@ -15,11 +14,9 @@ class	FileLoader
 public:
     struct		Data
     {
-	Position*	positions;
-	Color*		colors;
-	Normal*		normals;
-	Index*		indices;
-	unsigned int	number;
+	Vertex*		vertices = nullptr;
+	Index*		indices = nullptr;
+	unsigned int	number = 0;
     };
 
 public:
@@ -36,4 +33,4 @@ protected:
 }
 }
 
-#endif // !SLIM_FILE_MESH_LOADER_HPP_
+#endif // !SLIM_MESH_FILE_LOADER_HPP_

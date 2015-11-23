@@ -22,10 +22,24 @@ Chunk::destroy(T* object)
 }
 
 
+template <typename T>
+T*
+Chunk::realloc(T* ptr, std::size_t size)
+{
+    return reinterpret_cast<T*>(this->realloc(reinterpret_cast<void*>(ptr), size));
+}
+
 void
 Chunk::free(void* ptr)
 {
     this->free(reinterpret_cast<char*>(ptr));
+}
+
+
+Chunk::Checkpoint
+Chunk::saveCheckpoint() const
+{
+    return m_data;
 }
 
 

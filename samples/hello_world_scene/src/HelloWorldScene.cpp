@@ -28,8 +28,10 @@ HelloWorldScene::onInit()
     slim::memory::ArenaChunk&	chunk = slim::memory::Manager::instance.createChunk<slim::memory::ArenaChunk>(10000, "assets");
     slim::mesh::Mesh*		cube = slim::assets::Asset::create<slim::mesh::Mesh>(chunk, "cube.obj");
 
-    manager.setCurrentScene(scene);
     scene->getRoot()->addChild<slim::mesh::Node>("mesh test", cube);
+    manager.setCurrentScene(scene);
+
+    slim::assets::Manager::instance.loadNeededAssets();
 
     this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
     this->getCurrentWindow()->getEventsManager().addKeyPressListener(new CloseListener(this), slim::events::keyboard::escape);

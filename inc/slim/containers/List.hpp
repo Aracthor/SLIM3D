@@ -23,7 +23,7 @@ public:
     void		popBack();
 
 public:
-    inline std::size_t		getSize() const;
+    inline std::size_t	getSize() const;
 
 public:
     template <typename ...Args>

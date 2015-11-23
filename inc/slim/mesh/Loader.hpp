@@ -8,7 +8,7 @@
 
 # include "slim/memory/units.h"
 
-# define SLIM_MESH_LOADER_MEMORY	(1 * SLIM_MEMORY_MEBIBYTE)
+# define SLIM_MESH_LOADER_MEMORY	(20 * SLIM_MEMORY_MEBIBYTE)
 
 namespace slim
 {
@@ -27,7 +27,8 @@ public:
 
 private:
     std::map<containers::ConstString, FileLoader*>	m_loaders;
-    memory::Chunk&	m_memory;
+    memory::Chunk&		m_memory;
+    memory::Chunk::Checkpoint	m_checkpoint;
 };
 
 }

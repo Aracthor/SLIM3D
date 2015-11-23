@@ -26,7 +26,7 @@ public:
     inline Scene*	getCurrentScene();
 
 public:
-    inline void		setCurrentScene(Scene* scene);
+    void		setCurrentScene(Scene* scene);
 
 private:
     Scene*	        m_currentScene = nullptr;

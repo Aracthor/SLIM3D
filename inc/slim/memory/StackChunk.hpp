@@ -11,12 +11,13 @@ namespace memory
 class			StackChunk : public Chunk
 {
 public:
-    inline StackChunk(char* data, std::size_t size, const char* name);
-    inline ~StackChunk();
+    StackChunk(char* data, std::size_t size, const char* name);
+    ~StackChunk();
 
 public:
     inline void*	alloc(std::size_t size) override;
     inline void 	free(char* ptr) override;
+    void*		realloc(void* ptr, std::size_t size) override;
 };
 
 }

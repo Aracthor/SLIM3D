@@ -31,6 +31,20 @@ Node::update(time::Clock::time elapsedTime)
 
 
 void
+Node::setAssetsNeeded()
+{
+    this->setNodeAssetNeeded();
+    m_children.forEach(&Node::setAssetsNeeded);
+}
+
+void
+Node::setNodeAssetNeeded()
+{
+    // May be overriden if a node has got an asset.
+}
+
+
+void
 Node::updateMatrix()
 {
     if (m_parent)

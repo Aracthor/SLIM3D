@@ -22,6 +22,8 @@ public:
 
 public:
     void		update(time::Clock::time elapsedTime);
+    void		setAssetsNeeded();
+    virtual void	setNodeAssetNeeded();
 
 public:
     template <class NODE, typename ...Args> // NODE must inherit from slim::scene::Node, and cannot be RootNode.

@@ -12,8 +12,17 @@ namespace mesh
 
 typedef Vector3		Position;
 typedef Vector4		Color;
+typedef Vector2		TextureCoord;
 typedef Vector3		Normal;
 typedef unsigned short	Index;
+
+struct			Vertex
+{
+    Position		position;
+    Color		color;
+    TextureCoord	texCoord;
+    Normal		normal;
+};
 
 }
 }

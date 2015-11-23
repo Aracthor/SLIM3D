@@ -20,6 +20,7 @@ public:
     inline Mesh*	getMesh();
 
 public:
+    inline void	setNodeAssetNeeded() override;
     void	updateData(time::Clock::time elapsedTime) override;
 
 private:
