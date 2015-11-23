@@ -47,6 +47,7 @@ Mesh::loadFromFile(const char* const path)
 	return false;
     }
 
+    m_renderMode = triangles;
     // TODO
 
     return true;

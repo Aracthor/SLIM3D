@@ -34,7 +34,7 @@ Program::onAssetsReady()
 {
     GLint	linked;
 
-    SLIM_GRAPHICS_GL_CHECK(m_id = glCreateProgram());
+    SLIM_GRAPHICS_GL_ASSERT(m_id = glCreateProgram());
 
     glAttachShader(m_id, m_vertexShader->getId());
     glAttachShader(m_id, m_fragmentShader->getId());

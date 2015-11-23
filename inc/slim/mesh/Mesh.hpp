@@ -50,6 +50,9 @@ public:
     inline ERenderMode		getRendermode() const;
     inline const Material*	getMaterial() const;
 
+public:
+    inline void			setMaterial(const Material* material);
+
 protected:
     ERenderMode		m_renderMode;
     const Material*	m_material;

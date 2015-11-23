@@ -7,5 +7,6 @@ set(SRCS_FILES
   Mesh.cpp
   Node.cpp
   ObjLoader.cpp
+  VertexBufferObject.cpp
   PARENT_SCOPE
   )
