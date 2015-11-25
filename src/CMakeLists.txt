@@ -2,6 +2,7 @@ project("SLIM3D")
 
 set(CORE_SRCS)
 set(CORE_DIRECTORIES
+  containers
   core
   debug
   io
@@ -13,9 +14,11 @@ set(CORE_DIRECTORIES
 set(GRAPHICS_SRCS)
 set(GRAPHICS_DIRECTORIES
   assets
+  camera
   engine
   events
   graphics
+  mesh
   scene
   shader
   window

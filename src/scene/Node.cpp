@@ -6,6 +6,7 @@ namespace scene
 {
 
 Node::Node(memory::Chunk& chunk, const char* name, Node* parent) :
+    m_memory(chunk),
     m_name(name),
     m_parent(parent),
     m_children(chunk)
@@ -26,6 +27,20 @@ Node::update(time::Clock::time elapsedTime)
     }
     this->updateData(elapsedTime);
     m_children.forEach(&Node::updateData, elapsedTime);
+}
+
+
+void
+Node::setAssetsNeeded()
+{
+    this->setNodeAssetNeeded();
+    m_children.forEach(&Node::setAssetsNeeded);
+}
+
+void
+Node::setNodeAssetNeeded()
+{
+    // May be overriden if a node has got an asset.
 }
 
 

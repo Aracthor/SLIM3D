@@ -5,6 +5,9 @@
 #include "slim/assets/Manager.hpp"
 #include "slim/debug/assert.hpp"
 #include "slim/debug/LogManager.hpp"
+#include "slim/memory/ArenaChunk.hpp"
+#include "slim/memory/Manager.hpp"
+#include "slim/mesh/Mesh.hpp"
 #include "slim/shader/Program.hpp"
 #include "slim/shader/Shader.hpp"
 #include "slim/io/macros.h"
@@ -30,11 +33,18 @@ Manager::~Manager()
 bool
 Manager::onInit()
 {
+    m_memory.init(memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ASSETS_MANAGER_SIZE,
+									    "Assets manager"));
+
     // Register SLIM predefined assets.
     this->registerAssetType<assets::Image>();
+    this->registerAssetType<mesh::Mesh>();
     this->registerAssetType<shader::Program>();
     this->registerAssetType<shader::Shader>();
-    
+
+    // Assets loaders
+    mesh::Mesh::initLoader(m_memory.getData());
+
     return true;
 }
 
@@ -42,6 +52,11 @@ void
 Manager::onDestroy()
 {
     this->unloadAllAssets();
+
+    // Assets loaders
+    mesh::Mesh::destroyLoader(m_memory.getData());
+
+    m_memory.destroy();
 }
 
 void
@@ -108,7 +123,7 @@ Manager::unloadAllAssets()
 		this->unload(asset);
 	    }
 	}
-	debug::LogManager::instance.assets.info << "Finished loading of " << assets.first << " assets."
+	debug::LogManager::instance.assets.info << "Finished unloading of " << assets.first << " assets."
 						<< debug::LogStream::endline;
     }
 }

@@ -189,7 +189,7 @@ template <typename T>
 void
 Matrix4x4<T>::perspective(T angle, T aspectRatio, T minView, T maxView)
 {
-    T	f = 1.0 / SLIM_MATHS_TAN(aspectRatio / 2.0);
+    T	f = 1.0 / SLIM_MATHS_TAN(angle / 2.0);
     T	nf = 1.0 / (minView - maxView);
     T	mm = minView + maxView;
 
@@ -241,7 +241,7 @@ Matrix4x4<T>::lookAt(const Vector3<T>& position, const Vector3<T>& target, const
     length = y.getNorm();
     if (length == 0)
     {
-	y,setAllElements(0);
+	y.setAllElements(0);
     }
     else
     {

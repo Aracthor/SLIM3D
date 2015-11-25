@@ -25,7 +25,7 @@ public:
     void	draw() override;
 
 private:
-    memory::ArenaChunk	m_memory;
+    memory::ArenaChunk&	m_memory;
 };
 
 }

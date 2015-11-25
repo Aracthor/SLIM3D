@@ -1,4 +1,5 @@
 #include "slim/graphics/FrameRenderer.hpp"
+#include "slim/memory/Manager.hpp"
 
 namespace slim
 {
@@ -6,7 +7,7 @@ namespace graphics
 {
 
 FrameRenderer::FrameRenderer() :
-    m_memory(memory::Manager::createChunk<memory::ArenaChunk>(SLIM_GRAPHICS_FRAME_RENDERER_MEMORY_SIZE, "frame renderer"))
+    m_memory(memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_GRAPHICS_FRAME_RENDERER_MEMORY_SIZE, "frame renderer"))
 {
 }
 

@@ -23,7 +23,7 @@ SingletonsManager::addSingleton(Singleton* singleton)
 {
     if (m_inited)
     {
-	SLIM_DEBUG_EXIT("Trying to add singleton ", typeid(*singleton).name(), " after SingletonManager initialization.");
+	SLIM_DEBUG_EXIT("Trying to add singleton ", typeid(*singleton).name(), " after SingletonsManager initialization.");
     }
     m_singletons.push_back(singleton);
 }

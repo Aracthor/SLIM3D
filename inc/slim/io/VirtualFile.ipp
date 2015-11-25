@@ -13,6 +13,12 @@ VirtualFile::getSize() const
     return m_size;
 }
 
+const char*
+VirtualFile::getName() const
+{
+    return m_name;
+}
+
 
 template <typename T>
 void

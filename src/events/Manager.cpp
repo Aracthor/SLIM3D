@@ -15,9 +15,11 @@ Manager::Manager()
 
 Manager::~Manager()
 {
+    this->deleteListeners(m_keyListeners, keyboard::keysMax);
     this->deleteListeners(m_keyPressListeners, keyboard::keysMax);
     this->deleteListeners(m_keyReleaseListeners, keyboard::keysMax);
 
+    this->deleteListeners(m_mouseButtonListeners, mouse::buttonsMax);
     this->deleteListeners(m_mouseButtonPressListeners, mouse::buttonsMax);
     this->deleteListeners(m_mouseButtonReleaseListeners, mouse::buttonsMax);
     if (m_mouseMovementListener)
@@ -89,6 +91,29 @@ Manager::onClose()
     if (m_closeListener)
     {
 	m_closeListener->onEvent();
+    }
+}
+
+
+void
+Manager::tickListeners()
+{
+    unsigned int	i;
+
+    for (i = 0; i < keyboard::keysMax; i++)
+    {
+	if (m_keysCurrentlyPressed[i] && m_keyListeners[i])
+	{
+	    m_keyListeners[i]->onEvent();
+	}
+    }
+
+    for (i = 0; i < mouse::buttonsMax; i++)
+    {
+	if (m_mouseButtonsCurrentlyPressed[i] && m_mouseButtonListeners[i])
+	{
+	    m_mouseButtonListeners[i]->onEvent(m_currentMousePosition);
+	}
     }
 }
 
