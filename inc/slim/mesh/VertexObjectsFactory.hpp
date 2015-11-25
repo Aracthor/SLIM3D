@@ -21,6 +21,7 @@ public:
     inline void		setColors(const Color* colors);
     inline void		setTextureCoords(const TextureCoord* textureCoords);
     inline void		setNormals(const Normal* normals);
+    inline void		setIndices(const Index* indices);
 
 public:
     VertexArrayObject	create();

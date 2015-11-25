@@ -42,9 +42,8 @@ public:
     Mesh(const char* name);
     virtual ~Mesh();
 
-protected:
-    bool	loadFromFile(const char* const path) override;
-    void	unloadData() override;
+public:
+    void	draw() const;
 
 public:
     inline ERenderMode		getRendermode() const;
@@ -54,8 +53,13 @@ public:
     inline void			setMaterial(const Material* material);
 
 protected:
+    bool	loadFromFile(const char* const path) override;
+    void	unloadData() override;
+
+protected:
     ERenderMode		m_renderMode;
     const Material*	m_material;
+    VertexArrayObject	m_vao;
 };
 
 }

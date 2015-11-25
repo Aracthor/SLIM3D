@@ -3,6 +3,7 @@
 
 # include "slim/io/VirtualFile.hpp"
 # include "slim/mesh/data.hpp"
+# include "slim/mesh/VertexObjectsFactory.hpp"
 
 namespace slim
 {
@@ -14,7 +15,10 @@ class	FileLoader
 public:
     struct		Data
     {
-	Vertex*		vertices = nullptr;
+	Position*	positions = nullptr;
+	Color*		colors = nullptr;
+	TextureCoord*	textureCoords = nullptr;
+	Normal*		normals = nullptr;
 	Index*		indices = nullptr;
 	unsigned int	number = 0;
     };
@@ -27,7 +31,7 @@ public:
     virtual bool	readFile(io::VirtualFile& file, Data& dest) = 0;
 
 protected:
-    memory::Chunk&	m_memory;
+    memory::Chunk&      m_memory;
 };
 
 }

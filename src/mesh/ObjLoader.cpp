@@ -173,29 +173,31 @@ ObjLoader::addIndex(containers::TokensPack& tokens)
 	    containers::TokensPack(tokens.getNextToken(), '/')
 	};
     unsigned int		i;
-    
+    unsigned int		index;
+
     for (i = 0; i < 3; i++)
     {
 	containers::TokensPack&	tokens = tokenPacks[i];
 	const char*		token;
 
         m_currentDest->number++;
-	m_currentDest->vertices = m_memory.realloc(m_currentDest->vertices,
-						   m_currentDest->number * sizeof(Vertex));
-
-	Vertex&	vertex = m_currentDest->vertices[m_currentDest->number - 1];
+	index = m_currentDest->number - 1;
 
 	// Position
 	token = tokens.getNextToken();
 	SLIM_DEBUG_ASSERT(atoi(token) - 1 < static_cast<int>(m_positionsNumber));
-	vertex.position = m_tempPositions[atoi(token) - 1];
+	m_currentDest->positions = m_memory.realloc(m_currentDest->positions,
+						    m_currentDest->number * sizeof(Position));
+	m_currentDest->positions[index] = m_tempPositions[atoi(token) - 1];
 
 	// TextureCoord
 	token = tokens.getNextToken();
 	if (token != nullptr && token[0] != '\0')
 	{
 	    SLIM_DEBUG_ASSERT(atoi(token) - 1 < static_cast<int>(m_texCoordsNumber));
-	    vertex.texCoord = m_tempTexCoords[atoi(token) - 1];
+	    m_currentDest->textureCoords = m_memory.realloc(m_currentDest->textureCoords,
+							    m_currentDest->number * sizeof(TextureCoord));
+	    m_currentDest->textureCoords[index] = m_tempTexCoords[atoi(token) - 1];
 	}
 
 	// Normal
@@ -203,7 +205,9 @@ ObjLoader::addIndex(containers::TokensPack& tokens)
 	if (token != nullptr && token[0] != '\0')
 	{
 	    SLIM_DEBUG_ASSERT(atoi(token) - 1 < static_cast<int>(m_normalsNumber));
-	    vertex.normal = m_tempNormals[atoi(token) - 1];
+	    m_currentDest->normals = m_memory.realloc(m_currentDest->normals,
+							m_currentDest->number * sizeof(Normal));
+	    m_currentDest->normals[index] = m_tempNormals[atoi(token) - 1];
 	}
     }
 

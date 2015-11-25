@@ -24,6 +24,7 @@ namespace mesh
 class	VertexArrayObject : public graphics::IBindable
 {
 public:
+    VertexArrayObject();
     VertexArrayObject(const VertexBufferObject& vbo,
 		      bool useColor, bool useTexture, bool useNormal, unsigned int size);
     VertexArrayObject(const VertexBufferObject& dataVbo, const VertexBufferObject& indexVbo,
@@ -34,13 +35,19 @@ public:
     inline void	bind() const override;
     inline void	unbind() const override;
 
+public:
+    inline bool		useIndices() const;
+    inline unsigned int	getSize() const;
+
 private:
     void	createGLResource();
     void	bindData(const VertexBufferObject& vbo,
 			 bool useColor, bool useTexture, bool useNormal, unsigned int size);
 
 private:
-    GLuint	m_id;
+    GLuint		m_id;
+    bool		m_useIndices;
+    unsigned int	m_size;
 };
 
 }

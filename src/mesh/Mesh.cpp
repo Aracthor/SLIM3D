@@ -36,6 +36,24 @@ Mesh::~Mesh()
 }
 
 
+void
+Mesh::draw() const
+{
+    m_vao.bind();
+    {
+	if (m_vao.useIndices())
+	{
+	    glDrawElements(m_renderMode, m_vao.getSize(), sizeof(Index), nullptr);
+	}
+	else
+	{
+	    glDrawArrays(m_renderMode, 0, m_vao.getSize());
+	}
+    }
+    m_vao.unbind();
+}
+
+
 bool
 Mesh::loadFromFile(const char* const path)
 {
@@ -48,6 +66,7 @@ Mesh::loadFromFile(const char* const path)
     }
 
     m_renderMode = triangles;
+    m_vao = s_loader->generateVAO(data);
     // TODO
 
     return true;
@@ -56,6 +75,7 @@ Mesh::loadFromFile(const char* const path)
 void
 Mesh::unloadData()
 {
+    m_vao.~VertexArrayObject();
 }
 
 }

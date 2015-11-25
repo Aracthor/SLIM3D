@@ -33,5 +33,11 @@ VertexObjectsFactory::setNormals(const Normal* normals)
     m_normals = normals;
 }
 
+void
+VertexObjectsFactory::setIndices(const Index* indices)
+{
+    m_indices = indices;
+}
+
 }
 }

@@ -4,6 +4,7 @@
 # include <map> // TODO create our own
 
 # include "slim/containers/ConstString.hpp"
+# include "slim/memory/ArenaChunk.hpp"
 # include "slim/mesh/FileLoader.hpp"
 
 # include "slim/memory/units.h"
@@ -17,6 +18,10 @@ namespace mesh
 
 class	Loader
 {
+private:
+    typedef memory::ArenaChunk	ChunkType;
+
+
 public:
     Loader();
     ~Loader();
@@ -25,10 +30,14 @@ public:
     bool	loadFile(io::VirtualFile& file, FileLoader::Data& dest);
     void	deleteData(FileLoader::Data& data);
 
+public:
+    VertexArrayObject	generateVAO(const FileLoader::Data& data);
+
 private:
     std::map<containers::ConstString, FileLoader*>	m_loaders;
     memory::Chunk&		m_memory;
     memory::Chunk::Checkpoint	m_checkpoint;
+    VertexObjectsFactory	m_vertexObjectsFactory;
 };
 
 }

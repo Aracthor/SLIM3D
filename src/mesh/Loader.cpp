@@ -1,6 +1,5 @@
 #include "slim/debug/LogManager.hpp"
 #include "slim/memory/Manager.hpp"
-#include "slim/memory/StackChunk.hpp"
 #include "slim/mesh/Loader.hpp"
 #include "slim/mesh/ObjLoader.hpp"
 
@@ -10,7 +9,8 @@ namespace mesh
 {
 
 Loader::Loader() :
-    m_memory(memory::Manager::instance.createChunk<memory::StackChunk>(SLIM_MESH_LOADER_MEMORY, "Mesh loader"))
+    m_memory(memory::Manager::instance.createChunk<ChunkType>(SLIM_MESH_LOADER_MEMORY, "Mesh loader")),
+    m_vertexObjectsFactory(m_memory)
 {
     m_loaders[containers::ConstString("obj")] = m_memory.create<ObjLoader>(m_memory);
 
@@ -42,14 +42,25 @@ Loader::loadFile(io::VirtualFile& file, FileLoader::Data& dest)
 void
 Loader::deleteData(FileLoader::Data& data)
 {
-    if (data.indices != nullptr)
-    {
-	m_memory.free(data.indices);
-    }
-    if (data.vertices != nullptr)
-    {
-	m_memory.free(data.vertices);
-    }
+    if (data.indices != nullptr) m_memory.free(data.indices);
+    if (data.positions != nullptr) m_memory.free(data.normals);
+    if (data.positions != nullptr) m_memory.free(data.textureCoords);
+    if (data.positions != nullptr) m_memory.free(data.colors);
+    if (data.positions != nullptr) m_memory.free(data.positions);
+}
+
+
+VertexArrayObject
+Loader::generateVAO(const FileLoader::Data& data)
+{
+    m_vertexObjectsFactory.setSize(data.number);
+    m_vertexObjectsFactory.setPositions(data.positions);
+    m_vertexObjectsFactory.setColors(data.colors);
+    m_vertexObjectsFactory.setTextureCoords(data.textureCoords);
+    m_vertexObjectsFactory.setNormals(data.normals);
+    m_vertexObjectsFactory.setIndices(data.indices);
+
+    return m_vertexObjectsFactory.create();
 }
 
 }

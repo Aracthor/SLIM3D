@@ -7,8 +7,15 @@ namespace slim
 namespace mesh
 {
 
+VertexArrayObject::VertexArrayObject() :
+    m_id(0)
+{
+}
+
 VertexArrayObject::VertexArrayObject(const VertexBufferObject& vbo,
-				     bool useColor, bool useTexture, bool useNormal, unsigned int size)
+				     bool useColor, bool useTexture, bool useNormal, unsigned int size) :
+    m_useIndices(false),
+    m_size(size)
 {
     this->createGLResource();
 
@@ -20,7 +27,9 @@ VertexArrayObject::VertexArrayObject(const VertexBufferObject& vbo,
 }
 
 VertexArrayObject::VertexArrayObject(const VertexBufferObject& dataVbo, const VertexBufferObject& indexVbo,
-				     bool useColor, bool useTexture, bool useNormal, unsigned int size)
+				     bool useColor, bool useTexture, bool useNormal, unsigned int size) :
+    m_useIndices(true),
+    m_size(size)
 {
     this->createGLResource();
 
