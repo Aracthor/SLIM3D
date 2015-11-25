@@ -14,8 +14,8 @@ namespace mesh
 class	VertexBufferObject : public graphics::IBindable
 {
 public:
-    VertexBufferObject(void* verticesData);
-    VertexBufferObject(Index* indices);
+    VertexBufferObject(const void* verticesData);
+    VertexBufferObject(const Index* indices);
     ~VertexBufferObject();
 
 public:

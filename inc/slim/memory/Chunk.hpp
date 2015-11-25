@@ -30,6 +30,8 @@ public:
     template <typename T>
     inline T*		realloc(T* ptr, std::size_t size);
     virtual void*	alloc(std::size_t size) = 0;
+    template <typename T>
+    inline T*		alloc(std::size_t size);
     virtual void	free(char* ptr) = 0;
     inline void		free(void* ptr);
 

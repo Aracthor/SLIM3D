@@ -8,7 +8,7 @@ set(SRCS_FILES
   Node.cpp
   ObjLoader.cpp
   VertexArrayObject.cpp
-  VertexBufferObject.cpp
+  VertexBufferObject.cppi
   VertexObjectsFactory.cpp
   PARENT_SCOPE
   )

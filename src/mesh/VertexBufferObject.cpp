@@ -12,7 +12,7 @@ VertexBufferObject::~VertexBufferObject()
 }
 
 
-VertexBufferObject::VertexBufferObject(void* verticesData) :
+VertexBufferObject::VertexBufferObject(const void* verticesData) :
     m_type(GL_ARRAY_BUFFER)
 {
     glGenBuffers(1, &m_id);
@@ -25,7 +25,7 @@ VertexBufferObject::VertexBufferObject(void* verticesData) :
     this->unbind();
 }
 
-VertexBufferObject::VertexBufferObject(Index* indices) :
+VertexBufferObject::VertexBufferObject(const Index* indices) :
     m_type(GL_ELEMENT_ARRAY_BUFFER)
 {
     glGenBuffers(1, &m_id);
