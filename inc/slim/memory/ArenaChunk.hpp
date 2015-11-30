@@ -15,6 +15,7 @@ public:
     inline ~ArenaChunk();
 
 public:
+    inline void*	realloc(void* ptr, std::size_t size) override;
     inline void*	alloc(std::size_t size) override;
     inline void		free(char* ptr) override;
 };

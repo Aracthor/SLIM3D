@@ -1,3 +1,5 @@
+#include "slim/camera/FreeFly.hpp"
+#include "slim/camera/Node.hpp"
 #include "slim/debug/LogManager.hpp"
 #include "slim/memory/Manager.hpp"
 #include "slim/mesh/Mesh.hpp"
@@ -27,8 +29,10 @@ HelloWorldScene::onInit()
 
     slim::memory::ArenaChunk&	chunk = slim::memory::Manager::instance.createChunk<slim::memory::ArenaChunk>(10000, "assets");
     slim::mesh::Mesh*		cube = slim::assets::Asset::create<slim::mesh::Mesh>(chunk, "cube.obj");
+    slim::camera::Camera*	camera = chunk.create<slim::camera::FreeFly>();
 
     scene->getRoot()->addChild<slim::mesh::Node>("mesh test", cube);
+    scene->getRoot()->addChild<slim::camera::Node>("camera test", camera);
     manager.setCurrentScene(scene);
 
     slim::assets::Manager::instance.loadNeededAssets();

@@ -28,6 +28,8 @@ ObjLoader::readFile(io::VirtualFile& file, FileLoader::Data& dest)
     m_currentFileName = file.getName();
     m_currentDest = &dest;
 
+    this->resetData();
+
     file.toBuffer(m_buffer, SLIM_MESH_OBJ_FILE_MAX_SIZE);
 
     containers::TokensPack	lines(m_buffer);
@@ -47,6 +49,19 @@ ObjLoader::readFile(io::VirtualFile& file, FileLoader::Data& dest)
     }
 
     return true;
+}
+
+
+void
+ObjLoader::resetData()
+{
+    m_tempPositions = nullptr;
+    m_tempTexCoords = nullptr;
+    m_tempNormals = nullptr;
+
+    m_positionsNumber = 0;
+    m_texCoordsNumber = 0;
+    m_normalsNumber = 0;
 }
 
 

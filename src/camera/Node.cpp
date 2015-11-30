@@ -5,7 +5,7 @@ namespace slim
 namespace camera
 {
 
-Node::Node(memory::Chunk& memory, const char* name, Node* parent, Camera* camera) :
+Node::Node(memory::Chunk& memory, const char* name, scene::Node* parent, Camera* camera) :
     scene::Node(memory, name, parent),
     m_camera(camera)
 {

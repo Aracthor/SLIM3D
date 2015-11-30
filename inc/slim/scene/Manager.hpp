@@ -20,6 +20,7 @@ public:
 public:
     inline Scene*	createBlankScene(const char* name);
     inline void		deleteScene(Scene* scene);
+    inline void		deleteAllScenes();
 
 public:
     inline const Scene*	getCurrentScene() const;

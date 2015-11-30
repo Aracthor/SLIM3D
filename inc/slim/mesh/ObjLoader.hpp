@@ -26,6 +26,9 @@ public:
     bool	readFile(io::VirtualFile& file, FileLoader::Data& dest) override;
 
 private:
+    void	resetData();
+
+private:
     void	cleanLine(char* line) const;
     void	interpreteLine(char* line, unsigned int lineNumber);
 

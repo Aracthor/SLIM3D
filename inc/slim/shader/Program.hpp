@@ -18,6 +18,9 @@ public:
     Program(const char* name, const Shader* vertexShader, const Shader* fragmentShader);
     ~Program();
 
+public:
+    inline void	use() const;
+
 protected:
     void	onAssetsReady() override;
     void	onAssetsUnloaded() override;

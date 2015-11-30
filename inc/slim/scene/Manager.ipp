@@ -12,7 +12,13 @@ Manager::createBlankScene(const char* name)
 void
 Manager::deleteScene(Scene* scene)
 {
-    return m_scenes.destroy(*scene);
+    m_scenes.destroy(*scene);
+}
+
+void
+Manager::deleteAllScenes()
+{
+    m_scenes.clear();
 }
 
 

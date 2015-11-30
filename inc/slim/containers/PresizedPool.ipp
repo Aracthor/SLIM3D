@@ -31,6 +31,7 @@ PresizedPool<T, N>::clear()
 	if (m_busy[i])
 	{
 	    reinterpret_cast<T*>(m_data)[i].~T();
+	    m_busy[i] = false;
 	}
     }
 }

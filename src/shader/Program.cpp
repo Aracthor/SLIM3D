@@ -39,6 +39,8 @@ Program::onAssetsReady()
     glAttachShader(m_id, m_vertexShader->getId());
     glAttachShader(m_id, m_fragmentShader->getId());
     glLinkProgram(m_id);
+    // glDetachShader(m_id, m_vertexShader->getId()); // TODO check if can be uncommented
+    // glDetachShader(m_id, m_fragmentShader->getId());
 
     glGetProgramiv(m_id, GL_LINK_STATUS, &linked);
     if (!linked)

@@ -135,6 +135,7 @@ Engine::shutdown()
 	m_memory->destroy(m_context);
 	m_memory->destroy(m_window);
     }
+    m_sceneManager.deleteAllScenes();
     m_singletonsManager.destroySingletons();
 }
 

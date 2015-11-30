@@ -48,10 +48,9 @@ void
 Chunk::loadCheckpoint(Checkpoint checkpoint)
 {
     SLIM_DEBUG_ASSERT(checkpoint >= m_start);
-    std::size_t	differrence = m_data - m_start;
 
-    m_size -= differrence;
     m_data = checkpoint;
+    m_size = m_data - m_start;
 }
 
 }

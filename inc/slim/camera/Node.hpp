@@ -12,7 +12,7 @@ namespace camera
 class	Node : public scene::Node
 {
 public:
-    Node(memory::Chunk& memory, const char* name, Node* parent, Camera* camera = nullptr);
+    Node(memory::Chunk& memory, const char* name, scene::Node* parent, Camera* camera = nullptr);
     ~Node();
 
 public:

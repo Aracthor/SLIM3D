@@ -8,7 +8,7 @@ namespace window
 Window*
 Window::getCurrent()
 {
-    SLIM_DEBUG_ASSERT(s_current != nullptr);
+    SLIM_DEBUG_STATIC_ASSERT(s_current != nullptr);
     return s_current;
 }
 
