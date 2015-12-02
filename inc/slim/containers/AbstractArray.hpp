@@ -23,6 +23,12 @@ public:
 
 public:
     template <class U>
+    inline const U&	getLast() const;
+    template <class U>
+    inline U&		getLast();
+
+public:
+    template <class U>
     inline const U&	operator[](unsigned int index) const;
     template <class U>
     inline U&		operator[](unsigned int index);

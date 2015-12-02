@@ -1,4 +1,5 @@
 #include "slim/debug/exit.hpp"
+#include "slim/memory/SmartStackChunk.hpp"
 
 namespace slim
 {

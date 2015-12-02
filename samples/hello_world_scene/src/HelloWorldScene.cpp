@@ -33,6 +33,7 @@ HelloWorldScene::onInit()
 
     scene->getRoot()->addChild<slim::mesh::Node>("mesh test", cube);
     scene->getRoot()->addChild<slim::camera::Node>("camera test", camera);
+    scene->setActiveCamera(camera);
     manager.setCurrentScene(scene);
 
     slim::assets::Manager::instance.loadNeededAssets();

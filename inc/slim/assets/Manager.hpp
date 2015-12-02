@@ -8,7 +8,7 @@
 # include "slim/containers/Buffer.hpp"
 # include "slim/containers/SingleWrap.hpp"
 # include "slim/core/Singleton.hpp"
-# include "slim/memory/Chunk.hpp"
+# include "slim/memory/ArenaChunk.hpp"
 
 # include "slim/memory/units.h"
 
@@ -50,13 +50,16 @@ public:
     void	unloadAllAssets();
 
 private:
+    typedef memory::ArenaChunk	ChunkType;
+
+private:
     void	addToLoadList(Asset* asset);
     void	load(Asset* asset);
     void	unload(Asset* asset);
 
 private:
-    containers::SingleWrap<memory::Chunk>		m_memory;
-    std::map<const char*, std::vector<Asset*>>		m_assets;
+    containers::SingleWrap<ChunkType>			m_memory;
+    std::map<const char*, std::vector<Asset*>>		m_assets; // TODO use our own containers.
     ListenersManager					m_listenersManager;
     containers::Buffer<char, SLIM_ASSETS_MAX_PATH_SIZE>	m_path;
 };

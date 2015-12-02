@@ -5,7 +5,6 @@
 #include "slim/assets/Manager.hpp"
 #include "slim/debug/assert.hpp"
 #include "slim/debug/LogManager.hpp"
-#include "slim/memory/ArenaChunk.hpp"
 #include "slim/memory/Manager.hpp"
 #include "slim/mesh/Mesh.hpp"
 #include "slim/shader/Program.hpp"
@@ -33,8 +32,7 @@ Manager::~Manager()
 bool
 Manager::onInit()
 {
-    m_memory.init(memory::Manager::instance.createChunk<memory::ArenaChunk>(SLIM_ASSETS_MANAGER_SIZE,
-									    "Assets manager"));
+    m_memory.init(memory::Manager::instance.createChunk<ChunkType>(SLIM_ASSETS_MANAGER_SIZE, "Assets manager"));
 
     // Register SLIM predefined assets.
     this->registerAssetType<assets::Image>();

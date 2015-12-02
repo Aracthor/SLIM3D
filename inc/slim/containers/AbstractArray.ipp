@@ -42,6 +42,23 @@ AbstractArray<T, N>::insert(Args&&... args)
 template <class T, unsigned int N>
 template <class U>
 const U&
+AbstractArray<T, N>::getLast() const
+{
+    return reinterpret_cast<const U*>(m_data)[m_size - 1];
+}
+
+template <class T, unsigned int N>
+template <class U>
+U&
+AbstractArray<T, N>::getLast()
+{
+    return reinterpret_cast<U*>(m_data)[m_size - 1];
+}
+
+
+template <class T, unsigned int N>
+template <class U>
+const U&
 AbstractArray<T, N>::operator[](unsigned int index) const
 {
     return reinterpret_cast<const U*>(m_data)[index];

@@ -104,7 +104,5 @@ FrameRenderer::createNewMeshList(const mesh::Node& node)
     return list;
 }
 
-// TODO other functions
-
 }
 }

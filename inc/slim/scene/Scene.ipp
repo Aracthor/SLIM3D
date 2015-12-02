@@ -21,5 +21,12 @@ Scene::getRoot()
     return m_root;
 }
 
+
+void
+Scene::setActiveCamera(const camera::Camera* camera)
+{
+    m_activeCamera = camera;
+}
+
 }
 }

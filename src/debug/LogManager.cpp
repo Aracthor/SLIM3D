@@ -31,14 +31,16 @@ LogManager::onInit()
     time::Date					        now;
     char						buffer[SLIM_CORE_MAX_PATH_SIZE];
     containers::Buffer<char, SLIM_CORE_MAX_PATH_SIZE>	dirName;
+    bool						completePath;
 
     now.toFormat(buffer, SLIM_CORE_MAX_PATH_SIZE, "%d-%m-%Y_%H-%M-%S");
 
     dirName << m_path;
     dirName << buffer << SLIM_IO_SEPARATOR_CHAR << '\0';
+    completePath = (m_path[0] == '/');
 
-    io::Directory	rootDirectory(m_path.getData());
-    io::Directory	directory(dirName.getData());
+    io::Directory	rootDirectory(m_path.getData(), completePath);
+    io::Directory	directory(dirName.getData(), completePath);
 
     for (Log& log : m_logs)
     {

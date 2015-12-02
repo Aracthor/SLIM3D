@@ -11,12 +11,12 @@ namespace memory
 class			SmartStackChunk : public Chunk
 {
 public:
-    inline SmartStackChunk(char* data, std::size_t size, const char* name);
-    inline ~SmartStackChunk();
+    SmartStackChunk(char* data, std::size_t size, const char* name);
+    ~SmartStackChunk();
 
 public:
-    inline void*	alloc(std::size_t size) override;
-    inline void 	free(char* ptr) override;
+    void*	alloc(std::size_t size) override;
+    void 	free(char* ptr) override;
 
 private:
     struct		Header
@@ -31,7 +31,5 @@ private:
 
 }
 }
-
-# include "SmartStackChunk.ipp"
 
 #endif // !SLIM_MEMORY_SMART_STACK_CHUNK_HPP_

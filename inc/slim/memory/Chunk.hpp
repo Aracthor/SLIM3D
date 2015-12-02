@@ -48,7 +48,6 @@ public:
 protected:
     char*		m_data;
     char*		m_start;
-    void*		m_lastAllocated = nullptr;
     std::size_t		m_size;
     std::size_t		m_maxSize;
     const char*		m_name;

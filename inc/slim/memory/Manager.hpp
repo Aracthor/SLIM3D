@@ -1,13 +1,13 @@
 #ifndef SLIM_MEMORY_MANAGER_HPP_
 # define SLIM_MEMORY_MANAGER_HPP_
 
-# include "slim/containers/AbstractArray.hpp"
 # include "slim/core/Singleton.hpp"
+# include "slim/memory/ArenaChunk.hpp"
 # include "slim/memory/Chunk.hpp"
 # include "slim/memory/units.h"
 
-# define SLIM_MEMORY_TOTAL_SIZE	(100 * SLIM_MEMORY_MEBIBYTE)
-# define SLIM_MEMORY_MAX_CHUNKS	20
+# define SLIM_MEMORY_TOTAL_SIZE		(100 * SLIM_MEMORY_MEBIBYTE)
+# define SLIM_MEMORY_MANAGER_CHUNK_SIZE	(10 * SLIM_MEMORY_KIBIBYTE)
 
 namespace slim
 {
@@ -33,10 +33,14 @@ protected:
     void	onDestroy() override;
 
 private:
-    void*	m_memoryStart;
-    char*	m_memory;
-    std::size_t	m_allocated;
-    containers::AbstractArray<Chunk, SLIM_MEMORY_MAX_CHUNKS>	m_chunks;
+    typedef ArenaChunk	ChunkType;
+
+private:
+    void*		m_memoryStart;
+    char*		m_memory;
+    Chunk*		m_managerChunk;
+    Chunk**		m_chunks;
+    unsigned int	m_chunksNumber;
 };
 
 }

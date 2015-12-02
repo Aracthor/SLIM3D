@@ -2,7 +2,7 @@
 # define SLIM_SCENE_SCENE_HPP_
 
 # include "slim/camera/Camera.hpp"
-# include "slim/graphics/IFrameRenderer.hpp"
+# include "slim/graphics/FrameRenderer.hpp"
 # include "slim/memory/Chunk.hpp"
 # include "slim/memory/SmartStackChunk.hpp"
 # include "slim/scene/RootNode.hpp"
@@ -32,6 +32,9 @@ public:
     inline const RootNode*	getRoot() const;
     inline RootNode*		getRoot();
 
+public:
+    inline void			setActiveCamera(const camera::Camera* camera);
+
 private:
     typedef memory::SmartStackChunk	SceneChunk;
 
@@ -39,11 +42,11 @@ private:
     void			displayNode(const Node* node) const;
 
 private:
-    const char*	        m_name;
-    memory::Chunk&	m_memory;
-    RootNode*		m_root;
-    camera::Camera*	m_activeCamera = nullptr;
-    mutable graphics::IFrameRenderer*	m_frameRenderer;
+    const char*	        	m_name;
+    memory::Chunk&		m_memory;
+    RootNode*			m_root;
+    const camera::Camera*	m_activeCamera = nullptr;
+    graphics::FrameRenderer*	m_frameRenderer;
 };
 
 }

@@ -34,7 +34,7 @@ Engine::~Engine()
 void
 Engine::parseCommandLine(int argc, char** argv)
 {
-    containers::Buffer<char, 0x10>	buffer;
+    containers::Buffer<char, 0x1000>	buffer;
     char*				path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
 
     if (path == nullptr)
@@ -124,6 +124,12 @@ Engine::update(time::Clock::time elapsedTime)
 void
 Engine::render() const
 {
+    const scene::Scene*	scene = m_sceneManager.getCurrentScene();
+
+    if (scene != nullptr)
+    {
+	scene->display();
+    }
     m_window->display();
 }
 

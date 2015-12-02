@@ -87,6 +87,23 @@ Array<T>::getMaxSize() const
 
 template <typename T>
 const T&
+Array<T>::getLast() const
+{
+    SLIM_DEBUG_ASSERT(m_size > 0);
+    return m_data[m_size - 1];
+}
+
+template <typename T>
+T&
+Array<T>::getLast()
+{
+    SLIM_DEBUG_ASSERT(m_size > 0);
+    return m_data[m_size - 1];
+}
+
+
+template <typename T>
+const T&
 Array<T>::operator[](std::size_t index) const
 {
     SLIM_DEBUG_ASSERT(index < m_size);
