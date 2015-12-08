@@ -12,31 +12,37 @@ VertexArrayObject::VertexArrayObject() :
 {
 }
 
-VertexArrayObject::VertexArrayObject(const VertexBufferObject& vbo,
-				     bool useColor, bool useTexture, bool useNormal, unsigned int size) :
-    m_useIndices(false),
-    m_size(size)
+
+void
+VertexArrayObject::create(const void* data,
+			  bool useColor, bool useTexture, bool useNormal, std::size_t size)
 {
+    m_useIndices = false;
+    m_size = size;
+    m_dataVbo.create(data, size);
     this->createGLResource();
 
     this->bind();
     {
-	this->bindData(vbo, useColor, useTexture, useNormal, size);
+	this->bindData(useColor, useTexture, useNormal, size);
     }
     this->unbind();
 }
 
-VertexArrayObject::VertexArrayObject(const VertexBufferObject& dataVbo, const VertexBufferObject& indexVbo,
-				     bool useColor, bool useTexture, bool useNormal, unsigned int size) :
-    m_useIndices(true),
-    m_size(size)
+void
+VertexArrayObject::create(const void* data, const Index* indices,
+			  bool useColor, bool useTexture, bool useNormal, std::size_t size, std::size_t number)
 {
+    m_useIndices = true;
+    m_size = size;
+    m_dataVbo.create(data, size);
+    m_indicesVbo.create(indices, number);
     this->createGLResource();
 
     this->bind();
     {
-	this->bindData(dataVbo, useColor, useTexture, useNormal, size);
-	indexVbo.bind();
+	this->bindData(useColor, useTexture, useNormal, size);
+	m_indicesVbo.bind();
     }
     this->unbind();
 }
@@ -44,6 +50,7 @@ VertexArrayObject::VertexArrayObject(const VertexBufferObject& dataVbo, const Ve
 VertexArrayObject::~VertexArrayObject()
 {
     glDeleteVertexArrays(1, &m_id);
+    SLIM_GRAPHICS_GL_CHECK();
 }
 
 
@@ -55,12 +62,11 @@ VertexArrayObject::createGLResource()
 }
 
 void
-VertexArrayObject::bindData(const VertexBufferObject& vbo,
-			    bool useColor, bool useTexture, bool useNormal, unsigned int size)
+VertexArrayObject::bindData(bool useColor, bool useTexture, bool useNormal, std::size_t size)
 {
     unsigned int	index = 0;
 
-    vbo.bind();
+    m_dataVbo.bind();
     glEnableVertexAttribArray(SLIM_MESH_POSITION_INDEX);
     glVertexAttribPointer(SLIM_MESH_POSITION_INDEX, SLIM_MESH_POSITION_SIZE, GL_FLOAT, GL_FALSE, 0,
 			  reinterpret_cast<GLvoid*>(index));
@@ -90,7 +96,7 @@ VertexArrayObject::bindData(const VertexBufferObject& vbo,
 	index += size * sizeof(Normal);
     }
 
-    // vbo.unbind(); // TODO check if can be uncommented
+    // m_dataVbo.unbind(); // TODO check if can be uncommented
 }
 
 }

@@ -6,19 +6,33 @@ namespace slim
 namespace mesh
 {
 
-Material::Material(shader::Program* shader) :
-    m_shader(shader)
+const char* const
+Material::typeName = "material";
+
+
+Material::Material(const shader::Program* shader, const char* name) :
+    assets::Asset(Material::typeName, name)
 {
     SLIM_DEBUG_ASSERT(shader != nullptr);
+    this->setShader(shader);
 }
 
 Material::Material(const Material& reference) :
-    m_shader(reference.getShader())
+    assets::Asset(Material::typeName, reference.getName())
 {
+    this->setShader(reference.getShader());
 }
 
 Material::~Material()
 {
+}
+
+
+void
+Material::setShader(const shader::Program* shader)
+{
+    m_shader = shader;
+    this->listen(shader);
 }
 
 }

@@ -113,5 +113,33 @@ List<T>::forEach(void (T::*function)(Args ...args), Args& ...args)
     }
 }
 
+template <typename T>
+template <typename ...Args>
+void
+List<T>::forEach(void (*function)(const T& element, Args ...args), Args&& ...args) const
+{
+    const ListNode<T>*	element = m_begin;
+
+    while (element != nullptr)
+    {
+	function(**element, args...);
+	element = element->m_next;
+    }
+}
+
+template <typename T>
+template <typename ...Args>
+void
+List<T>::forEach(void (*function)(T& element, Args ...args), Args&& ...args)
+{
+    const ListNode<T>*	element = m_begin;
+
+    while (element != nullptr)
+    {
+	function(*element, args...);
+	element = element->m_next;
+    }
+}
+
 }
 }

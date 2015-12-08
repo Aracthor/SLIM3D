@@ -126,11 +126,13 @@ Engine::render() const
 {
     const scene::Scene*	scene = m_sceneManager.getCurrentScene();
 
+    this->clearBuffers();
     if (scene != nullptr)
     {
 	scene->display();
     }
-    m_window->display();
+    m_context->swapBuffers();
+    // m_window->display();
 }
 
 void

@@ -6,6 +6,7 @@
 #include "slim/debug/assert.hpp"
 #include "slim/debug/LogManager.hpp"
 #include "slim/memory/Manager.hpp"
+#include "slim/mesh/Material.hpp"
 #include "slim/mesh/Mesh.hpp"
 #include "slim/shader/Program.hpp"
 #include "slim/shader/Shader.hpp"
@@ -36,6 +37,7 @@ Manager::onInit()
 
     // Register SLIM predefined assets.
     this->registerAssetType<assets::Image>();
+    this->registerAssetType<mesh::Material>();
     this->registerAssetType<mesh::Mesh>();
     this->registerAssetType<shader::Program>();
     this->registerAssetType<shader::Shader>();

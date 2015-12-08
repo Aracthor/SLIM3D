@@ -50,7 +50,7 @@ public:
     inline const Material*	getMaterial() const;
 
 public:
-    inline void			setMaterial(const Material* material);
+    void        setMaterial(const Material* material);
 
 protected:
     bool	loadFromFile(const char* const path) override;

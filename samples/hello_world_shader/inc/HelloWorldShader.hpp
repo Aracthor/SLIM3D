@@ -13,7 +13,6 @@ public:
 
 public:
     void	onInit() override;
-    void	onShutdown() override;
 
 private:
     slim::shader::Shader*	m_vertexShader;

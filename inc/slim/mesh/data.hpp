@@ -5,6 +5,9 @@
 # include "slim/maths/Vector3.hpp"
 # include "slim/maths/Vector4.hpp"
 
+# define SLIM_MESH_BLACK_COLOR	slim::mesh::Color(0.0, 0.0, 0.0, 1.0)
+# define SLIM_MESH_WHITE_COLOR	slim::mesh::Color(1.0, 1.0, 1.0, 1.0)
+
 namespace slim
 {
 namespace mesh

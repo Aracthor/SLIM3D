@@ -40,6 +40,12 @@ Scene::display() const
 }
 
 
+inline static void
+displayChild(const Node& node, const Scene* scene)
+{
+    scene->displayNode(&node);
+}
+
 void
 Scene::displayNode(const Node* node) const
 {
@@ -47,6 +53,8 @@ Scene::displayNode(const Node* node) const
     {
 	m_frameRenderer->addMesh(*reinterpret_cast<const mesh::Node*>(node));
     }
+
+    node->getChildren().forEach(displayChild, this);
 }
 
 }

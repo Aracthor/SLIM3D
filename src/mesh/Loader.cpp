@@ -50,17 +50,17 @@ Loader::deleteData(FileLoader::Data& data)
 }
 
 
-VertexArrayObject
-Loader::generateVAO(const FileLoader::Data& data)
+void
+Loader::generateVAO(const FileLoader::Data& data, VertexArrayObject& dest)
 {
     m_vertexObjectsFactory.setSize(data.number);
     m_vertexObjectsFactory.setPositions(data.positions);
     m_vertexObjectsFactory.setColors(data.colors);
     m_vertexObjectsFactory.setTextureCoords(data.textureCoords);
     m_vertexObjectsFactory.setNormals(data.normals);
-    m_vertexObjectsFactory.setIndices(data.indices);
+    m_vertexObjectsFactory.setIndices(data.indices, data.indicesNumber);
 
-    return m_vertexObjectsFactory.create();
+    m_vertexObjectsFactory.create(dest);
 }
 
 }

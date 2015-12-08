@@ -25,11 +25,13 @@ class	VertexArrayObject : public graphics::IBindable
 {
 public:
     VertexArrayObject();
-    VertexArrayObject(const VertexBufferObject& vbo,
-		      bool useColor, bool useTexture, bool useNormal, unsigned int size);
-    VertexArrayObject(const VertexBufferObject& dataVbo, const VertexBufferObject& indexVbo,
-		      bool useColor, bool useTexture, bool useNormal, unsigned int size);
     ~VertexArrayObject();
+
+public:
+    void	create(const void* data,
+		       bool useColor, bool useTexture, bool useNormal, std::size_t size);
+    void	create(const void* data, const Index* indices,
+		       bool useColor, bool useTexture, bool useNormal, std::size_t size, std::size_t number);
 
 public:
     inline void	bind() const override;
@@ -41,13 +43,14 @@ public:
 
 private:
     void	createGLResource();
-    void	bindData(const VertexBufferObject& vbo,
-			 bool useColor, bool useTexture, bool useNormal, unsigned int size);
+    void	bindData(bool useColor, bool useTexture, bool useNormal, std::size_t size);
 
 private:
     GLuint		m_id;
     bool		m_useIndices;
-    unsigned int	m_size;
+    std::size_t		m_size;
+    VertexBufferObject	m_dataVbo;
+    VertexBufferObject	m_indicesVbo;
 };
 
 }

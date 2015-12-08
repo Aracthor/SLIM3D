@@ -1,4 +1,5 @@
 #include "slim/debug/assert.hpp"
+#include "slim/graphics/glDebug.hpp"
 
 namespace slim
 {

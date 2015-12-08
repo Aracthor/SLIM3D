@@ -31,7 +31,7 @@ public:
     void	deleteData(FileLoader::Data& data);
 
 public:
-    VertexArrayObject	generateVAO(const FileLoader::Data& data);
+    void	generateVAO(const FileLoader::Data& data, VertexArrayObject& dest);
 
 private:
     std::map<containers::ConstString, FileLoader*>	m_loaders;

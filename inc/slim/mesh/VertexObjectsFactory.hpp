@@ -21,10 +21,10 @@ public:
     inline void		setColors(const Color* colors);
     inline void		setTextureCoords(const TextureCoord* textureCoords);
     inline void		setNormals(const Normal* normals);
-    inline void		setIndices(const Index* indices);
+    void		setIndices(const Index* indices, unsigned int number);
 
 public:
-    VertexArrayObject	create();
+    void		create(VertexArrayObject& dest);
 
 private:
     void		reset();
@@ -38,6 +38,7 @@ private:
     const TextureCoord*	m_textureCoords;
     const Normal*	m_normals;
     const Index*	m_indices;
+    unsigned int	m_indicesNumber;
 };
 
 }

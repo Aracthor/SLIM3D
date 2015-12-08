@@ -15,12 +15,5 @@ Mesh::getMaterial() const
     return m_material;
 }
 
-
-void
-Mesh::setMaterial(const Material* material)
-{
-    m_material = material;
-}
-
 }
 }

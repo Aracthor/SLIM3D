@@ -26,7 +26,7 @@ TokensPack::getNextToken()
     {
 	return nullptr;
     }
-    
+
     char*	ptr = strchr(m_lastSeparatorFound, m_separator);
     char*	token;
 
@@ -35,6 +35,10 @@ TokensPack::getNextToken()
 	*ptr = '\0';
 	token = m_lastSeparatorFound;
 	m_lastSeparatorFound = ptr + 1;
+	while (*m_lastSeparatorFound == m_separator)
+	{
+	    m_lastSeparatorFound++;
+	}
     }
     else
     {

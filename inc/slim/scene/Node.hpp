@@ -18,7 +18,8 @@ public:
     virtual ~Node();
 
 public:
-    inline const char*	getName() const;
+    inline const char*				getName() const;
+    inline const containers::List<Node>&	getChildren() const;
 
 public:
     void		update(time::Clock::time elapsedTime);

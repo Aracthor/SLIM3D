@@ -116,6 +116,12 @@ typedef maths::Vector4f	        Vector4;
 
 }
 
+# ifdef _DEBUG
+# include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector4<T>& vector);
+# endif // _DEBUG
+
 # include "Vector4.ipp"
 
 #endif // !SLIM_MATHS_VECTOR4_HPP_

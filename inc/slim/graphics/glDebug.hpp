@@ -6,7 +6,7 @@
 
 # define SLIM_GRAPHICS_DEBUG_EXIT()		SLIM_DEBUG_EXIT(slim::graphics::getErrorMessage(glGetError()))
 # if _DEBUG
-#  define SLIM_GRAPHICS_GL_CHECK()		if (glGetError() != GL_NO_ERROR) SLIM_GRAPHICS_DEBUG_EXIT()
+#  define SLIM_GRAPHICS_GL_CHECK()		{GLenum	error = glGetError(); if (error != GL_NO_ERROR) SLIM_DEBUG_EXIT(slim::graphics::getErrorMessage(error));}
 #  define SLIM_GRAPHICS_GL_ASSERT(function)	if ((function) == 0) SLIM_GRAPHICS_DEBUG_EXIT()
 # else
 #  define SLIM_GRAPHICS_GL_CHECK()

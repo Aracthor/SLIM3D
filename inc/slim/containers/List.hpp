@@ -28,6 +28,10 @@ public:
 public:
     template <typename ...Args>
     void		forEach(void (T::*function)(Args ...args), Args& ...args);
+    template <typename ...Args>
+    void		forEach(void (*function)(const T& element, Args ...args), Args&& ...args) const;
+    template <typename ...Args>
+    void		forEach(void (*function)(T& element, Args ...args), Args&& ...args);
 
 private:
     memory::Chunk&	m_chunk;

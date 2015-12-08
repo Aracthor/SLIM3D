@@ -9,6 +9,12 @@ Node::getName() const
     return m_name;
 }
 
+const containers::List<Node>&
+Node::getChildren() const
+{
+    return m_children;
+}
+
 
 template <class NODE, typename ...Args>
 NODE*

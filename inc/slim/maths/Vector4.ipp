@@ -352,3 +352,13 @@ Vector4<T>::operator	Vector4<U>() const
 
 }
 }
+
+#ifdef _DEBUG
+template <typename T>
+std::ostream&
+operator<<(std::ostream& stream, const slim::maths::Vector4<T>& vector)
+{
+    stream << '(' << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << ')';
+    return stream;
+}
+#endif // _DEBUG

@@ -19,8 +19,16 @@ VertexObjectsFactory::~VertexObjectsFactory()
 }
 
 
-VertexArrayObject
-VertexObjectsFactory::create()
+void
+VertexObjectsFactory::setIndices(const Index* indices, unsigned int indicesNumber)
+{
+    m_indices = indices;
+    m_indicesNumber = indicesNumber;
+}
+
+
+void
+VertexObjectsFactory::create(VertexArrayObject& dest)
 {
     unsigned int	index = 0;
     bool		useColor = (m_colors != nullptr);
@@ -57,17 +65,17 @@ VertexObjectsFactory::create()
 	index += sizeof(Normal) * m_size;
     }
 
-    VertexBufferObject	dataVbo(data);
-
-    VertexArrayObject	vao = (m_indices ?
-			       VertexArrayObject(dataVbo, VertexBufferObject(m_indices),
-						 useColor, useTexture, useNormal, m_size) :
-			       VertexArrayObject(dataVbo, useColor, useTexture, useNormal, m_size));
+    if (m_indices)
+    {
+	dest.create(data, m_indices, useColor, useTexture, useNormal, m_size, m_indicesNumber);
+    }
+    else
+    {
+	dest.create(data, useColor, useTexture, useNormal, m_size);
+    }
 
     m_memory.free(data);
     this->reset();
-
-    return vao;
 }
 
 
@@ -80,6 +88,7 @@ VertexObjectsFactory::reset()
     m_textureCoords = nullptr;
     m_normals = nullptr;
     m_indices = nullptr;
+    m_indicesNumber = 0;
 }
 
 }

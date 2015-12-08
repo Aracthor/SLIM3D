@@ -26,6 +26,7 @@ public:
 public:
     void			update(time::Clock::time elapsedTime);
     void			display() const;
+    void			displayNode(const Node* node) const;
 
 public:
     inline const char*		getName() const;
@@ -37,9 +38,6 @@ public:
 
 private:
     typedef memory::SmartStackChunk	SceneChunk;
-
-private:
-    void			displayNode(const Node* node) const;
 
 private:
     const char*	        	m_name;

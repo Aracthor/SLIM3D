@@ -1,3 +1,4 @@
+#include "slim/graphics/glDebug.hpp"
 #include "slim/mesh/Mesh.hpp"
 #include "slim/io/VirtualFile.hpp"
 
@@ -39,6 +40,16 @@ Mesh::~Mesh()
 void
 Mesh::draw() const
 {
+    // GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f,
+    // 			     -0.5f, -0.5f, 0.0f,
+    // 			     0.5f, -0.5f, 0.0f
+    // };
+
+    // glVertexAttribPointer ( 0, 3, GL_FLOAT, GL_FALSE, 0, vVertices );
+
+    // glDrawArrays ( GL_TRIANGLES, 0, 3 );
+    // SLIM_GRAPHICS_GL_CHECK();
+
     m_vao.bind();
     {
 	if (m_vao.useIndices())
@@ -49,6 +60,7 @@ Mesh::draw() const
 	{
 	    glDrawArrays(m_renderMode, 0, m_vao.getSize());
 	}
+	SLIM_GRAPHICS_GL_CHECK();
     }
     m_vao.unbind();
 }
@@ -66,11 +78,20 @@ Mesh::loadFromFile(const char* const path)
     }
 
     m_renderMode = triangles;
-    m_vao = s_loader->generateVAO(data);
+    s_loader->generateVAO(data, m_vao);
     // TODO
 
     return true;
 }
+
+
+void
+Mesh::setMaterial(const Material* material)
+{
+    m_material = material;
+    this->listen(material);
+}
+
 
 void
 Mesh::unloadData()

@@ -1,6 +1,7 @@
 #ifndef SLIM_MESH_MATERIAL_HPP_
 # define SLIM_MESH_MATERIAL_HPP_
 
+# include "slim/assets/Asset.hpp"
 # include "slim/shader/Program.hpp"
 
 namespace slim
@@ -8,12 +9,19 @@ namespace slim
 namespace mesh
 {
 
-class	Material
+class	Material : public assets::Asset
 {
 public:
-    Material(shader::Program* shader);
+    static const char* const	typeName;
+
+    
+public:
+    Material(const shader::Program* shader, const char* name);
     Material(const Material& material);
     ~Material();
+
+public:
+    void	setShader(const shader::Program* shader);
 
 public:
     inline const shader::Program*	getShader() const;

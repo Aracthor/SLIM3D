@@ -21,6 +21,7 @@ public:
 	Normal*		normals = nullptr;
 	Index*		indices = nullptr;
 	unsigned int	number = 0;
+	unsigned int	indicesNumber = 0;
     };
 
 public:
