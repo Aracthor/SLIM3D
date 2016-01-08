@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "slim/containers/Map.hpp"
+#include "slim/containers/StringMap.hpp"
 #include "slim/memory/ArenaChunk.hpp"
 #include "slim/memory/Manager.hpp"
 
@@ -36,13 +37,30 @@ static int				classic_map()
 	    strcmp(map[0], "zero") == 0);
 }
 
+static int				string_map()
+{
+    memory::Chunk&      chunk = memory::Manager::instance.createChunk<memory::ArenaChunk>(0x1000, "string map");
+    containers::StringMap<int>	map(chunk);
+
+    map.insert("forty two", 42);
+    map.insert("minus one", -1);
+    map.insert("zero", 0);
+    map.insert("one thousand three hundred and thirsty seven", 1337);
+
+    return (map["forty two"] == 42 &&
+	    map["minus one"] == -1 &&
+	    map["one thousand three hundred and thirsty seven"] == 1337 &&
+	    map["zero"] == 0);
+}
+
 int	main()
 {
     int	return_value;
 
     memory::Manager::instance.init();
 
-    return_value = (test(classic_map, "classic map") == 0);
+    return_value = (test(classic_map, "classic map") == 0 &&
+		    test(string_map, "classic map") == 0);
 
     memory::Manager::instance.destroy();
 
