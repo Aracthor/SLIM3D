@@ -19,10 +19,10 @@ public:
     ~Array();
 
 public:
-    void	insert(T elem) override;
-    void	resize(std::size_t size);
-    std::size_t	getSize() const override;
-    std::size_t	getMaxSize() const;
+    void		insert(T elem) override;
+    void		resize(std::size_t size);
+    inline std::size_t	getSize() const override;
+    inline std::size_t	getMaxSize() const;
 
 public:
     inline const T&	getLast() const;
@@ -30,7 +30,7 @@ public:
 
 public:
     inline const T&	operator[](std::size_t index) const override;
-    inline T&		operator[](std::size_t index) override;
+    T&			operator[](std::size_t index) override;
 
 private:
     memory::Chunk&	m_chunk;

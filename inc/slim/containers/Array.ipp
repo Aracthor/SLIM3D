@@ -51,7 +51,7 @@ Array<T>::insert(T elem)
 {
     if (m_size == m_maxSize)
     {
-	this->resize(2 * m_size);
+	this->resize(2 * m_size + 1);
     }
 
     m_data[m_size] = elem;
@@ -62,7 +62,7 @@ template <typename T>
 void
 Array<T>::resize(std::size_t size)
 {
-    m_chunk.realloc(m_data, size * sizeof(T));
+    m_data = m_chunk.realloc(m_data, size * sizeof(T));
     m_maxSize = size;
     if (m_size > size)
     {
