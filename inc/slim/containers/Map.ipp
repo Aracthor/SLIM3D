@@ -21,6 +21,7 @@ template <typename T, typename U>
 void
 Map<T, U>::insert(T key, U value)
 {
+    SLIM_DEBUG_ASSERT(this->containsKey(key) == false);
     m_keys.insert(key);
     m_values.insert(value);
 }
@@ -33,12 +34,35 @@ Map<T, U>::getSize() const
     return m_keys.getSize();
 }
 
+template <typename T, typename U>
+const U&
+Map<T, U>::at(T key) const
+{
+    return m_values[this->getKeyIndex(key)];
+}
+
+template <typename T, typename U>
+bool
+Map<T, U>::containsKey(T key) const
+{
+    bool	found = false;
+    std::size_t	i = 0;
+
+    while (!found && i < this->getSize())
+    {
+	found = (key == m_keys[i]);
+	i++;
+    }
+
+    return found;
+}
+
 
 template <typename T, typename U>
 const U&
 Map<T, U>::operator[](T key) const
 {
-    return m_values[this->getKeyIndex(key)];
+    return this->at(key);
 }
 
 

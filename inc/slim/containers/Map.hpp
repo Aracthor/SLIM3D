@@ -20,9 +20,11 @@ public:
 
 public:
     inline std::size_t	getSize() const;
+    inline const U&	at(T key) const;
+    inline bool		containsKey(T key) const;
 
 public:
-    const U&		operator[](T key) const;
+    inline const U&	operator[](T key) const;
 
 protected:
     virtual bool	compare(T key1, T key2) const;
