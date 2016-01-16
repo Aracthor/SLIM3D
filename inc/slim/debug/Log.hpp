@@ -42,11 +42,11 @@ private:
     void		manageActivations();
 
 private:
-    const char*			m_name;
-    unsigned int		m_consoleOutputLevel;
-    unsigned int	  	m_fileOutputLevel;
+    const char*		m_name;
+    unsigned int	m_consoleOutputLevel;
+    unsigned int	m_fileOutputLevel;
     io::WritingFile*	m_file;
-    char			m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
+    char		m_fileBuffer[SLIM_DEBUG_CONSOLE_LOG_BUFFER_SIZE];
 };
 
 }
