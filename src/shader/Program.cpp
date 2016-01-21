@@ -47,7 +47,7 @@ Program::~Program()
 
 
 void
-Program::setUniform(const char* name, bool value)
+Program::setUniform(const char* name, bool value) const
 {
     this->checkUniform(name);
     glUniform1i(m_uniforms[name], value);
@@ -55,7 +55,7 @@ Program::setUniform(const char* name, bool value)
 }
 
 void
-Program::setUniform(const char* name, int value)
+Program::setUniform(const char* name, int value) const
 {
     this->checkUniform(name);
     glUniform1i(m_uniforms[name], value);
@@ -63,7 +63,7 @@ Program::setUniform(const char* name, int value)
 }
 
 void
-Program::setUniform(const char* name, float value)
+Program::setUniform(const char* name, float value) const
 {
     this->checkUniform(name);
     glUniform1f(m_uniforms[name], value);
@@ -71,7 +71,7 @@ Program::setUniform(const char* name, float value)
 }
 
 void
-Program::setUniform(const char* name, const Vector2& value)
+Program::setUniform(const char* name, const Vector2& value) const
 {
     this->checkUniform(name);
     glUniform2f(m_uniforms[name], value.x, value.y);
@@ -79,7 +79,7 @@ Program::setUniform(const char* name, const Vector2& value)
 }
 
 void
-Program::setUniform(const char* name, const Vector3& value)
+Program::setUniform(const char* name, const Vector3& value) const
 {
     this->checkUniform(name);
     glUniform3f(m_uniforms[name], value.x, value.y, value.z);
@@ -87,7 +87,7 @@ Program::setUniform(const char* name, const Vector3& value)
 }
 
 void
-Program::setUniform(const char* name, const Vector4& value)
+Program::setUniform(const char* name, const Vector4& value) const
 {
     this->checkUniform(name);
     glUniform4f(m_uniforms[name], value.x, value.y, value.z, value.w);
@@ -95,7 +95,7 @@ Program::setUniform(const char* name, const Vector4& value)
 }
 
 void
-Program::setUniform(const char* name, const Matrix4x4& value)
+Program::setUniform(const char* name, const Matrix4x4& value) const
 {
     this->checkUniform(name);
     glUniformMatrix4fv(m_uniforms[name], 1, false, value.asArray());
@@ -134,7 +134,7 @@ Program::onAssetsUnloaded()
 
 
 void
-Program::addUniform(const char* name)
+Program::addUniform(const char* name) const
 {
     Uniform	uniform = glGetUniformLocation(m_id, name);
 
@@ -147,7 +147,7 @@ Program::addUniform(const char* name)
 }
 
 void
-Program::checkUniform(const char* name)
+Program::checkUniform(const char* name) const
 {
     if (!m_uniforms.containsKey(name))
     {

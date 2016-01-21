@@ -58,6 +58,10 @@ List<T>::pushBack(T* elem)
     ListNode<T>*	node = m_chunk.create<ListNode<T>>(elem);
 
     node->m_prev = m_end;
+    if (m_end != nullptr)
+    {
+	m_end->m_next = node;
+    }
     m_end = node;
     if (m_begin == nullptr)
     {

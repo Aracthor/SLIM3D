@@ -13,8 +13,7 @@ Vector2<T>::Vector2()
 template <typename T>
 Vector2<T>::Vector2(T x, T y)
 {
-    this->x = x;
-    this->y = y;
+    this->set(x, y);
 }
 
 template <typename T>
@@ -75,6 +74,14 @@ Vector2<T>::normalize()
 
     x /= norm;
     y /= norm;
+}
+
+template <typename T>
+void
+Vector2<T>::set(T x, T y)
+{
+    this->x = x;
+    this->y = y;
 }
 
 

@@ -25,7 +25,7 @@ FreeFly::getSensitivity() const
 void
 FreeFly::advance(float speed)
 {
-    m_move -= m_forward * speed;
+    m_move += m_forward * speed;
 }
 
 }

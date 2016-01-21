@@ -2,6 +2,10 @@
 # define SLIM_CONTAINERS_BUFFER_HPP_
 
 # include "slim/containers/ConstString.hpp"
+# include "slim/maths/Vector2.hpp"
+# include "slim/maths/Vector3.hpp"
+# include "slim/maths/Vector4.hpp"
+# include "slim/maths/Matrix4x4.hpp"
 
 namespace slim
 {
@@ -36,6 +40,16 @@ public:
     template <unsigned int M>
     inline Buffer<T, N>&	operator<<(const Buffer<T, M> buffer);
 
+    // Some debug types.
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(const maths::Vector2<U>& vector);
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(const maths::Vector3<U>& vector);
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(const maths::Vector4<U>& vector);
+    template <typename U>
+    inline Buffer<T, N>&	operator<<(const maths::Matrix4x4<U>& matrix);
+
     // Used for pointers type
     template <typename U>
     inline Buffer<T, N>&	operator<<(U* ptr);
@@ -43,6 +57,7 @@ public:
     // Used for numbers type (int, long etc)
     template <typename U>
     Buffer<T, N>&		operator<<(U n);
+    Buffer<T, N>&		operator<<(float n);
 
 private:
     T			m_data[N];

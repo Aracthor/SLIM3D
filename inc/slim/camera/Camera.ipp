@@ -25,6 +25,43 @@ Camera::getUp() const
 
 
 void
+Camera::setPosition(float x, float y, float z)
+{
+    m_position.set(x, y, z);
+}
+
+void
+Camera::setPosition(const Vector3& position)
+{
+    m_position = position;
+}
+
+void
+Camera::setTarget(float x, float y, float z)
+{
+    m_target.set(x, y, z);
+}
+
+void
+Camera::setTarget(const Vector3& target)
+{
+    m_target = target;
+}
+
+void
+Camera::setUp(float x, float y, float z)
+{
+    m_up.set(x, y, z);
+}
+
+void
+Camera::setUp(const Vector3& up)
+{
+    m_up = up;
+}
+
+
+void
 Camera::getViewMatrix(Matrix4x4& matrix) const
 {
     if (m_position == m_target)

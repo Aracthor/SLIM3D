@@ -13,9 +13,7 @@ Vector3<T>::Vector3()
 template <typename T>
 Vector3<T>::Vector3(T x, T y, T z)
 {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->set(x, y, z);
 }
 
 template <typename T>
@@ -85,6 +83,15 @@ Vector3<T>::normalize()
     x /= norm;
     y /= norm;
     z /= norm;
+}
+
+template <typename T>
+void
+Vector3<T>::set(T x, T y, T z)
+{
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 template <typename T>

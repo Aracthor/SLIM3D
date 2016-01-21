@@ -26,7 +26,7 @@ Node::update(time::Clock::time elapsedTime)
 	this->updateMatrix();
     }
     this->updateData(elapsedTime);
-    m_children.forEach(&Node::updateData, elapsedTime);
+    m_children.forEach(&Node::update, elapsedTime);
 }
 
 

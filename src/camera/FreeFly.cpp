@@ -31,8 +31,8 @@ FreeFly::~FreeFly()
 void
 FreeFly::registerEvents(events::Manager& manager)
 {
-    manager.addKeyListener(new freefly::MoveFront(*this), events::keyboard::W);
-    manager.addKeyListener(new freefly::MoveBack(*this), events::keyboard::S);
+    manager.addKeyListener(new freefly::MoveFront(*this), events::keyboard::w);
+    manager.addKeyListener(new freefly::MoveBack(*this), events::keyboard::s);
     // TODO other moves
 }
 
@@ -56,7 +56,7 @@ FreeFly::recalcVectors()
     m_left = m_forward * m_up;
     m_left.normalize();
 
-    m_target = m_position - m_forward;
+    m_target = m_position + m_forward;
 }
 
 }

@@ -9,7 +9,8 @@ namespace window
 {
 
 WindowImplementation::WindowImplementation(unsigned int width, unsigned int height, const char* title, bool fullscreen) :
-    Window(width, height, title, fullscreen)
+    Window(width, height, title, fullscreen),
+    m_keyCodeConverter(m_display)
 {
     this->createDisplay();
     this->createWindow(width, height);

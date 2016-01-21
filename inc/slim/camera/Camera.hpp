@@ -23,6 +23,14 @@ public:
     inline const Vector3&	getUp() const;
 
 public:
+    inline void			setPosition(float x, float y, float z);
+    inline void			setPosition(const Vector3& position);
+    inline void			setTarget(float x, float y, float z);
+    inline void			setTarget(const Vector3& target);
+    inline void			setUp(float x, float y, float z);
+    inline void			setUp(const Vector3& up);
+
+public:
     inline void			getViewMatrix(Matrix4x4& matrix) const;
     virtual void		getProjectionMatrix(Matrix4x4& matrix) const = 0;
 

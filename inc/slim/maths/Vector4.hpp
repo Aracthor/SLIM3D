@@ -42,6 +42,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y, T z, T w);
     void	set(const Vector2<T>& vector2, T z, T w);
     void	set(const Vector3<T>& vector3, T w);
 

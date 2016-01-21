@@ -28,7 +28,7 @@ HelloWorldScene::onInit()
     slim::scene::Scene*		scene = manager.createBlankScene("Test scene");
 
     slim::memory::ArenaChunk&	chunk = slim::memory::Manager::instance.createChunk<slim::memory::ArenaChunk>(10000, "assets");
-    slim::mesh::Mesh*		cube = slim::assets::Asset::create<slim::mesh::Mesh>(chunk, "triangle.obj");
+    slim::mesh::Mesh*		cube = slim::assets::Asset::create<slim::mesh::Mesh>(chunk, "cube.obj");
     slim::shader::Shader*	vertexShader = slim::assets::Asset::create<slim::shader::Shader>(chunk, "basic.vert", slim::shader::Shader::VERTEX);
     slim::shader::Shader*	fragmentShader = slim::assets::Asset::create<slim::shader::Shader>(chunk, "basic.frag", slim::shader::Shader::FRAGMENT);
     slim::shader::Program*	program = slim::assets::Asset::create<slim::shader::Program>(chunk, "basic", vertexShader, fragmentShader);
@@ -36,6 +36,15 @@ HelloWorldScene::onInit()
     slim::camera::Camera*	camera = chunk.create<slim::camera::FreeFly>();
 
     this->setClearColor(slim::mesh::Color(0.0, 0.0, 1.0, 1.0));
+
+    camera->setPosition(-40.0, 0.0, 10.0);
+
+    // slim::Matrix4x4	debug;
+
+    // camera->getProjectionMatrix(debug);
+    // slim::debug::LogManager::instance.graphics.error << debug << slim::debug::LogStream::endline;
+    // camera->getViewMatrix(debug);
+    // slim::debug::LogManager::instance.graphics.error << debug << slim::debug::LogStream::endline;
 
     cube->setMaterial(basicMaterial);
     scene->getRoot()->addChild<slim::mesh::Node>("mesh test", cube);

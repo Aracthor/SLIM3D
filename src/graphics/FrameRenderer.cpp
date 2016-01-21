@@ -67,13 +67,20 @@ FrameRenderer::draw()
 {
     ProgramsList*	list;
     MeshList*		meshes;
+    Matrix4x4		projectionMatrix;
+    Matrix4x4		viewMatrix;
+
+    m_camera->getProjectionMatrix(projectionMatrix);
+    m_camera->getViewMatrix(viewMatrix);
 
     for (list = m_list; list != nullptr; list = list->next)
     {
 	list->shader->use();
+	list->shader->setUniform("projectionMatrix", projectionMatrix);
+	list->shader->setUniform("viewMatrix", viewMatrix);
 	for (meshes = list->meshes; meshes != nullptr; meshes = meshes->next)
 	{
-	    // TODO give shader transformation matrix uniform
+	    list->shader->setUniform("modelMatrix", *meshes->matrix);
 	    meshes->mesh->draw();
 	}
     }

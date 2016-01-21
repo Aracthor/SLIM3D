@@ -28,6 +28,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y);
 
 public:
     Vector2<T>&	addTo(const Vector2<T>& vector);

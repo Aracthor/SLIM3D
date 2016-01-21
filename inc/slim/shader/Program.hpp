@@ -40,27 +40,27 @@ public:
     inline void	use() const;
 
 public:
-    void	setUniform(const char* name, bool value);
-    void	setUniform(const char* name, int value);
-    void	setUniform(const char* name, float value);
-    void	setUniform(const char* name, const Vector2& value);
-    void	setUniform(const char* name, const Vector3& value);
-    void	setUniform(const char* name, const Vector4& value);
-    void	setUniform(const char* name, const Matrix4x4& value);
+    void	setUniform(const char* name, bool value) const;
+    void	setUniform(const char* name, int value) const;
+    void	setUniform(const char* name, float value) const;
+    void	setUniform(const char* name, const Vector2& value) const;
+    void	setUniform(const char* name, const Vector3& value) const;
+    void	setUniform(const char* name, const Vector4& value) const;
+    void	setUniform(const char* name, const Matrix4x4& value) const;
 
 protected:
     void	onAssetsReady() override;
     void	onAssetsUnloaded() override;
 
 private:
-    void	addUniform(const char* name);
-    void	checkUniform(const char* name);
+    void	addUniform(const char* name) const;
+    void	checkUniform(const char* name) const;
 
 private:
-    GLint				m_id;
-    const Shader*			m_vertexShader;
-    const Shader*			m_fragmentShader;
-    containers::StringMap<Uniform>	m_uniforms;
+    GLint					m_id;
+    const Shader*				m_vertexShader;
+    const Shader*				m_fragmentShader;
+    mutable containers::StringMap<Uniform>	m_uniforms;
 };
 
 }
