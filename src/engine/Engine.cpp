@@ -1,5 +1,3 @@
-#include <iostream> // Only to print exception error message
-
 #include "slim/assets/Manager.hpp"
 #include "slim/attributes.h"
 #include "slim/debug/LogManager.hpp"
