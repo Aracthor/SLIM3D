@@ -1,4 +1,5 @@
 #include "slim/debug/assert.hpp"
+#include "slim/maths/Helper.hpp"
 
 namespace slim
 {
@@ -186,9 +187,36 @@ Matrix4x4<T>::scale(const Vector3<T>& vector)
 
 template <typename T>
 void
+Matrix4x4<T>::orthogonal(T left, T right, T bottom, T top, T minView, T maxView)
+{
+    T	horizontalDifference = right - left;
+    T	verticalDifference = top - bottom;
+    T	depthDifference = maxView - minView;
+
+    m_rows[0][0] = 2.0 / horizontalDifference;
+    m_rows[0][1] = 0.0;
+    m_rows[0][2] = 0.0;
+    m_rows[0][3] = -((right + left) / horizontalDifference);
+    m_rows[1][0] = 0.0;
+    m_rows[1][1] = 2 / verticalDifference;
+    m_rows[1][2] = 0.0;
+    m_rows[1][3] = -((top + bottom) / verticalDifference);
+    m_rows[2][0] = 0.0;
+    m_rows[2][1] = 0.0;
+    m_rows[2][2] = 2 / depthDifference;
+    m_rows[2][3] = -((maxView + minView) / depthDifference);
+    m_rows[3][0] = 0.0;
+    m_rows[3][1] = 0.0;
+    m_rows[3][2] = 0.0;
+    m_rows[3][3] = 1.0;
+}
+
+
+template <typename T>
+void
 Matrix4x4<T>::perspective(T angle, T aspectRatio, T minView, T maxView)
 {
-    T	f = 1.0 / SLIM_MATHS_TAN(aspectRatio / 2.0);
+    T	f = 1.0 / SLIM_MATHS_TAN(angle / 2.0);
     T	nf = 1.0 / (minView - maxView);
     T	mm = minView + maxView;
 
@@ -214,55 +242,30 @@ template <typename T>
 void
 Matrix4x4<T>::lookAt(const Vector3<T>& position, const Vector3<T>& target, const Vector3<T>& up)
 {
-    Vector3<T>	x;
-    Vector3<T>	y;
-    Vector3<T>	z;
-    T		length;
+    Vector3<T>	f(target - position);
+    Vector3<T>	u(up);
+    f.normalize();
+    u.normalize();
+    Vector3<T>	s(f * u);
+    s.normalize();
+    u = s * f;
 
-    SLIM_DEBUG_ASSERT(position != target);
-
-    z = position - target;
-    length = z.getNorm();
-    z.scale(1.0 / length);
-
-    x = up * z;
-    length = x.getNorm();
-    if (length == 0.0)
-    {
-	x.setAllElements(0);
-    }
-    else
-    {
-	x.scale(1.0 / length);
-    }
-
-    y = z * x;
-    length = y.getNorm();
-    if (length == 0)
-    {
-	y,setAllElements(0);
-    }
-    else
-    {
-	y.scale(1.0 / length);
-    }
-
-    m_rows[0][0] = x.x;
-    m_rows[0][1] = y.x;
-    m_rows[0][2] = z.x;
-    m_rows[0][3] = 0.0;
-    m_rows[1][0] = x.y;
-    m_rows[1][1] = y.y;
-    m_rows[1][2] = z.y;
-    m_rows[1][3] = 0.0;
-    m_rows[2][0] = x.z;
-    m_rows[2][1] = y.z;
-    m_rows[2][2] = z.z;
-    m_rows[2][3] = 0.0;
-    m_rows[3][0] = -(x.x * position.x + x.y * position.y + x.z * position.z);
-    m_rows[3][1] = -(y.x * position.x + y.y * position.y + y.z * position.z);
-    m_rows[3][2] = -(z.x * position.x + z.y * position.y + z.z * position.z);
-    m_rows[3][3] = 1.0;
+    m_rows[0][0] = s.x;
+    m_rows[1][0] = s.y;
+    m_rows[2][0] = s.z;
+    m_rows[3][0] = 0.0f;
+    m_rows[0][1] = u.x;
+    m_rows[1][1] = u.y;
+    m_rows[2][1] = u.z;
+    m_rows[3][1] = 0.0f;
+    m_rows[0][2] = -f.x;
+    m_rows[1][2] = -f.y;
+    m_rows[2][2] = -f.z;
+    m_rows[3][2] = 0.0f;
+    m_rows[3][0] = -s.getDotProduct(position);
+    m_rows[3][1] = -u.getDotProduct(position);
+    m_rows[3][2] = f.getDotProduct(position);
+    m_rows[3][3] = 1.0f;
 }
 
 
@@ -282,3 +285,16 @@ Matrix4x4<T>::operator[](unsigned int index) const
 
 }
 }
+
+#ifdef _DEBUG
+template <typename T>
+std::ostream&
+operator<<(std::ostream& stream, const slim::maths::Matrix4x4<T>& matrix)
+{
+    stream << matrix[0] << std::endl
+	   << matrix[1] << std::endl
+	   << matrix[2] << std::endl
+	   << matrix[3] << std::endl;
+    return stream;
+}
+#endif // _DEBUG

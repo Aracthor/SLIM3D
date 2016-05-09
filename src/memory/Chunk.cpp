@@ -1,4 +1,7 @@
+#include "slim/debug/assert.hpp"
 #include "slim/memory/Chunk.hpp"
+
+#include "slim/string.h"
 
 namespace slim
 {
@@ -23,6 +26,31 @@ Chunk::clear()
 {
     m_size = 0;
     m_data = m_start;
+}
+
+
+void*
+Chunk::realloc(void* ptr, std::size_t size)
+{
+    void*	newPtr = this->alloc(size);
+
+    if (ptr != nullptr)
+    {
+	memcpy(newPtr, ptr, size);
+	this->free(ptr);
+    }
+
+    return newPtr;
+}
+
+
+void
+Chunk::loadCheckpoint(Checkpoint checkpoint)
+{
+    SLIM_DEBUG_ASSERT(checkpoint >= m_start);
+
+    m_data = checkpoint;
+    m_size = m_data - m_start;
 }
 
 }

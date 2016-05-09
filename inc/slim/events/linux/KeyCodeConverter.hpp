@@ -5,6 +5,8 @@
 
 # include "slim/events/keyboard.hpp"
 
+# include <X11/Xlib.h>
+
 namespace slim
 {
 namespace events
@@ -13,14 +15,18 @@ namespace events
 class	KeyCodeConverter
 {
 public:
-    KeyCodeConverter();
+    KeyCodeConverter(::Display *& display);
     ~KeyCodeConverter();
 
 public:
     inline keyboard::EKeyCode	convert(unsigned int XCode);
 
 private:
+    inline KeySym		convertToKeySym(unsigned int XCode);
+
+private:
     std::map<unsigned int, keyboard::EKeyCode>	m_codes;
+    ::Display*&					m_display;
 };
 
 }

@@ -1,5 +1,3 @@
-#include <iostream> // Only to print exception error message
-
 #include "slim/assets/Manager.hpp"
 #include "slim/attributes.h"
 #include "slim/debug/LogManager.hpp"
@@ -34,7 +32,7 @@ Engine::~Engine()
 void
 Engine::parseCommandLine(int argc, char** argv)
 {
-    containers::Buffer<char, 0x10>	buffer;
+    containers::Buffer<char, 0x1000>	buffer;
     char*				path = strrchr(argv[0], SLIM_IO_SEPARATOR_CHAR);
 
     if (path == nullptr)
@@ -114,13 +112,25 @@ Engine::loop()
 void
 Engine::update(time::Clock::time elapsedTime)
 {
+    if (m_sceneManager.getCurrentScene() != nullptr)
+    {
+	m_sceneManager.getCurrentScene()->update(elapsedTime);
+    }
     this->onUpdate(elapsedTime);
 }
 
 void
 Engine::render() const
 {
-    m_window->display();
+    const scene::Scene*	scene = m_sceneManager.getCurrentScene();
+
+    this->clearBuffers();
+    if (scene != nullptr)
+    {
+	scene->display();
+    }
+    m_context->swapBuffers();
+    // m_window->display();
 }
 
 void
@@ -131,6 +141,7 @@ Engine::shutdown()
 	m_memory->destroy(m_context);
 	m_memory->destroy(m_window);
     }
+    m_sceneManager.deleteAllScenes();
     m_singletonsManager.destroySingletons();
 }
 

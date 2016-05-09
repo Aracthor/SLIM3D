@@ -6,7 +6,9 @@
 # include "slim/engine/RenderLoop.hpp"
 # include "slim/events/Loop.hpp"
 # include "slim/graphics/Context.hpp"
+# include "slim/graphics/GLPanel.hpp"
 # include "slim/memory/ArenaChunk.hpp"
+# include "slim/scene/Manager.hpp"
 # include "slim/time/Synchronizer.hpp"
 # include "slim/window/WindowImplementation.hpp"
 
@@ -19,7 +21,7 @@ namespace slim
 namespace engine
 {
 
-class	Engine
+class	Engine : public graphics::GLPanel
 {
 public:
     Engine(int argc, char** argv);
@@ -33,6 +35,7 @@ public:
     inline unsigned int		getGameplayFramerate() const;
     inline unsigned int		getRenderFramerate() const;
     inline window::Window*	getCurrentWindow();
+    inline scene::Manager&	getSceneManager();
 
 public:
     inline void		setGameplayFramerate(unsigned int framerate);
@@ -57,7 +60,7 @@ private:
     void		shutdown();
 
 protected:
-    window::Window::Parameters	m_windowParameters;
+    window::Window::Parameters		m_windowParameters;
 
 private:
     core::SingletonsManager		m_singletonsManager;
@@ -65,6 +68,7 @@ private:
     time::Synchronizer			m_synchronizer;
     window::Window*			m_window = nullptr;
     graphics::Context*			m_context = nullptr;
+    scene::Manager			m_sceneManager;
     GameplayLoop			m_gameplayLoop;
     RenderLoop				m_renderLoop;
     events::Loop			m_eventsLoop;

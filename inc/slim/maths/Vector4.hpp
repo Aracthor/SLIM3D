@@ -42,6 +42,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y, T z, T w);
     void	set(const Vector2<T>& vector2, T z, T w);
     void	set(const Vector3<T>& vector3, T w);
 
@@ -96,9 +97,9 @@ public:
 
     Vector4<T>&	set(__m128 data);
 
-    inline __m128	asSSE() const;
+    __m128	asSSE() const;
 
-    inline Vector4<T>&	operator=(__m128 data);
+    Vector4<T>&	operator=(__m128 data);
 #endif
 };
 
@@ -116,10 +117,12 @@ typedef maths::Vector4f	        Vector4;
 
 }
 
-# include "Vector4.ipp"
+# ifdef _DEBUG
+#  include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector4<T>& vector);
+# endif // _DEBUG
 
-# if __SSE__ == 1
-#  include "SSE/Vector4.ipp"
-# endif
+# include "Vector4.ipp"
 
 #endif // !SLIM_MATHS_VECTOR4_HPP_

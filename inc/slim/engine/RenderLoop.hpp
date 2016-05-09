@@ -19,10 +19,10 @@ public:
     ~RenderLoop();
 
 protected:
-    void		onFrame(time::Clock::time elapsedTime) override;
+    void			onFrame(time::Clock::time elapsedTime) override;
 
 private:
-    const Engine*	m_engine;
+    const Engine*		m_engine;
 };
 
 }

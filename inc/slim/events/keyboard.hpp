@@ -11,6 +11,8 @@ namespace keyboard
 
 enum	EKeyCode
 {
+    unknown,
+
     escape,
 
     space,

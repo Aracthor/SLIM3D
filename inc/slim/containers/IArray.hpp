@@ -1,6 +1,8 @@
 #ifndef SLIM_CONTAINERS_IARRAY_HPP_
 # define SLIM_CONTAINERS_IARRAY_HPP_
 
+# include <cstddef>
+
 namespace slim
 {
 namespace containers
@@ -13,12 +15,12 @@ public:
     virtual ~IArray() {}
 
 public:
-    virtual void		insert(T elem) = 0;
-    virtual unsigned int	getSize() const = 0;
+    virtual void	insert(T elem) = 0;
+    virtual std::size_t	getSize() const = 0;
 
 public:
-    virtual const T&	operator[](unsigned int index) const = 0;
-    virtual T&		operator[](unsigned int index) = 0;
+    virtual const T&	operator[](std::size_t index) const = 0;
+    virtual T&		operator[](std::size_t index) = 0;
 };
 
 }

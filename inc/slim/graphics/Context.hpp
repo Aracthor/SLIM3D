@@ -17,6 +17,9 @@ public:
     Context(window::Window* window);
     ~Context();
 
+public:
+    inline void	swapBuffers();
+
 private:
     struct	Version
     {

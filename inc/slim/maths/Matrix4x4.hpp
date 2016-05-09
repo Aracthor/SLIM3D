@@ -34,6 +34,7 @@ public:
     void	scale(const Vector3<T>& vector);
 
 public:
+    void	orthogonal(T left, T right, T bottom, T top, T minView, T maxView);
     void	perspective(T angle, T aspectRatio, T minView, T maxView);
     void	lookAt(const Vector3<T>& position, const Vector3<T>& target, const Vector3<T>& up);
 
@@ -57,10 +58,12 @@ typedef maths::Matrix4x4f		Matrix4x4;
 
 }
 
-# include "Matrix4x4.ipp"
+# ifdef _DEBUG
+#  include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector4<T>& vector);
+# endif // _DEBUG
 
-# if __SSE__ == 1
-#  include "SSE/Matrix4x4.ipp"
-# endif
+# include "Matrix4x4.ipp"
 
 #endif // !SLIM_MATHS_MATRIX4X4_HPP_

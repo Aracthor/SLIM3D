@@ -16,14 +16,15 @@ public:
     virtual ~WindowImplementation();
 
 public:
-    void			display() override;
+    inline void			display() override;
     void			pollEvents() override;
-    EGLNativeDisplayType	getEGLDisplay() override;
-    EGLNativeWindowType		getEGLWindow() override;
+    inline EGLNativeDisplayType	getEGLDisplay() override;
+    inline EGLNativeWindowType  getEGLWindow() override;
+    inline void			setCursorImplementation(unsigned int x, unsigned int y) override;
 
 protected:
-    void	setTitleImplementation(const char* title) override;
-    void	resizeImplementation(unsigned int width, unsigned int height) override;
+    inline void	setTitleImplementation(const char* title) override;
+    inline void	resizeImplementation(unsigned int width, unsigned int height) override;
 
 private:
     void	createDisplay();
@@ -39,3 +40,5 @@ public:
 
 }
 }
+
+#include "WindowImplementation.ipp"

@@ -8,7 +8,7 @@ namespace slim
 namespace containers
 {
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 class	PresizedArray : public IArray<T>
 {
 public:
@@ -19,7 +19,7 @@ public:
 public:
     void		fill(T elem);
     void		insert(T elem) override;
-    inline unsigned int	getSize() const override;
+    inline std::size_t	getSize() const override;
 
 public:
     template <typename ...Args>
@@ -32,12 +32,12 @@ public:
     U			maximum(U (*function)(const T& elem)) const;
 
 public:
-    const T&	operator[](unsigned int index) const override;
-    T&		operator[](unsigned int index) override;
+    const T&	operator[](std::size_t index) const override;
+    T&		operator[](std::size_t index) override;
 
 private:
-    unsigned int	m_currentSize;
-    T			m_data[N];
+    std::size_t	m_currentSize;
+    T		m_data[N];
 };
 
 }

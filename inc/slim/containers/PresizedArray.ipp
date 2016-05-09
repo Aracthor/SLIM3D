@@ -9,36 +9,36 @@ namespace slim
 namespace containers
 {
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 PresizedArray<T, N>::PresizedArray()
 {
     m_currentSize = 0;
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 PresizedArray<T, N>::PresizedArray(T defaultData)
 {
     this->fill(defaultData);
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 PresizedArray<T, N>::~PresizedArray()
 {
 }
 
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 void
 PresizedArray<T, N>::fill(T elem)
 {
-    for (unsigned int i = 0; i < N; i++)
+    for (std::size_t i = 0; i < N; i++)
     {
 	m_data[i] = elem;
     }
     m_currentSize = N;
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 void
 PresizedArray<T, N>::insert(T elem)
 {
@@ -50,20 +50,20 @@ PresizedArray<T, N>::insert(T elem)
     m_currentSize++;
 }
 
-template <typename T, unsigned int N>
-unsigned int
+template <typename T, std::size_t N>
+std::size_t
 PresizedArray<T, N>::getSize() const
 {
     return m_currentSize;
 }
 
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 template <typename ...Args>
 void
 PresizedArray<T, N>::forEach(void (*function)(const T& elem, Args ...args), Args& ...args) const
 {
-    unsigned int	i;
+    std::size_t	i;
 
     for (i = 0; i < m_currentSize; ++i)
     { 
@@ -71,12 +71,12 @@ PresizedArray<T, N>::forEach(void (*function)(const T& elem, Args ...args), Args
     }
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 template <typename ...Args>
 void
 PresizedArray<T, N>::forEach(void (*function)(T& elem, Args ...args), Args&... args)
 {
-    unsigned int	i;
+    std::size_t	i;
 
     for (i = 0; i < m_currentSize; ++i)
     { 
@@ -84,7 +84,7 @@ PresizedArray<T, N>::forEach(void (*function)(T& elem, Args ...args), Args&... a
     }
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 template <typename U>
 U
 PresizedArray<T, N>::minimum(U (*function)(const T& elem)) const
@@ -104,7 +104,7 @@ PresizedArray<T, N>::minimum(U (*function)(const T& elem)) const
     return result;
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 template <typename U>
 U
 PresizedArray<T, N>::maximum(U (*function)(const T& elem)) const
@@ -125,17 +125,17 @@ PresizedArray<T, N>::maximum(U (*function)(const T& elem)) const
 }
 
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 const T&
-PresizedArray<T, N>::operator[](unsigned int index) const
+PresizedArray<T, N>::operator[](std::size_t index) const
 {
     SLIM_DEBUG_ASSERT(index < N);
     return m_data[index];
 }
 
-template <typename T, unsigned int N>
+template <typename T, std::size_t N>
 T&
-PresizedArray<T, N>::operator[](unsigned int index)
+PresizedArray<T, N>::operator[](std::size_t index)
 {
     SLIM_DEBUG_ASSERT(index < N);
     return m_data[index];
