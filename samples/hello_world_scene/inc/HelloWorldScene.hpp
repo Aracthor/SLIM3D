@@ -1,5 +1,5 @@
-#ifndef HELLO_WORLD_SCENE_HH_
-# define HELLO_WORLD_SCENE_HH_
+#ifndef HELLO_WORLD_SCENE_HPP_
+# define HELLO_WORLD_SCENE_HPP_
 
 # include "slim/engine/Engine.hpp"
 
@@ -14,4 +14,4 @@ public:
     void    onUpdate(slim::time::Clock::time elapsed) override;
 };
 
-#endif // !HELLO_WORLD_SCENE_HH_
+#endif // !HELLO_WORLD_SCENE_HPP_

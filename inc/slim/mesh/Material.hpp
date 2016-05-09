@@ -3,6 +3,7 @@
 
 # include "slim/assets/Asset.hpp"
 # include "slim/shader/Program.hpp"
+# include "slim/texture/Texture.hpp"
 
 namespace slim
 {
@@ -22,12 +23,15 @@ public:
 
 public:
     void	setShader(const shader::Program* shader);
+    void	setTexture(const texture::Texture* texture);
 
 public:
     inline const shader::Program*	getShader() const;
+    inline const texture::Texture*	getTexture() const;
 
 private:
     const shader::Program*	m_shader = nullptr;
+    const texture::Texture*	m_texture = nullptr;
 };
 
 }

@@ -1,7 +1,7 @@
 project("SLIM3D")
 
 set(SRCS
-    HelloWorldEngine.cpp
+    HelloWorldWindow.cpp
     main.cpp
     )
 

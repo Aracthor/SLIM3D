@@ -21,6 +21,7 @@ set(GRAPHICS_DIRECTORIES
   mesh
   scene
   shader
+  texture
   window
   )
 

@@ -1,26 +1,22 @@
-#ifndef SLIM_ASSETS_IMAGE_HPP_
-# define SLIM_ASSETS_IMAGE_HPP_
+#ifndef SLIM_TEXTURE_IMAGE_HPP_
+# define SLIM_TEXTURE_IMAGE_HPP_
 
 # include "slim/data.hpp"
-# include "slim/assets/Asset.hpp"
 # include "slim/assets/SingleFileAsset.hpp"
+# include "slim/memory/Chunk.hpp"
 
 namespace slim
 {
-namespace assets
+namespace texture
 {
 
-class			Image : public SingleFileAsset
+class			Image : public assets::SingleFileAsset
 {
 public:
     static const char* const	typeName;
 
 public:
-    static Image*	getErrorImage(); // Return single white pixel.
-
-public:
-    explicit Image(const char* const name);
-    Image(const Image& reference);
+    Image(memory::Chunk& memory, const char* const name);
     virtual ~Image();
 
 public:
@@ -29,14 +25,15 @@ public:
     inline const byte*	getPixels() const;
 
 protected:
-    bool	loadFromFile(const char* const path) override;
-    void	unloadData() override;
+    virtual bool	loadFromFile(const char* const path) override;
+    virtual void	unloadData() override;
 
 private:
     void	setErrorImage();
     void	setData(unsigned int width, unsigned int height, byte* pixels);
 
 protected:
+    memory::Chunk&	m_memory;
     unsigned int	m_width;
     unsigned int	m_height;
     byte*		m_pixels;
@@ -47,4 +44,4 @@ protected:
 
 # include "Image.ipp"
 
-#endif // !SLIM_ASSETS_IMAGE_HPP_
+#endif // !SLIM_TEXTURE_IMAGE_HPP_

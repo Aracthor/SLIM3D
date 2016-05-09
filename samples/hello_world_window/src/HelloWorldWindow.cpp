@@ -1,9 +1,9 @@
 #include "slim/debug/LogManager.hpp"
 #include "slim/events/CloseListener.hpp"
 
-#include "HelloWorldEngine.hpp"
+#include "HelloWorldWindow.hpp"
 
-HelloWorldEngine::HelloWorldEngine(int argc, char** argv) :
+HelloWorldWindow::HelloWorldWindow(int argc, char** argv) :
     slim::engine::Engine(argc, argv)
 {
     m_windowParameters.width = 800;
@@ -12,19 +12,19 @@ HelloWorldEngine::HelloWorldEngine(int argc, char** argv) :
     m_windowParameters.title = "SLIM3D samples - hello world window";
 }
 
-HelloWorldEngine::~HelloWorldEngine()
+HelloWorldWindow::~HelloWorldWindow()
 {
 }
 
 void
-HelloWorldEngine::onInit()
+HelloWorldWindow::onInit()
 {
     this->getCurrentWindow()->getEventsManager().addCloseListener<slim::events::CloseListener>(*this);
     this->getCurrentWindow()->getEventsManager().addKeyPressListener<slim::events::CloseListener>(*this, slim::events::keyboard::escape);
 }
 
 void
-HelloWorldEngine::onUpdate(slim::time::Clock::time elapsed)
+HelloWorldWindow::onUpdate(slim::time::Clock::time elapsed)
 {
     slim::debug::LogManager::instance.graphics.info << elapsed << slim::debug::LogStream::endline;
 }

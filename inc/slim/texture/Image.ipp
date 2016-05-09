@@ -1,6 +1,6 @@
 namespace slim
 {
-namespace assets
+namespace texture
 {
 
 unsigned int

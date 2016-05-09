@@ -1,8 +1,8 @@
-#include "HelloWorldWindow.hpp"
+#include "Cube.hpp"
 
 int	main(int argc, char** argv)
 {
-    HelloWorldWindow	engine(argc, argv);
+    Cube	engine(argc, argv);
 
     engine.start();
 

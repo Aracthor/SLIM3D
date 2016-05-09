@@ -35,5 +35,12 @@ Material::setShader(const shader::Program* shader)
     this->listen(shader);
 }
 
+void
+Material::setTexture(const texture::Texture* texture)
+{
+    m_texture = texture;
+    this->listen(texture);
+}
+
 }
 }

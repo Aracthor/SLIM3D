@@ -40,16 +40,6 @@ Mesh::~Mesh()
 void
 Mesh::draw() const
 {
-    // GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f,
-    // 			     -0.5f, -0.5f, 0.0f,
-    // 			     0.5f, -0.5f, 0.0f
-    // };
-
-    // glVertexAttribPointer ( 0, 3, GL_FLOAT, GL_FALSE, 0, vVertices );
-
-    // glDrawArrays ( GL_TRIANGLES, 0, 3 );
-    // SLIM_GRAPHICS_GL_CHECK();
-
     m_vao.bind();
     {
 	if (m_vao.useIndices())
@@ -79,7 +69,6 @@ Mesh::loadFromFile(const char* const path)
 
     m_renderMode = triangles;
     s_loader->generateVAO(data, m_vao);
-    // TODO
 
     return true;
 }

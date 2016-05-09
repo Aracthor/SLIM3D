@@ -1,7 +1,6 @@
 #include <algorithm>
 
 #include "slim/assets/Asset.hpp"
-#include "slim/assets/Image.hpp"
 #include "slim/assets/Manager.hpp"
 #include "slim/debug/assert.hpp"
 #include "slim/debug/LogManager.hpp"
@@ -10,6 +9,7 @@
 #include "slim/mesh/Mesh.hpp"
 #include "slim/shader/Program.hpp"
 #include "slim/shader/Shader.hpp"
+#include "slim/texture/Image.hpp"
 #include "slim/io/macros.h"
 
 namespace slim
@@ -36,11 +36,11 @@ Manager::onInit()
     m_memory.init(memory::Manager::instance.createChunk<ChunkType>(SLIM_ASSETS_MANAGER_SIZE, "Assets manager"));
 
     // Register SLIM predefined assets.
-    this->registerAssetType<assets::Image>();
     this->registerAssetType<mesh::Material>();
     this->registerAssetType<mesh::Mesh>();
     this->registerAssetType<shader::Program>();
     this->registerAssetType<shader::Shader>();
+    this->registerAssetType<texture::Image>();
 
     // Assets loaders
     mesh::Mesh::initLoader(m_memory.getData());

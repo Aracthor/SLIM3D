@@ -1,5 +1,5 @@
-#ifndef HELLO_WORD_SHADER_HH_
-# define HELLO_WORD_SHADER_HH_
+#ifndef HELLO_WORD_SHADER_HPP_
+# define HELLO_WORD_SHADER_HPP_
 
 # include "slim/engine/Engine.hpp"
 # include "slim/shader/Program.hpp"
@@ -20,4 +20,4 @@ private:
     slim::shader::Program*	m_program;
 };
 
-#endif // !HELLO_WORD_SHADER_HH_
+#endif // !HELLO_WORD_SHADER_HPP_

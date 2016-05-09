@@ -81,6 +81,7 @@ FrameRenderer::draw()
 	for (meshes = list->meshes; meshes != nullptr; meshes = meshes->next)
 	{
 	    list->shader->setUniform("modelMatrix", *meshes->matrix);
+	    meshes->mesh->getMaterial()->getTexture()->bind();
 	    meshes->mesh->draw();
 	}
     }
