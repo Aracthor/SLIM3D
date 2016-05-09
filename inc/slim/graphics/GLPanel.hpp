@@ -32,6 +32,9 @@ public:
 public:
     void			clearBuffers() const;
 
+protected:
+    void			enableModules() const;
+
 private:
     Viewport	m_viewport;
     mesh::Color	m_clearColor;

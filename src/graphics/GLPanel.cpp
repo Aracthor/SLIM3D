@@ -53,5 +53,15 @@ GLPanel::clearBuffers() const
     glClear(mask);
 }
 
+
+void
+GLPanel::enableModules() const
+{
+    if (m_depth)
+    {
+	glEnable(GL_DEPTH_TEST);
+    }
+}
+
 }
 }

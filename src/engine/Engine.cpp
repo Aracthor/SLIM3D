@@ -97,6 +97,9 @@ Engine::init()
     m_synchronizer.addLoop(&m_eventsLoop);
     m_synchronizer.restart();
 
+    // Init OpenGL stuff.
+    GLPanel::enableModules();
+
     this->onInit(); // Implemented by user
 }
 
