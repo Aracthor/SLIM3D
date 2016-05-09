@@ -37,5 +37,17 @@ Window::getEventsManager()
     return m_eventsManager;
 }
 
+Vector2
+Window::getCenter() const
+{
+    return Vector2(m_width / 2, m_height / 2);
+}
+
+void
+Window::setCursorAtCenter()
+{
+    this->setCursor(m_width / 2, m_height / 2);
+}
+
 }
 }

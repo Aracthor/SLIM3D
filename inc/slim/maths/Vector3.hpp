@@ -44,6 +44,9 @@ public:
     Vector3<T>&	lerpInterpolation(const Vector3<T>& vector, T ratio);
 
 public:
+    inline const T*	asArray() const;
+
+public:
     inline Vector3<T>	add(const Vector3<T>& vector) const;
     inline Vector3<T>	sub(const Vector3<T>& vector) const;
     inline Vector3<T>	vectorProduct(const Vector3<T>& vector) const;

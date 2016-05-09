@@ -31,7 +31,7 @@ public:
     inline void			setUp(const Vector3& up);
 
 public:
-    inline void			getViewMatrix(Matrix4x4& matrix) const;
+    void			getViewMatrix(Matrix4x4& matrix) const;
     virtual void		getProjectionMatrix(Matrix4x4& matrix) const = 0;
 
 public:

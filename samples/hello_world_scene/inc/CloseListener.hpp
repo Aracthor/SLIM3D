@@ -7,13 +7,13 @@
 class CloseListener : public slim::events::IListener
 {
 public:
-    CloseListener(slim::engine::Engine* engine);
+    CloseListener(slim::engine::Engine& engine);
 
 public:
     void onEvent() override;
 
 private:
-    slim::engine::Engine*	m_engine;
+    slim::engine::Engine&	m_engine;
 };
 
 #endif // !CLOSE_LISTENER

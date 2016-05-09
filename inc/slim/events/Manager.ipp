@@ -5,61 +5,78 @@ namespace slim
 namespace events
 {
 
+template <class LISTENER, class PARAM>
 void
-Manager::addKeyListener(IListener* listener, keyboard::EKeyCode keyCode)
+Manager::addKeyListener(PARAM& param, keyboard::EKeyCode keyCode)
 {
     SLIM_DEBUG_ASSERT(!m_keyListeners[keyCode]);
-    m_keyListeners[keyCode] = listener;
+    m_keyListeners[keyCode] = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addKeyPressListener(IListener* listener, keyboard::EKeyCode keyCode)
+Manager::addKeyPressListener(PARAM& param, keyboard::EKeyCode keyCode)
 {
     SLIM_DEBUG_ASSERT(!m_keyPressListeners[keyCode]);
-    m_keyPressListeners[keyCode] = listener;
+    m_keyPressListeners[keyCode] = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addKeyReleaseListener(IListener* listener, keyboard::EKeyCode keyCode)
+Manager::addKeyReleaseListener(PARAM& param, keyboard::EKeyCode keyCode)
 {
     SLIM_DEBUG_ASSERT(!m_keyReleaseListeners[keyCode]);
-    m_keyReleaseListeners[keyCode] = listener;
+    m_keyReleaseListeners[keyCode] = m_memory.create<LISTENER>(param);
 }
 
+
+template <class LISTENER, class PARAM>
 void
-Manager::addMouseButtonListener(IMouseListener* listener, mouse::EButton button)
+Manager::addMouseButtonListener(PARAM& param, mouse::EButton button)
 {
     SLIM_DEBUG_ASSERT(!m_mouseButtonListeners[button]);
-    m_mouseButtonListeners[button] = listener;
+    m_mouseButtonListeners[button] = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addMouseButtonPressListener(IMouseListener* listener, mouse::EButton button)
+Manager::addMouseButtonPressListener(PARAM& param, mouse::EButton button)
 {
     SLIM_DEBUG_ASSERT(!m_mouseButtonPressListeners[button]);
-    m_mouseButtonPressListeners[button] = listener;
+    m_mouseButtonPressListeners[button] = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addMouseButtonReleaseListener(IMouseListener* listener, mouse::EButton button)
+Manager::addMouseButtonReleaseListener(PARAM& param, mouse::EButton button)
 {
     SLIM_DEBUG_ASSERT(!m_mouseButtonReleaseListeners[button]);
-    m_mouseButtonReleaseListeners[button] = listener;
+    m_mouseButtonReleaseListeners[button] = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addMouseMovementListener(IMouseListener* listener)
+Manager::addMouseMovementListener(PARAM& param)
 {
     SLIM_DEBUG_ASSERT(!m_mouseMovementListener);
-    m_mouseMovementListener = listener;
+    m_mouseMovementListener = m_memory.create<LISTENER>(param);
 }
 
+template <class LISTENER, class PARAM>
 void
-Manager::addCloseListener(IListener* listener)
+Manager::addCloseListener(PARAM& param)
 {
     SLIM_DEBUG_ASSERT(!m_closeListener);
-    m_closeListener = listener;
+    m_closeListener = m_memory.create<LISTENER>(param);
 }
+
+
+void
+Manager::setNextMouseMovementForced()
+{
+    m_nextMouseMovementForced = true;
+}
+
 
 bool
 Manager::isKeyPressed(keyboard::EKeyCode key) const
@@ -71,20 +88,6 @@ bool
 Manager::isMouseButtonPressed(mouse::EButton button) const
 {
     return m_mouseButtonsCurrentlyPressed[button];
-}
-
-
-template <class T>
-void
-Manager::deleteListeners(T** listeners, unsigned int number)
-{
-    for (unsigned int i = 0; i < number; ++i)
-    {
-	if (listeners[i])
-	{
-	    delete listeners[i];
-	}
-    }
 }
 
 }

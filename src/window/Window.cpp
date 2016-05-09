@@ -50,5 +50,12 @@ Window::resize(unsigned int width, unsigned int height)
     debug::LogManager::instance.graphics.info << "Window " << m_title <<  " resized to " << width << 'x' << height << debug::LogStream::endline;
 }
 
+void
+Window::setCursor(unsigned int x, unsigned int y)
+{
+    m_eventsManager.setNextMouseMovementForced();
+    this->setCursorImplementation(x, y);
+}
+
 }
 }

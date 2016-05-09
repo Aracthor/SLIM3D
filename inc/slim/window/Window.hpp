@@ -38,10 +38,13 @@ public:
     inline unsigned int			getHeight() const;
     inline const char*			getTitle() const;
     inline events::Manager&		getEventsManager();
+    inline Vector2		        getCenter() const;
+    inline void				setCursorAtCenter();
 
 public:
     void		setTitle(const char* title);
     void		resize(unsigned int width, unsigned int height);
+    void		setCursor(unsigned int x, unsigned int y);
 
 public:
     virtual void			display() = 0;
@@ -52,6 +55,7 @@ public:
 protected:
     virtual void        setTitleImplementation(const char* title) = 0;
     virtual void        resizeImplementation(unsigned int width, unsigned int height) = 0;
+    virtual void	setCursorImplementation(unsigned int x, unsigned int y) = 0;
 
 protected:
     unsigned int	m_width;

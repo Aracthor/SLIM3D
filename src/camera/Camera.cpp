@@ -25,6 +25,21 @@ Camera::~Camera()
 
 
 void
+Camera::getViewMatrix(Matrix4x4& matrix) const
+{
+    if (m_position == m_target)
+    {
+	debug::LogManager::instance.graphics.warning << "Position and target are equals for active camera of this frame!" << debug::LogStream::endline;
+	matrix.setIdentity();
+    }
+    else
+    {
+	matrix.lookAt(m_position, m_target, m_up);
+    }
+}
+
+
+void
 Camera::update(SLIM_CORE_UNUSED(time::Clock::time, elapsedTime))
 {
     // May be overriden in a subclass.

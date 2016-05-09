@@ -8,6 +8,7 @@
 # define SLIM_CAMERA_FREE_FLY_DEFAULT_INERTIA		0.95
 # define SLIM_CAMERA_FREE_FLY_DEFAULT_SPEED		0.00001
 # define SLIM_CAMERA_FREE_FLY_DEFAULT_SENSITIVITY	0.005
+# define SLIM_CAMERA_FREE_FLY_MAX_ANGLE_Y		SLIM_MATHS_PI / 2.0f - 0.2f
 
 namespace slim
 {
@@ -32,6 +33,11 @@ public:
 
 public:
     inline void	advance(float speed);
+    inline void	horizontalMove(float speed);
+
+public:
+    void	rotateX(float angle);
+    void	rotateY(float angle);
 
 public:
     void	registerEvents(events::Manager& manager) override;

@@ -60,20 +60,5 @@ Camera::setUp(const Vector3& up)
     m_up = up;
 }
 
-
-void
-Camera::getViewMatrix(Matrix4x4& matrix) const
-{
-    if (m_position == m_target)
-    {
-	debug::LogManager::instance.graphics.warning << "Position and target are equals for active camera of this frame!" << debug::LogStream::endline;
-	matrix.setIdentity();
-    }
-    else
-    {
-	matrix.lookAt(m_position, m_target, m_up);
-    }
-}
-
 }
 }

@@ -29,11 +29,34 @@ FreeFly::~FreeFly()
 
 
 void
+FreeFly::rotateX(float angle)
+{
+    m_angleX += angle * m_sensitivity;
+}
+
+void
+FreeFly::rotateY(float angle)
+{
+    m_angleY += angle * m_sensitivity;
+    if (m_angleY > SLIM_CAMERA_FREE_FLY_MAX_ANGLE_Y)
+    {
+	m_angleY = SLIM_CAMERA_FREE_FLY_MAX_ANGLE_Y;
+    }
+    else if (m_angleY < -SLIM_CAMERA_FREE_FLY_MAX_ANGLE_Y)
+    {
+	m_angleY = -SLIM_CAMERA_FREE_FLY_MAX_ANGLE_Y;
+    }
+}
+
+
+void
 FreeFly::registerEvents(events::Manager& manager)
 {
-    manager.addKeyListener(new freefly::MoveFront(*this), events::keyboard::w);
-    manager.addKeyListener(new freefly::MoveBack(*this), events::keyboard::s);
-    // TODO other moves
+    manager.addKeyListener<freefly::MoveFront>(*this, events::keyboard::w);
+    manager.addKeyListener<freefly::MoveBack>(*this, events::keyboard::s);
+    manager.addKeyListener<freefly::MoveRight>(*this, events::keyboard::d);
+    manager.addKeyListener<freefly::MoveLeft>(*this, events::keyboard::a);
+    manager.addMouseMovementListener<freefly::MouseMovement>(*this);
 }
 
 

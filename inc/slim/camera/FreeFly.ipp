@@ -28,5 +28,11 @@ FreeFly::advance(float speed)
     m_move += m_forward * speed;
 }
 
+void
+FreeFly::horizontalMove(float speed)
+{
+    m_move += m_left * -speed;
+}
+
 }
 }

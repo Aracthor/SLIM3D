@@ -5,6 +5,7 @@ set(SRCS_FILES
   FreeFly.cpp
   FreeFlyListeners.cpp
   Node.cpp
+  Orthogonal.cpp
   Perspective.cpp
   PARENT_SCOPE
   )

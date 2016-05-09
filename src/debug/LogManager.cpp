@@ -1,3 +1,4 @@
+#include "slim/memory/Manager.hpp"
 #include "slim/debug/LogManager.hpp"
 #include "slim/io/macros.h"
 
@@ -14,9 +15,11 @@ LogManager::LogManager() :
     FileAccesser(SLIM_DEBUG_LOGS_FOLDER),
     m_logs{
     Log("assets"),
-    Log("graphics")},
+    Log("graphics"),
+    Log("memory")},
     assets(m_logs[0]),
-    graphics(m_logs[1])
+    graphics(m_logs[1]),
+    memory(m_logs[2])
 {
 }
 
@@ -46,6 +49,9 @@ LogManager::onInit()
     {
 	log.init(directory);
     }
+
+    debug::LogManager::instance.memory.info << "Log manager started, memory initialized with " << memory::Manager::size << " bytes." << debug::LogStream::endline;
+
 
     return true; // TODO check
 }

@@ -6,7 +6,7 @@
 # include "slim/debug/Log.hpp"
 
 # define SLIM_DEBUG_LOGS_FOLDER	"logs"
-# define SLIM_DEBUG_LOGS_NUMBER	2
+# define SLIM_DEBUG_LOGS_NUMBER	3
 
 namespace slim
 {
@@ -33,6 +33,7 @@ private:
 public:
     Log&	assets;
     Log&	graphics;
+    Log&	memory;
 };
 
 }

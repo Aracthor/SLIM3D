@@ -1,3 +1,4 @@
+#include "slim/debug/LogManager.hpp"
 #include "slim/memory/Manager.hpp"
 
 #include <cstdlib>

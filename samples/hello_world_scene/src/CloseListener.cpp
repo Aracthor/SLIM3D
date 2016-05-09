@@ -1,6 +1,6 @@
 #include "CloseListener.hpp"
 
-CloseListener::CloseListener(slim::engine::Engine* engine) :
+CloseListener::CloseListener(slim::engine::Engine& engine) :
     m_engine(engine)
 {
 }
@@ -8,5 +8,5 @@ CloseListener::CloseListener(slim::engine::Engine* engine) :
 void
 CloseListener::onEvent()
 {
-    m_engine->stop();
+    m_engine.stop();
 }

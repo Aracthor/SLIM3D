@@ -177,6 +177,14 @@ Vector3<T>::lerpInterpolation(const Vector3<T>& vector, T ratio)
 
 
 template <typename T>
+const T*
+Vector3<T>::asArray() const
+{
+    return reinterpret_cast<const T*>(this);
+}
+
+
+template <typename T>
 Vector3<T>
 Vector3<T>::add(const Vector3<T>& vector) const
 {

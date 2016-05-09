@@ -30,17 +30,10 @@ WindowImplementation::~WindowImplementation()
 
 
 void
-WindowImplementation::display()
-{
-    // TODO
-    XFlush(m_display);
-}
-
-void
 WindowImplementation::pollEvents()
 {
     XEvent	event;
-    
+
     while (XCheckWindowEvent(m_display, m_window, 0xFFFFFFFF, &event) ||
 	   XCheckTypedWindowEvent(m_display, m_window, ClientMessage, &event))
     {
@@ -68,30 +61,6 @@ WindowImplementation::pollEvents()
     }
 }
 
-EGLNativeDisplayType
-WindowImplementation::getEGLDisplay()
-{
-    return (EGLNativeDisplayType)m_display;
-}
-
-EGLNativeWindowType
-WindowImplementation::getEGLWindow()
-{
-    return (EGLNativeWindowType)m_window;
-}
-
-
-void
-WindowImplementation::resizeImplementation(unsigned int width, unsigned int height)
-{
-    XResizeWindow(m_display, m_window, width, height);
-}
-
-void
-WindowImplementation::setTitleImplementation(const char* title)
-{
-    XStoreName(m_display, m_window, title);
-}
 
 static int
 errorHandler(Display* display, XErrorEvent* event)

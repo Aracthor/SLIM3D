@@ -24,7 +24,7 @@ protected:
 
 
 class	MoveFront : public Listener,
-		     public events::IListener
+		    public events::IListener
 {
 public:
     explicit MoveFront(FreeFly& camera);
@@ -35,7 +35,7 @@ public:
 };
 
 class	MoveBack : public Listener,
-		     public events::IListener
+		   public events::IListener
 {
 public:
     explicit MoveBack(FreeFly& camera);
@@ -43,6 +43,39 @@ public:
 
 public:
     void	onEvent() override;
+};
+
+class	MoveRight : public Listener,
+		    public events::IListener
+{
+public:
+    explicit MoveRight(FreeFly& camera);
+    ~MoveRight();
+
+public:
+    void	onEvent() override;
+};
+
+class	MoveLeft : public Listener,
+		   public events::IListener
+{
+public:
+    explicit MoveLeft(FreeFly& camera);
+    ~MoveLeft();
+
+public:
+    void	onEvent() override;
+};
+
+class	MouseMovement : public Listener,
+			public events::IMouseListener
+{
+public:
+    explicit MouseMovement(FreeFly& camera);
+    ~MouseMovement();
+
+public:
+    void	onEvent(const Vector2& position) override;
 };
 
 }
