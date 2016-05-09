@@ -1,11 +1,11 @@
 #include "slim/camera/FreeFly.hpp"
 #include "slim/camera/Node.hpp"
 #include "slim/debug/LogManager.hpp"
+#include "slim/events/CloseListener.hpp"
 #include "slim/memory/Manager.hpp"
 #include "slim/mesh/Mesh.hpp"
 #include "slim/mesh/Node.hpp"
 
-#include "CloseListener.hpp"
 #include "HelloWorldScene.hpp"
 
 HelloWorldScene::HelloWorldScene(int argc, char** argv) :
@@ -54,8 +54,8 @@ HelloWorldScene::onInit()
 
     slim::assets::Manager::instance.loadNeededAssets();
 
-    this->getCurrentWindow()->getEventsManager().addCloseListener<CloseListener>(*this);
-    this->getCurrentWindow()->getEventsManager().addKeyPressListener<CloseListener>(*this, slim::events::keyboard::escape);
+    this->getCurrentWindow()->getEventsManager().addCloseListener<slim::events::CloseListener>(*this);
+    this->getCurrentWindow()->getEventsManager().addKeyPressListener<slim::events::CloseListener>(*this, slim::events::keyboard::escape);
 }
 
 void

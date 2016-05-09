@@ -1,7 +1,6 @@
 project("SLIM3D")
 
 set(SRCS
-    CloseListener.cpp
     HelloWorldEngine.cpp
     main.cpp
     )
