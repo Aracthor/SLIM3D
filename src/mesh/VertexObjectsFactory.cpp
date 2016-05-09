@@ -45,24 +45,24 @@ VertexObjectsFactory::create(VertexArrayObject& dest)
 				  SLIM_MESH_NORMAL_SIZE));
 
     memcpy(&data[index], m_positions, sizeof(Position) * m_size);
-    index += sizeof(Position) * m_size;
+    index += sizeof(Position) / sizeof(float) * m_size;
 
     if (useColor)
     {
 	memcpy(&data[index], m_colors, sizeof(Color) * m_size);
-	index += sizeof(Color) * m_size;
+	index += sizeof(Color) / sizeof(float) * m_size;
     }
 
     if (useTexture)
     {
 	memcpy(&data[index], m_textureCoords, sizeof(TextureCoord) * m_size);
-	index += sizeof(TextureCoord) * m_size;
+	index += sizeof(TextureCoord) / sizeof(float) * m_size;
     }
 
     if (useNormal)
     {
 	memcpy(&data[index], m_normals, sizeof(Normal) * m_size);
-	index += sizeof(Normal) * m_size;
+	index += sizeof(Normal) / sizeof(float) * m_size;
     }
 
     if (m_indices)

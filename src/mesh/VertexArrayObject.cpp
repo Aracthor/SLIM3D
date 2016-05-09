@@ -96,7 +96,7 @@ VertexArrayObject::bindData(bool useColor, bool useTexture, bool useNormal, std:
 	index += size * sizeof(Normal);
     }
 
-    // m_dataVbo.unbind(); // TODO check if can be uncommented
+    m_dataVbo.unbind();
 }
 
 }

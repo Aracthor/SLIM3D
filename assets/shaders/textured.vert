@@ -9,14 +9,12 @@ uniform mat4	projectionMatrix;
 uniform mat4	viewMatrix;
 uniform mat4	modelMatrix;
 
-out	vec3	position;
+out	vec4	color;
 out	vec2	textureCoord;
 
 void	main()
 {
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vPosition, 1.0);
-    position = (modelMatrix * vec4(vPosition, 1.0)).xyz;
-
+    color = vec4(1.0, 1.0, 1.0, 1.0);
     textureCoord = vTexture;
-    
 }

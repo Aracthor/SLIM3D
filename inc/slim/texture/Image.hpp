@@ -29,8 +29,8 @@ protected:
     virtual void	unloadData() override;
 
 private:
-    void	setErrorImage();
-    void	setData(unsigned int width, unsigned int height, byte* pixels);
+    void		setErrorImage();
+    void		setData(unsigned int width, unsigned int height, byte* pixels);
 
 protected:
     memory::Chunk&	m_memory;
