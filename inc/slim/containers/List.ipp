@@ -58,6 +58,10 @@ List<T>::pushBack(T* elem)
     ListNode<T>*	node = m_chunk.create<ListNode<T>>(elem);
 
     node->m_prev = m_end;
+    if (m_end != nullptr)
+    {
+	m_end->m_next = node;
+    }
     m_end = node;
     if (m_begin == nullptr)
     {
@@ -109,6 +113,34 @@ List<T>::forEach(void (T::*function)(Args ...args), Args& ...args)
     while (element != nullptr)
     {
 	(**element.*function)(args...);
+	element = element->m_next;
+    }
+}
+
+template <typename T>
+template <typename ...Args>
+void
+List<T>::forEach(void (*function)(const T& element, Args ...args), Args&& ...args) const
+{
+    const ListNode<T>*	element = m_begin;
+
+    while (element != nullptr)
+    {
+	function(**element, args...);
+	element = element->m_next;
+    }
+}
+
+template <typename T>
+template <typename ...Args>
+void
+List<T>::forEach(void (*function)(T& element, Args ...args), Args&& ...args)
+{
+    const ListNode<T>*	element = m_begin;
+
+    while (element != nullptr)
+    {
+	function(*element, args...);
 	element = element->m_next;
     }
 }

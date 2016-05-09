@@ -31,7 +31,7 @@ public:
     inline EType	getType() const;
     inline GLuint	getId() const;
 
-public:
+protected:
     bool		loadFromFile(const char* const path) override;
     void		unloadData() override;
 

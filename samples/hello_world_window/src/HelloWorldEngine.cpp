@@ -19,8 +19,8 @@ HelloWorldEngine::~HelloWorldEngine()
 void
 HelloWorldEngine::onInit()
 {
-    this->getCurrentWindow()->getEventsManager().addCloseListener(new CloseListener(this));
-    this->getCurrentWindow()->getEventsManager().addKeyPressListener(new CloseListener(this), slim::events::keyboard::escape);
+    this->getCurrentWindow()->getEventsManager().addCloseListener<CloseListener>(*this);
+    this->getCurrentWindow()->getEventsManager().addKeyPressListener<CloseListener>(*this, slim::events::keyboard::escape);
 }
 
 void

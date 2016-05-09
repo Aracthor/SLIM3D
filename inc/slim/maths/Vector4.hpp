@@ -42,6 +42,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y, T z, T w);
     void	set(const Vector2<T>& vector2, T z, T w);
     void	set(const Vector3<T>& vector3, T w);
 
@@ -115,6 +116,12 @@ typedef Vector4<unsigned long>	Vector4ul;
 typedef maths::Vector4f	        Vector4;
 
 }
+
+# ifdef _DEBUG
+#  include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector4<T>& vector);
+# endif // _DEBUG
 
 # include "Vector4.ipp"
 

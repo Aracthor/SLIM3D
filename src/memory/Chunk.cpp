@@ -1,3 +1,4 @@
+#include "slim/debug/assert.hpp"
 #include "slim/memory/Chunk.hpp"
 
 #include "slim/string.h"
@@ -40,6 +41,16 @@ Chunk::realloc(void* ptr, std::size_t size)
     }
 
     return newPtr;
+}
+
+
+void
+Chunk::loadCheckpoint(Checkpoint checkpoint)
+{
+    SLIM_DEBUG_ASSERT(checkpoint >= m_start);
+
+    m_data = checkpoint;
+    m_size = m_data - m_start;
 }
 
 }

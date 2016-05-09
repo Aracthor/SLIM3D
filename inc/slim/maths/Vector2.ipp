@@ -13,8 +13,7 @@ Vector2<T>::Vector2()
 template <typename T>
 Vector2<T>::Vector2(T x, T y)
 {
-    this->x = x;
-    this->y = y;
+    this->set(x, y);
 }
 
 template <typename T>
@@ -75,6 +74,14 @@ Vector2<T>::normalize()
 
     x /= norm;
     y /= norm;
+}
+
+template <typename T>
+void
+Vector2<T>::set(T x, T y)
+{
+    this->x = x;
+    this->y = y;
 }
 
 
@@ -272,3 +279,13 @@ Vector2<T>::operator	Vector2<U>() const
 
 }
 }
+
+#ifdef _DEBUG
+template <typename T>
+std::ostream&
+operator<<(std::ostream& stream, const slim::maths::Vector2<T>& vector)
+{
+    stream << '(' << vector.x << ", " << vector.y << ')';
+    return stream;
+}
+#endif // _DEBUG

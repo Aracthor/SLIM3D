@@ -15,7 +15,7 @@ public:
     virtual ~IMouseListener() {}
 
 public:
-    virtual void	onEvent(const maths::Vector2d& position) = 0;
+    virtual void	onEvent(const Vector2& position) = 0;
 };
 
 }

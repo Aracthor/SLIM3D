@@ -20,13 +20,14 @@ public:
 public:
     inline Scene*	createBlankScene(const char* name);
     inline void		deleteScene(Scene* scene);
+    inline void		deleteAllScenes();
 
 public:
     inline const Scene*	getCurrentScene() const;
     inline Scene*	getCurrentScene();
 
 public:
-    inline void		setCurrentScene(Scene* scene);
+    void		setCurrentScene(Scene* scene);
 
 private:
     Scene*	        m_currentScene = nullptr;

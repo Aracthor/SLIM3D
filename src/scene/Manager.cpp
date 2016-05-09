@@ -13,5 +13,13 @@ Manager::~Manager()
 {
 }
 
+
+void
+Manager::setCurrentScene(Scene* scene)
+{
+    m_currentScene = scene;
+    scene->getRoot()->setAssetsNeeded();
+}
+
 }
 }

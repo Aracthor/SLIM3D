@@ -31,11 +31,3 @@ HelloWorldShader::onInit()
 
     this->stop();
 }
-
-
-void
-HelloWorldShader::onShutdown()
-{
-    delete m_vertexShader;
-    delete m_fragmentShader;
-}

@@ -28,6 +28,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y);
 
 public:
     Vector2<T>&	addTo(const Vector2<T>& vector);
@@ -83,6 +84,12 @@ typedef Vector2<unsigned long>	Vector2ul;
 typedef maths::Vector2f	        Vector2;
 
 }
+
+# ifdef _DEBUG
+# include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector2<T>& vector);
+# endif // _DEBUG
 
 # include "Vector2.ipp"
 

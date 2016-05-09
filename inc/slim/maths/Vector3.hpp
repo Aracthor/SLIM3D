@@ -32,6 +32,7 @@ public:
 public:
     void	setAllElements(T n);
     void	normalize();
+    void	set(T x, T y, T z);
     void        set(const Vector2<T>& vector2, T z);
 
 public:
@@ -41,6 +42,9 @@ public:
     Vector3<T>&	scaleTo(T n);
     Vector3<T>&	unscaleTo(T n);
     Vector3<T>&	lerpInterpolation(const Vector3<T>& vector, T ratio);
+
+public:
+    inline const T*	asArray() const;
 
 public:
     inline Vector3<T>	add(const Vector3<T>& vector) const;
@@ -92,6 +96,12 @@ typedef Vector3<unsigned long>	Vector3ul;
 typedef maths::Vector3f	        Vector3;
 
 }
+
+# ifdef _DEBUG
+# include <ostream>
+template <typename T>
+inline std::ostream&	operator<<(std::ostream& stream, const slim::maths::Vector3<T>& vector);
+# endif // _DEBUG
 
 # include "Vector3.ipp"
 

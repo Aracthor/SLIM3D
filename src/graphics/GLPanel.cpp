@@ -8,6 +8,7 @@ namespace graphics
 {
 
 GLPanel::GLPanel() :
+    m_clearColor(SLIM_GRAPHICS_DEFAULT_CLEAR_COLOR),
     m_depth(SLIM_GRAPHICS_DEFAULT_DEPTH_ENABLED)
 {
 }
@@ -32,9 +33,16 @@ GLPanel::setViewport(unsigned int x, unsigned int y, unsigned int width, unsigne
     this->setViewport(viewport);
 }
 
+void
+GLPanel::setClearColor(const mesh::Color& color)
+{
+    m_clearColor = color;
+    glClearColor(color.x, color.y, color.z, color.w);
+}
+
 
 void
-GLPanel::clearBuffers()
+GLPanel::clearBuffers() const
 {
     GLbitfield	mask = GL_COLOR_BUFFER_BIT;
 
@@ -42,6 +50,7 @@ GLPanel::clearBuffers()
     {
 	mask |= GL_DEPTH_BUFFER_BIT;
     }
+    glClear(mask);
 }
 
 }

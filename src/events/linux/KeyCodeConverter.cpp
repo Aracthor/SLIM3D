@@ -4,12 +4,15 @@
 #define XK_MISCELLANY
 #include <X11/keysymdef.h>
 
+#include <cstring>
+
 namespace slim
 {
 namespace events
 {
 
-KeyCodeConverter::KeyCodeConverter()
+KeyCodeConverter::KeyCodeConverter(::Display *& display) :
+    m_display(display)
 {
     m_codes[XK_Escape]		= keyboard::escape,
 

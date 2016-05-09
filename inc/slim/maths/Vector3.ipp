@@ -13,9 +13,7 @@ Vector3<T>::Vector3()
 template <typename T>
 Vector3<T>::Vector3(T x, T y, T z)
 {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->set(x, y, z);
 }
 
 template <typename T>
@@ -85,6 +83,15 @@ Vector3<T>::normalize()
     x /= norm;
     y /= norm;
     z /= norm;
+}
+
+template <typename T>
+void
+Vector3<T>::set(T x, T y, T z)
+{
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 template <typename T>
@@ -166,6 +173,14 @@ Vector3<T>::lerpInterpolation(const Vector3<T>& vector, T ratio)
     this->z = lib::lerp(this->z, vector.z, ratio);
 
     return *this;
+}
+
+
+template <typename T>
+const T*
+Vector3<T>::asArray() const
+{
+    return reinterpret_cast<const T*>(this);
 }
 
 
@@ -336,3 +351,13 @@ Vector3<T>::operator	Vector3<U>() const
 
 }
 }
+
+#ifdef _DEBUG
+template <typename T>
+std::ostream&
+operator<<(std::ostream& stream, const slim::maths::Vector3<T>& vector)
+{
+    stream << '(' << vector.x << ", " << vector.y << ", " << vector.z << ')';
+    return stream;
+}
+#endif // _DEBUG

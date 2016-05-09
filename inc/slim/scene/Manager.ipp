@@ -12,7 +12,13 @@ Manager::createBlankScene(const char* name)
 void
 Manager::deleteScene(Scene* scene)
 {
-    return m_scenes.destroy(*scene);
+    m_scenes.destroy(*scene);
+}
+
+void
+Manager::deleteAllScenes()
+{
+    m_scenes.clear();
 }
 
 
@@ -26,12 +32,6 @@ Scene*
 Manager::getCurrentScene()
 {
     return m_currentScene;
-}
-
-void
-Manager::setCurrentScene(Scene* scene)
-{
-    m_currentScene = scene;
 }
 
 }
