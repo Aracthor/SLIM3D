@@ -1,8 +1,7 @@
-#include "slim/assets/Asset.hh"
-#include "slim/core/attributes.h"
-#include "slim/debug/assert.hh"
+#include "slim/assets/Asset.hpp"
+#include "slim/debug/assert.hpp"
 
-#include <iostream> // DEBUG
+#include "slim/attributes.h"
 
 namespace slim
 {
@@ -41,14 +40,17 @@ Asset::unload()
     this->unloadData();
 }
 
+static void
+setAssetNeeded(const Asset* const& asset)
+{
+    asset->setNeeded(true);
+}
+
 void
 Asset::setNeeded(bool needed) const
 {
     m_needed = needed;
-    for (const Asset* asset : m_assets)
-    {
-	asset->setNeeded(needed);
-    }
+    m_assets.forEach(&setAssetNeeded);
 }
 
 

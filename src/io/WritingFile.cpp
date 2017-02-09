@@ -1,4 +1,4 @@
-#include "slim/io/WritingFile.hh"
+#include "slim/io/WritingFile.hpp"
 
 namespace slim
 {
@@ -10,7 +10,7 @@ WritingFile::WritingFile(const char* name) :
 {
 }
 
-WritingFile::~WritingFile() noexcept(false)
+WritingFile::~WritingFile()
 {
 }
 

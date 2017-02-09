@@ -1,4 +1,5 @@
-#include "slim/debug/SyscallException.hh"
+#include "slim/debug/exit.hpp"
+#include "slim/debug/syscall.hpp"
 
 #include <unistd.h>
 
@@ -26,7 +27,7 @@ Sleeper::sleep(time_t seconds)
 {
     if (::sleep(seconds) != 0)
     {
-	throw debug::SyscallException("Sleep interrupted", __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Sleep interrupted");
     }
 }
 

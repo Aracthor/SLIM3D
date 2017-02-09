@@ -1,7 +1,6 @@
-#include "slim/assets/Asset.hh"
-#include "slim/assets/ListenersManager.hh"
-#include "slim/debug/assert.hh"
-#include "slim/debug/LogManager.hh" // debug
+#include "slim/assets/Asset.hpp"
+#include "slim/assets/ListenersManager.hpp"
+#include "slim/debug/assert.hpp"
 
 namespace slim
 {

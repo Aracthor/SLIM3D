@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "slim/core/system.h"
-#include "slim/debug/console.hh"
-#include "slim/debug/Log.hh"
-#include "slim/io/BufferedWritingFile.hh"
-#include "slim/maths/lib.hh"
+#include "slim/system.h"
+#include "slim/debug/console.hpp"
+#include "slim/debug/Log.hpp"
+#include "slim/io/BufferedWritingFile.hpp"
+#include "slim/maths/lib.hpp"
 
 namespace slim
 {
@@ -62,9 +62,12 @@ Log::write(const char* line, unsigned int size, unsigned int level)
     {
 	if (level >= SLIM_DEBUG_WARNING_LEVEL)
 	{
-	    std::cerr << console::bold;
+	    std::cerr << console::bold << line << console::nothing;
 	}
-	std::cerr << line << console::nothing;
+	else
+	{
+	    std::cout << line;
+	}
     }
 }
 

@@ -1,95 +1,60 @@
-#include "slim/debug/LogManager.hh"
-#include "slim/window/GLFWException.hh"
-#include "slim/window/MonitorsManager.hh"
-#include "slim/window/Window.hh"
+#include "slim/debug/LogManager.hpp"
+#include "slim/window/Window.hpp"
 
 namespace slim
 {
 namespace window
 {
 
-Window::Window(Parameters parameters) :
-    m_parameters(parameters),
-    m_eventsManager(),
-    m_eventsLoop(m_eventsManager)
+Window*
+Window::s_current = nullptr;
+
+
+Window::Window(unsigned int width, unsigned int height, const char* title, bool fullscreen) :
+    m_width(width),
+    m_height(height),
+    m_title(title),
+    m_fullscreen(fullscreen),
+    m_eventsManager()
 {
-    GLFWmonitor*	monitor = nullptr;
+    debug::LogManager::instance.graphics.info << "Window created: " << title << debug::LogStream::endline;
+    s_current = this;
+}
 
-    if (parameters.fullscreen)
-    {
-	monitor = glfwGetPrimaryMonitor();
-	if (monitor == nullptr)
-	{
-	    throw GLFWException("Cannot get primary monitor.", __FILE__, __func__, __LINE__);
-	}
-    }
-
-    m_window = glfwCreateWindow(parameters.width, parameters.height, parameters.title, monitor, nullptr);
-    if (m_window == nullptr)
-    {
-	throw GLFWException("Couldn't create window.", __FILE__, __func__, __LINE__);
-    }
-    debug::LogManager::instance.graphics.info << "Window created." << debug::LogStream::endline;
-
-    glfwMakeContextCurrent(m_window);
-    glfwSwapInterval(1);
-
-    this->initEventsManager();
+Window::Window(const Parameters& parameters) :
+    Window(parameters.width, parameters.height, parameters.title, parameters.fullscreen)
+{
 }
 
 Window::~Window()
 {
-    glfwDestroyWindow(m_window);
+    debug::LogManager::instance.graphics.info << "Window " << m_title << " destroyed" << debug::LogStream::endline;
 }
 
 
-static void
-onKey(GLFWwindow* glfwWindow, int keycode, int scancode, int action, int bitfield)
+void
+Window::setTitle(const char* title)
 {
-    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
-
-    window->getEventsManager().onKeyAction
-	(static_cast<events::keyboard::EKeyCode>(keycode),
-	 scancode,
-	 static_cast<events::keyboard::EAction>(action),
-	 bitfield);
-}
-
-static void
-onMouseButton(GLFWwindow* glfwWindow, int button, int action, int bitfield)
-{
-    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
-
-    window->getEventsManager().onMouseButtonAction
-	(static_cast<events::mouse::EButton>(button),
-	 static_cast<events::mouse::EAction>(action),
-	 bitfield);
-}
-
-static void
-onMouseMovement(GLFWwindow* glfwWindow, double x, double y)
-{
-    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
-
-    window->getEventsManager().onMouseMovement(x, y);
-}
-
-static void
-onClose(GLFWwindow* glfwWindow)
-{
-    Window*	window = MonitorsManager::instance.getWindow(glfwWindow);
-
-    window->getEventsManager().onClose();
+    const char*	oldTitle = m_title;
+    m_title = title;
+    this->setTitleImplementation(title);
+    debug::LogManager::instance.graphics.info << "Window " << oldTitle << " renamed to: " << title << debug::LogStream::endline;
 }
 
 void
-Window::initEventsManager()
+Window::resize(unsigned int width, unsigned int height)
 {
-    MonitorsManager::instance.addWindow(m_window, this);
-    glfwSetKeyCallback(m_window, &onKey);
-    glfwSetMouseButtonCallback(m_window, &onMouseButton);
-    glfwSetCursorPosCallback(m_window, &onMouseMovement);
-    glfwSetWindowCloseCallback(m_window, &onClose);
+    m_width = width;
+    m_height = height;
+    this->resizeImplementation(width, height);
+    debug::LogManager::instance.graphics.info << "Window " << m_title <<  " resized to " << width << 'x' << height << debug::LogStream::endline;
+}
+
+void
+Window::setCursor(unsigned int x, unsigned int y)
+{
+    m_eventsManager.setNextMouseMovementForced();
+    this->setCursorImplementation(x, y);
 }
 
 }

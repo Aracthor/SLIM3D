@@ -1,8 +1,8 @@
 #include <stdexcept>
 
-#include "slim/debug/LogManager.hh"
-#include "slim/assets/data.hh"
-#include "slim/assets/Image.hh"
+#include "slim/data.hpp"
+#include "slim/debug/LogManager.hpp"
+#include "slim/assets/Image.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>

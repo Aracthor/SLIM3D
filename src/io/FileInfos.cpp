@@ -1,5 +1,5 @@
-#include "slim/debug/SyscallException.hh"
-#include "slim/io/FileInfos.hh"
+#include "slim/debug/syscall.hpp"
+#include "slim/io/FileInfos.hpp"
 
 namespace slim
 {

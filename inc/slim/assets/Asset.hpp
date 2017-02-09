@@ -1,45 +1,52 @@
-#include "slim/assets/Manager.hh"
+#ifndef SLIM_ASSETS_ASSET_HPP_
+# define SLIM_ASSETS_ASSET_HPP_
+
+# include "slim/assets/Listener.hpp"
+# include "slim/memory/Chunk.hpp"
 
 namespace slim
 {
 namespace assets
 {
 
-template <class ASSET, typename ...Args>
-ASSET*
-Asset::create(Args&&... args)
+class	Asset : public Listener
 {
-    ASSET*	asset = new ASSET(args...);
+public:
+    template <class ASSET, typename ...Args> // ASSET must inherit from this class.
+    static ASSET*	create(memory::Chunk& chunk, Args&&... args);
 
-    Manager::instance.registerAsset(asset);
+protected:
+    Asset(const char* const type, const char* const name);
+    Asset(const Asset& reference);
 
-    return asset;
+public:
+    virtual ~Asset();
+
+public:
+    bool		load(const char* const path);
+    void		unload();
+    void		setNeeded(bool needed) const;
+
+protected:
+    virtual bool	loadData(const char* const path);
+    virtual void	unloadData();
+
+public:
+    inline const char*	getType() const;
+    inline const char*	getName() const;
+    inline bool		isNeeded() const;
+    inline bool		isLoaded() const;
+
+private:
+    const char* const	m_type;
+    const char* const	m_name;
+    mutable bool	m_needed = false;
+    bool	        m_loaded = false;
+};
+
+}
 }
 
+# include "Asset.ipp"
 
-const char*
-Asset::getType() const
-{
-    return m_type;
-}
-
-const char*
-Asset::getName() const
-{
-    return m_name;
-}
-
-bool
-Asset::isNeeded() const
-{
-    return m_needed;
-}
-
-bool
-Asset::isLoaded() const
-{
-    return m_loaded;
-}
-
-}
-}
+#endif // !SLIM_ASSETS_ASSET_HPP_

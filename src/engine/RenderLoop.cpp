@@ -1,6 +1,6 @@
-#include "slim/core/attributes.h"
-#include "slim/engine/Engine.hh"
-#include "slim/engine/RenderLoop.hh"
+#include "slim/attributes.h"
+#include "slim/engine/Engine.hpp"
+#include "slim/engine/RenderLoop.hpp"
 
 namespace slim
 {

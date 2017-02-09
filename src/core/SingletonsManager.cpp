@@ -1,10 +1,7 @@
 #include <typeinfo>
 
-#include "slim/containers/Buffer.hh"
-#include "slim/core/SingletonsManager.hh"
-#include "slim/debug/LogManager.hh"
-#include "slim/maths/Helper.hh"
-#include "slim/window/MonitorsManager.hh"
+#include "slim/core/SingletonsManager.hpp"
+#include "slim/debug/exit.hpp"
 
 namespace slim
 {
@@ -26,10 +23,7 @@ SingletonsManager::addSingleton(Singleton* singleton)
 {
     if (m_inited)
     {
-	containers::Buffer<char, 0x200>	buffer;
-
-	buffer << "Trying to add singleton " << typeid(*singleton).name() << " after SingletonManager initialization." << '\0';
-	throw debug::Exception(buffer.getData(), __FILE__, __func__, __LINE__);
+	SLIM_DEBUG_EXIT("Trying to add singleton ", typeid(*singleton).name(), " after SingletonsManager initialization.");
     }
     m_singletons.push_back(singleton);
 }
@@ -38,20 +32,24 @@ SingletonsManager::addSingleton(Singleton* singleton)
 void
 SingletonsManager::initSingletons()
 {
+    unsigned int	i;
+
     m_inited = true;
-    for (Singleton* singleton : m_singletons)
+    for (i = 0; i < m_singletons.size(); i++)
     {
-	singleton->init();
+	m_singletons[i]->init();
     }
 }
 
 void
 SingletonsManager::destroySingletons()
 {
+    int	i;
+
     m_inited = false;
-    for (Singleton* singleton : m_singletons)
+    for (i = m_singletons.size() - 1; i >= 0; i--)
     {
-	singleton->destroy();
+	m_singletons[i]->destroy();
     }
     m_singletons.clear();
 }

@@ -1,9 +1,15 @@
 #include <algorithm>
 
-#include "slim/assets/Asset.hh"
-#include "slim/assets/Manager.hh"
-#include "slim/debug/assert.hh"
-#include "slim/debug/LogManager.hh"
+#include "slim/assets/Asset.hpp"
+#include "slim/assets/Image.hpp"
+#include "slim/assets/Manager.hpp"
+#include "slim/debug/assert.hpp"
+#include "slim/debug/LogManager.hpp"
+#include "slim/memory/Manager.hpp"
+#include "slim/mesh/Material.hpp"
+#include "slim/mesh/Mesh.hpp"
+#include "slim/shader/Program.hpp"
+#include "slim/shader/Shader.hpp"
 #include "slim/io/macros.h"
 
 namespace slim
@@ -24,15 +30,33 @@ Manager::~Manager()
 }
 
 
-void
+bool
 Manager::onInit()
 {
+    m_memory.init(memory::Manager::instance.createChunk<ChunkType>(SLIM_ASSETS_MANAGER_SIZE, "Assets manager"));
+
+    // Register SLIM predefined assets.
+    this->registerAssetType<assets::Image>();
+    this->registerAssetType<mesh::Material>();
+    this->registerAssetType<mesh::Mesh>();
+    this->registerAssetType<shader::Program>();
+    this->registerAssetType<shader::Shader>();
+
+    // Assets loaders
+    mesh::Mesh::initLoader(m_memory.getData());
+
+    return true;
 }
 
 void
 Manager::onDestroy()
 {
     this->unloadAllAssets();
+
+    // Assets loaders
+    mesh::Mesh::destroyLoader(m_memory.getData());
+
+    m_memory.destroy();
 }
 
 void
@@ -99,7 +123,7 @@ Manager::unloadAllAssets()
 		this->unload(asset);
 	    }
 	}
-	debug::LogManager::instance.assets.info << "Finished loading of " << assets.first << " assets."
+	debug::LogManager::instance.assets.info << "Finished unloading of " << assets.first << " assets."
 						<< debug::LogStream::endline;
     }
 }

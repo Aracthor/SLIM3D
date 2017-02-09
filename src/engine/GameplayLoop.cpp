@@ -1,5 +1,5 @@
-#include "slim/engine/Engine.hh"
-#include "slim/engine/GameplayLoop.hh"
+#include "slim/engine/Engine.hpp"
+#include "slim/engine/GameplayLoop.hpp"
 
 namespace slim
 {

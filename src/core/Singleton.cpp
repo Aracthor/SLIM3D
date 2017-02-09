@@ -1,4 +1,4 @@
-#include "slim/core/Singleton.hh"
+#include "slim/core/Singleton.hpp"
 
 namespace slim
 {
@@ -15,11 +15,11 @@ Singleton::~Singleton()
 }
 
 
-void
+bool
 Singleton::init()
 {
     m_inited = true;
-    this->onInit();
+    return this->onInit();
 }
 
 void

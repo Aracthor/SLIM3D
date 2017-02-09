@@ -1,8 +1,8 @@
-#include "slim/containers/Buffer.hh"
-#include "slim/debug/LogManager.hh"
-#include "slim/graphics/GLException.hh"
-#include "slim/io/VirtualFile.hh"
-#include "slim/shader/Shader.hh"
+#include "slim/containers/Buffer.hpp"
+#include "slim/debug/LogManager.hpp"
+#include "slim/graphics/glDebug.hpp"
+#include "slim/io/VirtualFile.hpp"
+#include "slim/shader/Shader.hpp"
 
 namespace slim
 {
@@ -47,10 +47,9 @@ Shader::readFromData(const char* const data)
 {
     GLint	compiled;
 
-    debug::LogManager::instance.graphics.info << "Compiling shader \"" << this->getName() << "\"..." << debug::LogStream::endline;
+    debug::LogManager::instance.assets.info << "Compiling shader \"" << this->getName() << "\"..." << debug::LogStream::endline;
 
-    // TODO what are those nullptr ?
-    SLIM_GRAPHICS_GL_CHECK(m_id = glCreateShader(m_type));
+    SLIM_GRAPHICS_GL_ASSERT(m_id = glCreateShader(m_type));
     glShaderSource(m_id, 1, &data, nullptr);
     glCompileShader(m_id);
 
@@ -60,10 +59,16 @@ Shader::readFromData(const char* const data)
 	char	error[SLIM_DEBUG_MESSAGE_BUFFER_SIZE];
 
 	glGetShaderInfoLog(m_id, SLIM_DEBUG_MESSAGE_BUFFER_SIZE, nullptr, error);
+	if (glGetError() != GL_NO_ERROR)
+	{
+	    SLIM_DEBUG_EXIT("Error trying to read ", this->getName(), " shader info log: ", graphics::getErrorMessage(glGetError()));
+	}
 	debug::LogManager::instance.graphics.error << "Error compiling shader " << this->getName() << ": " << error << debug::LogStream::endline;
     }
-
-    debug::LogManager::instance.graphics.info << "Compiled shader \"" << this->getName() << "\"." << debug::LogStream::endline;
+    else
+    {
+	debug::LogManager::instance.graphics.info << "Compiled shader \"" << this->getName() << "\"." << debug::LogStream::endline;
+    }
 
     return compiled;
 }

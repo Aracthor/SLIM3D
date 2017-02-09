@@ -1,26 +1,43 @@
+#ifndef SLIM_CLOCK_TIME_HPP_
+# define SLIM_CLOCK_TIME_HPP_
+
 namespace slim
 {
 namespace time
 {
 
-bool
-Clock::isRunning() const
+class	Clock
 {
-    return (m_running);
+public:
+    typedef unsigned long	time;
+
+public:
+    Clock();
+    ~Clock();
+
+public:
+    void	update();
+    time	reset();
+
+public:
+    inline bool	isRunning() const;
+    inline time	getElapsedTime() const;
+
+public:
+    inline void	setRunning(bool running);
+
+private:
+    time	getCurrentTime() const;
+
+private:
+    bool	m_running;
+    time	m_start;
+    time	m_elapsedTime;
+};
+
+}
 }
 
-Clock::time
-Clock::getElapsedTime() const
-{
-    return (m_elapsedTime);
-}
+# include "Clock.ipp"
 
-
-void
-Clock::setRunning(bool running)
-{
-    m_running = running;
-}
-
-}
-}
+#endif // !SLIM_CLOCK_TIME_HPP_

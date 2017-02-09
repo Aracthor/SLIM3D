@@ -2,7 +2,6 @@ project("SLIM3D")
 
 set(SRCS_FILES
   Asset.cpp
-  Exception.cpp
   Image.cpp
   Listener.cpp
   ListenersManager.cpp

@@ -1,6 +1,6 @@
-#include "slim/assets/Asset.hh"
-#include "slim/assets/Listener.hh"
-#include "slim/assets/Manager.hh"
+#include "slim/assets/Asset.hpp"
+#include "slim/assets/Listener.hpp"
+#include "slim/assets/Manager.hpp"
 
 namespace slim
 {
@@ -37,7 +37,7 @@ Listener::listen(const Asset* asset)
 	++m_waitedNumber;
 	Manager::instance.addListener(this, asset);
     }
-    m_assets.push_back(asset);
+    m_assets.insert(asset);
 }
 
 void
