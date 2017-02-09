@@ -1,5 +1,14 @@
 # SLIM3D
 
+## This project is abandonned
+
+Originally, it was supposed to be a cross-platform C++ 3D engine using OpenGL ES 3.2.
+
+It was way too ambitious for a single person, and not designed and prepared enough.
+
+Some parts are still efficient or usable themselves, independently of other parts, like debug, maths and memory namespaces.  
+But the entire project itself cannot progress correctly anymore.
+
 ## Compilation
 
 ### Windows
